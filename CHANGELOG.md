@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Add support for all input files in `.json` or `.yaml` format.
+
 ### `Changed`
 
 - [#166](https://github.com/nf-core/phaseimpute/pull/166) - Bump version to 1.1.0dev and update `CHANGELOG.md`.
 - [#170](https://github.com/nf-core/phaseimpute/pull/170) - Update TEMPLATE to nf-core tools version 3.1.2.
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Update TEMPLATE to nf-core tools version 3.2.0. Move `CHRCHECK` functions to the workflow directory.
 
 ### `Fixed`
 
@@ -79,7 +82,7 @@ Special thanks to [Matthias Hörtenhuber](https://github.com/mashehu), [Mazzalab
 - [#157](https://github.com/nf-core/phaseimpute/pull/157) - Add `chunk_model` as parameter for better control over `GLIMPSE2_CHUNK` and set window size in `GLIMPSE1_CHUNK` and `GLIMPSE2_chunk` to 4mb to reduce number of chunks (empirical).
 - [#160](https://github.com/nf-core/phaseimpute/pull/160) - Improve `CHANGELOG.md` and add details to `usage.md`
 - [#158](https://github.com/nf-core/phaseimpute/pull/158) - Remove frequency computation and phasing from full test to reduce cost and computational time.
-- [#164](https://github.com/nf-core/phaseimpute/pull/164) - Rename `BAM_REGION_SAMTOOLS` to `BAM_EXTRACT_REGION_SAMTOOLS`. Remove `GLIMPSE2_SPLITREFERENCE` as it is not used. Add more steps to `test_all` profile for more exhaustivity.
+- [#164](https://github.com/nf-core/phaseimpute/pull/164) - Rename `BAM_REGION_SAMTOOLS` to `BAM_EXTRACT_REGION_SAMTOOLS`. Remove `GLIMPSE2_SPLITREFERENCE` as it is not used. Add more steps to `test_all` profile for more exhaustiveness.
 - [#163](https://github.com/nf-core/phaseimpute/pull/163) - Improve configuration for demanding processes. Use Genome in a Bottle VCF benchmarking file for AWS full test. Moved from `glimpse1` to `glimpse2` for the full test profile.
 - [#165](https://github.com/nf-core/phaseimpute/pull/165) - Update metro map and add logo to the documentation.
 
@@ -96,7 +99,7 @@ Special thanks to [Matthias Hörtenhuber](https://github.com/mashehu), [Mazzalab
 - [#161](https://github.com/nf-core/phaseimpute/pull/161) - Fix `VCF_SPLIT_BCFTOOLS` when only one sample present by updating `BCFTOOLS_PLUGINSPLIT` and adding `BCFTOOLS_QUERY` to get truth samples names for renaming the resulting files.
 - [#162](https://github.com/nf-core/phaseimpute/pull/162) - Fix `fai` usage when provided by `genomes` parameter.
 - [#164](https://github.com/nf-core/phaseimpute/pull/164) - Improve documentation writing
-- [#163](https://github.com/nf-core/phaseimpute/pull/163) - Fix MULTIQC samples names (add post-processing for clean up `FILTER_CHR_DWN`, `FILTER_CHR_INP`, `GAWK_ERROR_SPL`, `GAWK_RSQUARE_SPL`). Fix output panel `publisDir`. Fix java version to `17` in `ci.yml` due to new nextflow version.
+- [#163](https://github.com/nf-core/phaseimpute/pull/163) - Fix MULTIQC samples names (add post-processing for clean up `FILTER_CHR_DWN`, `FILTER_CHR_INP`, `GAWK_ERROR_SPL`, `GAWK_RSQUARE_SPL`). Fix output panel `publishDir`. Fix java version to `17` in `ci.yml` due to new nextflow version.
 
 ### `Dependencies`
 
