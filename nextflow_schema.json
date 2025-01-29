@@ -18,7 +18,7 @@
                     "exists": true,
                     "schema": "assets/schema_input.json",
                     "mimetype": "text/csv",
-                    "pattern": "^\\S+\\.csv$",
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$",
                     "description": "Path to comma-separated file containing information about the samples in the experiment.",
                     "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See [usage docs](https://nf-co.re/phaseimpute/usage#samplesheet-input).",
                     "fa_icon": "fas fa-file-csv"
@@ -28,7 +28,7 @@
                     "description": "Region of the genome to use (optional: if no file given, the whole genome will be used). The file should be a comma-separated file with 3 columns, and a header row.",
                     "schema": "assets/schema_input_region.json",
                     "format": "file-path",
-                    "pattern": "^\\S+\\.csv$"
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$"
                 },
                 "outdir": {
                     "type": "string",
@@ -94,7 +94,7 @@
                 "genotype": {
                     "type": "string",
                     "description": "Genotype position to use to simulate the data",
-                    "pattern": "^\\S+\\.(csv|tsv|txt)$",
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$",
                     "format": "file-path",
                     "mimetype": "text/csv"
                 }
@@ -112,7 +112,7 @@
                     "fa_icon": "far fa-file-code",
                     "format": "file-path",
                     "schema": "assets/schema_input_panel.json",
-                    "pattern": "^\\S+\\.(csv|tsv|txt)$",
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$",
                     "mimetype": "text/csv"
                 },
                 "phase": {
@@ -155,7 +155,15 @@
                     "format": "file-path",
                     "mimetype": "text/csv",
                     "schema": "/assets/schema_chunks.json",
-                    "pattern": "^\\S+\\.csv$"
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$"
+                },
+                "posfile": {
+                    "type": "string",
+                    "description": "Path to comma-separated file containing tab-separated files describing the variable positions to be used for imputation. Refer to the documentation for the `--posfile` argument of STITCH for more information.",
+                    "format": "file-path",
+                    "schema": "assets/schema_posfile.json",
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$",
+                    "mimetype": "text/csv"
                 },
                 "seed": {
                     "type": "integer",
@@ -177,7 +185,7 @@
                     "exists": true,
                     "schema": "assets/schema_input.json",
                     "mimetype": "text/csv",
-                    "pattern": "^\\S+\\.csv$",
+                    "pattern": "^\\S+\\.(csv|tsv|yaml|json)$",
                     "description": "Path to comma-separated file containing information about the samples truth files in the experiment.",
                     "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See [usage docs](https://nf-co.re/phaseimpute/usage#samplesheet-input).",
                     "fa_icon": "fas fa-file-csv"
@@ -441,14 +449,6 @@
             "description": "Arguments to customize STITCH run",
             "default": "",
             "properties": {
-                "posfile": {
-                    "type": "string",
-                    "description": "Path to comma-separated file containing tab-separated files describing the variable positions to be used for imputation. Refer to the documentation for the `--posfile` argument of STITCH for more information.",
-                    "format": "file-path",
-                    "schema": "assets/schema_posfile.json",
-                    "pattern": "^\\S+\\.(csv|tsv|txt)$",
-                    "mimetype": "text/csv"
-                },
                 "k_val": {
                     "type": "integer",
                     "default": 2,

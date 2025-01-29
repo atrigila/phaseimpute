@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Add support for all input files in `.json` or `.yaml` format.
+
 ### `Changed`
 
 - [#166](https://github.com/nf-core/phaseimpute/pull/166) - Bump version to 1.1.0dev and update `CHANGELOG.md`.
 - [#170](https://github.com/nf-core/phaseimpute/pull/170) - Update TEMPLATE to nf-core tools version 3.1.2.
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Update TEMPLATE to nf-core tools version 3.2.0.
 
 ### `Fixed`
 
