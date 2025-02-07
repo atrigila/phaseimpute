@@ -339,7 +339,7 @@ workflow PHASEIMPUTE {
             BAM_IMPUTE_GLIMPSE2(
                 ch_input_bams_withlist
                     .map{ [it[0], it[1], it[2], it[3]] }
-                    .mix(ch_input_type.vcf.combine([])),
+                    .mix(ch_input_type.vcf.combine(Channel.of([[]]))),
                 ch_panel_phased,
                 ch_chunks_glimpse2,
                 ch_fasta
