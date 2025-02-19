@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="MetroMap_animated.svg"
+   sodipodi:docname="MetroMap_animated_light.svg"
    inkscape:export-filename="MetroMapSimple.png"
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200"
@@ -28,14 +28,14 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.50000003"
-     inkscape:cx="892.99995"
-     inkscape:cy="121.99999"
+     inkscape:cx="801.99996"
+     inkscape:cy="129.99999"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="g12541"
      showgrid="true">
     <inkscape:grid
        id="grid1"
@@ -84,7 +84,7 @@
        id="start_end"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#000000;stop-opacity:1;"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
          id="stop12518" />
     </linearGradient>
@@ -100,7 +100,7 @@
        id="logo"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#000000;stop-opacity:1;"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
          id="stop12406" />
     </linearGradient>
@@ -108,7 +108,7 @@
        id="file_text_out"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#000000;stop-opacity:1;"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
          id="stop12384" />
     </linearGradient>
@@ -564,7 +564,7 @@
        id="background_fill"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#f5f5f5;stop-opacity:1;"
+         style="stop-color:#000000;stop-opacity:1;"
          offset="0"
          id="stop11200" />
     </linearGradient>
@@ -572,7 +572,7 @@
        id="file_border"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#000000;stop-opacity:1;"
+         style="stop-color:#464646;stop-opacity:1;"
          offset="0"
          id="stop11194" />
     </linearGradient>
@@ -596,7 +596,7 @@
        id="file_in"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         style="stop-color:#c4c4c4;stop-opacity:1;"
          offset="0"
          id="stop11176" />
     </linearGradient>
