@@ -22,7 +22,7 @@
 **nf-core/phaseimpute** is a bioinformatics pipeline to phase and impute genetic data.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/genomeassembler.dark.png">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/metro/MetroMap_animated_dark.svg">
   <img src="docs/images/metro/MetroMap_animated.svg" alt="metromap"/>
 </picture>
 
