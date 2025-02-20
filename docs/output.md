@@ -98,7 +98,7 @@ The files will be phased if the flag `--phase` is used (with `_phased` suffix).
 <summary>Output files</summary>
 
 - `prep_panel/csv/`
-  - `chunks.csv`: A CSV file containing the list of chunks obtained for each chromosome and panel.
+  - `chunks_glimpse1.csv`: A CSV file containing the list of chunks obtained for each chromosome and panel.
   - `panel.csv`: A CSV file containing the final phased and prepared for each chromosome and input panel.
   - `posfile.csv`: A CSV file containing the final list of panel positions, in VCF and TSV files, for each chromosome and input panel.
 
