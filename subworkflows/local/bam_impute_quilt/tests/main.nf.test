@@ -17,15 +17,19 @@ nextflow_workflow {
     tag "bcftools/index"
     tag "bcftools/annotate"
 
-    test("Impute with quilt two individuals with bamlist") {
+    test("Impute with quilt two individuals with bamlist and renaming") {
         when {
             workflow {
                 """
-                bamlist = Channel.of(
+                bampath = Channel.of(
                     "NA12878.s.bam",
                     "NA19401.s.bam"
-                ).collectFile(name: 'bamlist.txt', newLine: true)
-                input[0] = Channel.fromList([
+                ).collectFile(name: 'bampath.txt', newLine: true)
+                bamname = Channel.of(
+                    "MySample1",
+                    "MySample2"
+                ).collectFile(name: 'bamname.txt', newLine: true)
+                ch_samples = Channel.fromList([
                     [
                         [id: "allid"],
                         [
@@ -37,7 +41,8 @@ nextflow_workflow {
                             file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bam.bai", checkIfExist:true)
                         ]
                     ],
-                ]).combine(bamlist)
+                ])
+                input[0] = ch_samples.combine(bampath).combine(bamname)
                 input[1] = Channel.of([
                         [id: "1000GP", chr: "22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
@@ -81,6 +86,7 @@ nextflow_workflow {
                         [id: "NA12878"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bam", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bam.bai", checkIfExist:true),
+                        [],
                         []
                     ]
                 ])

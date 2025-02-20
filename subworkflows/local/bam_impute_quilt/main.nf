@@ -4,7 +4,7 @@ include { BCFTOOLS_ANNOTATE                  } from '../../../modules/nf-core/bc
 workflow BAM_IMPUTE_QUILT {
 
     take:
-    ch_input             // channel: [ [id], [bam], [bai], bamlist ]
+    ch_input             // channel: [ [id], [bam], [bai], bampaths, bamnames ]
     ch_hap_legend        // channel: [ [panel, chr], hap, legend ]
     ch_chunks            // channel: [ [panel, chr], chr, start_coordinate, end_coordinate ]
     ch_fasta             // channel: [ [genome], fa, fai ]
@@ -35,10 +35,10 @@ workflow BAM_IMPUTE_QUILT {
     ch_quilt = ch_input
         .combine(ch_hap_chunks)
         .map {
-            metaI, bam, bai, bamlist, metaPC, hap, legend, chr, start, end, ngen, buffer, gmap ->
+            metaI, bam, bai, bampath, bamnames, metaPC, hap, legend, chr, start, end, ngen, buffer, gmap ->
             [
                 metaI + [panel: metaPC.id, chr: metaPC.chr, chunk: metaPC.chr + ":" + start + "-" + end],
-                bam, bai, bamlist, hap, legend, chr, start, end, ngen, buffer, gmap
+                bam, bai, bampath, bamnames, hap, legend, chr, start, end, ngen, buffer, gmap
             ]
         }
 

@@ -1,5 +1,5 @@
 {
-    "Impute with quilt two individuals with bamlist": {
+    "Impute with quilt two individuals with bamlist and renaming": {
         "content": [
             [
                 "versions.yml:md5,ac2d0f2a8e77cd796d3b4b84fdd46b0d",
@@ -11,22 +11,22 @@
                         "id": "allid",
                         "panel": "1000GP",
                         "chr": "22",
-                        "chunk": "16570065-16597215",
+                        "chunk": "22:16570065-16597215",
                         "tools": "quilt"
                     },
-                    "allid_22_16570065-16597215.impute.annotate.vcf.gz",
-                    "allid_22_16570065-16597215.impute.annotate.vcf.gz.tbi"
+                    "allid_22_22:16570065-16597215.impute.annotate.vcf.gz",
+                    "allid_22_22:16570065-16597215.impute.annotate.vcf.gz.tbi"
                 ],
                 [
                     {
                         "id": "allid",
                         "panel": "1000GP",
                         "chr": "22",
-                        "chunk": "16587172-16609999",
+                        "chunk": "22:16587172-16609999",
                         "tools": "quilt"
                     },
-                    "allid_22_16587172-16609999.impute.annotate.vcf.gz",
-                    "allid_22_16587172-16609999.impute.annotate.vcf.gz.tbi"
+                    "allid_22_22:16587172-16609999.impute.annotate.vcf.gz",
+                    "allid_22_22:16587172-16609999.impute.annotate.vcf.gz.tbi"
                 ]
             ],
             [
@@ -35,20 +35,20 @@
             ],
             [
                 [
-                    "NA12878",
-                    "NA19401"
+                    "MySample1",
+                    "MySample2"
                 ],
                 [
-                    "NA12878",
-                    "NA19401"
+                    "MySample1",
+                    "MySample2"
                 ]
             ]
         ],
         "meta": {
             "nf-test": "0.9.1",
-            "nextflow": "24.10.0"
+            "nextflow": "24.10.1"
         },
-        "timestamp": "2024-11-07T13:53:40.231874326"
+        "timestamp": "2025-02-20T16:24:46.644555024"
     },
     "Impute with quilt one individuals": {
         "content": [
@@ -62,22 +62,22 @@
                         "id": "NA12878",
                         "panel": "1000GP",
                         "chr": "22",
-                        "chunk": "16570065-16597215",
+                        "chunk": "22:16570065-16597215",
                         "tools": "quilt"
                     },
-                    "NA12878_22_16570065-16597215.impute.annotate.vcf.gz",
-                    "NA12878_22_16570065-16597215.impute.annotate.vcf.gz.tbi"
+                    "NA12878_22_22:16570065-16597215.impute.annotate.vcf.gz",
+                    "NA12878_22_22:16570065-16597215.impute.annotate.vcf.gz.tbi"
                 ],
                 [
                     {
                         "id": "NA12878",
                         "panel": "1000GP",
                         "chr": "22",
-                        "chunk": "16587172-16609999",
+                        "chunk": "22:16587172-16609999",
                         "tools": "quilt"
                     },
-                    "NA12878_22_16587172-16609999.impute.annotate.vcf.gz",
-                    "NA12878_22_16587172-16609999.impute.annotate.vcf.gz.tbi"
+                    "NA12878_22_22:16587172-16609999.impute.annotate.vcf.gz",
+                    "NA12878_22_22:16587172-16609999.impute.annotate.vcf.gz.tbi"
                 ]
             ],
             [
@@ -95,8 +95,8 @@
         ],
         "meta": {
             "nf-test": "0.9.1",
-            "nextflow": "24.10.0"
+            "nextflow": "24.10.1"
         },
-        "timestamp": "2024-11-07T13:54:20.551354608"
+        "timestamp": "2025-02-20T16:05:43.608545558"
     }
 }

@@ -1,5 +1,5 @@
 {
-    "Impute with stitch two individuals with bamlist": {
+    "Impute with stitch two individuals with bamlist and renaming": {
         "content": [
             [
                 "versions.yml:md5,4330856a215c4986b0591d550a4d22bf",
@@ -23,15 +23,15 @@
             ],
             [
                 [
-                    "NA12878",
-                    "NA19401"
+                    "MySample1",
+                    "MySample2"
                 ]
             ]
         ],
         "meta": {
             "nf-test": "0.9.1",
-            "nextflow": "24.10.0"
+            "nextflow": "24.10.1"
         },
-        "timestamp": "2024-11-07T13:55:08.174481463"
+        "timestamp": "2025-02-20T16:28:41.252795061"
     }
 }

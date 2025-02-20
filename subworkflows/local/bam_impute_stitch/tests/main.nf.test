@@ -15,7 +15,7 @@ nextflow_workflow {
     tag "bcftools"
     tag "bcftools_index"
 
-    test("Impute with stitch two individuals with bamlist") {
+    test("Impute with stitch two individuals with bamlist and renaming") {
         when {
             params {
                 max_cpus   = 2
@@ -23,10 +23,14 @@ nextflow_workflow {
             }
             workflow {
                 """
-                bamlist = Channel.of(
+                bampath = Channel.of(
                     "NA12878.s.bam",
                     "NA19401.s.bam"
-                ).collectFile(name: 'bamlist.txt', newLine: true)
+                ).collectFile(name: 'bampath.txt', newLine: true)
+                bamname = Channel.of(
+                    "MySample1",
+                    "MySample2"
+                ).collectFile(name: 'bamname.txt', newLine: true)
                 ch_samples = Channel.fromList([
                     [
                         [id: "allid"],
@@ -50,7 +54,7 @@ nextflow_workflow {
                     [chr: "chr22", region: "chr22:16570000-16610000"], "chr22:16570000-16610000"
                 ])
 
-                input[0] = ch_samples.combine(bamlist)
+                input[0] = ch_samples.combine(bampath).combine(bamname)
                 input[1] = ch_posfile
                 input[2] = ch_region
                 input[3] = Channel.of([
