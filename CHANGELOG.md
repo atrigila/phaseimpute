@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#166](https://github.com/nf-core/phaseimpute/pull/166) - Fix depth type to `number` to enable float.
 - [#179](https://github.com/nf-core/phaseimpute/pull/179) - Fix VCF usage in `GLIMPSE2`.
+- [#185](https://github.com/nf-core/phaseimpute/pull/185) - Fix CSV generation and check that all mentioned path files exist.
 
 ## v1.0.0 - Black Labrador [2024-12-09]
 
