@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#166](https://github.com/nf-core/phaseimpute/pull/166) - Fix depth type to `number` to enable float.
 - [#179](https://github.com/nf-core/phaseimpute/pull/179) - Fix VCF usage in `GLIMPSE2`.
+- [#183](https://github.com/nf-core/phaseimpute/pull/183) - Remove wrongfully added files in `BAM_EXTRACT_REGION_SAMTOOLS`.
 
 ## v1.0.0 - Black Labrador [2024-12-09]
 
