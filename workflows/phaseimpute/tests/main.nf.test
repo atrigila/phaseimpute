@@ -25,7 +25,12 @@ nextflow_pipeline {
                         .collect { getRecursiveFileNames(it, outputDir) }
                         .flatten(),
                     path("$outputDir/imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
-                    path("$outputDir/imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz").vcf.header.getGenotypeSamples().sort()
+                    path("$outputDir/imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz").vcf.header.getGenotypeSamples().sort(),
+                    path("${outputDir}/pipeline_info/")
+                        .list()
+                        .collect { getRecursiveFileNames(it, outputDir) }
+                        .flatten()
+                        .collect { removeTimestamp(it) }
                 ).match()
                 }
             )
@@ -298,4 +303,8 @@ def getRecursiveFileNames(fileOrDir, outputDir) {
         return fileOrDir.list().collect { getRecursiveFileNames(it, outputDir) }
     }
     return fileOrDir.toString().replace("${outputDir}/", "")
+}
+
+def removeTimestamp(filename) {
+    filename.replaceAll(/_\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}/, "")
 }
