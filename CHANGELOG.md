@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### `Added`
 
 - [#175](https://github.com/nf-core/phaseimpute/pull/175) - Add support for all input files in `.json` or `.yaml` format.
+- [#181](https://github.com/nf-core/phaseimpute/pull/181) - Add nf-co2footprint plugin to the config file.
 - [#184](https://github.com/nf-core/phaseimpute/pull/184) - Add support `.csi` index for `.bam` files.
 
 ### `Changed`
@@ -21,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#166](https://github.com/nf-core/phaseimpute/pull/166) - Fix depth type to `number` to enable float.
 - [#179](https://github.com/nf-core/phaseimpute/pull/179) - Fix VCF usage in `GLIMPSE2`.
+- [#183](https://github.com/nf-core/phaseimpute/pull/183) - Remove wrongfully added files in `BAM_EXTRACT_REGION_SAMTOOLS`.
 
 ## v1.0.0 - Black Labrador [2024-12-09]
 
