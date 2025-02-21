@@ -10,23 +10,23 @@
                     {
                         "id": "allid",
                         "panel": "1000GP",
-                        "chr": "22",
-                        "chunk": "22:16570065-16597215",
+                        "chr": "chr22",
+                        "chunk": "chr22:16570065-16597215",
                         "tools": "quilt"
                     },
-                    "allid_22_22:16570065-16597215.impute.annotate.vcf.gz",
-                    "allid_22_22:16570065-16597215.impute.annotate.vcf.gz.tbi"
+                    "allid_chr22_16570065-16597215.impute.annotate.vcf.gz",
+                    "allid_chr22_16570065-16597215.impute.annotate.vcf.gz.tbi"
                 ],
                 [
                     {
                         "id": "allid",
                         "panel": "1000GP",
-                        "chr": "22",
-                        "chunk": "22:16587172-16609999",
+                        "chr": "chr22",
+                        "chunk": "chr22:16587172-16609999",
                         "tools": "quilt"
                     },
-                    "allid_22_22:16587172-16609999.impute.annotate.vcf.gz",
-                    "allid_22_22:16587172-16609999.impute.annotate.vcf.gz.tbi"
+                    "allid_chr22_16587172-16609999.impute.annotate.vcf.gz",
+                    "allid_chr22_16587172-16609999.impute.annotate.vcf.gz.tbi"
                 ]
             ],
             [
@@ -48,7 +48,7 @@
             "nf-test": "0.9.1",
             "nextflow": "24.10.1"
         },
-        "timestamp": "2025-02-20T16:24:46.644555024"
+        "timestamp": "2025-02-21T10:42:24.328715085"
     },
     "Impute with quilt one individuals": {
         "content": [
@@ -61,23 +61,23 @@
                     {
                         "id": "NA12878",
                         "panel": "1000GP",
-                        "chr": "22",
-                        "chunk": "22:16570065-16597215",
+                        "chr": "chr22",
+                        "chunk": "chr22:16570065-16597215",
                         "tools": "quilt"
                     },
-                    "NA12878_22_22:16570065-16597215.impute.annotate.vcf.gz",
-                    "NA12878_22_22:16570065-16597215.impute.annotate.vcf.gz.tbi"
+                    "NA12878_chr22_16570065-16597215.impute.annotate.vcf.gz",
+                    "NA12878_chr22_16570065-16597215.impute.annotate.vcf.gz.tbi"
                 ],
                 [
                     {
                         "id": "NA12878",
                         "panel": "1000GP",
-                        "chr": "22",
-                        "chunk": "22:16587172-16609999",
+                        "chr": "chr22",
+                        "chunk": "chr22:16587172-16609999",
                         "tools": "quilt"
                     },
-                    "NA12878_22_22:16587172-16609999.impute.annotate.vcf.gz",
-                    "NA12878_22_22:16587172-16609999.impute.annotate.vcf.gz.tbi"
+                    "NA12878_chr22_16587172-16609999.impute.annotate.vcf.gz",
+                    "NA12878_chr22_16587172-16609999.impute.annotate.vcf.gz.tbi"
                 ]
             ],
             [
@@ -97,6 +97,57 @@
             "nf-test": "0.9.1",
             "nextflow": "24.10.1"
         },
-        "timestamp": "2025-02-20T16:05:43.608545558"
+        "timestamp": "2025-02-21T10:42:53.807053378"
+    },
+    "Impute with quilt two individuals with bamlist and no renaming": {
+        "content": [
+            [
+                "versions.yml:md5,ac2d0f2a8e77cd796d3b4b84fdd46b0d",
+                "versions.yml:md5,cb038a1f67a47a76d0e0a983cfd56789"
+            ],
+            [
+                [
+                    {
+                        "id": "allid",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "chunk": "chr22:16570065-16597215",
+                        "tools": "quilt"
+                    },
+                    "allid_chr22_16570065-16597215.impute.annotate.vcf.gz",
+                    "allid_chr22_16570065-16597215.impute.annotate.vcf.gz.tbi"
+                ],
+                [
+                    {
+                        "id": "allid",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "chunk": "chr22:16587172-16609999",
+                        "tools": "quilt"
+                    },
+                    "allid_chr22_16587172-16609999.impute.annotate.vcf.gz",
+                    "allid_chr22_16587172-16609999.impute.annotate.vcf.gz.tbi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr22], sampleCount=2, variantCount=572, phased=true, phasedAutodetect=false]",
+                "VcfFile [chromosomes=[chr22], sampleCount=2, variantCount=570, phased=true, phasedAutodetect=false]"
+            ],
+            [
+                [
+                    "NA12878",
+                    "NA19401"
+                ],
+                [
+                    "NA12878",
+                    "NA19401"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.1",
+            "nextflow": "24.10.1"
+        },
+        "timestamp": "2025-02-21T10:41:47.938284565"
     }
 }
