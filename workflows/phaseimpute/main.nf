@@ -125,7 +125,7 @@ workflow PHASEIMPUTE {
 
         // Program to filter chromosomes
         filter_chr_program = ch_region
-            .collect{ meta, region -> meta.chr }
+            .collect{ meta, _region -> meta.chr }
             .map { chr ->
                 "BEGIN { FS=\"\t\";\nsplit(\"" + chr.join(" ") + '", chr, " ");\n' +
                 'for (i in chr) {\nchr_map[chr[i]] = 1;\n}\n}\n' +
@@ -137,7 +137,6 @@ workflow PHASEIMPUTE {
         // Compute coverage of input files
         SAMTOOLS_COVERAGE_INP(ch_input_sim, ch_fasta)
         ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions)
-        ch_coverage = SAMTOOLS_COVERAGE_INP.out.coverage
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
@@ -229,7 +228,7 @@ workflow PHASEIMPUTE {
         // Posfile
         exportCsv(
             ch_posfile.map{ meta, vcf, index, hap, legend ->
-                [meta, [2:"prep_panel/sites", 3:"prep_panel/haplegend", 4:"prep_panel/haplegend"], vcf, index, hap, legend]
+                [meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend"], vcf, index, hap, legend]
             },
             ["id", "chr"], "panel,chr,vcf,index,hap,legend",
             "posfile.csv", "prep_panel/csv"
@@ -237,10 +236,10 @@ workflow PHASEIMPUTE {
         // Chunks
         exportCsv(
             VCF_CHUNK_GLIMPSE.out.chunks.map{ meta, file ->
-                [meta, [2:"prep_panel/chunks"], file]
+                [meta, [2:"prep_panel/chunks/glimpse1"], file]
             },
             ["id", "chr"], "panel,chr,file",
-            "chunks.csv", "prep_panel/csv"
+            "chunks_glimpse1.csv", "prep_panel/csv"
         )
     }
 
@@ -424,9 +423,9 @@ workflow PHASEIMPUTE {
         // Export all files to csv
         exportCsv(
             ch_input_validate.map{ meta, file, index ->
-                [meta, [2:"imputation/${meta.tools}/samples/", 3:"imputation/${meta.tools}/samples/"], file, index]
+                [meta, [2:"imputation/${meta.tools}/samples", 3:"imputation/${meta.tools}/samples"], file, index]
             },
-            ["id", "tools"], "sample,tools,vcf,index",
+            ["id", "tools"], "sample,tools,file,index",
             "impute.csv", "imputation/csv"
         )
     }

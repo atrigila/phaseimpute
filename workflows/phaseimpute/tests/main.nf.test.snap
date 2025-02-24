@@ -95,7 +95,7 @@
                 "prep_panel/chunks/glimpse1/1000GP_chr22_chunks_glimpse1.txt",
                 "prep_panel/chunks/glimpse2/1000GP_chr21_chunks_glimpse2.txt",
                 "prep_panel/chunks/glimpse2/1000GP_chr22_chunks_glimpse2.txt",
-                "prep_panel/csv/chunks.csv",
+                "prep_panel/csv/chunks_glimpse1.csv",
                 "prep_panel/csv/panel.csv",
                 "prep_panel/csv/posfile.csv",
                 "prep_panel/haplegend/1000GP_chr21.hap.gz",
@@ -166,10 +166,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.1",
             "nextflow": "24.10.1"
         },
-        "timestamp": "2024-11-27T18:23:38.85114929"
+        "timestamp": "2025-02-20T11:45:13.538903855"
     },
     "Check test_validate": {
         "content": [
@@ -329,7 +329,7 @@
                 "prep_panel/chunks/glimpse1/1000GP_chr22_chunks_glimpse1.txt",
                 "prep_panel/chunks/glimpse2/1000GP_chr21_chunks_glimpse2.txt",
                 "prep_panel/chunks/glimpse2/1000GP_chr22_chunks_glimpse2.txt",
-                "prep_panel/csv/chunks.csv",
+                "prep_panel/csv/chunks_glimpse1.csv",
                 "prep_panel/csv/panel.csv",
                 "prep_panel/csv/posfile.csv",
                 "prep_panel/haplegend/1000GP_chr21.hap.gz",
@@ -349,10 +349,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "24.04.4"
+            "nf-test": "0.9.1",
+            "nextflow": "24.10.1"
         },
-        "timestamp": "2024-10-14T19:19:50.07758554"
+        "timestamp": "2025-02-20T11:48:45.440753818"
     },
     "Check test_glimpse2": {
         "content": [
@@ -433,7 +433,7 @@
                 "prep_panel/chunks/glimpse1/658Dog_chr22_chunks_glimpse1.txt",
                 "prep_panel/chunks/glimpse2/658Dog_chr21_chunks_glimpse2.txt",
                 "prep_panel/chunks/glimpse2/658Dog_chr22_chunks_glimpse2.txt",
-                "prep_panel/csv/chunks.csv",
+                "prep_panel/csv/chunks_glimpse1.csv",
                 "prep_panel/csv/panel.csv",
                 "prep_panel/csv/posfile.csv",
                 "prep_panel/haplegend/658Dog_chr21.hap.gz",
@@ -473,9 +473,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.1",
             "nextflow": "24.10.1"
         },
-        "timestamp": "2024-11-27T18:25:56.980470563"
+        "timestamp": "2025-02-20T11:47:19.564681513"
     }
 }
