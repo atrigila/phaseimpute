@@ -8,7 +8,7 @@ process QUILT_QUILT {
         'biocontainers/r-quilt:1.0.5--r43h06b5641_0' }"
 
     input:
-    tuple val(meta), path(bams), path(bais), path(bamlist), path(reference_haplotype_file), path(reference_legend_file), val(chr), val(regions_start), val(regions_end), val(ngen), val(buffer), path(genetic_map_file)
+    tuple val(meta), path(bams), path(bais), path(bamlist), path(samplename), path(reference_haplotype_file), path(reference_legend_file), val(chr), val(regions_start), val(regions_end), val(ngen), val(buffer), path(genetic_map_file)
     tuple val(meta2), path(posfile), path(phasefile)
     tuple val(meta3), path(fasta)
 
@@ -32,6 +32,7 @@ process QUILT_QUILT {
     def genetic_map_file_command    =   genetic_map_file      ? "--genetic_map_file=${genetic_map_file}"     : ""
     def posfile_command             =   posfile               ? "--posfile=${posfile}"                       : ""
     def phasefile_command           =   phasefile             ? "--phasefile=${phasefile}"                   : ""
+    def samplename_command          =   samplename            ? "--sampleNames_file=${samplename}"           : ""
     if (!(args ==~ /.*--seed.*/)) {args += " --seed=1"}
 
     """
@@ -48,6 +49,7 @@ process QUILT_QUILT {
         $genetic_map_file_command \\
         $posfile_command \\
         $phasefile_command \\
+        $samplename_command \\
         --chr=$chr \\
         --regionStart=$regions_start \\
         --regionEnd=$regions_end \\

@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#170](https://github.com/nf-core/phaseimpute/pull/170) - Update TEMPLATE to nf-core tools version 3.1.2.
 - [#175](https://github.com/nf-core/phaseimpute/pull/175) - Update TEMPLATE to nf-core tools version 3.2.0. Move `CHRCHECK` functions to the workflow directory.
 - [#182](https://github.com/nf-core/phaseimpute/pull/182) - Add dark version of the metromap and dynamically change it in the README.
+- [#185](https://github.com/nf-core/phaseimpute/pull/185) - Add `--sampleNames_file` option for `STICH` and `QUILT`.
 
 ### `Fixed`
 

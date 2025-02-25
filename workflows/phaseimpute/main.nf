@@ -357,7 +357,7 @@ workflow PHASEIMPUTE {
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4]] },
+                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{ [it[0], it[4]] },
                 ch_region,
                 ch_fasta
@@ -384,7 +384,7 @@ workflow PHASEIMPUTE {
 
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4]] },
+                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{ [it[0], it[3], it[4]] },
                 ch_chunks_quilt,
                 ch_fasta.map{ [it[0], it[1]] }

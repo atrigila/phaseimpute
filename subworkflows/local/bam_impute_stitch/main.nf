@@ -5,7 +5,7 @@ include { BCFTOOLS_INDEX       } from '../../../modules/nf-core/bcftools/index'
 workflow BAM_IMPUTE_STITCH {
 
     take:
-    ch_input        // channel:   [ [id], [bam], [bai], bamlist ]
+    ch_input        // channel:   [ [id], [bam], [bai], bampaths, bamnames ]
     ch_posfile      // channel:   [ [panel, chr], legend ]
     ch_region       // channel:   [ [chr, region], region ]
     ch_fasta        // channel:   [ [genome], fa, fai ]
@@ -46,10 +46,10 @@ workflow BAM_IMPUTE_STITCH {
     ch_bam_params = ch_input // Add chr to meta map
         .combine(ch_parameters)
         .map{
-            metaI, bam, bai, bamlist, metaPC, posfile, input, rdata, chr, k_val, ngen ->
+            metaI, bam, bai, bampath, bamname, metaPC, posfile, input, rdata, chr, k_val, ngen ->
             [
                 metaI + [chr: metaPC.chr, panel:metaPC.id],
-                bam, bai, bamlist, posfile, input, rdata, chr, k_val, ngen
+                bam, bai, bampath, bamname, posfile, input, rdata, chr, k_val, ngen
             ]
         }
 
