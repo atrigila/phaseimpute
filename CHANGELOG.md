@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#175](https://github.com/nf-core/phaseimpute/pull/175) - Add support for all input files in `.json` or `.yaml` format.
 - [#181](https://github.com/nf-core/phaseimpute/pull/181) - Add nf-co2footprint plugin to the config file.
+- [#184](https://github.com/nf-core/phaseimpute/pull/184) - Add support `.csi` index for `.bam` files.
 
 ### `Changed`
 

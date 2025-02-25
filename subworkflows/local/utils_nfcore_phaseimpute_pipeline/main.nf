@@ -569,16 +569,16 @@ def checkFileIndex(ch_input) {
         def index_ext = getFileExtension(index)
         if (file_ext in ["vcf", "bcf"] &&  !(index_ext in ["tbi", "csi"]) ) {
             log.info("File: ${file} ${file_ext}, Index: ${index} ${index_ext}")
-            error "${meta}: Index file for [.vcf, .vcf.gz, bcf] must have the extension [.tbi, .csi]"
+            error "${meta}: Index file for .vcf, .vcf.gz and .bcf must have the extension .tbi or .csi"
         }
-        if (file_ext == "bam" && index_ext != "bai") {
-            error "${meta}: Index file for .bam must have the extension .bai"
+        if (file_ext == "bam" && !(index_ext in ["bai", "csi"])) {
+            error "${meta}: Index file for .bam must have the extension .bai or .csi"
         }
         if (file_ext == "cram" && index_ext != "crai") {
             error "${meta}: Index file for .cram must have the extension .crai"
         }
         if (file_ext in ["fa", "fasta"] && index_ext != "fai") {
-            error "${meta}: Index file for [fa, fasta] must have the extension .fai"
+            error "${meta}: Index file for .fa and .fasta must have the extension .fai"
         }
     }
     return null
