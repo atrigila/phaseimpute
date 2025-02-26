@@ -46,7 +46,7 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
         GLIMPSE2_CONCORDANCE.out.rsquare_spl,
         []
     )
-    ch_versions = ch_versions.mix(GAWK_ERROR_SPL.out.versions.first())
+    ch_versions = ch_versions.mix(GAWK_RSQUARE_SPL.out.versions.first())
 
     ch_multiqc_files = ch_multiqc_files.mix(GLIMPSE2_CONCORDANCE.out.errors_cal.map{ _meta, txt -> [txt]})
     ch_multiqc_files = ch_multiqc_files.mix(GLIMPSE2_CONCORDANCE.out.errors_grp.map{ _meta, txt -> [txt]})

@@ -1,4 +1,3 @@
-include { GAWK                               } from '../../../modules/nf-core/gawk'
 include { GLIMPSE2_PHASE                     } from '../../../modules/nf-core/glimpse2/phase'
 include { BCFTOOLS_INDEX as BCFTOOLS_INDEX_1 } from '../../../modules/nf-core/bcftools/index'
 include { GLIMPSE2_LIGATE                    } from '../../../modules/nf-core/glimpse2/ligate'
