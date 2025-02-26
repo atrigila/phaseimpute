@@ -4,7 +4,6 @@ workflow GET_REGION {
         ch_fasta     // [[genome], fasta, fai]
 
     main:
-        ch_versions      = Channel.empty()
 
         // Gather regions to use and create the meta map
         if (input_region ==~ '^(chr)?[0-9XYM]+$' || input_region == "all") {
@@ -27,5 +26,4 @@ workflow GET_REGION {
 
     emit:
         regions           = ch_regions       // channel: [ [chr, region], region ]
-        versions          = ch_versions      // channel: [ versions.yml ]
 }

@@ -1,18 +1,21 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
-name: "BAM_EXTRACT_REGION_SAMTOOLS"
+name: "BAM_GL_BCFTOOLS"
 description: |
-  Subworkflow to extract a list of region from a BAM file using samtools.
-  Each region is first extracted from the BAM file and then merged into a
-  single BAM file.
+  Subworkflow to compute genotype likelihoods from BAM files using
+  bcftools/mpileup and bcftools/call variants using bcftools call
+  by chromosomes.
+  The resulting VCF files are then merged by chromosomes and
+  annotated with bcftools/annotate to give an ID for each variants.
 keywords:
   - BAM
-  - region
-  - extract
-  - samtools
+  - genotype likelihoods
+  - bcftools
 components:
-  - samtools/view
-  - samtools/merge
-  - samtools/index
+  - gawk
+  - tabix/bgzip
+  - bcftools/mpileup
+  - bcftools/merge
+  - bcftools/annotate
 input:
   - ch_bam:
       description: Channel with input data
@@ -28,16 +31,18 @@ input:
           type: File
           description: Input BAM index file
           pattern: "*.[bai|csi]"
-  - ch_region:
-      description: Channel with region data
+  - ch_posfile:
+      description: Channel with position to call variants by chromosomes
       structure:
         - meta:
           type: map
-          description: Metadata map that will be combined with the input data map
-        - region:
-          type: string
+          description: |
+            Metadata map that will be combined with the input data map
+            Need to have the "chr" as chromosome name and "id" as panel name
+        - legend:
+          type: File
           description: Region to extract from the BAM file
-          pattern: "[chr]+[0-9]+:[0-9]+-[0-9]+"
+          pattern: "*.legend[.gz]+"
   - ch_fasta:
       description: Channel with reference genome data
       structure:
@@ -53,26 +58,32 @@ input:
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
-  - bam_region:
-      description: Channel with BAM files with extracted regions
+  - vcf_tbi:
+      description: Channel with one VCF files by chromosomes
       structure:
         - meta:
           type: map
-          description: Metadata map combined with the ch_region data map
-        - bam:
+          description: |
+            Metadata map combined with the ch_posfile data map.
+            It contains the "chr" name of the ch_posfile map and
+            "panel" as the "id" of ch_posfile.
+        - vcf:
           type: File
-          description: BAM file
-          pattern: "*.bam"
+          description: VCF file with all individuals merged by chromosomes
+          pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
           type: File
-          description: BAM index file
-          pattern: "*.[bai|csi]"
+          description: VCF index file
+          pattern: "*.[tbi|csi]"
   - versions:
       description: Channel containing software versions file
       structure:
         - versions.yml:
             type: file
             description: File containing versions of the software used
+  - multiqc_files:
+      description: Channel containing stat files of bcftools mpileup and call
+      type: File
 authors:
   - "@louislenezet"
 maintainers:

@@ -1,15 +1,15 @@
 nextflow_workflow {
 
-    name "Test Subworkflow BAM_IMPUTE_GLIMPSE2"
+    name "Test Subworkflow BAM_VCF_IMPUTE_GLIMPSE2"
     script "../main.nf"
     config "./nextflow.config"
 
-    workflow "BAM_IMPUTE_GLIMPSE2"
+    workflow "BAM_VCF_IMPUTE_GLIMPSE2"
 
     tag "subworkflows"
     tag "subworkflows_local"
-    tag "subworkflows/bam_impute_glimpse2"
-    tag "bam_impute_glimpse2"
+    tag "subworkflows/bam_vcf_impute_glimpse2"
+    tag "bam_vcf_impute_glimpse2"
 
     tag "glimpse2"
     tag "glimpse2/phase"
