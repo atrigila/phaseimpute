@@ -109,7 +109,10 @@ workflow PIPELINE_INITIALISATION {
             .map { samplesheet ->
                 validateInputSamplesheet(samplesheet)
             }
-            .map { meta, file, index -> [meta + [batch: 0], file, index] } // Set batch to 0 by default
+            .map { meta, file, index ->
+                def new_meta = meta + [id:meta.id.toString()]
+                [ new_meta + [batch: 0], file, index ]
+            } // Set batch to 0 by default
     } else {
         ch_input = Channel.of([[], [], []])
     }
@@ -131,7 +134,7 @@ workflow PIPELINE_INITIALISATION {
                 .fromList(samplesheetToList(params.input_truth, "${projectDir}/assets/schema_input.json"))
                 .map {
                     meta, file, index ->
-                        [ meta, file, index ]
+                        [ meta + [id:meta.id.toString()], file, index ]
                 }
             // Check if all extension are identical
             getFilesSameExt(ch_input_truth)
@@ -151,7 +154,10 @@ workflow PIPELINE_INITIALISATION {
             println "Panel file provided as input is a samplesheet"
             ch_panel = Channel.fromList(samplesheetToList(
                 params.panel, "${projectDir}/assets/schema_input_panel.json"
-            ))
+            )).map {
+                meta, chr, file, index ->
+                    [ meta + [id:meta.id.toString()], chr, file, index ]
+            }
         } else {
             // #TODO Wait for `oneOf()` to be supported in the nextflow_schema.json
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
@@ -220,8 +226,11 @@ workflow PIPELINE_INITIALISATION {
     // Create posfile channel
     //
     if (params.posfile) {
-        ch_posfile = Channel // ["panel", "chr", "vcf", "index", "hap", "legend"]
+        ch_posfile = Channel // ["meta", "chr", "vcf", "index", "hap", "legend"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
+            .map { meta, chr, vcf, index, hap, legend ->
+                [ meta + [id:meta.id.toString()], chr, vcf, index, hap, legend ]
+            }
     } else {
         ch_posfile = Channel.of([[],[],[],[],[]])
     }
@@ -240,6 +249,9 @@ workflow PIPELINE_INITIALISATION {
     if (params.chunks) {
         ch_chunks = Channel
             .fromList(samplesheetToList(params.chunks, "${projectDir}/assets/schema_chunks.json"))
+            .map { meta, chr, chunks ->
+                [ meta + [id:meta.id.toString()], chr, chunks ]
+            }
     } else {
         ch_chunks = Channel.of([[],[]])
     }
