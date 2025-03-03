@@ -3,7 +3,7 @@ name: "VCF_CONCORDANCE_GLIMPSE2"
 description: |
   Subworkflow to compute concordance metrics between two VCF files using Glimpse2.
   Glimpse2 errors_grp concordance metrics are then aggregated into a single table
-  using gawk and add_columns.
+  using gawk and addcolumns.
 keywords:
   - VCF
   - concordance
@@ -12,7 +12,7 @@ components:
   - glimpse2/concordance
   - gawk
   - gunzip
-  - add_columns
+  - addcolumns
 input:
   - ch_vcf_emul:
       description: Channel with target VCF files

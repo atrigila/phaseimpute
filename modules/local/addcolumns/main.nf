@@ -1,4 +1,4 @@
-process ADD_COLUMNS {
+process ADDCOLUMNS {
     tag "$meta.id"
     label 'process_single'
 
