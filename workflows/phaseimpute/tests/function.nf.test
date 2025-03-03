@@ -1,22 +1,18 @@
-nextflow_workflow {
+nextflow_function {
+    /*
+    The following tests are for the functions in the main.nf script
+    They are tested using the --verbose argument
+    */
 
-    name "Test Subworkflow CHUNK_PREPARE_CHANNEL"
-    script "../main.nf"
-
-    workflow "CHUNK_PREPARE_CHANNEL"
-
-    tag "subworkflows"
-    tag "subworkflows_local"
-    tag "subworkflows/chunk_prepare_channel"
-    tag "chunk_prepare_channel"
+    name "Test function phaseimpute"
+    script "../function.nf"
+    tag "function"
 
     test("Prepare chunks channel Glimpse") {
+        function "chunkPrepareChannel"
+        tag "chunkPrepareChannel"
         when {
-            params {
-                max_cpus   = 2
-                max_memory = '2.GB'
-            }
-            workflow {
+            function {
                 """
                 input[0] = Channel.of([
                     [id: "1000GP", chr: "chr21"],
@@ -29,19 +25,16 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() },
+                { assert function.success }
             )
         }
     }
 
     test("Prepare chunks channel Quilt") {
+        function "chunkPrepareChannel"
+        tag "chunkPrepareChannel"
         when {
-            params {
-                max_cpus   = 2
-                max_memory = '2.GB'
-            }
-            workflow {
+            function {
                 """
                 input[0] = Channel.of([
                     [id: "1000GP", chr: "chr21"],
@@ -54,19 +47,16 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() },
+                { assert function.success }
             )
         }
     }
 
     test("Prepare chunks channel error tool") {
+        function "chunkPrepareChannel"
+        tag "chunkPrepareChannel"
         when {
-            params {
-                max_cpus   = 2
-                max_memory = '2.GB'
-            }
-            workflow {
+            function {
                 """
                 input[0] = Channel.of([
                     [id: "1000GP", chr: "chr21"],

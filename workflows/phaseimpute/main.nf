@@ -32,9 +32,9 @@ include { GAWK as FILTER_CHR_DWN                     } from '../../modules/nf-co
 include { VCF_NORMALIZE_BCFTOOLS                     } from '../../subworkflows/local/vcf_normalize_bcftools'
 include { VCF_SITES_EXTRACT_BCFTOOLS                 } from '../../subworkflows/local/vcf_sites_extract_bcftools'
 include { VCF_PHASE_SHAPEIT5                         } from '../../subworkflows/local/vcf_phase_shapeit5'
-include { CHUNK_PREPARE_CHANNEL                      } from '../../subworkflows/local/chunk_prepare_channel'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_PANEL   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_PANEL     } from '../../modules/nf-core/bcftools/stats'
+include { chunkPrepareChannel                        } from './function.nf'
 
 // Imputation
 include { LISTTOFILE                                 } from '../../modules/local/listtofile'
@@ -291,8 +291,7 @@ workflow PHASEIMPUTE {
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "glimpse")
-                ch_chunks_glimpse1 = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse")
             }
 
             // Glimpse1 subworkflow
@@ -330,8 +329,7 @@ workflow PHASEIMPUTE {
             log.info("Impute with GLIMPSE2")
 
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "glimpse")
-                ch_chunks_glimpse2 = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse")
             }
 
             // Run imputation
@@ -378,8 +376,7 @@ workflow PHASEIMPUTE {
 
             // Use provided chunks if --chunks
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "quilt")
-                ch_chunks_quilt = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
             }
 
             // Impute BAMs with QUILT

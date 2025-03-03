@@ -1,0 +1,40 @@
+{
+    "Prepare chunks channel Quilt": {
+        "content": [
+            {
+                
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.1",
+            "nextflow": "24.10.4"
+        },
+        "timestamp": "2025-03-03T16:53:24.615848886"
+    },
+    "Prepare chunks channel error tool": {
+        "content": [
+            [
+                "N E X T F L O W  ~  version 24.10.4",
+                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-dd0d5421ca2fe0df9ae90be137523768.nf` [scruffy_fermat] DSL2 - revision: d78e86493b",
+                "Only 'glimpse' and 'quilt' output format are supported. Got glimpse2"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.1",
+            "nextflow": "24.10.4"
+        },
+        "timestamp": "2025-03-03T16:59:53.809041216"
+    },
+    "Prepare chunks channel Glimpse": {
+        "content": [
+            {
+                
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.1",
+            "nextflow": "24.10.4"
+        },
+        "timestamp": "2025-03-03T16:53:17.567651555"
+    }
+}

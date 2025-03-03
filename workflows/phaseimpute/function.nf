@@ -1,11 +1,4 @@
-workflow CHUNK_PREPARE_CHANNEL {
-
-    take:
-    ch_chunks // channel:   [ [id, chr], txt ]
-    tool
-
-    main:
-
+def chunkPrepareChannel(ch_chunks, tool) {
     if(tool == "glimpse"){
         ch_chunks = ch_chunks.map { chr, txt -> [chr, file(txt)]}
                 .splitCsv(header: ['ID', 'Chr', 'RegionIn', 'RegionOut', 'Size1', 'Size2'], sep: "\t", skip: 0)
@@ -20,8 +13,5 @@ workflow CHUNK_PREPARE_CHANNEL {
     } else {
         error "Only 'glimpse' and 'quilt' output format are supported. Got ${tool}"
     }
-
-    emit:
-    chunks  = ch_chunks // channel:   [ [meta], regionstart, regionend ]
-
+    return ch_chunks // channel:   [ [meta], regionstart, regionend ]
 }
