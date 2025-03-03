@@ -1,11 +1,11 @@
-process VCF_CHR_EXTRACT {
+process BAMCHREXTRACT {
     tag "$meta.id"
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/bcftools:1.20--h8b25389_0':
-        'biocontainers/bcftools:1.20--h8b25389_0' }"
+        'https://depot.galaxyproject.org/singularity/samtools:1.20--h50ea8bc_0' :
+        'biocontainers/samtools:1.20--h50ea8bc_0' }"
 
     input:
     tuple val(meta), path(input)
@@ -20,17 +20,16 @@ process VCF_CHR_EXTRACT {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    bcftools \\
-        query \\
-        -f '%CHROM\\n' \\
-        $input \\
-        \| uniq \\
+    samtools \\
+        head \\
+        $input \| \\
+        grep '^@SQ' | cut -d\$'\t' -f2 | sed -e 's/^SN://g' \\
         > ${prefix}.txt
 
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bcftools: \$( bcftools --version |& sed '1!d; s/^.*bcftools //' )
+        samtools: \$( samtools --version |& sed '1!d; s/^.*samtools //' )
         grep: \$( grep --version |& grep -o -E '[0-9]+\\.[0-9]+' )
     END_VERSIONS
     """
@@ -42,8 +41,8 @@ process VCF_CHR_EXTRACT {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bcftools: \$( bcftools --version |& sed '1!d; s/^.*bcftools //' )
-        uniq: \$( uniq --version |& grep -o -E '[0-9]+\\.[0-9]+' )
+        samtools: \$( samtools --version |& sed '1!d; s/^.*samtools //' )
+        grep: \$( grep --help |& grep -o -E '[0-9]+\\.[0-9]+\\.[0-9]+' )
     END_VERSIONS
     """
 }

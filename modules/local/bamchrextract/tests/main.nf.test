@@ -1,12 +1,12 @@
 nextflow_process {
 
-    name "Test Process BAM_CHR_EXTRACT"
+    name "Test Process BAMCHREXTRACT"
     script "../main.nf"
-    process "BAM_CHR_EXTRACT"
+    process "BAMCHREXTRACT"
 
     tag "modules"
     tag "modules_local"
-    tag "bam_chr_extract"
+    tag "bamchrextract"
 
     test("Extract chr from bam") {
         when {

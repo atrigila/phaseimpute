@@ -1,4 +1,4 @@
-name: vcf_chr_extract
+name: vcfchrextract
 description: Extract all contigs name into txt file
 keywords:
   - bcftools
