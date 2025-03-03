@@ -420,6 +420,102 @@ nextflow_function {
             )
         }
     }
+
+    test ("Test getRegionFromFai with all") {
+        function "getRegionFromFai"
+        tag "getRegionFromFai"
+        when {
+            function {
+                """
+                input[0] = "all"
+                input[1] = Channel.of([
+                    [genome:"GRCh37"],
+                    file("https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExists: true),
+                    file("https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExists: true)
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(
+                    check_stdout(function.stdout)
+                ).match() }
+            )
+        }
+    }
+
+    test ("Test getRegionFromFai with specified chr") {
+        function "getRegionFromFai"
+        tag "getRegionFromFai"
+        when {
+            function {
+                """
+                input[0] = "chr22"
+                input[1] = Channel.of([
+                    [genome:"GRCh37"],
+                    file("https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExists: true),
+                    file("https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExists: true)
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(
+                    check_stdout(function.stdout)
+                ).match() }
+            )
+        }
+    }
+
+    test ("Test getRegionFromFai with specified region without fasta") {
+        function "getRegionFromFai"
+        tag "getRegionFromFai"
+        when {
+            function {
+                """
+                input[0] = "chr22:0-4000"
+                input[1] = Channel.of([[], [], []])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(
+                    check_stdout(function.stdout)
+                ).match() }
+            )
+        }
+    }
+
+    test ("Test getRegionFromFai with an error") {
+        function "getRegionFromFai"
+        tag "getRegionFromFai"
+        when {
+            function {
+                """
+                input[0] = "chr22:0-4000:4648"
+                input[1] = Channel.of([[],[],[]])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.failed },
+                { assert snapshot(
+                    check_stdout(function.stdout)
+                ).match() }
+            )
+        }
+    }
 }
 
 def check_stdout(function_stdout) {

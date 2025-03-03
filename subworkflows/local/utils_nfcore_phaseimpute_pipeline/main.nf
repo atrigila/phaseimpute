@@ -9,14 +9,9 @@
 */
 
 include { UTILS_NFSCHEMA_PLUGIN     } from '../../nf-core/utils_nfschema_plugin'
-include { paramsSummaryMap          } from 'plugin/nf-schema'
 include { samplesheetToList         } from 'plugin/nf-schema'
-include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
-include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
-include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NEXTFLOW_PIPELINE   } from '../../nf-core/utils_nextflow_pipeline'
-include { GET_REGION                } from '../get_region'
 include { SAMTOOLS_FAIDX            } from '../../../modules/nf-core/samtools/faidx'
 
 /*
@@ -172,9 +167,7 @@ workflow PIPELINE_INITIALISATION {
     //
     if (params.input_region == null){
         // #TODO Add support for string input
-        GET_REGION ("all", ch_ref_gen)
-        ch_versions = ch_versions.mix(GET_REGION.out.versions)
-        ch_regions  = GET_REGION.out.regions
+        ch_regions  = getRegionFromFai("all", ch_ref_gen)
     }  else  if (params.input_region.endsWith(".csv")) {
         println "Region file provided as input is a csv file"
         ch_regions = Channel.fromList(samplesheetToList(
@@ -336,6 +329,11 @@ workflow PIPELINE_INITIALISATION {
     SUBWORKFLOW FOR PIPELINE COMPLETION
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+
+include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
+include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
+include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
+include { paramsSummaryMap          } from 'plugin/nf-schema'
 
 workflow PIPELINE_COMPLETION {
 
@@ -537,6 +535,32 @@ def checkMetaChr(chr_a, chr_b, name){
 }
 
 //
+// Get region from fasta fai file
+//
+def getRegionFromFai(input_region, ch_fasta) {
+    def ch_regions = Channel.empty()
+    // Gather regions to use and create the meta map
+    if (input_region ==~ '^(chr)?[0-9XYM]+$' || input_region == "all") {
+        ch_regions = ch_fasta.map{it -> it[2]}
+            .splitCsv(header: ["chr", "size", "offset", "lidebase", "linewidth", "qualoffset"], sep: "\t")
+            .map{it -> [chr:it.chr, region:"0-"+it.size]}
+        if (input_region != "all") {
+            ch_regions = ch_regions.filter{it.chr == input_region}
+        }
+        ch_regions = ch_regions
+            .map{ [[chr: it.chr, region: it.chr + ":" + it.region], it.chr + ":" + it.region]}
+    } else {
+        if (input_region ==~ '^chr[0-9XYM]+:[0-9]+-[0-9]+$') {
+            ch_regions = Channel.from([input_region])
+                .map{ [[chr: it.split(":")[0], "region": it], it]}
+        } else {
+            error "Invalid input_region: ${input_region}"
+        }
+    }
+    return ch_regions
+}
+
+//
 // Get file extension
 //
 def getFileExtension(file) {
@@ -651,6 +675,7 @@ def genomeExistsError() {
         error(error_string)
     }
 }
+
 //
 // Generate methods description for MultiQC
 //
