@@ -67,14 +67,17 @@
         "content": [
             [
                 "vcf",
+                "txt",
+                "tar",
+                "vcf",
                 "txt"
             ]
         ],
         "meta": {
             "nf-test": "0.9.1",
-            "nextflow": "24.10.0"
+            "nextflow": "24.10.4"
         },
-        "timestamp": "2024-10-31T13:15:08.856706046"
+        "timestamp": "2025-03-03T15:47:37.629077209"
     },
     "Test validateInputBatchTools error batch": {
         "content": [

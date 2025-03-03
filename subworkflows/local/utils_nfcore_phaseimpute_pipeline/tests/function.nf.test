@@ -34,7 +34,10 @@ nextflow_function {
                 """
                 input[0] = [
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.s.norel.vcf.gz", checkIfExists: true),
-                    "test.myfile.txt.gz"
+                    "test.myfile.txt.gz",
+                    new URL("https://example.com/data.tar.gz"),
+                    new URL("https://example.com/subsite/data.vcf"),
+                    nextflow.file.http.XPath.get('http://www.nextflow.io/a/b/c.txt')
                 ]
                 """
             }
@@ -42,7 +45,7 @@ nextflow_function {
         then {
             assertAll(
                 { assert function.success },
-                { assert function.result == ['vcf', 'txt'] },
+                { assert function.result == ['vcf', 'txt', 'tar', 'vcf', 'txt'] },
                 { assert snapshot(function.result).match() }
             )
         }

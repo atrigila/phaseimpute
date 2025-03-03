@@ -541,9 +541,10 @@ def checkMetaChr(chr_a, chr_b, name){
 //
 def getFileExtension(file) {
     def file_name = ""
-
-    if (file instanceof Path || file instanceof nextflow.file.http.XPath) {
+    if (file instanceof Path) {
         file_name = file.name
+    } else if (file instanceof java.net.URL) {
+        file_name = file.path.tokenize('/')[-1]
     } else if (file instanceof CharSequence) {
         file_name = file.toString()
     } else if (file instanceof List) {
@@ -551,7 +552,6 @@ def getFileExtension(file) {
     } else {
         error "Type not supported: ${file.getClass()}"
     }
-
     // Remove .gz if present and get the last part after splitting by "."
     return file_name.replace(".gz", "").split("\\.").last()
 }
