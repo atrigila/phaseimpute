@@ -37,7 +37,7 @@ include { VCF_CONCATENATE_BCFTOOLS as CONCAT_PANEL   } from '../../subworkflows/
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_PANEL     } from '../../modules/nf-core/bcftools/stats'
 
 // Imputation
-include { LIST_TO_FILE                               } from '../../modules/local/list_to_file'
+include { LISTTOFILE                                 } from '../../modules/local/listtofile'
 include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_IMPUTED   } from '../../modules/nf-core/bcftools/query'
 include { GAWK as GAWK_IMPUTED                       } from '../../modules/nf-core/gawk'
 include { VCF_SPLIT_BCFTOOLS as SPLIT_IMPUTED        } from '../../subworkflows/local/vcf_split_bcftools'
@@ -272,14 +272,14 @@ workflow PHASEIMPUTE {
                 filestuples.collect{it[1]}, filestuples.collect{it[2]}
             ] }
 
-        LIST_TO_FILE(
+        LISTTOFILE(
             ch_input_bams.map{ meta, file, _index -> [
                 meta, file, meta.metas.collect { it.id }
             ] }
         )
 
         ch_input_bams_withlist = ch_input_bams
-            .join(LIST_TO_FILE.out.txt)
+            .join(LISTTOFILE.out.txt)
 
         // Use panel from parameters if provided
         if (params.panel && !params.steps.split(',').find { it in ["all", "panelprep"] }) {

@@ -1,4 +1,4 @@
-process LIST_TO_FILE {
+process LISTTOFILE {
     tag "$meta.id"
     label 'process_single'
 

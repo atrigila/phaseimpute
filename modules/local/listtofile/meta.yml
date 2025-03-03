@@ -1,4 +1,4 @@
-name: list_to_file
+name: listtofile
 description: Register list of paths into a file
 keywords:
   - list

@@ -1,12 +1,12 @@
 nextflow_process {
 
-    name "Test Process LIST_TO_FILE"
+    name "Test Process LISTTOFILE"
     script "../main.nf"
-    process "LIST_TO_FILE"
+    process "LISTTOFILE"
 
     tag "modules"
     tag "modules_local"
-    tag "list_to_file"
+    tag "listtofile"
     tag "gawk"
 
     test("Aggregate all files into a list") {
