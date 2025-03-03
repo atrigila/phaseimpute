@@ -109,7 +109,10 @@ workflow PIPELINE_INITIALISATION {
             .map { samplesheet ->
                 validateInputSamplesheet(samplesheet)
             }
-            .map { meta, file, index -> [meta + [batch: 0], file, index] } // Set batch to 0 by default
+            .map { meta, file, index ->
+                def new_meta = meta + [id:meta.id.toString()]
+                [ new_meta + [batch: 0], file, index ]
+            } // Set batch to 0 by default
     } else {
         ch_input = Channel.of([[], [], []])
     }
