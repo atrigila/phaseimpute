@@ -1,13 +1,16 @@
-Changes in module 'nf-core/bcftools/concat'
+Changes in component 'nf-core/bcftools/concat'
+'modules/nf-core/bcftools/concat/meta.yml' is unchanged
+Changes in 'bcftools/concat/main.nf':
 --- modules/nf-core/bcftools/concat/main.nf
 +++ modules/nf-core/bcftools/concat/main.nf
-@@ -23,11 +23,12 @@
-     def args = task.ext.args   ?: ''
-     def prefix   = task.ext.prefix ?: "${meta.id}"
+@@ -31,12 +31,12 @@
+                 "vcf"
      """
+     ${create_input_index}
+-
 +    ls -1v ${vcfs} > order_files.txt
      bcftools concat \\
-         --output ${prefix}.vcf.gz \\
+         --output ${prefix}.${extension} \\
          $args \\
          --threads $task.cpus \\
 -        ${vcfs}
@@ -16,4 +19,12 @@ Changes in module 'nf-core/bcftools/concat'
      cat <<-END_VERSIONS > versions.yml
      "${task.process}":
 
+'modules/nf-core/bcftools/concat/environment.yml' is unchanged
+'modules/nf-core/bcftools/concat/tests/main.nf.test' is unchanged
+'modules/nf-core/bcftools/concat/tests/main.nf.test.snap' is unchanged
+'modules/nf-core/bcftools/concat/tests/vcf_gz_index_tbi.config' is unchanged
+'modules/nf-core/bcftools/concat/tests/nextflow.config' is unchanged
+'modules/nf-core/bcftools/concat/tests/vcf_gz_index.config' is unchanged
+'modules/nf-core/bcftools/concat/tests/tags.yml' is unchanged
+'modules/nf-core/bcftools/concat/tests/vcf_gz_index_csi.config' is unchanged
 ************************************************************

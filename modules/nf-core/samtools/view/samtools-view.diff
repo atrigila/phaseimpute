@@ -1,5 +1,5 @@
-Changes in module 'nf-core/samtools/view'
-'modules/nf-core/samtools/view/environment.yml' is unchanged
+Changes in component 'nf-core/samtools/view'
+'modules/nf-core/samtools/view/meta.yml' is unchanged
 Changes in 'samtools/view/main.nf':
 --- modules/nf-core/samtools/view/main.nf
 +++ modules/nf-core/samtools/view/main.nf
@@ -37,10 +37,10 @@ Changes in 'samtools/view/main.nf':
      cat <<-END_VERSIONS > versions.yml
      "${task.process}":
 
-'modules/nf-core/samtools/view/meta.yml' is unchanged
-'modules/nf-core/samtools/view/tests/bam.config' is unchanged
+'modules/nf-core/samtools/view/environment.yml' is unchanged
 'modules/nf-core/samtools/view/tests/bam_index.config' is unchanged
 'modules/nf-core/samtools/view/tests/main.nf.test' is unchanged
 'modules/nf-core/samtools/view/tests/main.nf.test.snap' is unchanged
+'modules/nf-core/samtools/view/tests/bam.config' is unchanged
 'modules/nf-core/samtools/view/tests/tags.yml' is unchanged
 ************************************************************

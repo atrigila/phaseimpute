@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#175](https://github.com/nf-core/phaseimpute/pull/175) - Update TEMPLATE to nf-core tools version 3.2.0. Move `CHRCHECK` functions to the workflow directory.
 - [#182](https://github.com/nf-core/phaseimpute/pull/182) - Add dark version of the metromap and dynamically change it in the README.
 - [#185](https://github.com/nf-core/phaseimpute/pull/185) - Add `--sampleNames_file` option for `STICH` and `QUILT`.
+- [#187](https://github.com/nf-core/phaseimpute/pull/187) - Update modules and subworkflows
 
 ### `Fixed`
 
@@ -26,6 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#183](https://github.com/nf-core/phaseimpute/pull/183) - Remove wrongfully added files in `BAM_EXTRACT_REGION_SAMTOOLS`.
 - [#185](https://github.com/nf-core/phaseimpute/pull/185) - Fix CSV generation and check that all mentioned path files exist.
 - [#189](https://github.com/nf-core/phaseimpute/pull/189) - Set meta map id as string to avoid error when using numbers in csv files.
+
+### `Dependencies`
+
+| Dependency | Old version | New version |
+| ---------- | ----------- | ----------- |
+| `gunzip`   | 1.10        | 1.13        |
+| `lbzip2`   |             | 2.5         |
+| `shapeit5` | 1.0.0       | 5.1.1       |
+| `r-stitch` | 1.6.10      | 1.7.3       |
 
 ## v1.0.0 - Black Labrador [2024-12-09]
 

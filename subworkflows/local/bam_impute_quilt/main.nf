@@ -13,9 +13,6 @@ workflow BAM_IMPUTE_QUILT {
 
     ch_versions = Channel.empty()
 
-    posfile             = []
-    phasefile           = []
-    posfile_phasefile   = [[id: null], posfile, phasefile]
     genetic_map_file    = []
 
     ngen_params         = params.ngen
@@ -38,12 +35,12 @@ workflow BAM_IMPUTE_QUILT {
             metaI, bam, bai, bampath, bamnames, metaPC, hap, legend, chr, start, end, ngen, buffer, gmap ->
             [
                 metaI + [panel: metaPC.id, chr: metaPC.chr, chunk: chr + ":" + start + "-" + end],
-                bam, bai, bampath, bamnames, hap, legend, chr, start, end, ngen, buffer, gmap
+                bam, bai, bampath, bamnames, hap, legend, [], [], [], chr, start, end, ngen, buffer, gmap
             ]
         }
 
     // Run QUILT
-    QUILT_QUILT ( ch_quilt, posfile_phasefile, ch_fasta )
+    QUILT_QUILT ( ch_quilt, ch_fasta )
     ch_versions = ch_versions.mix(QUILT_QUILT.out.versions.first())
 
     // Annotate the variants

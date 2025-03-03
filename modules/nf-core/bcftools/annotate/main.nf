@@ -8,7 +8,7 @@ process BCFTOOLS_ANNOTATE {
         'biocontainers/bcftools:1.20--h8b25389_0' }"
 
     input:
-    tuple val(meta), path(input), path(index), path(annotations), path(annotations_index), path(header_lines), path(rename_chr)
+    tuple val(meta), path(input), path(index), path(annotations), path(annotations_index), path(header_lines), path(rename_chrs)
 
     output:
     tuple val(meta), path("*.{vcf,vcf.gz,bcf,bcf.gz}"), emit: vcf
@@ -24,7 +24,7 @@ process BCFTOOLS_ANNOTATE {
     def prefix  = task.ext.prefix ?: "${meta.id}"
     def header_file = header_lines ? "--header-lines ${header_lines}" : ''
     def annotations_file = annotations ? "--annotations ${annotations}" : ''
-    def rename_chr_cmd   = rename_chr   ? "--rename-chrs ${rename_chr}"    : ''
+    def rename_chrs_file = rename_chrs ? "--rename-chrs ${rename_chrs}" : ''
     def extension = args.contains("--output-type b") || args.contains("-Ob") ? "bcf.gz" :
                     args.contains("--output-type u") || args.contains("-Ou") ? "bcf" :
                     args.contains("--output-type z") || args.contains("-Oz") ? "vcf.gz" :
@@ -40,8 +40,8 @@ process BCFTOOLS_ANNOTATE {
         annotate \\
         $args \\
         $annotations_file \\
+        $rename_chrs_file \\
         $header_file \\
-        $rename_chr_cmd \\
         --output ${prefix}.${extension} \\
         --threads $task.cpus \\
         $input
