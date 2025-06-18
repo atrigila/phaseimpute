@@ -3,10 +3,11 @@ nextflow_pipeline {
     name "Test pipeline"
     script "../main.nf"
     tag "pipeline"
+    tag "nf-core/phaseimpute"
+    tag "test"
 
     test("-profile test") {
-        tag "test"
-        config "../../../conf/test.config"
+        config "../conf/test.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -29,11 +30,22 @@ nextflow_pipeline {
                         .list()
                         .collect { getRecursiveFileNames(it, outputDir) }
                         .flatten()
-                        .collect { removeTimestamp(it) }
-                ).match()
-                }
+                        .collect { removeTimestamp(it) },
+                    removeNextflowVersion("$outputDir/pipeline_info/nf_core_pipeline_software_mqc_versions.yml")
+                ).match()}
             )
         }
 
     }
+}
+
+def getRecursiveFileNames(fileOrDir, outputDir) {
+    if(file(fileOrDir.toString()).isDirectory()) {
+        return fileOrDir.list().collect { getRecursiveFileNames(it, outputDir) }
+    }
+    return fileOrDir.toString().replace("${outputDir}/", "")
+}
+
+def removeTimestamp(filename) {
+    filename.replaceAll(/_\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}/, "")
 }
