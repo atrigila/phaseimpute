@@ -226,7 +226,7 @@ workflow PIPELINE_INITIALISATION {
     // Create posfile channel
     //
     if (params.posfile) {
-        ch_posfile = Channel // ["meta", "chr", "vcf", "index", "hap", "legend"]
+        ch_posfile = Channel // ["meta", "vcf", "index", "hap", "legend"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
             .map { meta, vcf, index, hap, legend ->
                 [ meta + [id:meta.id.toString()], vcf, index, hap, legend ]
