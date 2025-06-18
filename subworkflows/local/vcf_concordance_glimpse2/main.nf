@@ -64,7 +64,7 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
     GAWK(
         ADD_COLUMNS.out.txt
             .map{ _meta, txt -> [["id":"AllSamples"], txt]}
-            .groupTuple(),
+            .groupTuple(sort: true),
         []
     )
     ch_versions = ch_versions.mix(GAWK.out.versions.first())
