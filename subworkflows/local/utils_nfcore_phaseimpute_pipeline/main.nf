@@ -155,8 +155,8 @@ workflow PIPELINE_INITIALISATION {
             ch_panel = Channel.fromList(samplesheetToList(
                 params.panel, "${projectDir}/assets/schema_input_panel.json"
             )).map {
-                meta, chr, file, index ->
-                    [ meta + [id:meta.id.toString()], chr, file, index ]
+                meta, file, index ->
+                    [ meta + [id:meta.id.toString()], file, index ]
             }
         } else {
             // #TODO Wait for `oneOf()` to be supported in the nextflow_schema.json
@@ -164,7 +164,7 @@ workflow PIPELINE_INITIALISATION {
         }
     } else {
         // #TODO check if panel is required
-        ch_panel        = Channel.of([[],[],[]])
+        ch_panel = Channel.of([[],[],[]])
     }
 
     //
@@ -228,8 +228,8 @@ workflow PIPELINE_INITIALISATION {
     if (params.posfile) {
         ch_posfile = Channel // ["meta", "chr", "vcf", "index", "hap", "legend"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
-            .map { meta, chr, vcf, index, hap, legend ->
-                [ meta + [id:meta.id.toString()], chr, vcf, index, hap, legend ]
+            .map { meta, vcf, index, hap, legend ->
+                [ meta + [id:meta.id.toString()], vcf, index, hap, legend ]
             }
     } else {
         ch_posfile = Channel.of([[],[],[],[],[]])
@@ -249,8 +249,8 @@ workflow PIPELINE_INITIALISATION {
     if (params.chunks) {
         ch_chunks = Channel
             .fromList(samplesheetToList(params.chunks, "${projectDir}/assets/schema_chunks.json"))
-            .map { meta, chr, chunks ->
-                [ meta + [id:meta.id.toString()], chr, chunks ]
+            .map { meta, chunks ->
+                [ meta + [id:meta.id.toString()], chunks ]
             }
     } else {
         ch_chunks = Channel.of([[],[]])
@@ -303,7 +303,7 @@ workflow PIPELINE_INITIALISATION {
         }
 
     ch_posfile = ch_posfile
-        .combine(ch_regions.collect{ it[0]["chr"]}.toList())
+        .combine(ch_regions.collect{ it[0]["chr"] }.toList())
         .filter { meta, _vcf, _index, _hap, _legend, chrs ->
             meta.chr in chrs
         }
