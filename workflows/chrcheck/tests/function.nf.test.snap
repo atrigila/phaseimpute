@@ -2,8 +2,6 @@
     "ref chr & target chr but missing contig": {
         "content": [
             [
-                "N E X T F L O W  ~  version 25.04.4",
-                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-45cbcf477a4c0cfee97e0c6a15fca65.nf` [nasty_swanson] DSL2 - revision: 87a221ef2f",
                 "Contig names: [chr4] absent from file: 123.vcf and cannot be solved by adding or removing the `chr` prefix."
             ]
         ],
@@ -11,7 +9,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.4"
         },
-        "timestamp": "2025-06-18T15:47:26.136156571"
+        "timestamp": "2025-06-18T16:21:23.858883491"
     },
     "Mix file with and withouth chr": {
         "content": [
