@@ -63,8 +63,11 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
 
     GAWK(
         ADD_COLUMNS.out.txt
-            .map{ _meta, txt -> [["id":"AllSamples"], txt]}
-            .groupTuple(sort: true),
+            .toSortedList { a, b -> a[0].id <=> b[0].id }
+            .map { sorted_list ->
+                def all_files = sorted_list.collect { it[1] }
+                [["id": "AllSamples"], all_files]
+            },
         []
     )
     ch_versions = ch_versions.mix(GAWK.out.versions.first())
