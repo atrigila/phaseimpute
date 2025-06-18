@@ -88,4 +88,3 @@ workflow VCF_PHASE_SHAPEIT5 {
     vcf_tbi             = ch_vcf_tbi_join         // channel: [ [id, chr], vcf, csi ]
     versions            = ch_versions             // channel: [ versions.yml ]
 }
-
