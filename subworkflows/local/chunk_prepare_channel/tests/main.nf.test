@@ -80,7 +80,10 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.failed },
-                { assert snapshot(workflow.stdout).match() }
+                { assert snapshot(
+                    workflow.stdout[2..-1]
+                        .findAll { !it.matches(/.*Nextflow [0-9]+\.[0-9]+\.[0-9]+ is available.*/) }
+                ).match() }
             )
         }
     }
