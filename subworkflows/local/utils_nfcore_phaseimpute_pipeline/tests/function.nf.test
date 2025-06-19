@@ -441,7 +441,7 @@ nextflow_function {
             assertAll(
                 { assert function.success },
                 { assert snapshot(
-                    check_stdout(function.stdout)
+                    function.result
                 ).match() }
             )
         }
@@ -467,7 +467,7 @@ nextflow_function {
             assertAll(
                 { assert function.success },
                 { assert snapshot(
-                    check_stdout(function.stdout)
+                    function.result
                 ).match() }
             )
         }
@@ -489,7 +489,7 @@ nextflow_function {
             assertAll(
                 { assert function.success },
                 { assert snapshot(
-                    check_stdout(function.stdout)
+                    function.result
                 ).match() }
             )
         }

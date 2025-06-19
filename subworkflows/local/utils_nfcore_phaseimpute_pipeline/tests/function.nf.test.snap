@@ -1,43 +1,39 @@
 {
     "Test getRegionFromFai with specified region without fasta": {
         "content": [
-            [
-                "N E X T F L O W  ~  version 24.10.4",
-                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-116782867ed97a5c13ace9bd868bbcf4.nf` [confident_poincare] DSL2 - revision: 2e27797805"
-            ]
+            {
+                
+            }
         ],
         "meta": {
-            "nf-test": "0.9.1",
-            "nextflow": "24.10.4"
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
         },
-        "timestamp": "2025-03-03T16:33:27.900550819"
+        "timestamp": "2025-06-19T10:53:32.246531145"
     },
     "Test getRegionFromFai with an error": {
         "content": [
             [
-                "N E X T F L O W  ~  version 24.10.4",
-                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-1a3752b79d4099a7e0e3ebc89ddcefe4.nf` [romantic_linnaeus] DSL2 - revision: 497ddbdc0c",
                 "Invalid input_region: chr22:0-4000:4648"
             ]
         ],
         "meta": {
-            "nf-test": "0.9.1",
-            "nextflow": "24.10.4"
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
         },
-        "timestamp": "2025-03-03T16:33:34.099630703"
+        "timestamp": "2025-06-19T09:39:16.168659666"
     },
     "Test getRegionFromFai with specified chr": {
         "content": [
-            [
-                "N E X T F L O W  ~  version 24.10.4",
-                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-809919788e3408bfdbf2abf526ce3429.nf` [mad_wing] DSL2 - revision: d7b132a693"
-            ]
+            {
+                
+            }
         ],
         "meta": {
-            "nf-test": "0.9.1",
-            "nextflow": "24.10.4"
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
         },
-        "timestamp": "2025-03-03T16:33:20.266790135"
+        "timestamp": "2025-06-19T10:53:25.440787959"
     },
     "Test checkFileIndex no error with empty channel": {
         "content": null,
@@ -81,16 +77,15 @@
     },
     "Test getRegionFromFai with all": {
         "content": [
-            [
-                "N E X T F L O W  ~  version 24.10.4",
-                "Launching `/home/llenezet/repositories/phaseimpute/.nf-test-4eec42e60e03cc0422d6cdd736e0ca5c.nf` [pedantic_kilby] DSL2 - revision: 1c4729a817"
-            ]
+            {
+                
+            }
         ],
         "meta": {
-            "nf-test": "0.9.1",
-            "nextflow": "24.10.4"
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
         },
-        "timestamp": "2025-03-03T16:33:12.465326351"
+        "timestamp": "2025-06-19T10:53:18.40819287"
     },
     "Test validateInputBatchTools vcf only for glimpse": {
         "content": [
