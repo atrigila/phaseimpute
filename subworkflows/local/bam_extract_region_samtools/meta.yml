@@ -21,7 +21,7 @@ input:
           type: map
           description: Metadata map
         - bam:
-          type: File
+          type: file
           description: Input BAM file
           pattern: "*.bam"
         - index:
