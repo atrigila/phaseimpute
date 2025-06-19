@@ -19,11 +19,11 @@ input:
             Metadata map that will be combined with the input data map
             Need to have the "chr" as chromosome name and "id" as panel name
         - vcf:
-          type: File
+          type: file
           description: Panel VCF files by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: Panel VCF index files
           pattern: "*.[csi|tbi]"
   - ch_map:
@@ -33,7 +33,7 @@ input:
           type: map
           description: Metadata map
         - map:
-          type: File
+          type: file
           description: Map file
           pattern: "*.map"
   - chunk_model:
@@ -51,7 +51,7 @@ output:
           type: map
           description: Metadata map
         - chunks:
-          type: File
+          type: file
           description: Chunks file from Glimpse1
           pattern: "*.txt"
   - chunks_quilt:

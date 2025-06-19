@@ -17,11 +17,11 @@ input:
           type: map
           description: Metadata map
         - bam:
-          type: File
+          type: file
           description: Input BAM file
           pattern: "*.bam"
         - index:
-          type: File
+          type: file
           description: Input BAM index file
           pattern: "*.[bai|csi]"
         - prefix:
@@ -36,11 +36,11 @@ output:
           type: map
           description: Metadata map
         - bam:
-          type: File
+          type: file
           description: BAM file
           pattern: "*.bam"
         - index:
-          type: File
+          type: file
           description: BAM index file
           pattern: "*.[bai|csi]"
   - versions:

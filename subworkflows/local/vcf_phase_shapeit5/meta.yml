@@ -23,11 +23,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
         - pedigree:
@@ -52,11 +52,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_scaffold:
@@ -66,11 +66,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_map:
@@ -80,7 +80,7 @@ input:
           type: map
           description: Metadata map
         - map:
-          type: File
+          type: file
           description: Map file
           pattern: "*.map"
   - chunk_model:
@@ -98,11 +98,11 @@ output:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:

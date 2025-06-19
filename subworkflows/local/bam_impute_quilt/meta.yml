@@ -18,21 +18,21 @@ input:
           type: map
           description: Metadata map
         - file:
-          type: File
+          type: file
           description: List of input BAM files
           pattern: "*.[bam]"
         - index:
-          type: File
+          type: file
           description: List of input index file
           pattern: "*.[bai|csi]"
         - bampaths:
-          type: File
+          type: file
           description: |
             File containing the list of BAM/CRAM files to be phased.
             One file per line.
           pattern: "*.{txt,tsv}"
         - bamnames:
-          type: File
+          type: file
           description: |
             File containing the sample names of each BAM files listed in bampaths.
             One file per line.
@@ -46,11 +46,11 @@ input:
             Metadata map that will be combined with the input data map
             Need to have the "chr" as chromosome name and "id" as panel name
         - hap:
-          type: File
+          type: file
           description: Panel VCF haplotypes files by chromosomes
           pattern: "*.hap[.gz]+"
         - legend:
-          type: File
+          type: file
           description: Panel VCF legend files by chromosomes
           pattern: "*.legend[.gz]+"
   - ch_chunks:
@@ -76,11 +76,11 @@ input:
           type: map
           description: Metadata map
         - fasta:
-          type: File
+          type: file
           description: FASTA file of the reference genome
           pattern: "*.fa[sta]+"
         - fai:
-          type: File
+          type: file
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
@@ -95,11 +95,11 @@ output:
             "panel" as the "id" of ch_posfile.
             {"tools" : "quilt"} is added.
         - vcf:
-          type: File
+          type: file
           description: VCF imputed file
           pattern: "*.[vcf|bcf|vcf.gz]."
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:

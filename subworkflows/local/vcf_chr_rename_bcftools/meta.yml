@@ -16,11 +16,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: Input VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: Input VCF index file
           pattern: "*.[tbi|csi]"
         - diff:
@@ -38,11 +38,11 @@ output:
           type: map
           description: Metadata map
         - bam:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:

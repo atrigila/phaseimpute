@@ -20,11 +20,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF imputed file merged by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
 output:
@@ -36,11 +36,11 @@ output:
           description: |
             Metadata map with 'id', 'panel', 'tools', 'batch' and {'chr' : 'all'}
         - vcf:
-          type: File
+          type: file
           description: VCF imputed file merged by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:

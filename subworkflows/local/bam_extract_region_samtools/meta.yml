@@ -25,7 +25,7 @@ input:
           description: Input BAM file
           pattern: "*.bam"
         - index:
-          type: File
+          type: file
           description: Input BAM index file
           pattern: "*.[bai|csi]"
   - ch_region:
@@ -45,11 +45,11 @@ input:
           type: map
           description: Metadata map
         - fasta:
-          type: File
+          type: file
           description: FASTA file of the reference genome
           pattern: "*.fa[sta]+"
         - fai:
-          type: File
+          type: file
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
@@ -60,11 +60,11 @@ output:
           type: map
           description: Metadata map combined with the ch_region data map
         - bam:
-          type: File
+          type: file
           description: BAM file
           pattern: "*.bam"
         - index:
-          type: File
+          type: file
           description: BAM index file
           pattern: "*.[bai|csi]"
   - versions:

@@ -24,11 +24,11 @@ input:
           type: map
           description: Metadata map
         - bam:
-          type: File
+          type: file
           description: Input BAM file
           pattern: "*.bam"
         - index:
-          type: File
+          type: file
           description: Input BAM index file
           pattern: "*.[bai|csi]"
   - ch_posfile:
@@ -40,7 +40,7 @@ input:
             Metadata map that will be combined with the input data map
             Need to have the "chr" as chromosome name and "id" as panel name
         - legend:
-          type: File
+          type: file
           description: Region to extract from the BAM file
           pattern: "*.legend[.gz]+"
   - ch_fasta:
@@ -50,11 +50,11 @@ input:
           type: map
           description: Metadata map
         - fasta:
-          type: File
+          type: file
           description: FASTA file of the reference genome
           pattern: "*.fa[sta]+"
         - fai:
-          type: File
+          type: file
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
@@ -68,11 +68,11 @@ output:
             It contains the "chr" name of the ch_posfile map and
             "panel" as the "id" of ch_posfile.
         - vcf:
-          type: File
+          type: file
           description: VCF file with all individuals merged by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:
@@ -83,7 +83,7 @@ output:
             description: File containing versions of the software used
   - multiqc_files:
       description: Channel containing stat files of bcftools mpileup and call
-      type: File
+      type: file
 authors:
   - "@louislenezet"
 maintainers:

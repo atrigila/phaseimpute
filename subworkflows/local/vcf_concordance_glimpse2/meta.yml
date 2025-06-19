@@ -21,11 +21,11 @@ input:
           type: map
           description: Metadata map with 'id' field
         - vcf:
-          type: File
+          type: file
           description: VCF target file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_vcf_truth:
@@ -35,11 +35,11 @@ input:
           type: map
           description: Metadata map with 'id' field
         - vcf:
-          type: File
+          type: file
           description: VCF truth file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_vcf_freq:
@@ -49,11 +49,11 @@ input:
           type: map
           description: Metadata map
         - fasta:
-          type: File
+          type: file
           description: VCF file with AF/AN tag for each site
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_region:
@@ -74,7 +74,7 @@ output:
           type: map
           description: Metadata map
         - txt:
-          type: File
+          type: file
           description: Concatenate data table with concordance metrics
           pattern: "*.txt"
   - versions:
@@ -85,7 +85,7 @@ output:
             description: File containing versions of the software used
   - multiqc_files:
       description: Channel containing stat files of glimpse2 concordance
-      type: File
+      type: file
 authors:
   - "@louislenezet"
 maintainers:

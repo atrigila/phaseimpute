@@ -18,11 +18,11 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - ch_fasta:
@@ -32,11 +32,11 @@ input:
           type: map
           description: Metadata map
         - fasta:
-          type: File
+          type: file
           description: FASTA file of the reference genome
           pattern: "*.fa[sta]+"
         - fai:
-          type: File
+          type: file
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
@@ -47,19 +47,19 @@ output:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file with only variant sites
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
         - hap:
-          type: File
+          type: file
           description: HAP file
           pattern: "*.hap[.gz]"
         - legend:
-          type: File
+          type: file
           description: LEGEND file
           pattern: "*.legend[.gz]"
   - versions:

@@ -19,11 +19,11 @@ input:
           type: map
           description: Metadata map
         - file:
-          type: File
+          type: file
           description: Input VCF files
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: Input index file
           pattern: "*.[csi|tbi]"
   - ch_panel:
@@ -35,11 +35,11 @@ input:
             Metadata map that will be combined with the input data map
             Need to have the "chr" as chromosome name and "id" as panel name
         - vcf:
-          type: File
+          type: file
           description: Panel VCF files by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: Panel VCF index files
           pattern: "*.[csi|tbi]"
   - ch_chunks:
@@ -70,11 +70,11 @@ output:
             "panel" as the "id" of ch_posfile.
             {"tools" : "glimpse1"} is added.
         - vcf:
-          type: File
+          type: file
           description: VCF imputed file merged by chromosomes
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:

@@ -16,15 +16,15 @@ input:
           type: map
           description: Metadata map
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
         - samples:
-          type: File
+          type: file
           description: |
             A tab-separated file determining which samples should be in which output file
             column 1: The sample name(s) in the input file
@@ -43,11 +43,11 @@ output:
             Metadata map with the 'id' field is the sample name obtained
             from the output file basename.
         - vcf:
-          type: File
+          type: file
           description: VCF file
           pattern: "*.[vcf|bcf|vcf.gz]"
         - index:
-          type: File
+          type: file
           description: VCF index file
           pattern: "*.[tbi|csi]"
   - versions:
