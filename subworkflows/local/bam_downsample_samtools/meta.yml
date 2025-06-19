@@ -1,35 +1,42 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
-name: "VCF_NORMALIZE_BCFTOOLS"
-description: Normalize VCF files (bcftools norm -m +any). Combine records spanning different lines into a single line.
-  Keep only biallelic SNPs and remove multiallelic records (bcftools view -m 2 -M 2 -v snps) with params.normalize = true.
-  Optionally, remove samples from the reference panel (bcftools view -s ^SAMPLENAME) and
-  compute allele frequency using vcflib/vcffixup with params.compute_freq = true.
+name: "BAM_DOWNSAMPLE_SAMTOOLS"
+description: |
+  Subworkflow to downsample a BAM file using samtools to a given depth.
+  BAM file depth will first be computed with samtools depth and then
+  downsampled with samtools view.
 keywords:
-  - bcftools
-  - normalisation
-  - frequence
-  - samples
+  - BAM
+  - depth
+  - downsample
+  - samtools
 components:
-  - bcftools/norm
-  - bcftools/view
-  - vcflib/vcffixup
-  - bcftools/index
+  - samtools/depth
+  - samtools/view
+  - gawk
 input:
-  - ch_vcf:
-      type: file
-      description: Channel VCF file to be normalized
+  - ch_bam:
+      description: Channel with input data
       structure:
         - meta:
           type: map
           description: Metadata map
-        - vcf:
+        - bam:
           type: file
-          description: VCF file
-          pattern: "*.{vcf,bcf,vcf.gz}"
+          description: Input BAM file
+          pattern: "*.bam"
         - index:
           type: file
-          description: VCF index file
-          pattern: "*.{tbi,csi}"
+          description: Input BAM index file
+          pattern: "*.{bai,csi}"
+  - ch_depth:
+      description: Channel with depth data
+      structure:
+        - meta:
+          type: map
+          description: Metadata map that will be combined with the input data map
+        - depth:
+          type: number
+          description: Depth to downsample to
   - ch_fasta:
       description: Channel with reference genome data
       structure:
@@ -45,20 +52,20 @@ input:
           description: FASTA index file of the reference genome
           pattern: "*.fai"
 output:
-  - vcf_tbi:
-      description: Channel with normalized VCF files
+  - bam_emul:
+      description: Channel with downsampled BAM files
       structure:
         - meta:
           type: map
-          description: Metadata map
-        - vcf:
+          description: Metadata map combined with the ch_depth data map
+        - bam:
           type: file
-          description: VCF normalized file
-          pattern: "*.{vcf,bcf,vcf.gz}"
+          description: BAM file
+          pattern: "*.bam"
         - index:
           type: file
-          description: VCF index file
-          pattern: "*.{tbi,csi}"
+          description: BAM index file
+          pattern: "*.{bai,csi}"
   - versions:
       description: Channel containing software versions file
       structure:
