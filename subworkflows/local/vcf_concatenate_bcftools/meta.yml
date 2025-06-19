@@ -22,11 +22,11 @@ input:
         - vcf:
           type: file
           description: VCF imputed file merged by chromosomes
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
 output:
   - vcf_tbi:
       description: Channel with VCF files concatenated
@@ -38,11 +38,11 @@ output:
         - vcf:
           type: file
           description: VCF imputed file merged by chromosomes
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - versions:
       description: Channel containing software versions file
       structure:

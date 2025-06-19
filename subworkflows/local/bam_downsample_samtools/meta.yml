@@ -27,7 +27,7 @@ input:
         - index:
           type: file
           description: Input BAM index file
-          pattern: "*.[bai|csi]"
+          pattern: "*.{bai,csi}"
   - ch_depth:
       description: Channel with depth data
       structure:
@@ -65,7 +65,7 @@ output:
         - index:
           type: file
           description: BAM index file
-          pattern: "*.[bai|csi]"
+          pattern: "*.{bai,csi}"
   - versions:
       description: Channel containing software versions file
       structure:

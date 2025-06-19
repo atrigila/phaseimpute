@@ -21,11 +21,11 @@ input:
         - vcf:
           type: file
           description: Panel VCF files by chromosomes
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: Panel VCF index files
-          pattern: "*.[csi|tbi]"
+          pattern: "*.{tbi,csi}"
   - ch_map:
       description: Channel with genetic map data (optional)
       structure:

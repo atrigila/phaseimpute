@@ -21,11 +21,11 @@ input:
         - file:
           type: file
           description: List of input BAM files
-          pattern: "*.[bam]"
+          pattern: "*.bam"
         - index:
           type: file
           description: List of input index file
-          pattern: "*.[bai|csi]"
+          pattern: "*.{bai,csi}"
         - bampaths:
           type: file
           description: |
@@ -87,11 +87,11 @@ output:
         - vcf:
           type: file
           description: VCF imputed file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - versions:
       description: Channel containing software versions file
       structure:

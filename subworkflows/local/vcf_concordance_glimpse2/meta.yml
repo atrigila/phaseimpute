@@ -23,11 +23,11 @@ input:
         - vcf:
           type: file
           description: VCF target file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - ch_vcf_truth:
       description: Channel with truth VCF files
       structure:
@@ -37,11 +37,11 @@ input:
         - vcf:
           type: file
           description: VCF truth file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - ch_vcf_freq:
       description: Channel with reference panel frequence data
       structure:
@@ -51,11 +51,11 @@ input:
         - fasta:
           type: file
           description: VCF file with AF/AN tag for each site
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - ch_region:
       description: Channel with region data
       structure:

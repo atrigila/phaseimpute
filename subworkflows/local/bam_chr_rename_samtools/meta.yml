@@ -23,7 +23,7 @@ input:
         - index:
           type: file
           description: Input BAM index file
-          pattern: "*.[bai|csi]"
+          pattern: "*.{bai,csi}"
         - prefix:
           type: string
           description: Should the 'chr' prefix be added or removed?
@@ -42,7 +42,7 @@ output:
         - index:
           type: file
           description: BAM index file
-          pattern: "*.[bai|csi]"
+          pattern: "*.{bai,csi}"
   - versions:
       description: Channel containing software versions file
       structure:

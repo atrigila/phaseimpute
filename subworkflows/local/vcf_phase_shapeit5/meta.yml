@@ -25,11 +25,11 @@ input:
         - vcf:
           type: file
           description: VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
         - pedigree:
           type: file
           description: |
@@ -54,11 +54,11 @@ input:
         - vcf:
           type: file
           description: VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - ch_scaffold:
       description: Channel with reference scaffold VCF files
       structure:
@@ -68,11 +68,11 @@ input:
         - vcf:
           type: file
           description: VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - ch_map:
       description: Channel with genetic map data (optional)
       structure:
@@ -100,11 +100,11 @@ output:
         - vcf:
           type: file
           description: VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - versions:
       description: Channel containing software versions file
       structure:

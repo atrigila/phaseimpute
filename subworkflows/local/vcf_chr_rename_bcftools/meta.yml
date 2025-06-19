@@ -18,11 +18,11 @@ input:
         - vcf:
           type: file
           description: Input VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: Input VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
         - diff:
           type: string
           description: List of chromosomes to rename
@@ -40,11 +40,11 @@ output:
         - bam:
           type: file
           description: VCF file
-          pattern: "*.[vcf|bcf|vcf.gz]"
+          pattern: "*.{vcf,bcf,vcf.gz}"
         - index:
           type: file
           description: VCF index file
-          pattern: "*.[tbi|csi]"
+          pattern: "*.{tbi,csi}"
   - versions:
       description: Channel containing software versions file
       structure:
