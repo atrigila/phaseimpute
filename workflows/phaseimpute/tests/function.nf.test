@@ -25,7 +25,10 @@ nextflow_function {
 
         then {
             assertAll(
-                { assert function.success }
+                { assert function.success },
+                { assert snapshot(
+                    function.result
+                ).match()}
             )
         }
     }
@@ -47,7 +50,10 @@ nextflow_function {
 
         then {
             assertAll(
-                { assert function.success }
+                { assert function.success },
+                { assert snapshot(
+                    function.result
+                ).match()}
             )
         }
     }
