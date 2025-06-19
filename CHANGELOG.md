@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#182](https://github.com/nf-core/phaseimpute/pull/182) - Add dark version of the metromap and dynamically change it in the README.
 - [#185](https://github.com/nf-core/phaseimpute/pull/185) - Add `--sampleNames_file` option for `STICH` and `QUILT`.
 - [#187](https://github.com/nf-core/phaseimpute/pull/187) - Update modules and subworkflows
+- [#197](https://github.com/nf-core/phaseimpute/pull/187) - Update to nf-core/tools version 3.3.1 and update nf-test.
 
 ### `Fixed`
 
