@@ -10,6 +10,7 @@ nextflow_workflow {
     test("Should run with no error") {
         when {
             params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/"
                 fasta = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz"
                 fasta_fai = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz.fai"
                 steps = "panelprep"
@@ -40,6 +41,7 @@ nextflow_workflow {
     test("Should give a warning all file given") {
         when {
             params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/"
                 fasta = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz"
                 fasta_fai = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz.fai"
                 steps = "panelprep"
@@ -72,6 +74,7 @@ nextflow_workflow {
     test("Should give a warning with missing files") {
         when {
             params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/"
                 fasta = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz"
                 fasta_fai = params.pipelines_testdata_base_path + "/hum_data/reference_genome/GRCh38.s.fa.gz.fai"
                 steps = "panelprep"
