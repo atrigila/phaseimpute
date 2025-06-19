@@ -25,9 +25,9 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.10.0"
+            "nextflow": "25.04.4"
         },
-        "timestamp": "2024-11-06T15:31:15.872517093"
+        "timestamp": "2025-06-18T16:36:24.11806243"
     },
     "Should run with specified chr": {
         "content": [
