@@ -140,7 +140,8 @@ workflow PHASEIMPUTE {
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
-            filter_chr_program
+            filter_chr_program,
+            false
         )
         ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions)
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ it[1] })
@@ -157,7 +158,8 @@ workflow PHASEIMPUTE {
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
-                filter_chr_program
+                filter_chr_program,
+                false
             )
             ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions)
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ it[1] })
