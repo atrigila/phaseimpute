@@ -398,7 +398,7 @@ workflow PHASEIMPUTE {
 
         // Prepare renaming file
         BCFTOOLS_QUERY_IMPUTED(ch_input_validate, [], [], [])
-        GAWK_IMPUTED(BCFTOOLS_QUERY_IMPUTED.out.output, [])
+        GAWK_IMPUTED(BCFTOOLS_QUERY_IMPUTED.out.output, [], false)
         ch_split_imputed = ch_input_validate.join(GAWK_IMPUTED.out.output)
 
         // Split result by samples
@@ -476,7 +476,7 @@ workflow PHASEIMPUTE {
 
         // Prepare renaming file
         BCFTOOLS_QUERY_TRUTH(CONCAT_TRUTH.out.vcf_tbi, [], [], [])
-        GAWK_TRUTH(BCFTOOLS_QUERY_TRUTH.out.output, [])
+        GAWK_TRUTH(BCFTOOLS_QUERY_TRUTH.out.output, [], false)
         ch_split_truth = CONCAT_TRUTH.out.vcf_tbi.join(GAWK_TRUTH.out.output)
 
         // Split truth vcf by samples

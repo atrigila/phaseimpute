@@ -17,7 +17,7 @@ workflow BAM_GL_BCFTOOLS {
     ch_multiqc_files = Channel.empty()
 
     // Convert legend to TSV with ','
-    GAWK(ch_posfile, [])
+    GAWK(ch_posfile, [], false)
     ch_versions = ch_versions.mix(GAWK.out.versions)
 
     // Compress TSV

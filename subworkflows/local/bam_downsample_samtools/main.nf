@@ -17,7 +17,7 @@ workflow BAM_DOWNSAMPLE_SAMTOOLS {
     ch_versions = ch_versions.mix(SAMTOOLS_DEPTH.out.versions.first())
 
     // Use GAWK to get mean depth
-    GAWK(SAMTOOLS_DEPTH.out.tsv, [])
+    GAWK(SAMTOOLS_DEPTH.out.tsv, [], false)
     ch_versions = ch_versions.mix(GAWK.out.versions.first())
 
     // Compute downsampling factor
