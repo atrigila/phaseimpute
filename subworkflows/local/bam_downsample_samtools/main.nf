@@ -42,7 +42,8 @@ workflow BAM_DOWNSAMPLE_SAMTOOLS {
     SAMTOOLS_VIEW(
         ch_input_downsample,
         ch_fasta,
-        []
+        [],
+        "csi"
     )
     ch_versions = ch_versions.mix(SAMTOOLS_VIEW.out.versions.first())
 
