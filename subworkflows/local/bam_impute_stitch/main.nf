@@ -23,7 +23,7 @@ workflow BAM_IMPUTE_STITCH {
     ngen_params             = params.ngen
 
     // Transform posfile to TSV with ','
-    GAWK(ch_posfile, [])
+    GAWK(ch_posfile, [], false)
     ch_versions = ch_versions.mix(GAWK.out.versions)
 
     // Get chromosomes of posfile
