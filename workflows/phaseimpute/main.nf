@@ -136,14 +136,14 @@ workflow PHASEIMPUTE {
 
         // Compute coverage of input files
         SAMTOOLS_COVERAGE_INP(ch_input_sim, ch_fasta)
-        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions)
+        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions.first())
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
             filter_chr_program,
             false
         )
-        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions)
+        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ it[1] })
 
         if (params.depth) {
@@ -154,14 +154,14 @@ workflow PHASEIMPUTE {
 
             // Compute coverage of input files
             SAMTOOLS_COVERAGE_DWN(BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul, ch_fasta)
-            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions)
+            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
                 filter_chr_program,
                 false
             )
-            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions)
+            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ it[1] })
         }
 

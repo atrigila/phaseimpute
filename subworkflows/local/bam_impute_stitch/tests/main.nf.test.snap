@@ -26,13 +26,31 @@
                     "NA12878",
                     "NA19401"
                 ]
+            ],
+            [
+                {
+                    "BAM_IMPUTE_STITCH:BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:STITCH": {
+                        "r-base": "4.4.2",
+                        "r-stitch": "1.7.3"
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:GAWK": {
+                        "gawk": "5.3.0"
+                    }
+                }
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.04.4"
+            "nextflow": "25.04.6"
         },
-        "timestamp": "2025-06-27T16:08:36.677705319"
+        "timestamp": "2025-07-08T15:19:24.346949068"
     },
     "Impute with stitch two individuals with bamlist and renaming": {
         "content": [
@@ -61,12 +79,30 @@
                     "MySample1",
                     "MySample2"
                 ]
+            ],
+            [
+                {
+                    "BAM_IMPUTE_STITCH:BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:STITCH": {
+                        "r-base": "4.4.2",
+                        "r-stitch": "1.7.3"
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:GAWK": {
+                        "gawk": "5.3.0"
+                    }
+                }
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.04.4"
+            "nextflow": "25.04.6"
         },
-        "timestamp": "2025-06-27T16:08:06.316400233"
+        "timestamp": "2025-07-08T15:19:13.509502869"
     }
 }

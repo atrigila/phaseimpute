@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#197](https://github.com/nf-core/phaseimpute/pull/187) - Update to nf-core/tools version 3.3.1 and update nf-test.
 - [#188](https://github.com/nf-core/phaseimpute/pull/188) - Change name of `BAM_IMPUTE_GLIMPSE2` to `BAM\_VCF_IMPUTE_GLIMPSE2`.
 - [#199](https://github.com/nf-core/phaseimpute/pull/199) - Update all modules to latest nf-core versions.
+- [#201](https://github.com/nf-core/phaseimpute/pull/201) - Update TEMPLATE to nf-core tools version 3.3.2.
 
 ### `Fixed`
 
