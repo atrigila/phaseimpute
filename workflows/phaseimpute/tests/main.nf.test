@@ -110,7 +110,7 @@ nextflow_pipeline {
                         .flatten(),
                     path("$outputDir/imputation/beagle5/concat/NA12878.beagle5.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
                     path("$outputDir/imputation/beagle5/concat/NA12878.beagle5.vcf.gz").vcf.header.getGenotypeSamples().sort()
-                ).match() 
+                ).match()
                 }
             )
         }

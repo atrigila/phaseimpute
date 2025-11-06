@@ -6,7 +6,7 @@ include { BCFTOOLS_VIEW  } from '../../../modules/nf-core/bcftools/view'
 workflow VCF_IMPUTE_BEAGLE5 {
     take:
     ch_input  // channel: [ [id, chr], vcf, tbi ]
-    ch_panel  // channel: [ [id, chr], vcf, tbi ]  
+    ch_panel  // channel: [ [id, chr], vcf, tbi ]
     ch_map    // channel: [ [chr], map]
 
     main:

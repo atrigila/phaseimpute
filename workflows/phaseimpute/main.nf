@@ -406,15 +406,15 @@ workflow PHASEIMPUTE {
             // Create input channel combining VCF with regions 
             ch_input_beagle5 = ch_input_type.vcf
                 .combine(ch_region)
-                .map { meta_vcf, vcf, index, meta_region, region ->
+                .map { meta_vcf, vcf, index, meta_region, _region ->
                     [meta_vcf + meta_region, vcf, index]
                 }
 
             // Impute with BEAGLE5
             VCF_IMPUTE_BEAGLE5(
                 ch_input_beagle5,
-                ch_panel_phased,  
-                ch_map            
+                ch_panel_phased,
+                ch_map
             )
             ch_versions = ch_versions.mix(VCF_IMPUTE_BEAGLE5.out.versions)
 

@@ -142,7 +142,7 @@ nextflow_workflow {
         }
     }
 
-    test("Impute with beagle5 multiple chromosomes") { 
+    test("Impute with beagle5 multiple chromosomes") {
 
         when {
             workflow {
