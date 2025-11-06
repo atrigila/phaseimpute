@@ -29,7 +29,7 @@ workflow VCF_IMPUTE_BEAGLE5 {
     )
     ch_versions = ch_versions.mix(BCFTOOLS_VIEW.out.versions.first())
 
-    // Combine VCF files 
+    // Combine VCF files
     ch_ready_vcf = ch_input_branched.vcf
         .mix(BCFTOOLS_VIEW.out.vcf.join(BCFTOOLS_VIEW.out.csi))
 

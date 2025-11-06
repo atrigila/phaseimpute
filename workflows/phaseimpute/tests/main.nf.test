@@ -87,7 +87,6 @@ nextflow_pipeline {
         }
     }
 
-    
     test("Check test_beagle5") {
         tag "test_beagle5"
         config "../../../conf/test_beagle5.config"
