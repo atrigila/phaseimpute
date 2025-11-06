@@ -1,0 +1,154 @@
+{
+    "Impute with beagle5 multiple chromosomes": {
+        "content": [
+            [
+                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
+                "versions.yml:md5,9b1a38e40b39eec07923f563eb0199f3",
+                "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
+            ],
+            [
+                [
+                    {
+                        "id": "NA12878",
+                        "panel": "1000GP",
+                        "chr": "chr21",
+                        "tools": "beagle5"
+                    },
+                    "NA12878_beagle5_imputed.vcf.gz",
+                    "NA12878_beagle5_imputed.vcf.gz.csi"
+                ],
+                [
+                    {
+                        "id": "NA12878",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "tools": "beagle5"
+                    },
+                    "NA12878_beagle5_imputed.vcf.gz",
+                    "NA12878_beagle5_imputed.vcf.gz.csi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr21], sampleCount=1, variantCount=836, phased=true, phasedAutodetect=true]",
+                "VcfFile [chromosomes=[chr22], sampleCount=1, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                "290a299ed0aab0d8405d83698092a313",
+                "59921c25ff0120aaa705431cad320b64"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-09-02T22:06:08.436085329"
+    },
+    "Impute with beagle5 one vcf": {
+        "content": [
+            [
+                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
+                "versions.yml:md5,9b1a38e40b39eec07923f563eb0199f3",
+                "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
+            ],
+            [
+                [
+                    {
+                        "id": "NA12878",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "tools": "beagle5"
+                    },
+                    "NA12878_beagle5_imputed.vcf.gz",
+                    "NA12878_beagle5_imputed.vcf.gz.csi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr22], sampleCount=1, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                "290a299ed0aab0d8405d83698092a313"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-09-02T22:04:07.584682315"
+    },
+    "Impute with beagle5 two vcf": {
+        "content": [
+            [
+                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
+                "versions.yml:md5,9b1a38e40b39eec07923f563eb0199f3",
+                "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
+            ],
+            [
+                [
+                    {
+                        "id": "NA12878",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "tools": "beagle5"
+                    },
+                    "NA12878_beagle5_imputed.vcf.gz",
+                    "NA12878_beagle5_imputed.vcf.gz.csi"
+                ],
+                [
+                    {
+                        "id": "NA19401",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "tools": "beagle5"
+                    },
+                    "NA19401_beagle5_imputed.vcf.gz",
+                    "NA19401_beagle5_imputed.vcf.gz.csi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr22], sampleCount=1, variantCount=903, phased=true, phasedAutodetect=true]",
+                "VcfFile [chromosomes=[chr22], sampleCount=1, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                "290a299ed0aab0d8405d83698092a313",
+                "7c27e9d721214aaed84ad23e9385583b"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-09-02T22:05:24.994562893"
+    },
+    "Impute with beagle5 one vcf with map": {
+        "content": [
+            [
+                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
+                "versions.yml:md5,9b1a38e40b39eec07923f563eb0199f3",
+                "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
+            ],
+            [
+                [
+                    {
+                        "id": "NA12878",
+                        "panel": "1000GP",
+                        "chr": "chr22",
+                        "tools": "beagle5"
+                    },
+                    "NA12878_beagle5_imputed.vcf.gz",
+                    "NA12878_beagle5_imputed.vcf.gz.csi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr22], sampleCount=1, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                "290a299ed0aab0d8405d83698092a313"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-09-02T22:04:43.870733495"
+    }
+}

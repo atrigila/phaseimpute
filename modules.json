@@ -64,6 +64,11 @@
                         "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
                         "installed_by": ["modules"]
                     },
+                    "beagle5/beagle": {
+                        "branch": "master",
+                        "git_sha": "e4d49a370c7efe3757a59058a79df9225aabecb9",
+                        "installed_by": ["modules"]
+                    },
                     "bedtools/makewindows": {
                         "branch": "master",
                         "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
