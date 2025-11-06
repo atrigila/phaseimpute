@@ -203,8 +203,8 @@ workflow PIPELINE_INITIALISATION {
         // #TODO Add support for string input
         ch_regions  = getRegionFromFai("all", ch_ref_gen)
     }  else  if (params.input_region.endsWith(".csv")) {
-        println "Region file provided as input is a csv file"
-        ch_regions = Channel.fromList(samplesheetToList(
+        println "Region file provided as input is a samplesheet"
+        ch_regions = Channel.from(samplesheetToList(
             params.input_region, "${projectDir}/assets/schema_input_region.json"
         ))
         .map{ chr, start, end ->
