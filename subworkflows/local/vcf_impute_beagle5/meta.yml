@@ -61,7 +61,6 @@ input:
           pattern: "*.map"
 output:
   - vcf_index:
-
       description: Channel with imputed and phased VCF files
       structure:
         - meta:

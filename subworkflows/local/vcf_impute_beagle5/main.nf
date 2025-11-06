@@ -12,7 +12,7 @@ workflow VCF_IMPUTE_BEAGLE5 {
     main:
     ch_versions = channel.empty()
 
-    // Branch input files based on format 
+    // Branch input files based on format
     ch_input
         .branch { _meta, vcf, _tbi ->
             bcf: vcf.toString().contains('.bcf')
