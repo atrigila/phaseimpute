@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#181](https://github.com/nf-core/phaseimpute/pull/181) - Add nf-co2footprint plugin to the config file.
 - [#184](https://github.com/nf-core/phaseimpute/pull/184) - Add support `.csi` index for `.bam` files.
 - [#188](https://github.com/nf-core/phaseimpute/pull/188) - Add documentation for all subworkflows.
-- [#200](https://github.com/nf-core/phaseimpute/pull/200) - Add BEAGLE5 support for genotype imputation.
+- [#210](https://github.com/nf-core/phaseimpute/pull/200) - Add BEAGLE5 support for genotype imputation.
 
 ### `Changed`
 
