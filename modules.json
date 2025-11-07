@@ -66,9 +66,8 @@
                     },
                     "beagle5/beagle": {
                         "branch": "master",
-                        "git_sha": "e4d49a370c7efe3757a59058a79df9225aabecb9",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/beagle5/beagle/beagle5-beagle.diff"
+                        "git_sha": "359cfb69d521fcb8b56313e9a6ca9d66036aa921",
+                        "installed_by": ["modules"]
                     },
                     "bedtools/makewindows": {
                         "branch": "master",
