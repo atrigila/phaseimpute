@@ -334,6 +334,8 @@ When the number of samples exceeds the batch size, the pipeline will split the s
 To summarize:
 
 - If you have Variant Calling Format (VCF) files, join them into a single file and choose either GLIMPSE1, GLIMPSE2 or BEAGLE5.
+  - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
+  - GLIMPSE2 should not do target-to-target imputation.
 - If you have alignment files (e.g., BAM or CRAM), all tools are available, and processing will occur in `batch_size`:
   - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
   - GLIMPSE2 and QUILT can process samples in separate batches.
@@ -436,7 +438,10 @@ bcftools convert --haplegendsample ${vcf}
 
 ### GLIMPSE1
 
-[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels. Glimpse1 works with alignment (i.e. BAM or CRAM) as well as variant (i.e. VCF or BCF) files as input. This is an example command to run this tool from the `--steps impute`:
+[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels.
+Glimpse1 works with variant (i.e. VCF or BCF) files as input.
+Alignment (i.e. BAM or CRAM) can also be used and the variants will be called using `bcftools mpileup` to convert to a VCF format.
+This is an example command to run this tool from the `--steps impute`:
 
 ```bash
 nextflow run nf-core/phaseimpute \
@@ -480,7 +485,9 @@ Make sure the CSV file with the input panel is the output from `--step panelprep
 
 ### BEAGLE5
 
-[BEAGLE5](https://faculty.washington.edu/browning/beagle/beagle.html) is a software package for analyzing large-scale genetic data sets with hundreds of thousands of markers genotyped on thousands of samples. BEAGLE can phase genotype data and perform genotype imputation.
+[BEAGLE5](https://faculty.washington.edu/browning/beagle/beagle.html) is a software package for analyzing large-scale genetic
+data sets with hundreds of thousands of markers genotyped on thousands of samples.
+BEAGLE can phase genotype data and perform genotype imputation but only on genotyped data.
 
 ```bash
 nextflow run nf-core/phaseimpute \
