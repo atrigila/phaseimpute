@@ -487,7 +487,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool beagle5 \
+    --tools beagle5 \
     --outdir results \
     --genome GRCh37 \
     -profile docker
