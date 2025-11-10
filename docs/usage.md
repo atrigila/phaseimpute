@@ -307,6 +307,7 @@ For starting from the imputation steps, the required flags are:
 | `GLIMPSE2` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ❌          |
 | `QUILT`    | ✅               | ✅ ²      | ✅                      | ❌        | ✅         | ✅ ⁴        |
 | `STITCH`   | ✅               | ✅ ²      | ✅                      | ❌        | ❌         | ✅ ³        |
+| `BEAGLE5`  | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ❌          |
 
 > ¹ Alignment files as well as variant calling format (i.e. BAM, CRAM, VCF or BCF)
 > ² Alignment files only (i.e. BAM or CRAM)
@@ -332,12 +333,14 @@ When the number of samples exceeds the batch size, the pipeline will split the s
 
 To summarize:
 
-- If you have Variant Calling Format (VCF) files, join them into a single file and choose either GLIMPSE1 or GLIMPSE2.
+- If you have Variant Calling Format (VCF) files, join them into a single file and choose either GLIMPSE1, GLIMPSE2 or BEAGLE5.
+  - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
+  - GLIMPSE2 should not do target-to-target imputation.
 - If you have alignment files (e.g., BAM or CRAM), all tools are available, and processing will occur in `batch_size`:
   - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
   - GLIMPSE2 and QUILT can process samples in separate batches.
 
-## Imputation tools `--steps impute --tools [glimpse1, glimpse2, quilt, stitch]`
+## Imputation tools `--steps impute --tools [glimpse1, glimpse2, quilt, stitch, beagle5]`
 
 You can choose different software to perform the imputation. In the following sections, the typical commands for running the pipeline with each software are included. Multiple tools can be selected by separating them with a comma (eg. `--tools glimpse1,quilt`).
 
@@ -435,7 +438,10 @@ bcftools convert --haplegendsample ${vcf}
 
 ### GLIMPSE1
 
-[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels. Glimpse1 works with alignment (i.e. BAM or CRAM) as well as variant (i.e. VCF or BCF) files as input. This is an example command to run this tool from the `--steps impute`:
+[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels.
+Glimpse1 works with variant (i.e. VCF or BCF) files as input.
+Alignment (i.e. BAM or CRAM) can also be used and the variants will be called using `bcftools mpileup` to convert to a VCF format.
+This is an example command to run this tool from the `--steps impute`:
 
 ```bash
 nextflow run nf-core/phaseimpute \
@@ -476,6 +482,25 @@ nextflow run nf-core/phaseimpute \
 ```
 
 Make sure the CSV file with the input panel is the output from `--step panelprep` or has been previously prepared.
+
+### BEAGLE5
+
+[BEAGLE5](https://faculty.washington.edu/browning/beagle/beagle.html) is a software package for analyzing large-scale genetic
+data sets with hundreds of thousands of markers genotyped on thousands of samples.
+BEAGLE can phase genotype data and perform genotype imputation but only on genotyped data.
+
+```bash
+nextflow run nf-core/phaseimpute \
+    --input samplesheet.csv \
+    --panel samplesheet_reference.csv \
+    --steps impute \
+    --tools beagle5 \
+    --outdir results \
+    --genome GRCh37 \
+    -profile docker
+```
+
+The CSV file provided in `--panel` must be prepared with `--steps panelprep` and must contain four columns [panel, chr, vcf, index].
 
 ## Start with validation `--steps validate`
 
@@ -519,7 +544,7 @@ This mode runs all the previous steps. This requires several flags:
 - `--input input.csv`: The samplesheet containing the input sample files in `bam` or `cram` format.
 - `--depth`: The final depth of the input file [default: 1].
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, glimpse2, quilt, stitch]`: A selection of one or more of the available imputation tools.
+- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5]`: A selection of one or more of the available imputation tools.
 - `--panel panel.csv`: The samplesheet containing the reference panel files in `vcf.gz` format.
 - `--remove_samples`: (optional) A comma-separated list of samples to remove from the reference.
 - `--input_truth input_truth.csv`: The samplesheet containing the truth VCF files in `vcf` format.
