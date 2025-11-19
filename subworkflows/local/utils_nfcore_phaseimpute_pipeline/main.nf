@@ -715,40 +715,93 @@ def genomeExistsError() {
 // Generate methods description for MultiQC
 //
 def toolCitationText() {
-    // Can use ternary operators to dynamically construct based conditions, e.g. params["run_xyz"] ? "Tool (Foo et al. 2023)" : "",
-    // Uncomment function in methodsDescriptionText to render in MultiQC report
-    def citation_text = [
-        "Tools used in the workflow included:",
-        "BCFtools (Danecek et al. 2021),",
-        params.tools ? params.tools.split(',').contains("glimpse")   ? "GLIMPSE (Rubinacci et al. 2020)," : "" : "",
+    def text_simulate = [
+        "Low-coverage sequencing data simulation was performed with",
+        "SAMtools (Danecek et al. 2021) subcommand 'depth' and 'view' for downsampling high-coverage BAM files."
+    ]
+
+    def text_panelprep = [
+        "Reference panel preparation followed several steps.",
+        params.normalize && params.remove_samples ? "The reference panel genotypes were normalized and filtered for sample removal" :
+            params.normalize ? "The reference panel genotypes were normalized" :
+                params.remove_samples ? "Samples were removed from the reference panel genotypes" :
+                    "No normalization or sample removal were performed on the reference panel genotypes.",
+        params.normalize || params.remove_samples ? "followed by site extraction and format conversion using BCFtools (Danecek et al. 2021).":
+            "Site extraction and format conversion was done using BCFtools (Danecek et al. 2021).",
+        params.compute_freq ? "Allele frequencies were then computed with vcflib (Garrison et al. 2022)." : "",
+        params.phase ? "Genotype phasing was performed with SHAPEIT5 (Hofmeister et al. 2023)." : "",
+        "Finally, the reference panel was split into per-chromosome chunks using GLIMPSE (Rubinacci et al. 2020) and GLIMPSE2 (Rubinacci et al. 2023)."
+    ].join(' ').trim()
+
+    def text_impute = [
+        params.tools ? params.tools.split(',').size() > 0 ?
+            params.tools.split(',').size() == 1 ? "Imputation tool used was:" :
+            "Imputation tools used were:" : "" : "",
+        params.tools ? params.tools.split(',').contains("glimpse")   ? "GLIMPSE (Rubinacci et al. 2020)" +
+            " with variants called using BCFtools (Danecek et al. 2021) mpileup followed by indexation with Tabix (Li H et al. 2011)" +
+            " when BAM files was provided," : "" : "",
         params.tools ? params.tools.split(',').contains("glimpse2")  ? "GLIMPSE2 (Rubinacci et al. 2023)," : "": "",
         params.tools ? params.tools.split(',').contains("quilt")     ? "QUILT (Davies et al. 2021)," : "": "",
-        "SAMtools (Li et al. 2009),",
-        params.tools ? params.phase ? "SHAPEIT5 (Hofmeister et al. 2023)," : "": "",
-        params.tools ? params.phase ? "BEDtools (Quinlan and Hall 2010)," : "": "",
         params.tools ? params.tools.split(',').contains("stitch")    ? "STITCH (Davies et al. 2016)," : "": "",
-        "Tabix (Li et al. 2011),",
-        params.tools ? params.compute_freq  ? "VCFlib (Garrison et al. 2022)," : "": "",
-        "."
+        params.tools ? params.tools.split(',').contains("beagle5")   ? "Beagle5 (Browning et al. 2018)," : "": "",
+        params.tools ? params.tools.split(',').contains("minimac4")  ? "Minimac4 (Das et al. 2016)," : "": "",
     ].join(' ').trim()
+
+    def text_validate = [
+        "Imputation accuracy was assessed by comparing imputed genotypes to truth data using GLIMPSE2 (Rubinacci et al. 2023).",
+        "Truth genotypes were obtained from high-coverage sequencing data or array genotyping data provided as input.",
+        "High-coverage sequencing data genotypes were called using BCFtools (Danecek et al. 2021) mpileup followed by indexation with Tabix (Li H et al. 2011)."
+    ].join(' ').trim()
+
+    def text_multiqc = "Pipeline results statistics were summarised with MultiQC (Ewels et al. 2016)."
+
+    def citation_text = [
+        "Tools used in the workflow included the following.",
+        params.steps.split(',').contains("simulate") ? text_simulate : "",
+        params.steps.split(',').contains("panelprep") ? text_panelprep : "",
+        params.steps.split(',').contains("impute") ? text_impute : "",
+        params.steps.split(',').contains("validate") ? text_validate : "",
+        text_multiqc
+    ].join(' ').trim()
+
+    println "Citation text: ${citation_text}"
 
     return citation_text
 }
 
 def toolBibliographyText() {
-    // Can use ternary operators to dynamically construct based conditions, e.g. params["run_xyz"] ? "<li>Author (2023) Pub name, Journal, DOI</li>" : "",
-    // Uncomment function in methodsDescriptionText to render in MultiQC report
+    def beagle5_ref     = "<li>Browning, B.L., Zhou, Y., Browning, S.R., 2018. A One-Penny Imputed Genome from Next-Generation Reference Panels. Am J Hum Genet 103, 338-348. https://doi.org/10.1016/j.ajhg.2018.07.015</li>"
+    def sambcftools_ref = "<li>Danecek, P., Bonfield, J.K., Liddle, J., Marshall, J., Ohan, V., Pollard, M.O., Whitwham, A., Keane, T., McCarthy, S.A., Davies, R.M., Li, H., 2021. Twelve years of SAMtools and BCFtools. GigaScience 10, giab008. https://doi.org/10.1093/gigascience/giab008</li>"
+    def minimac4_ref    = "<li>Das, S., Forer, L., Schönherr, S., Sidore, C., Locke, A.E., Kwong, A., Vrieze, S.I., Chew, E.Y., Levy, S., McGue, M., Schlessinger, D., Stambolian, D., Loh, P.-R., Iacono, W.G., Swaroop, A., Scott, L.J., Cucca, F., Kronenberg, F., Boehnke, M., Abecasis, G.R., Fuchsberger, C., 2016. Next-generation genotype imputation service and methods. Nat Genet 48, 1284-1287. https://doi.org/10.1038/ng.3656</li>"
+    def stitch_ref      = "<li>Davies, R.W., Flint, J., Myers, S., Mott, R., 2016. Rapid genotype imputation from sequence without reference panels. Nat Genet 48, 965-969. https://doi.org/10.1038/ng.3594</li>"
+    def quilt_ref       = "<li>Davies, R.W., Kucka, M., Su, D., Shi, S., Flanagan, M., Cunniff, C.M., Chan, Y.F., Myers, S., 2021. Rapid genotype imputation from sequence with reference panels. Nat Genet 53, 1104-1111. https://doi.org/10.1038/s41588-021-00877-0</li>"
+    def vcflib_ref      = "<li>Garrison, E., Kronenberg, Z.N., Dawson, E.T., Pedersen, B.S., Prins, P., 2022. A spectrum of free software tools for processing the VCF variant call format: vcflib, bio-vcf, cyvcf2, hts-nim and slivar. PLOS Computational Biology 18, e1009123. https://doi.org/10.1371/journal.pcbi.1009123</li>"
+    def shapeit5_ref    = "<li>Hofmeister, R.J., Ribeiro, D.M., Rubinacci, S., Delaneau, O., 2023. Accurate rare variant phasing of whole-genome and whole-exome sequencing data in the UK Biobank. Nat Genet 1-7. https://doi.org/10.1038/s41588-023-01415-w</li>"
+    def tabix_ref       = "<li>Li, H., 2011. Tabix: fast retrieval of sequence features from generic TAB-delimited files. Bioinformatics 27, 718-719. https://doi.org/10.1093/bioinformatics/btq671</li>"
+    def glimpse2_ref    = "<li>Rubinacci, S., Hofmeister, R.J., Sousa da Mota, B., Delaneau, O., 2023. Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes. Nat Genet 55, 1088-1090. https://doi.org/10.1038/s41588-023-01438-3</li>"
+    def glimpse_ref     = "<li>Rubinacci, S., Ribeiro, D.M., Hofmeister, R.J., Delaneau, O., 2021. Efficient phasing and imputation of low-coverage sequencing data using large reference panels. Nat Genet 53, 120-126. https://doi.org/10.1038/s41588-020-00756-0</li>"
+    def multiqc_ref     = "<li>Ewels, P., Magnusson, M., Lundin, S., Käller, M., 2016. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics 32, 3047-3048. https://doi.org/10.1093/bioinformatics/btw354</li>"
+
+
+    def steps = params.steps.split(',')
+    def tools = params.tools ? params.tools.split(',') : []
+
     def reference_text = [
-        params.phase ? "<li>Quinlan AR, Hall IM (2010). BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010 Mar 15;26(6):841-2. doi:10.1093/bioinformatics/btq033.</li>": "",
-        "<li>Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R; 1000 Genome Project Data Processing Subgroup. (2009). The Sequence Alignment/Map format and SAMtools. Bioinformatics. 2009 Aug 15;25(16):2078-9. doi:10.1093/bioinformatics/btp352.</li>",
-        "<li>Li H. (2011). Tabix: fast retrieval of sequence features from generic TAB-delimited files. Bioinformatics. 2011 Mar 1;27(5):718-9. doi:10.1093/bioinformatics/btq671.</li>",
-        params.tools ? params.tools.split(',').contains("quilt") ? "<li>Davies RW, Kucka M, Su D, Shi S, Flanagan M, Cunniff CM, Chan YF, & Myers S. (2021). Rapid genotype imputation from sequence with reference panels. Nature Genetics. doi:10.1038/s41588-021-00877-0.</li>" : "": "",
-        params.tools ? params.tools.split(',').contains("glimpse") ? "<li>Rubinacci S, Ribeiro DM, Hofmeister RJ, & Delaneau O. (2021). Efficient phasing and imputation of low-coverage sequencing data using large reference panels. Nature Genetics. doi:10.1038/s41588-020-00756-0.</li>" : "": "",
-        params.tools ? params.tools.split(',').contains("glimpse2") ? "<li>Rubinacci S, Hofmeister RJ, Sousa da Mota B, & Delaneau O. (2023). Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes. Nature Genetics. doi:10.1038/s41588-023-01438-3.</li>" : "": "",
-        params.phase ? "<li>Hofmeister RJ, Ribeiro DM, Rubinacci S, Delaneau O. (2023). Accurate rare variant phasing of whole-genome and whole-exome sequencing data in the UK Biobank. Nat Genet. 2023 Jul;55(7):1243-1249. doi:10.1038/s41588-023-01415-w.</li>" : "",
-        params.tools ? params.tools.split(',').contains("stitch") ? "<li>Davies RW, Flint J, Myers S, & Mott R. (2016). Rapid genotype imputation from sequence without reference panels. Nature Genetics.</li>" : "": "",
-        params.compute_freq ? "<li>Garrison E, Kronenberg ZN, Dawson ET, Pedersen BS, Prins P. (2022). A spectrum of free software tools for processing the VCF variant call format: vcflib, bio-vcf, cyvcf2, hts-nim and slivar. PLoS Comput Biol 18(5).</li>" : "",
-    ].join(' ').trim()
+        params.tools ? tools.contains("beagle5") ? beagle5_ref : "": "",
+        steps.contains("panelprep") || steps.contains("validate") || steps.contains("simulate") ||
+            tools.contains("glimpse") ? sambcftools_ref : "",
+        params.tools ? tools.contains("minimac4") ? minimac4_ref : "": "",
+        params.tools ? tools.contains("stitch") ? stitch_ref : "": "",
+        params.tools ? tools.contains("quilt") ? quilt_ref : "": "",
+        params.compute_freq ? vcflib_ref : "",
+        params.phase ? shapeit5_ref : "",
+        steps.contains("validate") || tools.contains("glimpse") ? tabix_ref : "",
+        params.tools ? tools.contains("glimpse2") ? glimpse2_ref : "": "",
+        params.tools ? tools.contains("glimpse") ? glimpse_ref : "": "",
+        multiqc_ref
+    ].trim().replaceAll("[,|.] +\\.", ".")
+
+    println "REFERENCE TEXT: ${reference_text}"
 
     return reference_text
 }
@@ -774,8 +827,8 @@ def methodsDescriptionText(mqc_methods_yaml) {
     meta["nodoi_text"] = meta.manifest_map.doi ? "" : "<li>If available, make sure to update the text to include the Zenodo DOI of version of the pipeline used. </li>"
 
     // Tool references
-    meta["tool_citations"] = ""
-    meta["tool_bibliography"] = ""
+    // meta["tool_citations"] = ""
+    // meta["tool_bibliography"] = ""
 
     meta["tool_citations"] = toolCitationText().replaceAll(", \\.", ".").replaceAll("\\. \\.", ".").replaceAll(", \\.", ".")
     meta["tool_bibliography"] = toolBibliographyText()
