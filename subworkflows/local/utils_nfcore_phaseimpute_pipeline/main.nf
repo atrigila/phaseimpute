@@ -826,12 +826,12 @@ def toolBibliographyText() {
     def minimac4_ref    = "<li>Das, S., Forer, L., Schönherr, S., Sidore, C., Locke, A.E., Kwong, A., Vrieze, S.I., Chew, E.Y., Levy, S., McGue, M., Schlessinger, D., Stambolian, D., Loh, P.-R., Iacono, W.G., Swaroop, A., Scott, L.J., Cucca, F., Kronenberg, F., Boehnke, M., Abecasis, G.R., Fuchsberger, C., 2016. Next-generation genotype imputation service and methods. Nat Genet 48, 1284-1287. doi: <a href='https://doi.org/10.1038/ng.3656'>10.1038/ng.3656</a></li>"
     def stitch_ref      = "<li>Davies, R.W., Flint, J., Myers, S., Mott, R., 2016. Rapid genotype imputation from sequence without reference panels. Nat Genet 48, 965-969. doi: <a href='https://doi.org/10.1038/ng.3594'>10.1038/ng.3594</a></li>"
     def quilt_ref       = "<li>Davies, R.W., Kucka, M., Su, D., Shi, S., Flanagan, M., Cunniff, C.M., Chan, Y.F., Myers, S., 2021. Rapid genotype imputation from sequence with reference panels. Nat Genet 53, 1104-1111. doi: <a href='https://doi.org/10.1038/s41588-021-00877-0'>10.1038/s41588-021-00877-0</a></li>"
+    def multiqc_ref     = "<li>Ewels, P., Magnusson, M., Lundin, S., Käller, M., 2016. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics 32, 3047-3048. doi: <a href='https://doi.org/10.1093/bioinformatics/btw354'>10.1093/bioinformatics/btw354</a></li>"
     def vcflib_ref      = "<li>Garrison, E., Kronenberg, Z.N., Dawson, E.T., Pedersen, B.S., Prins, P., 2022. A spectrum of free software tools for processing the VCF variant call format: vcflib, bio-vcf, cyvcf2, hts-nim and slivar. PLOS Computational Biology 18, e1009123. doi: <a href='https://doi.org/10.1371/journal.pcbi.1009123'>10.1371/journal.pcbi.1009123</a></li>"
     def shapeit5_ref    = "<li>Hofmeister, R.J., Ribeiro, D.M., Rubinacci, S., Delaneau, O., 2023. Accurate rare variant phasing of whole-genome and whole-exome sequencing data in the UK Biobank. Nat Genet 1-7. doi: <a href='https://doi.org/10.1038/s41588-023-01415-w'>10.1038/s41588-023-01415-w</a></li>"
     def tabix_ref       = "<li>Li, H., 2011. Tabix: fast retrieval of sequence features from generic TAB-delimited files. Bioinformatics 27, 718-719. doi: <a href='https://doi.org/10.1093/bioinformatics/btq671'>10.1093/bioinformatics/btq671</a></li>"
     def glimpse2_ref    = "<li>Rubinacci, S., Hofmeister, R.J., Sousa da Mota, B., Delaneau, O., 2023. Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes. Nat Genet 55, 1088-1090. doi: <a href='https://doi.org/10.1038/s41588-023-01438-3'>10.1038/s41588-023-01438-3</a></li>"
     def glimpse_ref     = "<li>Rubinacci, S., Ribeiro, D.M., Hofmeister, R.J., Delaneau, O., 2021. Efficient phasing and imputation of low-coverage sequencing data using large reference panels. Nat Genet 53, 120-126. doi: <a href='https://doi.org/10.1038/s41588-020-00756-0'>10.1038/s41588-020-00756-0</a></li>"
-    def multiqc_ref     = "<li>Ewels, P., Magnusson, M., Lundin, S., Käller, M., 2016. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics 32, 3047-3048. doi: <a href='https://doi.org/10.1093/bioinformatics/btw354'>10.1093/bioinformatics/btw354</a></li>"
 
     def steps_used = params.steps != null ? params.steps.split(',') : []
     if (steps_used.contains("all")) {
@@ -845,12 +845,12 @@ def toolBibliographyText() {
         tools_used.contains("minimac4") ? minimac4_ref : "",
         tools_used.contains("stitch")   ? stitch_ref   : "",
         tools_used.contains("quilt")    ? quilt_ref    : "",
+        multiqc_ref,
         steps_used.contains("panelprep") && params.compute_freq           ? vcflib_ref   : "",
         steps_used.contains("panelprep") && params.phase                  ? shapeit5_ref : "",
         steps_used.contains("validate") || tools_used.contains("glimpse") ? tabix_ref    : "",
         tools_used.contains("glimpse2") ? glimpse2_ref : "",
-        tools_used.contains("glimpse")  ? glimpse_ref  : "",
-        multiqc_ref
+        tools_used.contains("glimpse")  ? glimpse_ref  : ""
     ].join(' ').trim().replaceAll("[,|.] +\\.", ".")
 
     return reference_text
