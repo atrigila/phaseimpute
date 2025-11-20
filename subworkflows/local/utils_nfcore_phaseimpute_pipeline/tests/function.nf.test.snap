@@ -74,10 +74,7 @@
     "Test validateInputBatchTools vcf only for glimpse": {
         "content": [
             [
-                "Stitch or Quilt software cannot run with VCF or BCF files. Please provide alignment files (i.e. BAM or CRAM).",
-                "WARN: Failed to render CO2e footprint report -- see the log file for details",
-                "WARN: Failed to render execution report -- see the log file for details",
-                "WARN: Failed to render execution timeline -- see the log file for details"
+                "Stitch or Quilt software cannot run with VCF or BCF files. Please provide alignment files (i.e. BAM or CRAM)."
             ]
         ],
         "meta": {
@@ -118,10 +115,7 @@
         "content": [
             [
                 "WARN: Glimpse2 or Quilt software is selected and the number of input files (151) is less than the batch size (60). The input files will be processed in 3 batches.",
-                "Stitch or Glimpse1 software is selected and the number of input files (151) is less than the batch size (60). Splitting the input files in batches would induce batch effect.",
-                "WARN: Failed to render CO2e footprint report -- see the log file for details",
-                "WARN: Failed to render execution report -- see the log file for details",
-                "WARN: Failed to render execution timeline -- see the log file for details"
+                "Stitch or Glimpse1 software is selected and the number of input files (151) is less than the batch size (60). Splitting the input files in batches would induce batch effect."
             ]
         ],
         "meta": {
@@ -155,10 +149,7 @@
     "Test validateInputBatchTools only one vcf": {
         "content": [
             [
-                "When using a Variant Calling Format file as input, only one file can be provided. If you have multiple single-sample VCF files, please merge them into a single multisample VCF file.",
-                "WARN: Failed to render CO2e footprint report -- see the log file for details",
-                "WARN: Failed to render execution report -- see the log file for details",
-                "WARN: Failed to render execution timeline -- see the log file for details"
+                "When using a Variant Calling Format file as input, only one file can be provided. If you have multiple single-sample VCF files, please merge them into a single multisample VCF file."
             ]
         ],
         "meta": {
