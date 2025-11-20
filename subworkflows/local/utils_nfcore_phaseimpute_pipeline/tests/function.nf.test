@@ -516,6 +516,99 @@ nextflow_function {
             )
         }
     }
+
+    test ("Test toolBibliographyText - simulate only") {
+        function "toolBibliographyText"
+        tag "toolBibliographyText"
+        when {
+            params {
+                outdir = "results"
+                steps = "simulate"
+                tools = null
+            }
+            function {
+                """
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(function.result).match() }
+            )
+        }
+    }
+    test ("Test toolBibliographyText - all tools and steps") {
+        function "toolBibliographyText"
+        tag "toolBibliographyText"
+        when {
+            params {
+                outdir = "results"
+                steps = "all"
+                tools = "glimpse1,glimpse2,stitch,quilt,beagle5,minimac4"
+            }
+            function {
+                """
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(function.result).match() }
+            )
+        }
+    }
+    test ("Test toolCitationText - simulate only") {
+        function "toolCitationText"
+        tag "toolCitationText"
+        when {
+            params {
+                outdir = "results"
+                steps = "panelprep"
+                tools = null
+            }
+            function {
+                """
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(function.result).match() }
+            )
+        }
+    }
+    test ("Test toolCitationText - all tools and steps") {
+        function "toolCitationText"
+        tag "toolCitationText"
+        when {
+            params {
+                outdir = "results"
+                steps = "all"
+                tools = "glimpse1,glimpse2,stitch,quilt,beagle5,minimac4"
+                normalize = true
+                phase = true
+                remove_samples = "sample1,sample2"
+                compute_freq = true
+            }
+            function {
+                """
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert function.success },
+                { assert snapshot(function.result).match() }
+            )
+        }
+    }
 }
 
 def check_stdout(function_stdout) {

@@ -728,9 +728,9 @@ def toolCitationText() {
 
     def text_panelprep = [
         "Reference panel preparation followed several steps.",
-        params.normalize && params.remove_samples ? "The reference panel genotypes were normalized and filtered for sample removal" :
+        params.normalize && params.remove_samples ? "The reference panel genotypes were normalized and samples" + params.remove_samples + "were removed" :
             params.normalize ? "The reference panel genotypes were normalized" :
-                params.remove_samples ? "Samples were removed from the reference panel genotypes" :
+                params.remove_samples ? "Samples" + params.remove_samples + "were removed from the reference panel genotypes" :
                     "No normalization or sample removal were performed on the reference panel genotypes.",
         params.normalize || params.remove_samples ? "followed by site extraction and format conversion using BCFtools (Danecek et al. 2021).":
             "Site extraction and format conversion was done using BCFtools (Danecek et al. 2021).",
@@ -752,7 +752,7 @@ def toolCitationText() {
             tools_used.contains("stitch")     ? "STITCH (Davies et al. 2016)"      : "",
             tools_used.contains("beagle5")    ? "Beagle5 (Browning et al. 2018)"   : "",
             tools_used.contains("minimac4")   ? "Minimac4 (Das et al. 2016)"       : ""
-        ].findAll{ it != "" }.join(', ') + "."
+        ].findAll{ it -> it != "" }.join(', ') + "."
     ].join(' ').trim()
 
     def text_validate = [
@@ -788,20 +788,23 @@ def toolBibliographyText() {
     def glimpse_ref     = "<li>Rubinacci, S., Ribeiro, D.M., Hofmeister, R.J., Delaneau, O., 2021. Efficient phasing and imputation of low-coverage sequencing data using large reference panels. Nat Genet 53, 120-126. doi: <a href='https://doi.org/10.1038/s41588-020-00756-0'>10.1038/s41588-020-00756-0</a></li>"
     def multiqc_ref     = "<li>Ewels, P., Magnusson, M., Lundin, S., Käller, M., 2016. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics 32, 3047-3048. doi: <a href='https://doi.org/10.1093/bioinformatics/btw354'>10.1093/bioinformatics/btw354</a></li>"
 
-    def tools_used = params.tools ? params.tools.split(',') : []
-    def steps_used = params.steps ? params.steps.split(',') : []
+    def steps_used = params.steps != null ? params.steps.split(',') : []
+    if (steps_used.contains("all")) {
+        steps_used = ["simulate", "panelprep", "impute", "validate"]
+    }
+    def tools_used = params.tools != null && steps_used.contains("impute") ? params.tools.split(',') : []
 
     def reference_text = [
-        tools_used.contains("beagle5")  ? beagle5_ref : "",
+        tools_used.contains("beagle5")  ? beagle5_ref  : "",
         steps_used.contains("panelprep") || steps_used.contains("validate") || steps_used.contains("simulate") || tools_used.contains("glimpse") ? sambcftools_ref : "",
         tools_used.contains("minimac4") ? minimac4_ref : "",
-        tools_used.contains("stitch")   ? stitch_ref : "",
-        tools_used.contains("quilt")    ? quilt_ref : "",
-        params.compute_freq             ? vcflib_ref : "",
-        params.phase                    ? shapeit5_ref : "",
-        steps_used.contains("validate") || params.tools.split(',').contains("glimpse") ? tabix_ref : "",
+        tools_used.contains("stitch")   ? stitch_ref   : "",
+        tools_used.contains("quilt")    ? quilt_ref    : "",
+        steps_used.contains("panelprep") && params.compute_freq           ? vcflib_ref   : "",
+        steps_used.contains("panelprep") && params.phase                  ? shapeit5_ref : "",
+        steps_used.contains("validate") || tools_used.contains("glimpse") ? tabix_ref    : "",
         tools_used.contains("glimpse2") ? glimpse2_ref : "",
-        tools_used.contains("glimpse")  ? glimpse_ref : "",
+        tools_used.contains("glimpse")  ? glimpse_ref  : "",
         multiqc_ref
     ].join(' ').trim().replaceAll("[,|.] +\\.", ".")
 
