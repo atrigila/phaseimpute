@@ -1,0 +1,116 @@
+{
+    "Normalize vcf with computing frequencies after removing samples": {
+        "content": [
+            [
+                "versions.yml:md5,b82381b87b4e5030c151bbe2fa9f9b15",
+                "versions.yml:md5,bb4a2ef039eaec905ccee379094e5988",
+                "versions.yml:md5,e0f34f5e0f0ad85a215da15912c06d78",
+                "versions.yml:md5,e49001985e5cda966c98d9bd4b2aabba"
+            ],
+            [
+                [
+                    {
+                        "id": "1000GP",
+                        "chr": "chr21"
+                    },
+                    "1000GP_chr21.vcf.gz",
+                    "1000GP_chr21.vcf.gz.tbi"
+                ],
+                [
+                    {
+                        "id": "1000GP",
+                        "chr": "chr22"
+                    },
+                    "1000GP_chr22.vcf.gz",
+                    "1000GP_chr22.vcf.gz.tbi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr21], sampleCount=3190, variantCount=836, phased=true, phasedAutodetect=true]",
+                "VcfFile [chromosomes=[chr22], sampleCount=3190, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                3190,
+                3190
+            ],
+            [
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_NORM": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_VIEW": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:VCFLIB_VCFFIXUP": {
+                        "vcflib": "1.0.14"
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-07-08T15:24:15.52854831"
+    },
+    "Normalize vcf without computing frequencies nor removing samples": {
+        "content": [
+            [
+                "versions.yml:md5,bb4a2ef039eaec905ccee379094e5988",
+                "versions.yml:md5,e0f34f5e0f0ad85a215da15912c06d78"
+            ],
+            [
+                [
+                    {
+                        "id": "1000GP",
+                        "chr": "chr21"
+                    },
+                    "1000GP_chr21_biallelic_snps.vcf.gz",
+                    "1000GP_chr21_biallelic_snps.vcf.gz.tbi"
+                ],
+                [
+                    {
+                        "id": "1000GP",
+                        "chr": "chr22"
+                    },
+                    "1000GP_chr22_biallelic_snps.vcf.gz",
+                    "1000GP_chr22_biallelic_snps.vcf.gz.tbi"
+                ]
+            ],
+            [
+                "VcfFile [chromosomes=[chr21], sampleCount=3196, variantCount=836, phased=true, phasedAutodetect=true]",
+                "VcfFile [chromosomes=[chr22], sampleCount=3196, variantCount=903, phased=true, phasedAutodetect=true]"
+            ],
+            [
+                3196,
+                3196
+            ],
+            [
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_NORM": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_VIEW": {
+                        "bcftools": 1.21
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-07-08T15:24:01.503865758"
+    }
+}

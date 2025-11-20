@@ -1,0 +1,141 @@
+{
+    "vcf_concordance_glimpse2": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "AllSamples"
+                        },
+                        "AllSamples.txt:md5,10e837d99ad7a390747962c0eed9babd"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,035008d86b5bde01b0261803e59cdc71",
+                    "versions.yml:md5,185cbca93dea56aa1c36636716a6ac89",
+                    "versions.yml:md5,7a2889705dd113cb9ca90ee77aae47a2",
+                    "versions.yml:md5,9e90d37b626a7cbf72f5aec280ca2d39",
+                    "versions.yml:md5,cb85a5c4bc22951d41b21bc660e89637",
+                    "versions.yml:md5,d2ec7fb40bc455b1804d39f920044f1c"
+                ],
+                "2": [
+                    [
+                        "NA12878.error.cal.txt.gz:md5,33c10b18d109bc6fd53fc2594e18a844"
+                    ],
+                    [
+                        "NA12878.error.grp.txt.gz:md5,36f3fc826367dc6e89e95b58d90e94eb"
+                    ],
+                    [
+                        "NA12878.rsquare.grp.txt.gz:md5,4e2d341610d908d3f78685388f7d41b8"
+                    ],
+                    [
+                        "NA12878.txt:md5,b9c53f1ad2c5fc5243ccbddb4a8b4260"
+                    ],
+                    [
+                        "NA12878.txt:md5,e7b0730fba0dc331de80ed911fcb6dcf"
+                    ],
+                    [
+                        "NA19401.error.cal.txt.gz:md5,46a6d42d469328096a66b8b172bce6d7"
+                    ],
+                    [
+                        "NA19401.error.grp.txt.gz:md5,0a37ae2f1a5ce339a798f0438d80fd82"
+                    ],
+                    [
+                        "NA19401.rsquare.grp.txt.gz:md5,8161d852ad5a77d5b83236960497cfe1"
+                    ],
+                    [
+                        "NA19401.txt:md5,efd6bd3bf0c5530f0cf9b5ad055abe49"
+                    ],
+                    [
+                        "NA19401.txt:md5,fb9ff57181626f06a1947b62ad18f97d"
+                    ]
+                ],
+                "multiqc_files": [
+                    [
+                        "NA12878.error.cal.txt.gz:md5,33c10b18d109bc6fd53fc2594e18a844"
+                    ],
+                    [
+                        "NA12878.error.grp.txt.gz:md5,36f3fc826367dc6e89e95b58d90e94eb"
+                    ],
+                    [
+                        "NA12878.rsquare.grp.txt.gz:md5,4e2d341610d908d3f78685388f7d41b8"
+                    ],
+                    [
+                        "NA12878.txt:md5,b9c53f1ad2c5fc5243ccbddb4a8b4260"
+                    ],
+                    [
+                        "NA12878.txt:md5,e7b0730fba0dc331de80ed911fcb6dcf"
+                    ],
+                    [
+                        "NA19401.error.cal.txt.gz:md5,46a6d42d469328096a66b8b172bce6d7"
+                    ],
+                    [
+                        "NA19401.error.grp.txt.gz:md5,0a37ae2f1a5ce339a798f0438d80fd82"
+                    ],
+                    [
+                        "NA19401.rsquare.grp.txt.gz:md5,8161d852ad5a77d5b83236960497cfe1"
+                    ],
+                    [
+                        "NA19401.txt:md5,efd6bd3bf0c5530f0cf9b5ad055abe49"
+                    ],
+                    [
+                        "NA19401.txt:md5,fb9ff57181626f06a1947b62ad18f97d"
+                    ]
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "AllSamples"
+                        },
+                        "AllSamples.txt:md5,10e837d99ad7a390747962c0eed9babd"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,035008d86b5bde01b0261803e59cdc71",
+                    "versions.yml:md5,185cbca93dea56aa1c36636716a6ac89",
+                    "versions.yml:md5,7a2889705dd113cb9ca90ee77aae47a2",
+                    "versions.yml:md5,9e90d37b626a7cbf72f5aec280ca2d39",
+                    "versions.yml:md5,cb85a5c4bc22951d41b21bc660e89637",
+                    "versions.yml:md5,d2ec7fb40bc455b1804d39f920044f1c"
+                ]
+            },
+            [
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:GUNZIP": {
+                        "gunzip": 1.13
+                    }
+                },
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:GAWK": {
+                        "gawk": "5.3.0"
+                    }
+                },
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:GAWK_ERROR_SPL": {
+                        "gawk": "5.3.0"
+                    }
+                },
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:GAWK_RSQUARE_SPL": {
+                        "gawk": "5.3.0"
+                    }
+                },
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:GLIMPSE2_CONCORDANCE": {
+                        "glimpse2": "2.0.0"
+                    }
+                },
+                {
+                    "VCF_CONCORDANCE_GLIMPSE2:ADDCOLUMNS": {
+                        "gawk": "5.3.0"
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-07-08T15:23:34.423394654"
+    }
+}
