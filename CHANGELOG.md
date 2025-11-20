@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#185](https://github.com/nf-core/phaseimpute/pull/185) - Fix CSV generation and check that all mentioned path files exist.
 - [#189](https://github.com/nf-core/phaseimpute/pull/189) - Set meta map id as string to avoid error when using numbers in csv files.
 - [#225](https://github.com/nf-core/phaseimpute/pull/225) - Fix `CHRCHECK` config
+- [#230](https://github.com/nf-core/phaseimpute/pull/230) - Fix `test_full` config
 
 ### `Dependencies`
 
