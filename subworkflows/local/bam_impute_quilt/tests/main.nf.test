@@ -40,13 +40,13 @@ nextflow_workflow {
                 ])
                 input[0] = ch_samples.combine(bampath).combine(Channel.of([[]]))
                 input[1] = Channel.of([
-                        [id: "1000GP", chr: "chr22"],
+                        [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
                 input[2] = Channel.of(
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16570065", "16597215"],
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16587172", "16609999"]
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
@@ -100,13 +100,13 @@ nextflow_workflow {
                 ])
                 input[0] = ch_samples.combine(bampath).combine(bamname)
                 input[1] = Channel.of([
-                        [id: "1000GP", chr: "chr22"],
+                        [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
                 input[2] = Channel.of(
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16570065", "16597215"],
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16587172", "16609999"]
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
@@ -148,13 +148,13 @@ nextflow_workflow {
                     ]
                 ])
                 input[1] = Channel.of([
-                        [id: "1000GP", chr: "chr22"],
+                        [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
                 input[2] = Channel.of(
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16570065", "16597215"],
-                    [[chr: "chr22", id: "1000GP"], "chr22", "16587172", "16609999"]
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
+                    [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
