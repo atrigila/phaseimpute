@@ -261,7 +261,7 @@ workflow PIPELINE_INITIALISATION {
             }
     } else {
         ch_posfile = ch_panel
-            .map{ metaPC, _vcf, _index -> [metaPC, [],[],[],[],[]]}
+            .map{ metaPC, _vcf, _index -> [metaPC, [], [], [], []]}
     }
 
     if (!params.steps.split(',').contains("panelprep") & !params.steps.split(',').contains("all")) {
