@@ -4,8 +4,8 @@ include { GLIMPSE2_CHUNK          } from '../../../modules/nf-core/glimpse2/chun
 workflow VCF_CHUNK_GLIMPSE {
 
     take:
-    ch_reference  // channel: [ [panel, chr], vcf, csi ]
-    ch_map        // channel  (optional): [ [chr], map ]
+    ch_reference  // channel (mandatory): [ [panel, chr], vcf, csi ]
+    ch_map        // channel (optional) : [ [panel, chr], map ]
     chunk_model   // channel : model
 
     main:
