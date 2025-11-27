@@ -11,18 +11,18 @@
             [
                 [
                     {
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "id": "all",
                         "metas": [
                             {
                                 "id": "NA12878",
-                                "panel": "1000GP",
+                                "panel_id": "1000GP",
                                 "chr": "22"
                             },
                             {
                                 "id": "NA19401",
-                                "panel": "1000GP",
+                                "panel_id": "1000GP",
                                 "chr": "22"
                             }
                         ],
@@ -64,10 +64,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:17:52.849546366"
+        "timestamp": "2025-11-27T16:31:55.332802264"
     },
     "Compute genotype likelihood with only one input": {
         "content": [
@@ -81,7 +81,7 @@
                 [
                     {
                         "id": "NA12878",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "variantcaller": "bcftools"
                     },
@@ -116,9 +116,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:18:04.489143134"
+        "timestamp": "2025-11-27T16:33:08.947295526"
     }
 }
