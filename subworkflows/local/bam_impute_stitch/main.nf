@@ -27,6 +27,7 @@ workflow BAM_IMPUTE_STITCH {
 
     // Make final channel with parameters
     ch_parameters = ch_posfile
+        .map{metaPC, posfile -> [[chr: metaPC.chr], metaPC, posfile]}
         .map { it + input_empty + rdata_empty}
         .join(ch_chromosomes)
         .map { it + k_val_params + ngen_params}
