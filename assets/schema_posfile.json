@@ -41,12 +41,12 @@
             },
             "posfile_comma": {
                 "type": "string",
-                "pattern": "^\\S+\\.(posfile)(.gz)?$",
+                "pattern": "^\\S+\\.(posfile)(_comma)?(.gz)?$",
                 "errorMessage": "Tab delimited file with chromosome, position, and reference alternative allele separated by a comma (CHROM\tPOS\tREF,ALT). Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
             },
             "posfile_nocomma": {
                 "type": "string",
-                "pattern": "^\\S+\\.(posfile)(.gz)?$",
+                "pattern": "^\\S+\\.(posfile)(_nocomma)?(.gz)?$",
                 "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele (CHROM\tPOS\tREF\tALT). Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
             }
         },
