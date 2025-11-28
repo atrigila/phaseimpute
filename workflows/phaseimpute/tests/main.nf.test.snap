@@ -409,6 +409,10 @@
                 "prep_panel/panel/1000GP_chr21_phased.vcf.gz.csi",
                 "prep_panel/panel/1000GP_chr22_phased.vcf.gz",
                 "prep_panel/panel/1000GP_chr22_phased.vcf.gz.csi",
+                "prep_panel/posfile_comma/1000GP.batchnull.chr21.posfile_comma.txt.gz",
+                "prep_panel/posfile_comma/1000GP.batchnull.chr22.posfile_comma.txt.gz",
+                "prep_panel/posfile_nocomma/1000GP.batchnull.chr21.posfile_nocomma.txt.gz",
+                "prep_panel/posfile_nocomma/1000GP.batchnull.chr22.posfile_nocomma.txt.gz",
                 "prep_panel/sites/1000GP_chr21_glimpse1_sites.vcf.gz",
                 "prep_panel/sites/1000GP_chr21_glimpse1_sites.vcf.gz.tbi",
                 "prep_panel/sites/1000GP_chr22_glimpse1_sites.vcf.gz",
@@ -419,7 +423,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-13T16:35:38.84113414"
+        "timestamp": "2025-11-28T15:26:35.849338999"
     },
     "Check test_glimpse2": {
         "content": [
@@ -473,6 +477,10 @@
                 "prep_panel/panel/658Dog_chr21_phased.vcf.gz.csi",
                 "prep_panel/panel/658Dog_chr22_phased.vcf.gz",
                 "prep_panel/panel/658Dog_chr22_phased.vcf.gz.csi",
+                "prep_panel/posfile_comma/658Dog.batchnull.chr21.posfile_comma.txt.gz",
+                "prep_panel/posfile_comma/658Dog.batchnull.chr22.posfile_comma.txt.gz",
+                "prep_panel/posfile_nocomma/658Dog.batchnull.chr21.posfile_nocomma.txt.gz",
+                "prep_panel/posfile_nocomma/658Dog.batchnull.chr22.posfile_nocomma.txt.gz",
                 "prep_panel/sites/658Dog_chr21_glimpse1_sites.vcf.gz",
                 "prep_panel/sites/658Dog_chr21_glimpse1_sites.vcf.gz.tbi",
                 "prep_panel/sites/658Dog_chr22_glimpse1_sites.vcf.gz",
@@ -504,6 +512,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-13T16:35:04.269037693"
+        "timestamp": "2025-11-28T15:23:56.009389409"
     }
 }
