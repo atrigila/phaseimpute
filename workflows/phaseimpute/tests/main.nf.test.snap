@@ -413,7 +413,7 @@
                 "prep_panel/panel/1000GP_chr21_phased.vcf.gz.csi",
                 "prep_panel/panel/1000GP_chr22_phased.vcf.gz",
                 "prep_panel/panel/1000GP_chr22_phased.vcf.gz.csi",
-                "prep_panel/posfile_comma/1000G.chr21.posfile_comma.txt.gz",
+                "prep_panel/posfile_comma/1000GP.chr21.posfile_comma.txt.gz",
                 "prep_panel/posfile_comma/1000GP.chr22.posfile_comma.txt.gz",
                 "prep_panel/posfile_nocomma/1000GP.chr21.posfile_nocomma.txt.gz",
                 "prep_panel/posfile_nocomma/1000GP.chr22.posfile_nocomma.txt.gz",
