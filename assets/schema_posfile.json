@@ -39,10 +39,15 @@
                 "pattern": "^\\S+\\.(legend)(\\.gz)?$",
                 "errorMessage": "Legend file can be provided, cannot contain spaces and must have extension '.legend' with '.gz' extension"
             },
-            "posfile": {
+            "posfile_comma": {
                 "type": "string",
                 "pattern": "^\\S+\\.(posfile)(.gz)?$",
-                "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele. Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
+                "errorMessage": "Tab delimited file with chromosome, position, and reference alternative allele separated by a comma (CHROM\tPOS\tREF,ALT). Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
+            },
+            "posfile_nocomma": {
+                "type": "string",
+                "pattern": "^\\S+\\.(posfile)(.gz)?$",
+                "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele (CHROM\tPOS\tREF\tALT). Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
             }
         },
         "required": ["panel", "chr"],

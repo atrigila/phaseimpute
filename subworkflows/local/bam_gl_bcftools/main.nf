@@ -6,7 +6,7 @@ workflow BAM_GL_BCFTOOLS {
 
     take:
     ch_bam     // channel: [ [id], bam, bai ]
-    ch_posfile // channel: [ [panel, chr], posfile]
+    ch_posfile // channel: [ [panel, chr], posfile_comma]
     ch_fasta   // channel: [ [genome], fasta, fai]
 
     main:

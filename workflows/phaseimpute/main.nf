@@ -99,7 +99,7 @@ workflow PHASEIMPUTE {
     ch_region               // channel: region to use [ [chr, region], region]
     ch_depth                // channel: depth select  [ [depth], depth ]
     ch_map                  // channel: genetic map   [ [chr], map]
-    ch_posfile              // channel: posfile       [ [id, chr], vcf, index, hap, legend, posfile]
+    ch_posfile              // channel: posfile       [ [id, chr], vcf, index, hap, legend, posfile_comma, posfile_nocomma]
     ch_chunks               // channel: chunks        [ [chr], txt]
     chunk_model             // parameter: chunk model
     ch_versions             // channel: versions of software used
@@ -237,13 +237,13 @@ workflow PHASEIMPUTE {
         )
         // Posfile
         exportCsv(
-            ch_posfile.map{ meta, vcf, index, hap, legend, posfile ->
+            ch_posfile.map{ meta, vcf, index, hap, legend, posfile_comma, posfile_nocomma ->
                 [
-                    meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend", 6:"prep_panel/posfile"],
-                    vcf, index, hap, legend, posfile
+                    meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend", 6:"prep_panel/posfile_comma", 7:"prep_panel/posfile_nocomma"],
+                    vcf, index, hap, legend, posfile_comma, posfile_nocomma
                 ]
             },
-            ["id", "chr"], "panel,chr,vcf,index,hap,legend, posfile",
+            ["id", "chr"], "panel,chr,vcf,index,hap,legend, posfile_comma, posfile_nocomma",
             "posfile.csv", "prep_panel/csv"
         )
         // Chunks
@@ -312,8 +312,8 @@ workflow PHASEIMPUTE {
             GL_GLIMPSE1(
                 ch_input_type.bam,
                 ch_posfile.map{
-                    meta, _site, _site_index, _hap, _legend, posfile -> [
-                        meta, posfile
+                    meta, _site, _site_index, _hap, _legend, posfile_comma, _posfile_nocomma -> [
+                        meta, posfile_comma
                     ]
                 },
                 ch_fasta
@@ -374,8 +374,8 @@ workflow PHASEIMPUTE {
             BAM_IMPUTE_STITCH (
                 ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{
-                    meta, _site, _site_index, _hap, _legend, posfile -> [
-                        meta, posfile
+                    meta, _site, _site_index, _hap, _legend, _posfile_comma, posfile_nocomma -> [
+                        meta, posfile_nocomma
                     ]
                 },
                 ch_region,
@@ -404,7 +404,7 @@ workflow PHASEIMPUTE {
             BAM_IMPUTE_QUILT(
                 ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{
-                    meta, _site, _site_index, hap, legend, _posfile -> [
+                    meta, _site, _site_index, hap, legend, _posfile_comma, _posfile_nocomma -> [
                         meta, hap, legend
                     ]
                 },
@@ -461,7 +461,7 @@ workflow PHASEIMPUTE {
                 ch_panel_phased,
                 ch_map,
                 ch_posfile.map{
-                    meta, site, site_index, _hap, _legend, _posfile -> [
+                    meta, site, site_index, _hap, _legend, _posfile_comma, _posfile_nocomma -> [
                         meta, site, site_index
                     ]
                 }
@@ -510,7 +510,7 @@ workflow PHASEIMPUTE {
     if (params.steps.split(',').contains("validate") || params.steps.split(',').contains("all")) {
         // Concatenate all sites into a single VCF (for GLIMPSE concordance)
         CONCAT_PANEL(ch_posfile.map{
-            meta, site, site_index, _hap, _legend, _posfile -> [
+            meta, site, site_index, _hap, _legend, _posfile_comma, _posfile_nocomma -> [
                 meta, site, site_index
             ]
         })
@@ -545,8 +545,8 @@ workflow PHASEIMPUTE {
         GL_TRUTH(
             ch_truth.bam.map { [it[0], it[1], it[2]] },
             ch_posfile.map{
-                meta, _site, _site_index, _hap, _legend, posfile -> [
-                    meta, posfile
+                meta, _site, _site_index, _hap, _legend, posfile_comma, _posfile_nocomma -> [
+                    meta, posfile_comma
                 ]
             },
             ch_fasta
