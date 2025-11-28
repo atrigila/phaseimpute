@@ -41,8 +41,8 @@
             },
             "posfile": {
                 "type": "string",
-                "pattern": "^\\S+\\.(posfile)$",
-                "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele. Cannot contain spaces and must have extension 'posfile' extension"
+                "pattern": "^\\S+\\.(posfile)(.gz)?$",
+                "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele. Cannot contain spaces and must have extension 'posfile' and optionnaly compressed with tabix"
             }
         },
         "required": ["panel", "chr"],

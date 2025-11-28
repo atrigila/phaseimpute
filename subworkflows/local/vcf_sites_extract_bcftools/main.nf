@@ -1,6 +1,7 @@
 include { BCFTOOLS_CONVERT              } from '../../../modules/nf-core/bcftools/convert'
 include { BCFTOOLS_VIEW                 } from '../../../modules/nf-core/bcftools/view'
 include { GAWK                          } from '../../../modules/nf-core/gawk'
+include { TABIX_BGZIP                   } from '../../../modules/nf-core/tabix/bgzip'
 
 workflow VCF_SITES_EXTRACT_BCFTOOLS {
     take:
@@ -24,12 +25,16 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
     GAWK(BCFTOOLS_CONVERT.out.legend, [], false)
     ch_versions = ch_versions.mix(GAWK.out.versions.first())
 
+    // Compress TSV
+    TABIX_BGZIP(GAWK.out.output)
+    ch_versions = ch_versions.mix(TABIX_BGZIP.out.versions.first())
+
     // Join extracted sites and index
     ch_posfile = BCFTOOLS_VIEW.out.vcf
         .join(BCFTOOLS_VIEW.out.tbi)
         .join(BCFTOOLS_CONVERT.out.hap)
         .join(BCFTOOLS_CONVERT.out.legend)
-        .join(GAWK.out.output)
+        .join(TABIX_BGZIP.out.output)
 
     emit:
     posfile       = ch_posfile          // channel: [ [id, chr], vcf, csi, hap, legend, posfile ]

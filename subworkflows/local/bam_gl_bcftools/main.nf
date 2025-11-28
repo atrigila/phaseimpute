@@ -1,5 +1,3 @@
-include { GAWK                      } from '../../../modules/nf-core/gawk'
-include { TABIX_BGZIP               } from '../../../modules/nf-core/tabix/bgzip'
 include { BCFTOOLS_MPILEUP          } from '../../../modules/nf-core/bcftools/mpileup'
 include { BCFTOOLS_MERGE            } from '../../../modules/nf-core/bcftools/merge'
 include { BCFTOOLS_ANNOTATE         } from '../../../modules/nf-core/bcftools/annotate'
