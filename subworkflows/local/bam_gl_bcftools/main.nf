@@ -8,7 +8,7 @@ workflow BAM_GL_BCFTOOLS {
 
     take:
     ch_bam     // channel: [ [id], bam, bai ]
-    ch_posfile // channel: [ [panel, chr], legend]
+    ch_posfile // channel: [ [panel, chr], posfile]
     ch_fasta   // channel: [ [genome], fasta, fai]
 
     main:
@@ -16,16 +16,8 @@ workflow BAM_GL_BCFTOOLS {
     ch_versions      = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
-    // Convert legend to TSV with ','
-    GAWK(ch_posfile, [], false)
-    ch_versions = ch_versions.mix(GAWK.out.versions.first())
-
-    // Compress TSV
-    TABIX_BGZIP(GAWK.out.output)
-    ch_versions = ch_versions.mix(TABIX_BGZIP.out.versions.first())
-
     ch_mpileup = ch_bam
-        .combine(TABIX_BGZIP.out.output)
+        .combine(ch_posfile)
         .map{metaI, bam, _bai, metaPC, tsv ->
                 [metaI + ["panel": metaPC.id, "chr": metaPC.chr], bam, tsv]
         }

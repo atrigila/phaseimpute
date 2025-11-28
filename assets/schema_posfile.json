@@ -38,6 +38,11 @@
                 "type": "string",
                 "pattern": "^\\S+\\.(legend)(\\.gz)?$",
                 "errorMessage": "Legend file can be provided, cannot contain spaces and must have extension '.legend' with '.gz' extension"
+            },
+            "posfile": {
+                "type": "string",
+                "pattern": "^\\S+\\.(posfile)$",
+                "errorMessage": "Tab delimited file with chromosome, position, reference and alternative allele. Cannot contain spaces and must have extension 'posfile' extension"
             }
         },
         "required": ["panel", "chr"],

@@ -255,11 +255,11 @@ workflow PIPELINE_INITIALISATION {
     if (params.posfile) {
         ch_posfile = Channel // ["meta", "vcf", "index", "hap", "legend"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
-            .map { meta, vcf, index, hap, legend ->
-                [ meta + [id:meta.id.toString()], vcf, index, hap, legend ]
+            .map { meta, vcf, index, hap, legend, posfile ->
+                [ meta + [id:meta.id.toString()], vcf, index, hap, legend, posfile ]
             }
     } else {
-        ch_posfile = Channel.of([[],[],[],[],[]])
+        ch_posfile = Channel.of([[],[],[],[],[], []])
     }
 
     if (!params.steps.split(',').contains("panelprep") & !params.steps.split(',').contains("all")) {
@@ -331,11 +331,11 @@ workflow PIPELINE_INITIALISATION {
 
     ch_posfile = ch_posfile
         .combine(ch_regions.collect{ it[0]["chr"] }.toList())
-        .filter { meta, _vcf, _index, _hap, _legend, chrs ->
+        .filter { meta, _vcf, _index, _hap, _legend, _posfile, chrs ->
             meta.chr in chrs
         }
-        .map {meta, vcf, index, hap, legend, _chrs ->
-            [meta, vcf, index, hap, legend]
+        .map {meta, vcf, index, hap, legend, posfile, _chrs ->
+            [meta, vcf, index, hap, legend, posfile]
         }
 
     // Check that all input files have the correct index
@@ -352,7 +352,7 @@ workflow PIPELINE_INITIALISATION {
     depth                = ch_depth         // [ [depth], depth ]
     regions              = ch_regions       // [ [chr, region], region ]
     gmap                 = ch_map           // [ [map], map ]
-    posfile              = ch_posfile       // [ [panel, chr], vcf, index, hap, legend ]
+    posfile              = ch_posfile       // [ [panel, chr], vcf, index, hap, legend, posfile ]
     chunks               = ch_chunks        // [ [chr], txt ]
     chunk_model          = chunk_model
     versions             = ch_versions
@@ -520,12 +520,12 @@ def validateInputBatchTools(ch_input, batch_size, extension, tools) {
 //
 def validatePosfileTools(ch_posfile, tools, steps){
     ch_posfile
-        .map{ _meta, vcf, index, hap, legend ->
+        .map{ _meta, vcf, index, hap, legend, posfile ->
             if (tools.contains("glimpse1")) {
                 assert legend : "Glimpse1 tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
             }
             if (tools.contains("stitch")) {
-                assert legend : "Stitch tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
+                assert posfile : "Stitch tool needs a posfile file provided in the posfile. This file can be created through the panelprep step."
             }
             if (tools.contains("quilt")) {
                 assert legend : "Quilt tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
