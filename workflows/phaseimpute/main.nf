@@ -232,7 +232,7 @@ workflow PHASEIMPUTE {
             ch_panel_phased.map{ meta, vcf, index ->
                 [meta, [2:"prep_panel/panel", 3:"prep_panel/panel"], vcf, index]
             },
-            ["id", "chr"], "panel,chr,vcf,index",
+            ["panel_id", "chr"], "panel,chr,vcf,index",
             "panel.csv", "prep_panel/csv"
         )
         // Posfile
@@ -240,15 +240,15 @@ workflow PHASEIMPUTE {
             ch_posfile.map{ meta, vcf, index, hap, legend ->
                 [meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend"], vcf, index, hap, legend]
             },
-            ["id", "chr"], "panel,chr,vcf,index,hap,legend",
+            ["panel_id", "chr"], "panel,chr,vcf,index,hap,legend",
             "posfile.csv", "prep_panel/csv"
         )
         // Chunks
         exportCsv(
             VCF_CHUNK_GLIMPSE.out.chunks.map{ meta, file ->
                 [meta, [2:"prep_panel/chunks/glimpse1"], file]
-            },
-            ["id", "chr"], "panel,chr,file",
+            }.view(),
+            ["panel_id", "chr"], "panel,chr,file",
             "chunks_glimpse1.csv", "prep_panel/csv"
         )
     }
