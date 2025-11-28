@@ -50,7 +50,8 @@ nextflow_workflow {
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
-                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true)
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)
                 ]).collect()
                 """
             }
@@ -110,7 +111,8 @@ nextflow_workflow {
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
-                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true)
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)
                 ]).collect()
                 """
             }
@@ -158,7 +160,8 @@ nextflow_workflow {
                 )
                 input[3] = Channel.of([
                     [id: "GRCh38"],
-                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true)
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
+                    file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)
                 ]).collect()
                 """
             }
