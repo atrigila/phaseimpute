@@ -2,49 +2,95 @@
     "Impute with stitch two individuals with bamlist and no renaming": {
         "content": [
             [
-                
+                "versions.yml:md5,6f24e95192f2dde0f16d27dfe922b651",
+                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2"
             ],
             [
-                
+                [
+                    {
+                        "id": "allid",
+                        "chr": "chr22",
+                        "panel": "1000GP",
+                        "tools": "stitch"
+                    },
+                    "allid.stitch.vcf.gz",
+                    "allid.stitch.vcf.gz.tbi"
+                ]
             ],
             [
-                
+                "VcfFile [chromosomes=[chr22], sampleCount=2, variantCount=903, phased=false, phasedAutodetect=false]"
             ],
             [
-                
+                [
+                    "NA12878",
+                    "NA19401"
+                ]
             ],
             [
-                
+                {
+                    "BAM_IMPUTE_STITCH:BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:STITCH": {
+                        "r-base": "4.4.2",
+                        "r-stitch": "1.7.3"
+                    }
+                }
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-28T14:56:33.971399893"
+        "timestamp": "2025-11-28T16:03:09.018690896"
     },
     "Impute with stitch two individuals with bamlist and renaming": {
         "content": [
             [
-                
+                "versions.yml:md5,6f24e95192f2dde0f16d27dfe922b651",
+                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2"
             ],
             [
-                
+                [
+                    {
+                        "id": "allid",
+                        "chr": "chr22",
+                        "panel": "1000GP",
+                        "tools": "stitch"
+                    },
+                    "allid.stitch.vcf.gz",
+                    "allid.stitch.vcf.gz.tbi"
+                ]
             ],
             [
-                
+                "VcfFile [chromosomes=[chr22], sampleCount=2, variantCount=903, phased=false, phasedAutodetect=false]"
             ],
             [
-                
+                [
+                    "MySample1",
+                    "MySample2"
+                ]
             ],
             [
-                
+                {
+                    "BAM_IMPUTE_STITCH:BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    }
+                },
+                {
+                    "BAM_IMPUTE_STITCH:STITCH": {
+                        "r-base": "4.4.2",
+                        "r-stitch": "1.7.3"
+                    }
+                }
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-28T14:56:26.717213542"
+        "timestamp": "2025-11-28T16:02:47.837605207"
     }
 }
