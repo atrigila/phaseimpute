@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#199](https://github.com/nf-core/phaseimpute/pull/199) - Update all modules to latest nf-core versions.
 - [#201](https://github.com/nf-core/phaseimpute/pull/201) - Update TEMPLATE to nf-core tools version 3.3.2.
 - [#209](https://github.com/nf-core/phaseimpute/pull/209) - Update TEMPLATE to nf-core tools version 3.4.1.
+- [#232](https://github.com/nf-core/phaseimpute/pull/232) - Make posfile generated in the panelprep step.
 
 ### `Fixed`
 
