@@ -5,7 +5,7 @@ include { BCFTOOLS_INDEX       } from '../../../modules/nf-core/bcftools/index'
 workflow BAM_IMPUTE_STITCH {
 
     take:
-    ch_input        // channel:   [ [id], [bam], [bai], bamlist ]
+    ch_input        // channel:   [ [id], [bam], [bai], bampaths, bamnames ]
     ch_posfile      // channel:   [ [panel, chr], legend ]
     ch_region       // channel:   [ [chr, region], region ]
     ch_fasta        // channel:   [ [genome], fa, fai ]
@@ -23,8 +23,8 @@ workflow BAM_IMPUTE_STITCH {
     ngen_params             = params.ngen
 
     // Transform posfile to TSV with ','
-    GAWK(ch_posfile, [])
-    ch_versions = ch_versions.mix(GAWK.out.versions)
+    GAWK(ch_posfile, [], false)
+    ch_versions = ch_versions.mix(GAWK.out.versions.first())
 
     // Get chromosomes of posfile
     ch_posfile = GAWK.out.output
@@ -46,19 +46,19 @@ workflow BAM_IMPUTE_STITCH {
     ch_bam_params = ch_input // Add chr to meta map
         .combine(ch_parameters)
         .map{
-            metaI, bam, bai, bamlist, metaPC, posfile, input, rdata, chr, k_val, ngen ->
+            metaI, bam, bai, bampath, bamname, metaPC, posfile, input, rdata, chr, k_val, ngen ->
             [
                 metaI + [chr: metaPC.chr, panel:metaPC.id],
-                bam, bai, bamlist, posfile, input, rdata, chr, k_val, ngen
+                bam, bai, bampath, bamname, posfile, input, rdata, chr, k_val, ngen
             ]
         }
 
     STITCH( ch_bam_params, ch_fasta, seed )
-    ch_versions = ch_versions.mix(STITCH.out.versions)
+    ch_versions = ch_versions.mix(STITCH.out.versions.first())
 
     // Index imputed annotated VCF
     BCFTOOLS_INDEX(STITCH.out.vcf)
-    ch_versions = ch_versions.mix(BCFTOOLS_INDEX.out.versions)
+    ch_versions = ch_versions.mix(BCFTOOLS_INDEX.out.versions.first())
 
     // Join VCFs and TBIs
     ch_vcf_tbi = STITCH.out.vcf

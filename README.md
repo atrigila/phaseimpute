@@ -5,42 +5,44 @@
   </picture>
 </h1>
 
-**Multi-step pipeline dedicated to genetic imputation from simulation to validation**
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/nf-core/phaseimpute)
+[![GitHub Actions CI Status](https://github.com/nf-core/phaseimpute/actions/workflows/nf-test.yml/badge.svg)](https://github.com/nf-core/phaseimpute/actions/workflows/nf-test.yml)
+[![GitHub Actions Linting Status](https://github.com/nf-core/phaseimpute/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/phaseimpute/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/phaseimpute/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.14329225-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.14329225)
+[![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
-[![GitHub Actions CI Status](https://github.com/nf-core/phaseimpute/actions/workflows/ci.yml/badge.svg)](https://github.com/nf-core/phaseimpute/actions/workflows/ci.yml)
-[![GitHub Actions Linting Status](https://github.com/nf-core/phaseimpute/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/phaseimpute/actions/workflows/linting.yml) [![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/phaseimpute/results) [![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.14329225-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.14329225) [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
-[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A524.04.2-23aa62.svg)](https://www.nextflow.io/)
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.04.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.1-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.1)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 [![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/nf-core/phaseimpute)
 
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23phaseimpute-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/phaseimpute) [![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core) [![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core) [![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
+[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23phaseimpute-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/phaseimpute)[![Follow on Bluesky](https://img.shields.io/badge/bluesky-%40nf__core-1185fe?labelColor=000000&logo=bluesky)](https://bsky.app/profile/nf-co.re)[![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
 ## Introduction
 
 **nf-core/phaseimpute** is a bioinformatics pipeline to phase and impute genetic data.
 
-<img src="docs/images/metro/MetroMap_animated.svg" alt="metromap"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/metro/MetroMap_animated_dark.svg">
+  <img src="docs/images/metro/MetroMap_animated.svg" alt="metromap"/>
+</picture>
 
 The whole pipeline consists of five main steps, each of which can be run separately and independently. Users are not required to run all steps sequentially and can select specific steps based on their needs:
 
 1. **QC: Chromosome Name Check**: Ensures compatibility by validating that all expected contigs are present in the variant and alignment files.
 
 2. **Simulation (`--simulate`)**: Generates artificial datasets by downsampling high-density data to simulate low-pass genetic information. This enables the comparison of imputation results against a high-quality dataset (truth set). Simulations may include:
-
    - **Low-pass data generation** by downsampling BAM or CRAM files with [`samtools view -s`](https://www.htslib.org/doc/samtools-view.html) at different depths.
 
 3. **Panel Preparation (`--panelprep`)**: Prepares the reference panel through phasing, quality control, variant filtering, and annotation. Key processes include:
-
    - **Normalization** of the reference panel to retain essential variants.
    - **Phasing** of haplotypes in the reference panel using [Shapeit5](https://odelaneau.github.io/shapeit5/).
    - **Chunking** of the reference panel into specific regions across chromosomes.
    - **Position Extraction** for targeted imputation sites.
 
 4. **Imputation (`--impute`)**: This is the primary step, where genotypes in the target dataset are imputed using the prepared reference panel. The main steps are:
-
-   - **Imputation** of the target dataset using tools like [Glimpse1](https://odelaneau.github.io/GLIMPSE/glimpse1/index.html), [Glimpse2](https://odelaneau.github.io/GLIMPSE/), [Stitch](https://github.com/rwdavies/stitch), or [Quilt](https://github.com/rwdavies/QUILT).
+   - **Imputation** of the target dataset using tools like [Glimpse1](https://odelaneau.github.io/GLIMPSE/glimpse1/index.html), [Glimpse2](https://odelaneau.github.io/GLIMPSE/), [Stitch](https://github.com/rwdavies/stitch), [Quilt](https://github.com/rwdavies/QUILT), [Beagle5](https://faculty.washington.edu/browning/beagle/beagle.html) or [Minimac4](https://github.com/statgen/Minimac4).
    - **Ligation** of imputed chunks to produce a final VCF file per sample, with all chromosomes unified.
 
 5. **Validation (`--validate`)**: Assesses imputation accuracy by comparing the imputed dataset to a truth dataset. This step leverages the [Glimpse2](https://odelaneau.github.io/GLIMPSE/) concordance process to summarize differences between two VCF files.
@@ -100,6 +102,7 @@ We thank the following people for their extensive assistance in the development 
 - Eugenia Fontecha
 - Matias Romero Victorica
 - Hemanoel Passarelli
+- Gaspard Ichas
 
 ## Contributions and Support
 
@@ -108,8 +111,6 @@ If you would like to contribute to this pipeline, please see the [contributing g
 For further information or help, don't hesitate to get in touch on the [Slack `#phaseimpute` channel](https://nfcore.slack.com/channels/phaseimpute) (you can join with [this invite](https://nf-co.re/join/slack)).
 
 ## Citations
-
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
 
 If you use nf-core/phaseimpute for your analysis, please cite it using the following doi: [10.5281/zenodo.14329225](https://doi.org/10.5281/zenodo.14329225)
 

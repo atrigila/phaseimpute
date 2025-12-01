@@ -166,13 +166,18 @@ work                # Directory containing the nextflow working files
 
 To facilitate multiple runs of the pipeline with consistent settings without specifying each parameter in the command line, you can use a parameter file. This allows for setting parameters once and reusing them across different executions.
 
-You can provide pipeline settings in a `yaml` or `json` file, which can be specified using the `-params-file` option:
+Pipeline settings can be provided in a `yaml` or `json` file via `-params-file <file>`.
+
+> [!WARNING]
+> Do not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for [tuning process resource specifications](https://nf-co.re/docs/usage/configuration#tuning-workflow-resources), other infrastructural tweaks (such as output directories), or module arguments (args).
+
+The above pipeline run specified with a params file in yaml format:
 
 ```bash
 nextflow run nf-core/phaseimpute -profile docker -params-file params.yaml
 ```
 
-Example of a `params.yaml` file:
+with:
 
 ```yaml title="params.yaml"
 input: './samplesheet.csv'
@@ -195,6 +200,8 @@ The different tests profiles are:
 - `test_glimpse2`: A profile to evaluate the imputation step with the `glimpse2` tool.
 - `test_quilt`: A profile to evaluate the imputation step with the `quilt` tool.
 - `test_stitch`: A profile to evaluate the imputation step with the `stitch` tool.
+- `test_beagle5`: A profile to evaluate the imputation step with the `beagle5` tool.
+- `test_minimac4`: A profile to evaluate the imputation step with the `minimac4` tool.
 - `test_panelprep`: A profile to evaluate the panel preparation step.
 - `test_sim`: A profile to evaluate the simulation step.
 - `test_validate`: A profile to evaluate the validation step.
@@ -289,8 +296,7 @@ For starting from the imputation steps, the required flags are:
 - `--steps impute`
 - `--input input.csv`: The samplesheet containing the input sample files in `bam`, `cram` or `vcf`, `bcf` format.
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, quilt, stitch]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
-
+- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5, minimac4]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
   - `--chunks chunks.csv`: A samplesheet containing chunks per chromosome. These are produced by `--steps panelprep` using `GLIMPSE1`.
   - `--posfile posfile.csv`: A samplesheet containing a `.legend.gz` file with the list of positions to genotype per chromosome. These are required by tools ( QUILT/STITCH/GLIMPSE1). It can also contain the `hap.gz` files (required by QUILT). The posfile can be generated with `--steps panelprep`.
   - `--panel panel.csv`: A samplesheet containing the post-processed reference panel VCF (required by GLIMPSE1, GLIMPSE2). These files can be obtained with `--steps panelprep`.
@@ -303,11 +309,14 @@ For starting from the imputation steps, the required flags are:
 | `GLIMPSE2` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ❌          |
 | `QUILT`    | ✅               | ✅ ²      | ✅                      | ❌        | ✅         | ✅ ⁴        |
 | `STITCH`   | ✅               | ✅ ²      | ✅                      | ❌        | ❌         | ✅ ³        |
+| `BEAGLE5`  | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ❌          |
+| `MINIMAC4` | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ✅ ⁵        |
 
 > ¹ Alignment files as well as variant calling format (i.e. BAM, CRAM, VCF or BCF)
 > ² Alignment files only (i.e. BAM or CRAM)
-> ³ `QUILT`: Should be a CSV with columns [panel id, chr, hap, legend]
-> ⁴ `GLIMPSE1 and STITCH`: Should be a CSV with columns [panel id, chr, legend]
+> ³ `GLIMPSE1` and `STITCH`: Should be a CSV with columns [panel id, chr, legend]
+> ⁴ `QUILT`: Should be a CSV with columns [panel id, chr, hap, legend]
+> ⁵ `MINIMAC4`: Optionally, a VCF with its index can be provided for more control over the imputed positions. Should be a CSV with columns [panel id, chr, vcf, index]
 
 Here is a representation on how the input files will be processed depending on the input files type and the selected imputation tool.
 
@@ -328,12 +337,14 @@ When the number of samples exceeds the batch size, the pipeline will split the s
 
 To summarize:
 
-- If you have Variant Calling Format (VCF) files, join them into a single file and choose either GLIMPSE1 or GLIMPSE2.
+- If you have Variant Calling Format (VCF) files, join them into a single file and choose either GLIMPSE1, GLIMPSE2, BEAGLE5 or MINIMAC4.
+  - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
+  - GLIMPSE2 should not do target-to-target imputation.
 - If you have alignment files (e.g., BAM or CRAM), all tools are available, and processing will occur in `batch_size`:
   - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
   - GLIMPSE2 and QUILT can process samples in separate batches.
 
-## Imputation tools `--steps impute --tools [glimpse1, glimpse2, quilt, stitch]`
+## Imputation tools `--steps impute --tools [glimpse1, glimpse2, quilt, stitch, beagle5, minimac4]`
 
 You can choose different software to perform the imputation. In the following sections, the typical commands for running the pipeline with each software are included. Multiple tools can be selected by separating them with a comma (eg. `--tools glimpse1,quilt`).
 
@@ -407,7 +418,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --steps impute \
     --posfile posfile.csv  \
-    --tool stitch \
+    --tools stitch \
     --outdir results \
     --genome GRCh37 \
     -profile docker
@@ -431,14 +442,17 @@ bcftools convert --haplegendsample ${vcf}
 
 ### GLIMPSE1
 
-[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels. Glimpse1 works with alignment (i.e. BAM or CRAM) as well as variant (i.e. VCF or BCF) files as input. This is an example command to run this tool from the `--steps impute`:
+[GLIMPSE1](https://github.com/odelaneau/GLIMPSE/tree/glimpse1) is a set of tools for phasing and imputation for low-coverage sequencing datasets. Recommended for many samples at >0.5x coverage and small reference panels.
+Glimpse1 works with variant (i.e. VCF or BCF) files as input.
+Alignment (i.e. BAM or CRAM) can also be used and the variants will be called using `bcftools mpileup` to convert to a VCF format.
+This is an example command to run this tool from the `--steps impute`:
 
 ```bash
 nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool glimpse1 \
+    --tools glimpse1 \
     --outdir results \
     --genome GRCh37 \
     -profile docker \
@@ -464,7 +478,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool glimpse2 \
+    --tools glimpse2 \
     --outdir results \
     --chunks chunks.csv \
     --genome GRCh37 \
@@ -472,6 +486,52 @@ nextflow run nf-core/phaseimpute \
 ```
 
 Make sure the CSV file with the input panel is the output from `--step panelprep` or has been previously prepared.
+
+### BEAGLE5
+
+[BEAGLE5](https://faculty.washington.edu/browning/beagle/beagle.html) is a software package for analyzing large-scale genetic
+data sets with hundreds of thousands of markers genotyped on thousands of samples.
+BEAGLE can phase genotype data and perform genotype imputation but only on genotyped data.
+
+```bash
+nextflow run nf-core/phaseimpute \
+    --input samplesheet.csv \
+    --panel samplesheet_reference.csv \
+    --steps impute \
+    --tools beagle5 \
+    --outdir results \
+    --genome GRCh37 \
+    -profile docker
+```
+
+The CSV file provided in `--panel` must be prepared with `--steps panelprep` and must contain four columns [panel, chr, vcf, index].
+
+### MINIMAC4
+
+[MINIMAC4](https://github.com/statgen/Minimac4) is a low memory, computationally efficient implementation of the MaCH algorithm for genotype imputation. It is designed to work on phased haplotypes and can handle very large reference panels.
+
+```bash
+nextflow run nf-core/phaseimpute \
+    --input samplesheet.csv \
+    --panel samplesheet_reference.csv \
+    --steps impute \
+    --tools minimac4 \
+    --outdir results \
+    --genome GRCh37 \
+    -profile docker \
+    --posfile posfile.csv
+```
+
+The CSV file can be provided in `--posfile` with four columns [panel, chr, vcf, index]. This file is used to select which position to impute. See [Posfile section](#samplesheet-posfile) for more information.
+
+```console title="posfile.csv"
+panel,chr,vcf,index
+1000GP,chr22,1000GP.s.norel_chr22.sites.vcf.gz,1000GP.s.norel_chr22.sites.vcf.gz.csi
+```
+
+The CSV file provided in `--panel` must be prepared with `--steps panelprep` and must contain four columns [panel, chr, vcf, index].
+
+MINIMAC4 works only with variant calling format files (VCF or BCF) as input.
 
 ## Start with validation `--steps validate`
 
@@ -515,7 +575,7 @@ This mode runs all the previous steps. This requires several flags:
 - `--input input.csv`: The samplesheet containing the input sample files in `bam` or `cram` format.
 - `--depth`: The final depth of the input file [default: 1].
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, glimpse2, quilt, stitch]`: A selection of one or more of the available imputation tools.
+- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5]`: A selection of one or more of the available imputation tools.
 - `--panel panel.csv`: The samplesheet containing the reference panel files in `vcf.gz` format.
 - `--remove_samples`: (optional) A comma-separated list of samples to remove from the reference.
 - `--input_truth input_truth.csv`: The samplesheet containing the truth VCF files in `vcf` format.
@@ -546,7 +606,7 @@ First, go to the [nf-core/phaseimpute releases page](https://github.com/nf-core/
 
 This version number will be logged in reports when you run the pipeline, so that you'll know what you used when you look back in the future. For example, at the bottom of the MultiQC reports.
 
-To further assist in reproducibility, you can use share and re-use [parameter files](#running-the-pipeline) to repeat pipeline runs with the same settings without having to write out a command with every single parameter.
+To further assist in reproducibility, you can use share and reuse [parameter files](#running-the-pipeline) to repeat pipeline runs with the same settings without having to write out a command with every single parameter.
 
 > [!TIP]
 > If you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles.
@@ -554,7 +614,7 @@ To further assist in reproducibility, you can use share and re-use [parameter fi
 ## Core Nextflow arguments
 
 > [!NOTE]
-> These options are part of Nextflow and use a _single_ hyphen (pipeline parameters use a double-hyphen).
+> These options are part of Nextflow and use a _single_ hyphen (pipeline parameters use a double-hyphen)
 
 ### `-profile`
 
@@ -565,12 +625,12 @@ Several generic profiles are bundled with the pipeline which instruct the pipeli
 > [!IMPORTANT]
 > We highly recommend the use of Docker or Singularity containers for full pipeline reproducibility, however when this is not possible, Conda is also supported.
 
-The pipeline also dynamically loads configurations from [https://github.com/nf-core/configs](https://github.com/nf-core/configs) when it runs, making multiple config profiles for various institutional clusters available at run time. For more information and to check if your system is suported, please see the [nf-core/configs documentation](https://github.com/nf-core/configs#documentation).
+The pipeline also dynamically loads configurations from [https://github.com/nf-core/configs](https://github.com/nf-core/configs) when it runs, making multiple config profiles for various institutional clusters available at run time. For more information and to check if your system is supported, please see the [nf-core/configs documentation](https://github.com/nf-core/configs#documentation).
 
 Note that multiple profiles can be loaded, for example: `-profile test,docker` - the order of arguments is important!
 They are loaded in sequence, so later profiles can overwrite earlier profiles.
 
-If `-profile` is not specified, the pipeline will run locally and expect all software to be installed and available on the `PATH`. This is _not_ recommended, since it can lead to different results on different machines dependent on the computer enviroment.
+If `-profile` is not specified, the pipeline will run locally and expect all software to be installed and available on the `PATH`. This is _not_ recommended, since it can lead to different results on different machines dependent on the computer environment.
 
 - `test`
   - A profile with a complete configuration for automated testing
@@ -584,7 +644,7 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
 - `shifter`
   - A generic configuration profile to be used with [Shifter](https://nersc.gitlab.io/development/shifter/how-to-use/)
 - `charliecloud`
-  - A generic configuration profile to be used with [Charliecloud](https://hpc.github.io/charliecloud/)
+  - A generic configuration profile to be used with [Charliecloud](https://charliecloud.io/)
 - `apptainer`
   - A generic configuration profile to be used with [Apptainer](https://apptainer.org/)
 - `wave`
@@ -606,7 +666,7 @@ Specify the path to a specific config file (this is a core Nextflow command). Se
 
 ### Resource requests
 
-Whilst the default requirements set within the pipeline will hopefully work for most people and with most input data, you may find that you want to customise the compute resources that the pipeline requests. Each steps in the pipeline has a default set of requirements for number of CPUs, memory and time. For most pipeline steps, if the job exits with any of the error codes specified [here](https://github.com/nf-core/rnaseq/blob/4c27ef5610c87db00c3c5a3eed10b1d161abf575/conf/base.config#L18) it will automatically be resubmitted with higher resources request (2 x original, then 3 x original). If it still fails after the third attempt then the pipeline execution is stopped.
+Whilst the default requirements set within the pipeline will hopefully work for most people and with most input data, you may find that you want to customise the compute resources that the pipeline requests. Each step in the pipeline has a default set of requirements for number of CPUs, memory and time. For most of the pipeline steps, if the job exits with any of the error codes specified [here](https://github.com/nf-core/rnaseq/blob/4c27ef5610c87db00c3c5a3eed10b1d161abf575/conf/base.config#L18) it will automatically be resubmitted with higher resources request (2 x original, then 3 x original). If it still fails after the third attempt then the pipeline execution is stopped.
 
 To change the resource requests, please see the [max resources](https://nf-co.re/docs/usage/configuration#max-resources) and [tuning workflow resources](https://nf-co.re/docs/usage/configuration#tuning-workflow-resources) section of the nf-core website.
 

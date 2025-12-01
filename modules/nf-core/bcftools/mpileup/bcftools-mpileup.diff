@@ -1,5 +1,5 @@
-Changes in module 'nf-core/bcftools/mpileup'
-'modules/nf-core/bcftools/mpileup/environment.yml' is unchanged
+Changes in component 'nf-core/bcftools/mpileup'
+'modules/nf-core/bcftools/mpileup/meta.yml' is unchanged
 Changes in 'bcftools/mpileup/main.nf':
 --- modules/nf-core/bcftools/mpileup/main.nf
 +++ modules/nf-core/bcftools/mpileup/main.nf
@@ -14,17 +14,16 @@ Changes in 'bcftools/mpileup/main.nf':
      output:
 @@ -40,7 +40,7 @@
          $bam \\
-         $intervals \\
+         $intervals_cmd \\
          $mpileup \\
 -        | bcftools call --output-type v $args2 \\
-+        | bcftools call --output-type v $args2 $intervals \\
++        | bcftools call --output-type v $args2 $intervals_cmd\\
          | bcftools reheader --samples sample_name.list \\
          | bcftools view --output-file ${prefix}.vcf.gz --output-type z $args3
  
 
-'modules/nf-core/bcftools/mpileup/meta.yml' is unchanged
+'modules/nf-core/bcftools/mpileup/environment.yml' is unchanged
 'modules/nf-core/bcftools/mpileup/tests/main.nf.test' is unchanged
 'modules/nf-core/bcftools/mpileup/tests/main.nf.test.snap' is unchanged
 'modules/nf-core/bcftools/mpileup/tests/nextflow.config' is unchanged
-'modules/nf-core/bcftools/mpileup/tests/tags.yml' is unchanged
 ************************************************************

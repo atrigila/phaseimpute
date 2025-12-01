@@ -5,40 +5,13 @@ nextflow_pipeline {
     tag "pipeline"
     tag "pipeline/phaseimpute"
 
-
-    test("Check test") {
-        tag "test"
-        config "../../../conf/test.config"
-        when {
-            params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
-                outdir = "$outputDir"
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(
-                    path("${outputDir}/imputation/")
-                        .list()
-                        .collect { getRecursiveFileNames(it, outputDir) }
-                        .flatten(),
-                    path("$outputDir/imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
-                    path("$outputDir/imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz").vcf.header.getGenotypeSamples().sort()
-                ).match()
-                }
-            )
-        }
-
-    }
-
     test("Check test_glimpse2") {
         tag "test_glimpse2"
         config "../../../conf/test_glimpse2.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -64,7 +37,8 @@ nextflow_pipeline {
         config "../../../conf/test_quilt.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -91,7 +65,8 @@ nextflow_pipeline {
         config "../../../conf/test_stitch.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -110,7 +85,61 @@ nextflow_pipeline {
                 }
             )
         }
+    }
 
+    test("Check test_beagle5") {
+        tag "test_beagle5"
+        config "../../../conf/test_beagle5.config"
+
+        when {
+            params {
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
+                outdir = "$outputDir"
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    path("${outputDir}/imputation/")
+                        .list()
+                        .collect { getRecursiveFileNames(it, outputDir) }
+                        .flatten(),
+                    path("$outputDir/imputation/beagle5/concat/NA12878.beagle5.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
+                    path("$outputDir/imputation/beagle5/concat/NA12878.beagle5.vcf.gz").vcf.header.getGenotypeSamples().sort()
+                ).match()
+                }
+            )
+        }
+    }
+
+    test("Check test_minimac4") {
+        tag "test_minimac4"
+        config "../../../conf/test_minimac4.config"
+        when {
+            params {
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
+                outdir = "$outputDir"
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    path("${outputDir}/imputation/")
+                        .list()
+                        .collect { getRecursiveFileNames(it, outputDir) }
+                        .flatten(),
+                    path("$outputDir/imputation/minimac4/concat/NA12878.minimac4.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
+                    path("$outputDir/imputation/minimac4/concat/NA12878.minimac4.vcf.gz").vcf.header.getGenotypeSamples().sort()
+                ).match()
+                }
+            )
+        }
     }
 
     test("Check test_sim") {
@@ -118,7 +147,8 @@ nextflow_pipeline {
         config "../../../conf/test_sim.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -141,7 +171,8 @@ nextflow_pipeline {
         config "../../../conf/test_validate.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -165,7 +196,8 @@ nextflow_pipeline {
         config "../../../conf/test_all.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -209,7 +241,8 @@ nextflow_pipeline {
         config "../../../conf/test_dog.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -237,7 +270,8 @@ nextflow_pipeline {
         config "../../../conf/test_panelprep.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -261,7 +295,8 @@ nextflow_pipeline {
         config "../../../conf/test_batch.config"
         when {
             params {
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/'
+                publish_dir_mode = "copy"
+                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
             }
         }
@@ -293,9 +328,14 @@ nextflow_pipeline {
     }
 }
 
+
 def getRecursiveFileNames(fileOrDir, outputDir) {
     if(file(fileOrDir.toString()).isDirectory()) {
         return fileOrDir.list().collect { getRecursiveFileNames(it, outputDir) }
     }
     return fileOrDir.toString().replace("${outputDir}/", "")
+}
+
+def removeTimestamp(filename) {
+    filename.replaceAll(/_\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}/, "")
 }

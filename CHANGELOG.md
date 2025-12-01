@@ -3,6 +3,62 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.1.0 - Purple Beagle [2025-12-01]
+
+### `Added`
+
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Add support for all input files in `.json` or `.yaml` format.
+- [#181](https://github.com/nf-core/phaseimpute/pull/181) - Add nf-co2footprint plugin to the config file.
+- [#184](https://github.com/nf-core/phaseimpute/pull/184) - Add support `.csi` index for `.bam` files.
+- [#188](https://github.com/nf-core/phaseimpute/pull/188) - Add documentation for all subworkflows.
+- [#210](https://github.com/nf-core/phaseimpute/pull/200) - Add BEAGLE5 support for genotype imputation.
+- [#211](https://github.com/nf-core/phaseimpute/pull/211) - Add MINIMAC4 support for genotype imputation.
+
+### `Changed`
+
+- [#166](https://github.com/nf-core/phaseimpute/pull/166) - Bump version to 1.1.0dev and update `CHANGELOG.md`.
+- [#170](https://github.com/nf-core/phaseimpute/pull/170) - Update TEMPLATE to nf-core tools version 3.1.2.
+- [#175](https://github.com/nf-core/phaseimpute/pull/175) - Update TEMPLATE to nf-core tools version 3.2.0. Move `CHRCHECK` functions to the workflow directory.
+- [#182](https://github.com/nf-core/phaseimpute/pull/182) - Add dark version of the metromap and dynamically change it in the README.
+- [#185](https://github.com/nf-core/phaseimpute/pull/185) - Add `--sampleNames_file` option for `STICH` and `QUILT`.
+- [#187](https://github.com/nf-core/phaseimpute/pull/187) - Update modules and subworkflows.
+- [#197](https://github.com/nf-core/phaseimpute/pull/187) - Update to nf-core/tools version 3.3.1 and update nf-test.
+- [#188](https://github.com/nf-core/phaseimpute/pull/188) - Change name of `BAM_IMPUTE_GLIMPSE2` to `BAM\_VCF_IMPUTE_GLIMPSE2`.
+- [#199](https://github.com/nf-core/phaseimpute/pull/199) - Update all modules to latest nf-core versions.
+- [#201](https://github.com/nf-core/phaseimpute/pull/201) - Update TEMPLATE to nf-core tools version 3.3.2.
+- [#209](https://github.com/nf-core/phaseimpute/pull/209) - Update TEMPLATE to nf-core tools version 3.4.1.
+- [#234](https://github.com/nf-core/phaseimpute/pull/234) - Bump version to 1.1.0 for release and fix version error for `BAM/VCF-CHREXTRACT`
+- [#235](https://github.com/nf-core/phaseimpute/pull/234) - Fix reviewer comments (@kubranarci)
+- [#236](https://github.com/nf-core/phaseimpute/pull/236) - Fix reviewer 2 comments (@dialvarezs)
+
+### `Fixed`
+
+- [#166](https://github.com/nf-core/phaseimpute/pull/166) - Fix depth type to `number` to enable float.
+- [#179](https://github.com/nf-core/phaseimpute/pull/179) - Fix VCF usage in `GLIMPSE2`.
+- [#183](https://github.com/nf-core/phaseimpute/pull/183) - Remove wrongfully added files in `BAM_EXTRACT_REGION_SAMTOOLS`.
+- [#185](https://github.com/nf-core/phaseimpute/pull/185) - Fix CSV generation and check that all mentioned path files exist.
+- [#189](https://github.com/nf-core/phaseimpute/pull/189) - Set meta map id as string to avoid error when using numbers in csv files.
+- [#225](https://github.com/nf-core/phaseimpute/pull/225) - Fix `CHRCHECK` config
+- [#230](https://github.com/nf-core/phaseimpute/pull/230) - Fix `test_full` config
+
+### `Dependencies`
+
+| Dependency | Old version | New version |
+| ---------- | ----------- | ----------- |
+| `bcftools` | 1.20        | 1.21        |
+| `gunzip`   | 1.10        | 1.13        |
+| `lbzip2`   |             | 2.5         |
+| `multiqc`  | 1.27        | 1.29        |
+| `r-stitch` | 1.6.10      | 1.7.3       |
+| `shapeit5` | 1.0.0       | 5.1.1       |
+| `vcflib`   | 1.0.3       | 1.0.14      |
+| `beagle5`  |             | 5.2         |
+| `minimac4` |             | 4.1.6       |
+
+### New contributors
+
+[Gaspard Ichas](https://github.com/gichas)
+
 ## v1.0.0 - Black Labrador [2024-12-09]
 
 Initial release of nf-core/phaseimpute, created with the [nf-core](https://nf-co.re/) template.
@@ -66,7 +122,7 @@ Special thanks to [Matthias Hörtenhuber](https://github.com/mashehu), [Mazzalab
 - [#157](https://github.com/nf-core/phaseimpute/pull/157) - Add `chunk_model` as parameter for better control over `GLIMPSE2_CHUNK` and set window size in `GLIMPSE1_CHUNK` and `GLIMPSE2_chunk` to 4mb to reduce number of chunks (empirical).
 - [#160](https://github.com/nf-core/phaseimpute/pull/160) - Improve `CHANGELOG.md` and add details to `usage.md`
 - [#158](https://github.com/nf-core/phaseimpute/pull/158) - Remove frequency computation and phasing from full test to reduce cost and computational time.
-- [#164](https://github.com/nf-core/phaseimpute/pull/164) - Rename `BAM_REGION_SAMTOOLS` to `BAM_EXTRACT_REGION_SAMTOOLS`. Remove `GLIMPSE2_SPLITREFERENCE` as it is not used. Add more steps to `test_all` profile for more exhaustivity.
+- [#164](https://github.com/nf-core/phaseimpute/pull/164) - Rename `BAM_REGION_SAMTOOLS` to `BAM_EXTRACT_REGION_SAMTOOLS`. Remove `GLIMPSE2_SPLITREFERENCE` as it is not used. Add more steps to `test_all` profile for more exhaustiveness.
 - [#163](https://github.com/nf-core/phaseimpute/pull/163) - Improve configuration for demanding processes. Use Genome in a Bottle VCF benchmarking file for AWS full test. Moved from `glimpse1` to `glimpse2` for the full test profile.
 - [#165](https://github.com/nf-core/phaseimpute/pull/165) - Update metro map and add logo to the documentation.
 
@@ -83,7 +139,7 @@ Special thanks to [Matthias Hörtenhuber](https://github.com/mashehu), [Mazzalab
 - [#161](https://github.com/nf-core/phaseimpute/pull/161) - Fix `VCF_SPLIT_BCFTOOLS` when only one sample present by updating `BCFTOOLS_PLUGINSPLIT` and adding `BCFTOOLS_QUERY` to get truth samples names for renaming the resulting files.
 - [#162](https://github.com/nf-core/phaseimpute/pull/162) - Fix `fai` usage when provided by `genomes` parameter.
 - [#164](https://github.com/nf-core/phaseimpute/pull/164) - Improve documentation writing
-- [#163](https://github.com/nf-core/phaseimpute/pull/163) - Fix MULTIQC samples names (add post-processing for clean up `FILTER_CHR_DWN`, `FILTER_CHR_INP`, `GAWK_ERROR_SPL`, `GAWK_RSQUARE_SPL`). Fix output panel `publisDir`. Fix java version to `17` in `ci.yml` due to new nextflow version.
+- [#163](https://github.com/nf-core/phaseimpute/pull/163) - Fix MULTIQC samples names (add post-processing for clean up `FILTER_CHR_DWN`, `FILTER_CHR_INP`, `GAWK_ERROR_SPL`, `GAWK_RSQUARE_SPL`). Fix output panel `publishDir`. Fix java version to `17` in `ci.yml` due to new nextflow version.
 
 ### `Dependencies`
 

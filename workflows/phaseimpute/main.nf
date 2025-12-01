@@ -32,12 +32,12 @@ include { GAWK as FILTER_CHR_DWN                     } from '../../modules/nf-co
 include { VCF_NORMALIZE_BCFTOOLS                     } from '../../subworkflows/local/vcf_normalize_bcftools'
 include { VCF_SITES_EXTRACT_BCFTOOLS                 } from '../../subworkflows/local/vcf_sites_extract_bcftools'
 include { VCF_PHASE_SHAPEIT5                         } from '../../subworkflows/local/vcf_phase_shapeit5'
-include { CHUNK_PREPARE_CHANNEL                      } from '../../subworkflows/local/chunk_prepare_channel'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_PANEL   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_PANEL     } from '../../modules/nf-core/bcftools/stats'
+include { chunkPrepareChannel                        } from './function.nf'
 
 // Imputation
-include { LIST_TO_FILE                               } from '../../modules/local/list_to_file'
+include { LISTTOFILE                                 } from '../../modules/local/listtofile'
 include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_IMPUTED   } from '../../modules/nf-core/bcftools/query'
 include { GAWK as GAWK_IMPUTED                       } from '../../modules/nf-core/gawk'
 include { VCF_SPLIT_BCFTOOLS as SPLIT_IMPUTED        } from '../../subworkflows/local/vcf_split_bcftools'
@@ -48,7 +48,7 @@ include { VCF_IMPUTE_GLIMPSE1                        } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE1} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // GLIMPSE2 subworkflows
-include { BAM_IMPUTE_GLIMPSE2                        } from '../../subworkflows/local/bam_impute_glimpse2'
+include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/local/bam_vcf_impute_glimpse2'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE2} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // QUILT subworkflows
@@ -59,6 +59,14 @@ include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/
 // STITCH subworkflows
 include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/local/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
+
+// BEAGLE5 subworkflows
+include { VCF_IMPUTE_BEAGLE5                         } from '../../subworkflows/local/vcf_impute_beagle5'
+include { VCF_CONCATENATE_BCFTOOLS as CONCAT_BEAGLE5 } from '../../subworkflows/local/vcf_concatenate_bcftools'
+
+// MINIMAC4 subworkflows
+include { VCF_IMPUTE_MINIMAC4                        } from '../../subworkflows/local/vcf_impute_minimac4'
+include { VCF_CONCATENATE_BCFTOOLS as CONCAT_MINIMAC4} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // Imputation stats
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_TOOLS     } from '../../modules/nf-core/bcftools/stats'
@@ -125,7 +133,7 @@ workflow PHASEIMPUTE {
 
         // Program to filter chromosomes
         filter_chr_program = ch_region
-            .collect{ meta, region -> meta.chr }
+            .collect{ meta, _region -> meta.chr }
             .map { chr ->
                 "BEGIN { FS=\"\t\";\nsplit(\"" + chr.join(" ") + '", chr, " ");\n' +
                 'for (i in chr) {\nchr_map[chr[i]] = 1;\n}\n}\n' +
@@ -136,14 +144,14 @@ workflow PHASEIMPUTE {
 
         // Compute coverage of input files
         SAMTOOLS_COVERAGE_INP(ch_input_sim, ch_fasta)
-        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions)
-        ch_coverage = SAMTOOLS_COVERAGE_INP.out.coverage
+        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions.first())
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
-            filter_chr_program
+            filter_chr_program,
+            false
         )
-        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions)
+        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ it[1] })
 
         if (params.depth) {
@@ -154,13 +162,14 @@ workflow PHASEIMPUTE {
 
             // Compute coverage of input files
             SAMTOOLS_COVERAGE_DWN(BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul, ch_fasta)
-            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions)
+            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
-                filter_chr_program
+                filter_chr_program,
+                false
             )
-            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions)
+            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ it[1] })
         }
 
@@ -229,7 +238,7 @@ workflow PHASEIMPUTE {
         // Posfile
         exportCsv(
             ch_posfile.map{ meta, vcf, index, hap, legend ->
-                [meta, [2:"prep_panel/sites", 3:"prep_panel/haplegend", 4:"prep_panel/haplegend"], vcf, index, hap, legend]
+                [meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend"], vcf, index, hap, legend]
             },
             ["id", "chr"], "panel,chr,vcf,index,hap,legend",
             "posfile.csv", "prep_panel/csv"
@@ -237,10 +246,10 @@ workflow PHASEIMPUTE {
         // Chunks
         exportCsv(
             VCF_CHUNK_GLIMPSE.out.chunks.map{ meta, file ->
-                [meta, [2:"prep_panel/chunks"], file]
+                [meta, [2:"prep_panel/chunks/glimpse1"], file]
             },
             ["id", "chr"], "panel,chr,file",
-            "chunks.csv", "prep_panel/csv"
+            "chunks_glimpse1.csv", "prep_panel/csv"
         )
     }
 
@@ -273,14 +282,14 @@ workflow PHASEIMPUTE {
                 filestuples.collect{it[1]}, filestuples.collect{it[2]}
             ] }
 
-        LIST_TO_FILE(
+        LISTTOFILE(
             ch_input_bams.map{ meta, file, _index -> [
                 meta, file, meta.metas.collect { it.id }
             ] }
         )
 
         ch_input_bams_withlist = ch_input_bams
-            .join(LIST_TO_FILE.out.txt)
+            .join(LISTTOFILE.out.txt)
 
         // Use panel from parameters if provided
         if (params.panel && !params.steps.split(',').find { it in ["all", "panelprep"] }) {
@@ -292,8 +301,7 @@ workflow PHASEIMPUTE {
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "glimpse")
-                ch_chunks_glimpse1 = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse")
             }
 
             // Glimpse1 subworkflow
@@ -331,22 +339,21 @@ workflow PHASEIMPUTE {
             log.info("Impute with GLIMPSE2")
 
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "glimpse")
-                ch_chunks_glimpse2 = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse")
             }
 
             // Run imputation
-            BAM_IMPUTE_GLIMPSE2(
+            BAM_VCF_IMPUTE_GLIMPSE2(
                 ch_input_bams_withlist
                     .map{ [it[0], it[1], it[2], it[3]] }
-                    .mix(ch_input_type.vcf.combine([])),
+                    .mix(ch_input_type.vcf.combine(Channel.of([[]]))),
                 ch_panel_phased,
                 ch_chunks_glimpse2,
                 ch_fasta
             )
-            ch_versions = ch_versions.mix(BAM_IMPUTE_GLIMPSE2.out.versions)
+            ch_versions = ch_versions.mix(BAM_VCF_IMPUTE_GLIMPSE2.out.versions)
             // Concatenate by chromosomes
-            CONCAT_GLIMPSE2(BAM_IMPUTE_GLIMPSE2.out.vcf_tbi)
+            CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.vcf_tbi)
             ch_versions = ch_versions.mix(CONCAT_GLIMPSE2.out.versions)
 
             // Add results to input validate
@@ -358,7 +365,7 @@ workflow PHASEIMPUTE {
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4]] },
+                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{ [it[0], it[4]] },
                 ch_region,
                 ch_fasta
@@ -379,13 +386,12 @@ workflow PHASEIMPUTE {
 
             // Use provided chunks if --chunks
             if (params.chunks) {
-                CHUNK_PREPARE_CHANNEL(ch_chunks, "quilt")
-                ch_chunks_quilt = CHUNK_PREPARE_CHANNEL.out.chunks
+                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
             }
 
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4]] },
+                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{ [it[0], it[3], it[4]] },
                 ch_chunks_quilt,
                 ch_fasta.map{ [it[0], it[1]] }
@@ -400,9 +406,60 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_tbi)
         }
 
+        if (params.tools.split(',').contains("beagle5")) {
+            // Create input channel combining VCF with regions
+            ch_input_beagle5 = ch_input_type.vcf
+                .combine(ch_region)
+                .map { meta_vcf, vcf, index, meta_region, _region ->
+                    [meta_vcf + meta_region, vcf, index]
+                }
+
+            // Impute with BEAGLE5
+            VCF_IMPUTE_BEAGLE5(
+                ch_input_beagle5,
+                ch_panel_phased,
+                ch_map
+            )
+            ch_versions = ch_versions.mix(VCF_IMPUTE_BEAGLE5.out.versions)
+
+            // Concatenate by chromosomes
+            CONCAT_BEAGLE5(VCF_IMPUTE_BEAGLE5.out.vcf_index)
+            ch_versions = ch_versions.mix(CONCAT_BEAGLE5.out.versions)
+
+            // Add results to input validate
+            ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_tbi)
+        }
+
+        if (params.tools.split(',').contains("minimac4")) {
+            log.info("Impute with MINIMAC4")
+
+            // Create input channel combining VCF with regions
+            ch_input_minimac4 = ch_input_type.vcf
+                .combine(ch_region)
+                .map { meta_vcf, vcf, index, meta_region, region ->
+                    [meta_vcf + meta_region, vcf, index]
+                }
+
+            // Run imputation with MINIMAC4
+            VCF_IMPUTE_MINIMAC4(
+                ch_input_minimac4,
+                ch_panel_phased,
+                ch_map,
+                ch_posfile
+            )
+            ch_versions = ch_versions.mix(VCF_IMPUTE_MINIMAC4.out.versions)
+
+            // Concatenate by chromosomes
+            CONCAT_MINIMAC4(VCF_IMPUTE_MINIMAC4.out.vcf_index)
+            ch_versions = ch_versions.mix(CONCAT_MINIMAC4.out.versions)
+
+            // Add results to input validate
+            ch_input_validate = ch_input_validate.mix(CONCAT_MINIMAC4.out.vcf_tbi)
+        }
+
         // Prepare renaming file
         BCFTOOLS_QUERY_IMPUTED(ch_input_validate, [], [], [])
-        GAWK_IMPUTED(BCFTOOLS_QUERY_IMPUTED.out.output, [])
+        GAWK_IMPUTED(BCFTOOLS_QUERY_IMPUTED.out.output, [], false)
         ch_split_imputed = ch_input_validate.join(GAWK_IMPUTED.out.output)
 
         // Split result by samples
@@ -424,9 +481,9 @@ workflow PHASEIMPUTE {
         // Export all files to csv
         exportCsv(
             ch_input_validate.map{ meta, file, index ->
-                [meta, [2:"imputation/${meta.tools}/samples/", 3:"imputation/${meta.tools}/samples/"], file, index]
+                [meta, [2:"imputation/${meta.tools}/samples", 3:"imputation/${meta.tools}/samples"], file, index]
             },
-            ["id", "tools"], "sample,tools,vcf,index",
+            ["id", "tools"], "sample,tools,file,index",
             "impute.csv", "imputation/csv"
         )
     }
@@ -480,7 +537,7 @@ workflow PHASEIMPUTE {
 
         // Prepare renaming file
         BCFTOOLS_QUERY_TRUTH(CONCAT_TRUTH.out.vcf_tbi, [], [], [])
-        GAWK_TRUTH(BCFTOOLS_QUERY_TRUTH.out.output, [])
+        GAWK_TRUTH(BCFTOOLS_QUERY_TRUTH.out.output, [], false)
         ch_split_truth = CONCAT_TRUTH.out.vcf_tbi.join(GAWK_TRUTH.out.output)
 
         // Split truth vcf by samples
@@ -513,11 +570,31 @@ workflow PHASEIMPUTE {
     //
     // Collate and save software versions
     //
-    softwareVersionsToYAML(ch_versions)
+
+    def topic_versions = Channel.topic("versions")
+        .distinct()
+        .branch { entry ->
+            versions_file: entry instanceof Path
+            versions_tuple: true
+        }
+
+    def topic_versions_string = topic_versions.versions_tuple
+        .map { process, tool, version ->
+            [ process[process.lastIndexOf(':')+1..-1], "  ${tool}: ${version}" ]
+        }
+        .groupTuple(by:0)
+        .map { process, tool_versions ->
+            tool_versions.unique().sort()
+            "${process}:\n${tool_versions.join('\n')}"
+        }
+
+    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+        .mix(topic_versions_string)
         .collectFile(
             storeDir: "${params.outdir}/pipeline_info",
-            name: 'nf_core_'  + 'pipeline_software_' +  'mqc_'  + 'versions.yml',
-            sort: true, newLine: true
+            name: 'nf_core_'  +  'phaseimpute_software_'  + 'mqc_'  + 'versions.yml',
+            sort: true,
+            newLine: true
         ).set { ch_collated_versions }
 
     //

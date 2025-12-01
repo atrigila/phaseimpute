@@ -9,14 +9,14 @@
 */
 
 include { UTILS_NFSCHEMA_PLUGIN     } from '../../nf-core/utils_nfschema_plugin'
-include { paramsSummaryMap          } from 'plugin/nf-schema'
 include { samplesheetToList         } from 'plugin/nf-schema'
+include { paramsHelp                } from 'plugin/nf-schema'
 include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
 include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
 include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
+include { paramsSummaryMap          } from 'plugin/nf-schema'
 include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NEXTFLOW_PIPELINE   } from '../../nf-core/utils_nextflow_pipeline'
-include { GET_REGION                } from '../get_region'
 include { SAMTOOLS_FAIDX            } from '../../../modules/nf-core/samtools/faidx'
 
 /*
@@ -33,10 +33,14 @@ workflow PIPELINE_INITIALISATION {
     _monochrome_logs  // boolean: Do not use coloured log outputs
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
+    _input             //  string: Path to input samplesheet
+    help              // boolean: Display help message and exit
+    help_full         // boolean: Show the full help message
+    show_hidden       // boolean: Show hidden parameters in the help message
 
     main:
 
-    ch_versions      = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Print version and exit if required and dump pipeline parameters to JSON file
@@ -52,10 +56,35 @@ workflow PIPELINE_INITIALISATION {
     //
     // Validate parameters and generate parameter summary to stdout
     //
+    before_text = """
+-\033[2m----------------------------------------------------\033[0m-
+                                        \033[0;32m,--.\033[0;30m/\033[0;32m,-.\033[0m
+\033[0;34m        ___     __   __   __   ___     \033[0;32m/,-._.--~\'\033[0m
+\033[0;34m  |\\ | |__  __ /  ` /  \\ |__) |__         \033[0;33m}  {\033[0m
+\033[0;34m  | \\| |       \\__, \\__/ |  \\ |___     \033[0;32m\\`-._,-`-,\033[0m
+                                        \033[0;32m`._,._,\'\033[0m
+\033[0;35m  nf-core/phaseimpute ${workflow.manifest.version}\033[0m
+-\033[2m----------------------------------------------------\033[0m-
+"""
+    after_text = """${workflow.manifest.doi ? "\n* The pipeline\n" : ""}${workflow.manifest.doi.tokenize(",").collect { doi -> "    https://doi.org/${doi.trim().replace('https://doi.org/','')}"}.join("\n")}${workflow.manifest.doi ? "\n" : ""}
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/phaseimpute/blob/master/CITATIONS.md
+"""
+    command = "nextflow run ${workflow.manifest.name} -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>"
+
     UTILS_NFSCHEMA_PLUGIN (
         workflow,
         validate_params,
-        null
+        null,
+        help,
+        help_full,
+        show_hidden,
+        before_text,
+        after_text,
+        command
     )
 
 
@@ -81,7 +110,7 @@ workflow PIPELINE_INITIALISATION {
         ch_fasta  = Channel.of([[genome:genome], getGenomeAttribute('fasta')])
         fai       = getGenomeAttribute('fai')
         if (fai == null) {
-            SAMTOOLS_FAIDX(ch_fasta, Channel.of([[], []]))
+            SAMTOOLS_FAIDX(ch_fasta, Channel.of([[], []]), false)
             ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions.first())
             fai         = SAMTOOLS_FAIDX.out.fai.map{ it[1] }
         } else {
@@ -93,7 +122,7 @@ workflow PIPELINE_INITIALISATION {
         if (params.fasta_fai) {
             fai = Channel.of(file(params.fasta_fai, checkIfExists:true))
         } else {
-            SAMTOOLS_FAIDX(ch_fasta, Channel.of([[], []]))
+            SAMTOOLS_FAIDX(ch_fasta, Channel.of([[], []]), false)
             ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions.first())
             fai         = SAMTOOLS_FAIDX.out.fai.map{ it[1] }
         }
@@ -109,7 +138,10 @@ workflow PIPELINE_INITIALISATION {
             .map { samplesheet ->
                 validateInputSamplesheet(samplesheet)
             }
-            .map { meta, file, index -> [meta + [batch: 0], file, index] } // Set batch to 0 by default
+            .map { meta, file, index ->
+                def new_meta = meta + [id:meta.id.toString()]
+                [ new_meta + [batch: 0], file, index ]
+            } // Set batch to 0 by default
     } else {
         ch_input = Channel.of([[], [], []])
     }
@@ -131,7 +163,7 @@ workflow PIPELINE_INITIALISATION {
                 .fromList(samplesheetToList(params.input_truth, "${projectDir}/assets/schema_input.json"))
                 .map {
                     meta, file, index ->
-                        [ meta, file, index ]
+                        [ meta + [id:meta.id.toString()], file, index ]
                 }
             // Check if all extension are identical
             getFilesSameExt(ch_input_truth)
@@ -151,14 +183,17 @@ workflow PIPELINE_INITIALISATION {
             println "Panel file provided as input is a samplesheet"
             ch_panel = Channel.fromList(samplesheetToList(
                 params.panel, "${projectDir}/assets/schema_input_panel.json"
-            ))
+            )).map {
+                meta, file, index ->
+                    [ meta + [id:meta.id.toString()], file, index ]
+            }
         } else {
             // #TODO Wait for `oneOf()` to be supported in the nextflow_schema.json
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
         // #TODO check if panel is required
-        ch_panel        = Channel.of([[],[],[]])
+        ch_panel = Channel.of([[],[],[]])
     }
 
     //
@@ -166,12 +201,10 @@ workflow PIPELINE_INITIALISATION {
     //
     if (params.input_region == null){
         // #TODO Add support for string input
-        GET_REGION ("all", ch_ref_gen)
-        ch_versions = ch_versions.mix(GET_REGION.out.versions)
-        ch_regions  = GET_REGION.out.regions
+        ch_regions  = getRegionFromFai("all", ch_ref_gen)
     }  else  if (params.input_region.endsWith(".csv")) {
-        println "Region file provided as input is a csv file"
-        ch_regions = Channel.fromList(samplesheetToList(
+        println "Region file provided as input is a samplesheet"
+        ch_regions = Channel.from(samplesheetToList(
             params.input_region, "${projectDir}/assets/schema_input_region.json"
         ))
         .map{ chr, start, end ->
@@ -220,8 +253,11 @@ workflow PIPELINE_INITIALISATION {
     // Create posfile channel
     //
     if (params.posfile) {
-        ch_posfile = Channel // ["panel", "chr", "vcf", "index", "hap", "legend"]
+        ch_posfile = Channel // ["meta", "vcf", "index", "hap", "legend"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
+            .map { meta, vcf, index, hap, legend ->
+                [ meta + [id:meta.id.toString()], vcf, index, hap, legend ]
+            }
     } else {
         ch_posfile = Channel.of([[],[],[],[],[]])
     }
@@ -240,6 +276,9 @@ workflow PIPELINE_INITIALISATION {
     if (params.chunks) {
         ch_chunks = Channel
             .fromList(samplesheetToList(params.chunks, "${projectDir}/assets/schema_chunks.json"))
+            .map { meta, chunks ->
+                [ meta + [id:meta.id.toString()], chunks ]
+            }
     } else {
         ch_chunks = Channel.of([[],[]])
     }
@@ -291,7 +330,7 @@ workflow PIPELINE_INITIALISATION {
         }
 
     ch_posfile = ch_posfile
-        .combine(ch_regions.collect{ it[0]["chr"]}.toList())
+        .combine(ch_regions.collect{ it[0]["chr"] }.toList())
         .filter { meta, _vcf, _index, _hap, _legend, chrs ->
             meta.chr in chrs
         }
@@ -339,6 +378,7 @@ workflow PIPELINE_COMPLETION {
 
     main:
     summary_params = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
+    def multiqc_reports = multiqc_report.toList()
 
     //
     // Completion email and summary
@@ -352,7 +392,7 @@ workflow PIPELINE_COMPLETION {
                 plaintext_email,
                 outdir,
                 monochrome_logs,
-                multiqc_report.toList()
+                multiqc_reports.getVal(),
             )
         }
 
@@ -396,17 +436,17 @@ def validateInputParameters() {
 
     // Check that posfile and chunks are provided when running impute only. Steps with panelprep generate those files.
     if (params.steps.split(',').contains("impute") && !params.steps.split(',').find { it in ["all", "panelprep"] }) {
-        // Required by all tools except glimpse2
-        if (!params.tools.split(',').find { it in ["glimpse2"] }) {
-                assert params.posfile : "No --posfile provided for --steps impute"
+        // Required by all tools except glimpse2, beagle5, minimac4
+        if (!params.tools.split(',').find { it in ["glimpse2", "beagle5", "minimac4"] }) {
+            assert params.posfile : "No --posfile provided for --steps impute"
         }
-        // Required by all tools except STITCH
-        if (params.tools != "stitch") {
-                assert params.chunks : "No --chunks provided for --steps impute"
+        // Required by all tools except stitch, beagle5, minimac4
+        if (!params.tools.split(',').find { it in ["stitch", "beagle5", "minimac4"] }) {
+            assert params.chunks : "No --chunks provided for --steps impute"
         }
-        // Required by GLIMPSE1 and GLIMPSE2 only
+        // Required by glimpse1 and glimpse2 only
         if (params.tools.split(',').contains("glimpse")) {
-                assert params.panel : "No --panel provided for imputation with GLIMPSE"
+            assert params.panel : "No --panel provided for imputation with GLIMPSE"
         }
 
         // Check that input_truth is provided when running validate
@@ -454,6 +494,12 @@ def validateInputBatchTools(ch_input, batch_size, extension, tools) {
                 }
                 if (nb_input > 1) {
                     error "When using a Variant Calling Format file as input, only one file can be provided. If you have multiple single-sample VCF files, please merge them into a single multisample VCF file."
+                }
+            }
+
+            if (extension ==~ "(bam|cram)?") {
+                if (tools.contains("beagle5")) {
+                    error "Beagle5 software cannot run with BAM or CRAM alignement files. Please provide variant calling format files (i.e. VCF or BCF)."
                 }
             }
 
@@ -524,13 +570,40 @@ def checkMetaChr(chr_a, chr_b, name){
 }
 
 //
+// Get region from fasta fai file
+//
+def getRegionFromFai(input_region, ch_fasta) {
+    def ch_regions = Channel.empty()
+    // Gather regions to use and create the meta map
+    if (input_region ==~ '^(chr)?[0-9XYM]+$' || input_region == "all") {
+        ch_regions = ch_fasta.map{it -> it[2]}
+            .splitCsv(header: ["chr", "size", "offset", "lidebase", "linewidth", "qualoffset"], sep: "\t")
+            .map{it -> [chr:it.chr, region:"0-"+it.size]}
+        if (input_region != "all") {
+            ch_regions = ch_regions.filter{it.chr == input_region}
+        }
+        ch_regions = ch_regions
+            .map{ [[chr: it.chr, region: it.chr + ":" + it.region], it.chr + ":" + it.region]}
+    } else {
+        if (input_region ==~ '^chr[0-9XYM]+:[0-9]+-[0-9]+$') {
+            ch_regions = Channel.from([input_region])
+                .map{ [[chr: it.split(":")[0], "region": it], it]}
+        } else {
+            error "Invalid input_region: ${input_region}"
+        }
+    }
+    return ch_regions
+}
+
+//
 // Get file extension
 //
 def getFileExtension(file) {
     def file_name = ""
-
-    if (file instanceof Path || file instanceof nextflow.file.http.XPath) {
+    if (file instanceof Path) {
         file_name = file.name
+    } else if (file instanceof java.net.URL) {
+        file_name = file.path.tokenize('/')[-1]
     } else if (file instanceof CharSequence) {
         file_name = file.toString()
     } else if (file instanceof List) {
@@ -538,7 +611,6 @@ def getFileExtension(file) {
     } else {
         error "Type not supported: ${file.getClass()}"
     }
-
     // Remove .gz if present and get the last part after splitting by "."
     return file_name.replace(".gz", "").split("\\.").last()
 }
@@ -568,16 +640,16 @@ def checkFileIndex(ch_input) {
         def index_ext = getFileExtension(index)
         if (file_ext in ["vcf", "bcf"] &&  !(index_ext in ["tbi", "csi"]) ) {
             log.info("File: ${file} ${file_ext}, Index: ${index} ${index_ext}")
-            error "${meta}: Index file for [.vcf, .vcf.gz, bcf] must have the extension [.tbi, .csi]"
+            error "${meta}: Index file for .vcf, .vcf.gz and .bcf must have the extension .tbi or .csi"
         }
-        if (file_ext == "bam" && index_ext != "bai") {
-            error "${meta}: Index file for .bam must have the extension .bai"
+        if (file_ext == "bam" && !(index_ext in ["bai", "csi"])) {
+            error "${meta}: Index file for .bam must have the extension .bai or .csi"
         }
         if (file_ext == "cram" && index_ext != "crai") {
             error "${meta}: Index file for .cram must have the extension .crai"
         }
         if (file_ext in ["fa", "fasta"] && index_ext != "fai") {
-            error "${meta}: Index file for [fa, fasta] must have the extension .fai"
+            error "${meta}: Index file for .fa and .fasta must have the extension .fai"
         }
     }
     return null
@@ -682,7 +754,7 @@ def toolBibliographyText() {
 }
 
 def methodsDescriptionText(mqc_methods_yaml) {
-    // Convert  to a named map so can be used as with familar NXF ${workflow} variable syntax in the MultiQC YML file
+    // Convert  to a named map so can be used as with familiar NXF ${workflow} variable syntax in the MultiQC YML file
     def meta = [:]
     meta.workflow = workflow.toMap()
     meta["manifest_map"] = workflow.manifest.toMap()
@@ -716,4 +788,3 @@ def methodsDescriptionText(mqc_methods_yaml) {
 
     return description_html.toString()
 }
-
