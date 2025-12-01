@@ -418,7 +418,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --steps impute \
     --posfile posfile.csv  \
-    --tool stitch \
+    --tools stitch \
     --outdir results \
     --genome GRCh37 \
     -profile docker
@@ -452,7 +452,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool glimpse1 \
+    --tools glimpse1 \
     --outdir results \
     --genome GRCh37 \
     -profile docker \
@@ -478,7 +478,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool glimpse2 \
+    --tools glimpse2 \
     --outdir results \
     --chunks chunks.csv \
     --genome GRCh37 \
@@ -515,7 +515,7 @@ nextflow run nf-core/phaseimpute \
     --input samplesheet.csv \
     --panel samplesheet_reference.csv \
     --steps impute \
-    --tool minimac4 \
+    --tools minimac4 \
     --outdir results \
     --genome GRCh37 \
     -profile docker \
