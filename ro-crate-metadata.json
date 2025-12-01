@@ -155,10 +155,10 @@
             },
             "url": [
                 "https://github.com/nf-core/phaseimpute",
-                "https://nf-co.re/phaseimpute/1.0.0/"
+                "https://nf-co.re/phaseimpute/1.1.0/"
             ],
             "version": [
-                "1.0.0"
+                "1.1.0"
             ]
         },
         {
