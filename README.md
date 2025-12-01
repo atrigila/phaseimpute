@@ -102,7 +102,6 @@ We thank the following people for their extensive assistance in the development 
 - Eugenia Fontecha
 - Matias Romero Victorica
 - Hemanoel Passarelli
-- Gaspard Ichas
 
 ## Contributions and Support
 

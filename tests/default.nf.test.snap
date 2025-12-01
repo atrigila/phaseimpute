@@ -4,6 +4,7 @@
             {
                 "BAMCHREXTRACT": {
                     "samtools": 1.2,
+                    "grep": 1.36
                 },
                 "BCFTOOLS_ANNOTATE": {
                     "bcftools": 1.21
@@ -42,7 +43,7 @@
                     "tabix": 1.21
                 },
                 "Workflow": {
-                    "nf-core/phaseimpute": "v1.1.0"
+                    "nf-core/phaseimpute": "v1.1.0dev"
                 }
             },
             [
