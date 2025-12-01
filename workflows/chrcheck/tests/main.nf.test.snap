@@ -12,7 +12,7 @@
                 "VCF_chr_to_nochr_chrrename.vcf.gz.tbi"
             ],
             [
-                "versions.yml:md5,76c5765c6982445c026914d680b5b320",
+                "versions.yml:md5,dd93461a37f97a9676d2fbcc57ff8bd5",
                 "versions.yml:md5,bf7a6d687c7715a6e81755d9612dc87b",
                 "versions.yml:md5,db9d56c857a695f01c1f9bc9440637f6",
                 "versions.yml:md5,efbcec5e73882cc92aac076a8c7d9561"
@@ -37,7 +37,7 @@
                 "VCF_nochr_to_chr_chrrename.vcf.gz.tbi"
             ],
             [
-                "versions.yml:md5,76c5765c6982445c026914d680b5b320",
+                "versions.yml:md5,dd93461a37f97a9676d2fbcc57ff8bd5",
                 "versions.yml:md5,bf7a6d687c7715a6e81755d9612dc87b",
                 "versions.yml:md5,db9d56c857a695f01c1f9bc9440637f6",
                 "versions.yml:md5,efbcec5e73882cc92aac076a8c7d9561"
