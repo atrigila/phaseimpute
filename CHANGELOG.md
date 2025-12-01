@@ -28,8 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#201](https://github.com/nf-core/phaseimpute/pull/201) - Update TEMPLATE to nf-core tools version 3.3.2.
 - [#209](https://github.com/nf-core/phaseimpute/pull/209) - Update TEMPLATE to nf-core tools version 3.4.1.
 - [#234](https://github.com/nf-core/phaseimpute/pull/234) - Bump version to 1.1.0 for release and fix version error for `BAM/VCF-CHREXTRACT`
-- [#235](https://github.com/nf-core/phaseimpute/pull/234) - Fix reviewer comments
-- [#236](https://github.com/nf-core/phaseimpute/pull/236) - Fix reviewer 2 comments
+- [#235](https://github.com/nf-core/phaseimpute/pull/234) - Fix reviewer comments (@kubranarci)
+- [#236](https://github.com/nf-core/phaseimpute/pull/236) - Fix reviewer 2 comments (@dialvarezs)
 
 ### `Fixed`
 
