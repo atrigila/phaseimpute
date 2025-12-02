@@ -315,7 +315,7 @@ For starting from the imputation steps, the required flags are:
 
 > ¹ Alignment files as well as variant calling format (i.e. BAM, CRAM, VCF or BCF)
 > ² Alignment files only (i.e. BAM or CRAM)
-> ³ `GLIMPSE1` & `STITCH`: Should be a CSV with columns [panel id, chr, posfile]
+> ³ `GLIMPSE1` and `STITCH`: Should be a CSV with columns [panel id, chr, posfile]
 > ⁴ `QUILT`: Should be a CSV with columns [panel id, chr, hap, legend]
 > ⁵ `MINIMAC4`: Optionally, a VCF with its index can be provided for more control over the imputed positions. Should be a CSV with columns [panel id, chr, vcf, index]
 
