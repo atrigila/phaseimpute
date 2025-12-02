@@ -525,7 +525,7 @@ def validatePosfileTools(ch_posfile, tools, steps){
                 assert posfile_comma : "Glimpse1 tool needs a posfile file with CHROM\tPOS\tREF,ALT columns. This file can be created through the panelprep step."
             }
             if (tools.contains("stitch")) {
-                assert posfile_nocomma : "Stitch tool needs a posfile file wuth CHROM\tPOS\tREF\tALT. This file can be created through the panelprep step."
+                assert posfile_nocomma : "Stitch tool needs a posfile file with CHROM\tPOS\tREF\tALT. This file can be created through the panelprep step."
             }
             if (tools.contains("quilt")) {
                 assert legend : "Quilt tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
