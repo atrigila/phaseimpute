@@ -42,7 +42,7 @@
                     "tabix": 1.21
                 },
                 "Workflow": {
-                    "nf-core/phaseimpute": "v1.1.0"
+                    "nf-core/phaseimpute": "v1.2.0dev"
                 }
             },
             [
