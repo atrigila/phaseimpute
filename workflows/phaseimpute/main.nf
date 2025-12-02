@@ -243,7 +243,7 @@ workflow PHASEIMPUTE {
                     vcf, index, hap, legend, posfile_comma, posfile_nocomma
                 ]
             },
-            ["id", "chr"], "panel,chr,vcf,index,hap,legend, posfile_comma, posfile_nocomma",
+            ["id", "chr"], "panel,chr,vcf,index,hap,legend,posfile_comma,posfile_nocomma",
             "posfile.csv", "prep_panel/csv"
         )
         // Chunks
