@@ -12,8 +12,7 @@
                         "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,92f4dca4b3ed85b53e88c2ce6caa1ba4",
                         "1000GP_chr21.hap.gz:md5,64d7fdfc96ce79848cf9c3c220e6774f",
                         "1000GP_chr21.legend.gz:md5,3f7edc4c153521a0871c9d51f7da2372",
-                        "1000GP.chr21.posfile_comma.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
-                        "1000GP.chr21.posfile_nocomma.txt.gz:md5,4e7ce840b6e26e5cba85a797a1671181"
+                        "1000GP.chr21.posfile_comma.txt.gz:md5,33d064c5132000799f3df9ea31967e12"
                     ],
                     [
                         {
@@ -24,17 +23,14 @@
                         "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,89c2c5662e869750dbe0044993b66cb3",
                         "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73",
                         "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
-                        "1000GP.chr22.posfile_comma.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
-                        "1000GP.chr22.posfile_nocomma.txt.gz:md5,485f95911c84e9de54c6ec9eda26b385"
+                        "1000GP.chr22.posfile_comma.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,2b72e7be4655758b16d8b1c622d9bd48",
-                    "versions.yml:md5,2ea818f166122ebc68ca486e71e88f40",
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,541a893fb03d8cbbb4b7070307044f5f",
                     "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
-                    "versions.yml:md5,e3998a9a2f0f144b324eaecf2911e446"
+                    "versions.yml:md5,775bd20464c616f8eacd53774326f790",
+                    "versions.yml:md5,7a82826782ad1f6ea20ba37b55bbb169"
                 ],
                 "posfile": [
                     [
@@ -46,8 +42,7 @@
                         "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,92f4dca4b3ed85b53e88c2ce6caa1ba4",
                         "1000GP_chr21.hap.gz:md5,64d7fdfc96ce79848cf9c3c220e6774f",
                         "1000GP_chr21.legend.gz:md5,3f7edc4c153521a0871c9d51f7da2372",
-                        "1000GP.chr21.posfile_comma.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
-                        "1000GP.chr21.posfile_nocomma.txt.gz:md5,4e7ce840b6e26e5cba85a797a1671181"
+                        "1000GP.chr21.posfile_comma.txt.gz:md5,33d064c5132000799f3df9ea31967e12"
                     ],
                     [
                         {
@@ -58,17 +53,14 @@
                         "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,89c2c5662e869750dbe0044993b66cb3",
                         "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73",
                         "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
-                        "1000GP.chr22.posfile_comma.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
-                        "1000GP.chr22.posfile_nocomma.txt.gz:md5,485f95911c84e9de54c6ec9eda26b385"
+                        "1000GP.chr22.posfile_comma.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,2b72e7be4655758b16d8b1c622d9bd48",
-                    "versions.yml:md5,2ea818f166122ebc68ca486e71e88f40",
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,541a893fb03d8cbbb4b7070307044f5f",
                     "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
-                    "versions.yml:md5,e3998a9a2f0f144b324eaecf2911e446"
+                    "versions.yml:md5,775bd20464c616f8eacd53774326f790",
+                    "versions.yml:md5,7a82826782ad1f6ea20ba37b55bbb169"
                 ]
             },
             [
@@ -87,23 +79,8 @@
             ],
             [
                 {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:GAWK_NOCOMMA": {
-                        "gawk": "5.3.0"
-                    }
-                },
-                {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:BGZIP_NOCOMMA": {
-                        "tabix": 1.21
-                    }
-                },
-                {
                     "VCF_SITES_EXTRACT_BCFTOOLS:BCFTOOLS_VIEW": {
                         "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:BGZIP_COMMA": {
-                        "tabix": 1.21
                     }
                 },
                 {
@@ -112,7 +89,12 @@
                     }
                 },
                 {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:GAWK_COMMA": {
+                    "VCF_SITES_EXTRACT_BCFTOOLS:TABIX_BGZIP": {
+                        "tabix": 1.21
+                    }
+                },
+                {
+                    "VCF_SITES_EXTRACT_BCFTOOLS:GAWK": {
                         "gawk": "5.3.0"
                     }
                 }
@@ -122,6 +104,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-28T15:07:48.499521984"
+        "timestamp": "2025-12-02T14:52:35.342592428"
     }
 }

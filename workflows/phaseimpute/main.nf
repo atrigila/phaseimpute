@@ -57,6 +57,8 @@ include { BAM_IMPUTE_QUILT                           } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // STITCH subworkflows
+include { GAWK as GAWK_NOCOMMA                       } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_NOCOMMA               } from '../../modules/nf-core/tabix/bgzip'
 include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/local/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
@@ -99,7 +101,7 @@ workflow PHASEIMPUTE {
     ch_region               // channel: region to use [ [chr, region], region]
     ch_depth                // channel: depth select  [ [depth], depth ]
     ch_map                  // channel: genetic map   [ [chr], map]
-    ch_posfile              // channel: posfile       [ [id, chr], vcf, index, hap, legend, posfile_comma, posfile_nocomma]
+    ch_posfile              // channel: posfile       [ [id, chr], vcf, index, hap, legend, posfile]
     ch_chunks               // channel: chunks        [ [chr], txt]
     chunk_model             // parameter: chunk model
     ch_versions             // channel: versions of software used
@@ -237,13 +239,13 @@ workflow PHASEIMPUTE {
         )
         // Posfile
         exportCsv(
-            ch_posfile.map{ meta, vcf, index, hap, legend, posfile_comma, posfile_nocomma ->
+            ch_posfile.map{ meta, vcf, index, hap, legend, posfile ->
                 [
-                    meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend", 6:"prep_panel/posfile_comma", 7:"prep_panel/posfile_nocomma"],
-                    vcf, index, hap, legend, posfile_comma, posfile_nocomma
+                    meta, [2:"prep_panel/sites", 3:"prep_panel/sites", 4:"prep_panel/haplegend", 5:"prep_panel/haplegend", 6:"prep_panel/posfile"],
+                    vcf, index, hap, legend, posfile
                 ]
             },
-            ["id", "chr"], "panel,chr,vcf,index,hap,legend,posfile_comma,posfile_nocomma",
+            ["id", "chr"], "panel,chr,vcf,index,hap,legend,posfile",
             "posfile.csv", "prep_panel/csv"
         )
         // Chunks
@@ -312,8 +314,8 @@ workflow PHASEIMPUTE {
             GL_GLIMPSE1(
                 ch_input_type.bam,
                 ch_posfile.map{
-                    meta, _site, _site_index, _hap, _legend, posfile_comma, _posfile_nocomma -> [
-                        meta, posfile_comma
+                    meta, _site, _site_index, _hap, _legend, posfile -> [
+                        meta, posfile
                     ]
                 },
                 ch_fasta
@@ -370,14 +372,22 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("stitch")) {
             log.info("Impute with STITCH")
 
+            // Transform posfile to tabulated format
+            GAWK_NOCOMMA(
+                ch_posfile.map{
+                    meta, _site, _site_index, _hap, _legend, posfile -> [
+                        meta, posfile
+                    ]
+                }, [], false)
+            ch_versions = ch_versions.mix(GAWK_NOCOMMA.out.versions.first())
+
+            BGZIP_NOCOMMA(GAWK_NOCOMMA.out.output)
+            ch_versions = ch_versions.mix(BGZIP_NOCOMMA.out.versions.first())
+
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
                 ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
-                ch_posfile.map{
-                    meta, _site, _site_index, _hap, _legend, _posfile_comma, posfile_nocomma -> [
-                        meta, posfile_nocomma
-                    ]
-                },
+                BGZIP_NOCOMMA.out.output,
                 ch_region,
                 ch_fasta
             )
@@ -404,7 +414,7 @@ workflow PHASEIMPUTE {
             BAM_IMPUTE_QUILT(
                 ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
                 ch_posfile.map{
-                    meta, _site, _site_index, hap, legend, _posfile_comma, _posfile_nocomma -> [
+                    meta, _site, _site_index, hap, legend, _posfile -> [
                         meta, hap, legend
                     ]
                 },
@@ -461,7 +471,7 @@ workflow PHASEIMPUTE {
                 ch_panel_phased,
                 ch_map,
                 ch_posfile.map{
-                    meta, site, site_index, _hap, _legend, _posfile_comma, _posfile_nocomma -> [
+                    meta, site, site_index, _hap, _legend, _posfile -> [
                         meta, site, site_index
                     ]
                 }
@@ -510,7 +520,7 @@ workflow PHASEIMPUTE {
     if (params.steps.split(',').contains("validate") || params.steps.split(',').contains("all")) {
         // Concatenate all sites into a single VCF (for GLIMPSE concordance)
         CONCAT_PANEL(ch_posfile.map{
-            meta, site, site_index, _hap, _legend, _posfile_comma, _posfile_nocomma -> [
+            meta, site, site_index, _hap, _legend, _posfile -> [
                 meta, site, site_index
             ]
         })
@@ -545,8 +555,8 @@ workflow PHASEIMPUTE {
         GL_TRUTH(
             ch_truth.bam.map { [it[0], it[1], it[2]] },
             ch_posfile.map{
-                meta, _site, _site_index, _hap, _legend, posfile_comma, _posfile_nocomma -> [
-                    meta, posfile_comma
+                meta, _site, _site_index, _hap, _legend, posfile -> [
+                    meta, posfile
                 ]
             },
             ch_fasta

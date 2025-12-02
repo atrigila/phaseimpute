@@ -78,21 +78,20 @@ You will need a samplesheet with information about the reference panel sites for
 A final samplesheet file for the posfile may look something like the one below. This is for 2 chromosomes.
 
 ```console title="posfile.csv"
-panel,chr,vcf,index,hap,legend,posfile_comma,posfile_nocomma
-1000GP.s.norel,chr21,1000GP.chr21.s.norel.sites.vcf.gz,1000GP.chr21.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr21.hap.gz,1000GP.s.norel_chr21.legend.gz,1000GP.s.norel_chr21.posfile_comma.gz,1000GP.s.norel_chr21.posfile_nocomma.gz
-1000GP.s.norel,chr22,1000GP.chr22.s.norel.sites.vcf.gz,1000GP.chr22.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr22.hap.gz,1000GP.s.norel_chr22.legend.gz,1000GP.s.norel_chr22.posfile_comma.gz,1000GP.s.norel_chr22.posfile_nocomma.gz
+panel,chr,vcf,index,hap,legend,posfile
+1000GP.s.norel,chr21,1000GP.chr21.s.norel.sites.vcf.gz,1000GP.chr21.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr21.hap.gz,1000GP.s.norel_chr21.legend.gz,1000GP.s.norel_chr21.posfile_comma.gz
+1000GP.s.norel,chr22,1000GP.chr22.s.norel.sites.vcf.gz,1000GP.chr22.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr22.hap.gz,1000GP.s.norel_chr22.legend.gz,1000GP.s.norel_chr22.posfile_comma.gz
 ```
 
-| Column            | Description                                                                                                                                                                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `panel`           | Name of the reference panel used.                                                                                                                                                                                                                                                    |
-| `chr`             | Name of the chromosome. Use the prefix 'chr' if the panel uses the prefix.                                                                                                                                                                                                           |
-| `vcf`             | Full path to a VCF containing the sites for that chromosome. File has to be gzipped and have the extension ".vcf.gz". (Required for validation step)                                                                                                                                 |
-| `index`           | Full path to the index for the VCF file for that chromosome. File has to be gzipped and have the extension ".tbi". (Necessary for validation step)                                                                                                                                   |
-| `hap`             | Full path to ".hap.gz" compressed file containing the reference panel haplotypes in ["haps" format](https://www.cog-genomics.org/plink/2.0/formats#haps). (Required by QUILT)                                                                                                        |
-| `legend`          | Full path to ".legend.gz" compressed file containing the reference panel sites in ["legend" format](https://www.cog-genomics.org/plink/2.0/formats#legend). (Required by QUILT, GLIMPSE1 and STITCH)                                                                                 |
-| `posfile_comma`   | Full path to ".posfile_comma.gz" optionnaly compressed file containing the reference panel sites in ["--targets-file" format of bcftools](https://samtools.github.io/bcftools/bcftools.html#common_options): '%CHROM\t%POS\t%REF,%ALT\n'. (Required by GLIMPSE1 and validation step) |
-| `posfile_nocomma` | Full path to ".posfile_nocomma.gz" optionnaly compressed file containing the reference panel sites in "posfile" format of STITCH: '%CHROM\t%POS\t%REF\t%ALT\n'. (Required by STITCH)                                                                                                 |
+| Column    | Description                                                                                                                                                                                                                                                                            |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `panel`   | Name of the reference panel used.                                                                                                                                                                                                                                                      |
+| `chr`     | Name of the chromosome. Use the prefix 'chr' if the panel uses the prefix.                                                                                                                                                                                                             |
+| `vcf`     | Full path to a VCF containing the sites for that chromosome. File has to be gzipped and have the extension ".vcf.gz". (Required for validation step)                                                                                                                                   |
+| `index`   | Full path to the index for the VCF file for that chromosome. File has to be gzipped and have the extension ".tbi". (Necessary for validation step)                                                                                                                                     |
+| `hap`     | Full path to ".hap.gz" compressed file containing the reference panel haplotypes in ["haps" format](https://www.cog-genomics.org/plink/2.0/formats#haps). (Required by QUILT)                                                                                                          |
+| `legend`  | Full path to ".legend.gz" compressed file containing the reference panel sites in ["legend" format](https://www.cog-genomics.org/plink/2.0/formats#legend). (Required by QUILT)                                                                                                        |
+| `posfile` | Full path to ".posfile.gz" optionnaly compressed file containing the reference panel sites in ["--targets-file" format of bcftools](https://samtools.github.io/bcftools/bcftools.html#common_options): '%CHROM\t%POS\t%REF,%ALT\n'. (Required by GLIMPSE1, STITCH and validation step) |
 
 The `legend` file should be a TSV with the following structure, similar to that from [`bcftools convert` documentation](https://samtools.github.io/bcftools/bcftools.html#convert) with the `--haplegendsample` command : File is space separated with a header ("id,position,a0,a1"), one row per SNP, with the following columns:
 
@@ -310,16 +309,15 @@ For starting from the imputation steps, the required flags are:
 | `GLIMPSE1` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ✅ ³        |
 | `GLIMPSE2` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ❌          |
 | `QUILT`    | ✅               | ✅ ²      | ✅                      | ❌        | ✅         | ✅ ⁴        |
-| `STITCH`   | ✅               | ✅ ²      | ✅                      | ❌        | ❌         | ✅ ⁵        |
+| `STITCH`   | ✅               | ✅ ²      | ✅                      | ❌        | ❌         | ✅ ³        |
 | `BEAGLE5`  | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ❌          |
-| `MINIMAC4` | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ✅ ⁶        |
+| `MINIMAC4` | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ✅ ⁵        |
 
 > ¹ Alignment files as well as variant calling format (i.e. BAM, CRAM, VCF or BCF)
 > ² Alignment files only (i.e. BAM or CRAM)
-> ³ `GLIMPSE1`: Should be a CSV with columns [panel id, chr, posfile_comma]
+> ³ `GLIMPSE1` & `STITCH`: Should be a CSV with columns [panel id, chr, posfile]
 > ⁴ `QUILT`: Should be a CSV with columns [panel id, chr, hap, legend]
-> ⁵ `STITCH`: Should be a CSV with columns [panel id, chr, posfile_nocomma]
-> ⁶ `MINIMAC4`: Optionally, a VCF with its index can be provided for more control over the imputed positions. Should be a CSV with columns [panel id, chr, vcf, index]
+> ⁵ `MINIMAC4`: Optionally, a VCF with its index can be provided for more control over the imputed positions. Should be a CSV with columns [panel id, chr, vcf, index]
 
 Here is a representation on how the input files will be processed depending on the input files type and the selected imputation tool.
 
@@ -400,7 +398,7 @@ nextflow run nf-core/phaseimpute \
 
 ### STITCH
 
-[STITCH](https://github.com/rwdavies/STITCH) is an R program for low coverage sequencing genotype imputation without using a reference panel. The required inputs for this program are bam samples provided in the input samplesheet (`--input`) and a `.posfile_nocomma.gz` file with the list of positions to genotype (`--posfile`). See [Posfile section](#samplesheet-posfile) for more information.
+[STITCH](https://github.com/rwdavies/STITCH) is an R program for low coverage sequencing genotype imputation without using a reference panel. The required inputs for this program are bam samples provided in the input samplesheet (`--input`) and a `.posfile.gz` file with the list of positions to genotype (`--posfile`). See [Posfile section](#samplesheet-posfile) for more information.
 
 If you do not have a position file, you can run the `--steps panelprep` with a reference panel that will produces the TSV file.
 
@@ -427,11 +425,11 @@ nextflow run nf-core/phaseimpute \
     -profile docker
 ```
 
-The CSV file provided in `--posfile` must contain three columns [panel, chr, posfile_nocomma]. See [Posfile section](#samplesheet-posfile) for more information.
+The CSV file provided in `--posfile` must contain three columns [panel, chr, posfile]. See [Posfile section](#samplesheet-posfile) for more information.
 
 ```console title="posfile.csv"
-panel,chr,posfile_nocomma
-1000GP,chr22,1000GP.s.norel_chr22.posfile_nocomma.gz
+panel,chr,posfile
+1000GP,chr22,1000GP.s.norel_chr22.posfile.gz
 ```
 
 STITCH only handles bi-allelic SNPs.
@@ -440,7 +438,7 @@ If you do not have a reference panel and you would like to obtain the posfile yo
 
 ```bash
 bcftools view -G -m 2 -M 2 -v ${vcf}
-bcftools convert --haplegendsample ${vcf} | bcftools query -f'%CHROM\t%POS\t%REF\t%ALT\n' | bgzip -c > ${vcf}.posfile_nocomma.gz
+bcftools convert --haplegendsample ${vcf} | bcftools query -f'%CHROM\t%POS\t%REF,%ALT\n' | bgzip -c > ${vcf}.posfile.gz
 ```
 
 ### GLIMPSE1
@@ -463,11 +461,11 @@ nextflow run nf-core/phaseimpute \
     --chunks chunks.csv
 ```
 
-The CSV file provided in `--posfile` must contain three columns [panel, chr, posfile_comma]. See [Posfile section](#samplesheet-posfile) for more information.
+The CSV file provided in `--posfile` must contain three columns [panel, chr, posfile]. See [Posfile section](#samplesheet-posfile) for more information.
 
 ```console title="posfile.csv"
-panel,chr,posfile_comma
-1000GP,chr22,1000GP.s.norel_chr22.posfile_comma.gz
+panel,chr,posfile
+1000GP,chr22,1000GP.s.norel_chr22.posfile.gz
 ```
 
 The CSV file provided in `--panel` must be prepared with `--steps panelprep` and must contain four columns [panel, chr, vcf, index].

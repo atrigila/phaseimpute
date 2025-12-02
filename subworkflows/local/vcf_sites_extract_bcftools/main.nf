@@ -1,9 +1,7 @@
 include { BCFTOOLS_CONVERT              } from '../../../modules/nf-core/bcftools/convert'
 include { BCFTOOLS_VIEW                 } from '../../../modules/nf-core/bcftools/view'
-include { GAWK as GAWK_COMMA            } from '../../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_COMMA    } from '../../../modules/nf-core/tabix/bgzip'
-include { GAWK as GAWK_NOCOMMA          } from '../../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_NOCOMMA  } from '../../../modules/nf-core/tabix/bgzip'
+include { GAWK                          } from '../../../modules/nf-core/gawk'
+include { TABIX_BGZIP                   } from '../../../modules/nf-core/tabix/bgzip'
 
 workflow VCF_SITES_EXTRACT_BCFTOOLS {
     take:
@@ -23,30 +21,22 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
     BCFTOOLS_VIEW(ch_vcf, [], [], [])
     ch_versions = ch_versions.mix(BCFTOOLS_VIEW.out.versions.first())
 
-    // Transform posfile to TSV
-    GAWK_NOCOMMA(BCFTOOLS_CONVERT.out.legend, [], false)
-    ch_versions = ch_versions.mix(GAWK_NOCOMMA.out.versions.first())
-
     // Transform posfile to TSV with ','
-    GAWK_COMMA(BCFTOOLS_CONVERT.out.legend, [], false)
-    ch_versions = ch_versions.mix(GAWK_COMMA.out.versions.first())
+    GAWK(BCFTOOLS_CONVERT.out.legend, [], false)
+    ch_versions = ch_versions.mix(GAWK.out.versions.first())
 
     // Compress TSV
-    BGZIP_COMMA(GAWK_COMMA.out.output)
-    ch_versions = ch_versions.mix(BGZIP_COMMA.out.versions.first())
-
-    BGZIP_NOCOMMA(GAWK_NOCOMMA.out.output)
-    ch_versions = ch_versions.mix(BGZIP_NOCOMMA.out.versions.first())
+    TABIX_BGZIP(GAWK.out.output)
+    ch_versions = ch_versions.mix(TABIX_BGZIP.out.versions.first())
 
     // Join extracted sites and index
     ch_posfile = BCFTOOLS_VIEW.out.vcf
         .join(BCFTOOLS_VIEW.out.tbi)
         .join(BCFTOOLS_CONVERT.out.hap)
         .join(BCFTOOLS_CONVERT.out.legend)
-        .join(BGZIP_COMMA.out.output)
-        .join(BGZIP_NOCOMMA.out.output)
+        .join(TABIX_BGZIP.out.output)
 
     emit:
-    posfile       = ch_posfile          // channel: [ [id, chr], vcf, csi, hap, legend, posfile_comma, posfile_nocomma ]
+    posfile       = ch_posfile          // channel: [ [id, chr], vcf, csi, hap, legend, posfile ]
     versions      = ch_versions         // channel: [ versions.yml ]
 }
