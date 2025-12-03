@@ -57,8 +57,8 @@ include { BAM_IMPUTE_QUILT                           } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // STITCH subworkflows
-include { GAWK as GAWK_NOCOMMA                       } from '../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_NOCOMMA               } from '../../modules/nf-core/tabix/bgzip'
+include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
 include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/local/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
@@ -373,21 +373,21 @@ workflow PHASEIMPUTE {
             log.info("Impute with STITCH")
 
             // Transform posfile to tabulated format
-            GAWK_NOCOMMA(
+            GAWK_POSFILE_STITCH(
                 ch_posfile.map{
                     meta, _site, _site_index, _hap, _legend, posfile -> [
                         meta, posfile
                     ]
                 }, [], false)
-            ch_versions = ch_versions.mix(GAWK_NOCOMMA.out.versions.first())
+            ch_versions = ch_versions.mix(GAWK_POSFILE_STITCH.out.versions.first())
 
-            BGZIP_NOCOMMA(GAWK_NOCOMMA.out.output)
-            ch_versions = ch_versions.mix(BGZIP_NOCOMMA.out.versions.first())
+            BGZIP_POSFILE_STITCH(GAWK_POSFILE_STITCH.out.output)
+            ch_versions = ch_versions.mix(BGZIP_POSFILE_STITCH.out.versions.first())
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
                 ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
-                BGZIP_NOCOMMA.out.output,
+                BGZIP_POSFILE_STITCH.out.output,
                 ch_region,
                 ch_fasta
             )
