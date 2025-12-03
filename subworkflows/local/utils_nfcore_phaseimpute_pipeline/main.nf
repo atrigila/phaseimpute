@@ -166,13 +166,14 @@ workflow PIPELINE_INITIALISATION {
                         [ meta + [id:meta.id.toString()], file, index ]
                 }
             // Check if all extension are identical
-            getFilesSameExt(ch_input_truth)
+            input_truth_ext = getFilesSameExt(ch_input_truth)
         } else {
             // #TODO Wait for `oneOf()` to be supported in the nextflow_schema.json
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
         ch_input_truth = Channel.of([[], [], []])
+        input_truth_ext = ""
     }
 
     //
@@ -266,7 +267,8 @@ workflow PIPELINE_INITIALISATION {
         validatePosfileTools(
             ch_posfile,
             params.tools ? params.tools.split(','): [],
-            params.steps.split(',')
+            params.steps.split(','),
+            input_truth_ext
         )
     }
 
@@ -518,7 +520,7 @@ def validateInputBatchTools(ch_input, batch_size, extension, tools) {
 //
 // Check if posfile is compatible with tools and steps selected
 //
-def validatePosfileTools(ch_posfile, tools, steps){
+def validatePosfileTools(ch_posfile, tools, steps, truth_extension){
     ch_posfile
         .map{ _meta, vcf, index, hap, legend, posfile ->
             if (tools.contains("glimpse1")) {
@@ -534,7 +536,9 @@ def validatePosfileTools(ch_posfile, tools, steps){
             if (steps.contains("validate")) {
                 assert vcf : "Validation step needs a vcf file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
                 assert index : "Validation step needs an index file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
-                assert posfile : "You have not provided a posfile and you've requested to use the validation step. This step requires a posfile file with CHROM\tPOS\tREF,ALT columns to call the variants from the truth BAM file. This file is generated automatically in the panelprep step."
+                if (truth_extension =~ "bam|cram"){
+                    assert posfile : "You have not provided a posfile and you've requested to use the validation step with bam files. This step requires a posfile file with CHROM\tPOS\tREF,ALT columns to call the variants from the truth BAM file. This file is generated automatically in the panelprep step."
+                }
             }
         }
 
