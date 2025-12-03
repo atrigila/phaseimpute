@@ -7,8 +7,8 @@ workflow VCF_IMPUTE_GLIMPSE1 {
 
     take:
     ch_input        // channel (mandatory): [ [id], vcf, tbi ]
-    ch_panel        // channel (mandatory): [ [panel, chr], vcf, tbi ]
-    ch_chunks       // channel  (optional): [ [panel, chr], region1, region2 ]
+    ch_panel        // channel (mandatory): [ [panel_id, chr], vcf, tbi ]
+    ch_chunks       // channel  (optional): [ [panel_id, chr], region1, region2 ]
 
     main:
 

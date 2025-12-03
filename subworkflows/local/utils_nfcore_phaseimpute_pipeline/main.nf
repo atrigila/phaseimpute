@@ -360,11 +360,11 @@ workflow PIPELINE_INITIALISATION {
     input                = ch_input         // [ [meta], file, index ]
     input_truth          = ch_input_truth   // [ [meta], file, index ]
     fasta                = ch_ref_gen       // [ [genome], fasta, fai ]
-    panel                = ch_panel         // [ [panel, chr], vcf, index ]
+    panel                = ch_panel         // [ [panel_id, chr], vcf, index ]
     depth                = ch_depth         // [ [depth], depth ]
     regions              = ch_regions       // [ [chr, region], region ]
     gmap                 = ch_map           // [ [map], map ]
-    posfile              = ch_posfile       // [ [panel, chr], vcf, index, hap, legend ]
+    posfile              = ch_posfile       // [ [panel_id, chr], vcf, index, hap, legend ]
     chunks               = ch_chunks        // [ [chr], txt ]
     chunk_model          = chunk_model
     versions             = ch_versions

@@ -6,7 +6,7 @@ workflow BAM_IMPUTE_STITCH {
 
     take:
     ch_input        // channel:   [ [id], [bam], [bai], bampaths, bamnames ]
-    ch_posfile      // channel:   [ [panel, chr], legend ]
+    ch_posfile      // channel:   [ [panel_id, chr], legend ]
     ch_region       // channel:   [ [chr, region], region ]
     ch_fasta        // channel:   [ [genome], fa, fai ]
 
