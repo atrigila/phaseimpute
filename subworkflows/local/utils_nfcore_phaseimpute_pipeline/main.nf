@@ -525,7 +525,7 @@ def validatePosfileTools(ch_posfile, tools, steps){
                 assert posfile : "Glimpse1 tool needs a posfile file with CHROM\tPOS\tREF,ALT columns. This file can be created through the panelprep step."
             }
             if (tools.contains("stitch")) {
-                assert posfile : "Stitch tool needs a posfile file with CHROM\tPOS\tREF,ALT columns. This file can be created through the panelprep step."
+                assert posfile : "You have not provided a posfile and you've requested to use STITCH. In this pipeline, using STITCH requires a posfile file with CHROM\tPOS\tREF,ALT columns. This file is generated automatically in the panelprep step."
             }
             if (tools.contains("quilt")) {
                 assert legend : "Quilt tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
