@@ -47,7 +47,7 @@ nextflow_workflow {
 
                 ch_posfile = Channel.of([
                     [id: "1000GP", chr: "chr22"],
-                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile", checkIfExist:true)
+                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile.stitch", checkIfExist:true)
                 ])
 
                 ch_region = Channel.of([
@@ -111,7 +111,7 @@ nextflow_workflow {
 
                 ch_posfile = Channel.of([
                     [id: "1000GP", chr: "chr22"],
-                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile", checkIfExist:true)
+                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile.stitch", checkIfExist:true)
                 ])
 
                 ch_region = Channel.of([

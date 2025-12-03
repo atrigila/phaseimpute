@@ -79,8 +79,8 @@ A final samplesheet file for the posfile may look something like the one below. 
 
 ```console title="posfile.csv"
 panel,chr,vcf,index,hap,legend,posfile
-1000GP.s.norel,chr21,1000GP.chr21.s.norel.sites.vcf.gz,1000GP.chr21.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr21.hap.gz,1000GP.s.norel_chr21.legend.gz,1000GP.s.norel_chr21.posfile_comma.gz
-1000GP.s.norel,chr22,1000GP.chr22.s.norel.sites.vcf.gz,1000GP.chr22.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr22.hap.gz,1000GP.s.norel_chr22.legend.gz,1000GP.s.norel_chr22.posfile_comma.gz
+1000GP.s.norel,chr21,1000GP.chr21.s.norel.sites.vcf.gz,1000GP.chr21.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr21.hap.gz,1000GP.s.norel_chr21.legend.gz,1000GP.s.norel_chr21.posfile.gz
+1000GP.s.norel,chr22,1000GP.chr22.s.norel.sites.vcf.gz,1000GP.chr22.s.norel.sites.vcf.gz.csi,1000GP.s.norel_chr22.hap.gz,1000GP.s.norel_chr22.legend.gz,1000GP.s.norel_chr22.posfile.gz
 ```
 
 | Column    | Description                                                                                                                                                                                                                                                                            |
