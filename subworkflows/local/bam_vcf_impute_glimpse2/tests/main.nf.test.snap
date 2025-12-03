@@ -11,7 +11,7 @@
                 [
                     {
                         "id": "NA12878",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "tools": "glimpse2"
                     },
@@ -51,10 +51,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:19:34.732342368"
+        "timestamp": "2025-11-27T16:13:12.678873778"
     },
     "Impute with glimpse2 one individual - input file bam with bamlist": {
         "content": [
@@ -68,7 +68,7 @@
                 [
                     {
                         "id": "NA12878",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "tools": "glimpse2"
                     },
@@ -108,10 +108,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:19:57.582183388"
+        "timestamp": "2025-11-27T16:15:52.065687005"
     },
     "Impute with glimpse2 two individuals - input bam  with bamlist": {
         "content": [
@@ -125,7 +125,7 @@
                 [
                     {
                         "id": "allid",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "tools": "glimpse2"
                     },
@@ -166,9 +166,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:19:46.943682026"
+        "timestamp": "2025-11-27T16:15:37.114128458"
     }
 }

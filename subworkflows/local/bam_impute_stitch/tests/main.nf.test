@@ -46,7 +46,7 @@ nextflow_workflow {
                 ])
 
                 ch_posfile = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile.stitch", checkIfExist:true)
                 ])
 
@@ -110,7 +110,7 @@ nextflow_workflow {
                 ])
 
                 ch_posfile = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.posfile.stitch", checkIfExist:true)
                 ])
 

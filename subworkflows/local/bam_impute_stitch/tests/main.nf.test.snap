@@ -10,7 +10,7 @@
                     {
                         "id": "allid",
                         "chr": "chr22",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "tools": "stitch"
                     },
                     "allid.stitch.vcf.gz",
@@ -57,7 +57,7 @@
                     {
                         "id": "allid",
                         "chr": "chr22",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "tools": "stitch"
                     },
                     "allid.stitch.vcf.gz",

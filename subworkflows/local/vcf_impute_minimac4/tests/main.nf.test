@@ -22,12 +22,12 @@ nextflow_workflow {
             workflow {
                 """
                 input[0] = Channel.of([
-                    [id: "NA12878", panel: "1000GP", chr: "chr22"],
+                    [id: "NA12878", panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                 ])
                 input[1] = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
@@ -60,12 +60,12 @@ nextflow_workflow {
             workflow {
                 """
                 input[0] = Channel.of([
-                    [id: "NA12878", panel: "1000GP", chr: "chr22"],
+                    [id: "NA12878", panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                 ])
                 input[1] = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
@@ -102,18 +102,18 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of(
                     [
-                        [id: "NA12878", panel: "1000GP", chr: "chr22"],
+                        [id: "NA12878", panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                     ],
                     [
-                        [id: "NA19401", panel: "1000GP", chr: "chr22"],
+                        [id: "NA19401", panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bcf", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bcf.csi", checkIfExist:true)
                     ]
                 )
                 input[1] = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
@@ -146,12 +146,12 @@ nextflow_workflow {
             workflow {
                 """
                 input[0] = Channel.of([
-                    [id: "NA12878", panel: "1000GP", chr: "chr22"],
+                    [id: "NA12878", panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                 ])
                 input[1] = Channel.of([
-                    [id: "1000GP", chr: "chr22"],
+                    [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])

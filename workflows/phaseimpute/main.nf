@@ -234,7 +234,7 @@ workflow PHASEIMPUTE {
             ch_panel_phased.map{ meta, vcf, index ->
                 [meta, [2:"prep_panel/panel", 3:"prep_panel/panel"], vcf, index]
             },
-            ["id", "chr"], "panel,chr,vcf,index",
+            ["panel_id", "chr"], "panel,chr,vcf,index",
             "panel.csv", "prep_panel/csv"
         )
         // Posfile
@@ -245,7 +245,7 @@ workflow PHASEIMPUTE {
                     vcf, index, hap, legend, posfile
                 ]
             },
-            ["id", "chr"], "panel,chr,vcf,index,hap,legend,posfile",
+            ["panel_id", "chr"], "panel,chr,vcf,index,hap,legend,posfile",
             "posfile.csv", "prep_panel/csv"
         )
         // Chunks
@@ -253,7 +253,7 @@ workflow PHASEIMPUTE {
             VCF_CHUNK_GLIMPSE.out.chunks.map{ meta, file ->
                 [meta, [2:"prep_panel/chunks/glimpse1"], file]
             },
-            ["id", "chr"], "panel,chr,file",
+            ["panel_id", "chr"], "panel,chr,file",
             "chunks_glimpse1.csv", "prep_panel/csv"
         )
     }
@@ -419,7 +419,7 @@ workflow PHASEIMPUTE {
                     ]
                 },
                 ch_chunks_quilt,
-                ch_fasta.map{ [it[0], it[1]] }
+                ch_fasta
             )
             ch_versions = ch_versions.mix(BAM_IMPUTE_QUILT.out.versions)
 

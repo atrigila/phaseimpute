@@ -18,6 +18,7 @@ nextflow_workflow {
     tag "gawk"
 
     test("Should run without error") {
+        tag "test"
         when {
             workflow {
                 """
@@ -30,7 +31,7 @@ nextflow_workflow {
                         "chr"
                     ],
                     [
-                        [id: "21"],
+                        [panel_id: "21"],
                         file( params.modules_testdata_base_path + "genomics/homo_sapiens/illumina/vcf/chr21/simulated_sv.vcf.gz",checkIfExist:true),
                         file( params.modules_testdata_base_path + "genomics/homo_sapiens/illumina/vcf/chr21/simulated_sv.vcf.gz.tbi",checkIfExist:true),
                         ["21"],

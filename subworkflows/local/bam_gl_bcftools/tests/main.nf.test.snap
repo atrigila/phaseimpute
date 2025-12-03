@@ -9,18 +9,18 @@
             [
                 [
                     {
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "id": "all",
                         "metas": [
                             {
                                 "id": "NA12878",
-                                "panel": "1000GP",
+                                "panel_id": "1000GP",
                                 "chr": "22"
                             },
                             {
                                 "id": "NA19401",
-                                "panel": "1000GP",
+                                "panel_id": "1000GP",
                                 "chr": "22"
                             }
                         ],
@@ -67,7 +67,7 @@
                 [
                     {
                         "id": "NA12878",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "chr": "22",
                         "variantcaller": "bcftools"
                     },
