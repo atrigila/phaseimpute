@@ -65,7 +65,7 @@ output:
         - posfile:
           type: file
           description: POSFILE file with %CHROM\t%POS\t%REF,%ALT\n format.
-          pattern: "*.posfile[.gz]"
+          pattern: "*.posfile*[.gz]"
   - versions:
       description: Channel containing software versions file
       structure:
