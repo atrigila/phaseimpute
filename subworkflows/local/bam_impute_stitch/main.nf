@@ -6,7 +6,7 @@ workflow BAM_IMPUTE_STITCH {
 
     take:
     ch_input        // channel:   [ [id], [bam], [bai], bampaths, bamnames ]
-    ch_posfile      // channel:   [ [panel, chr], legend ]
+    ch_posfile      // channel:   [ [panel_id, chr], legend ]
     ch_region       // channel:   [ [chr, region], region ]
     ch_fasta        // channel:   [ [genome], fa, fai ]
 
@@ -48,7 +48,7 @@ workflow BAM_IMPUTE_STITCH {
         .map{
             metaI, bam, bai, bampath, bamname, metaPC, posfile, input, rdata, chr, k_val, ngen ->
             [
-                metaI + [chr: metaPC.chr, panel:metaPC.id],
+                metaI + [chr: metaPC.chr, panel_id:metaPC.panel_id],
                 bam, bai, bampath, bamname, posfile, input, rdata, chr, k_val, ngen
             ]
         }

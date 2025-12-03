@@ -11,7 +11,7 @@
                     {
                         "id": "allid",
                         "chr": "chr22",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "tools": "stitch"
                     },
                     "allid.stitch.vcf.gz",
@@ -47,10 +47,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:19:24.346949068"
+        "timestamp": "2025-11-27T16:12:33.286063502"
     },
     "Impute with stitch two individuals with bamlist and renaming": {
         "content": [
@@ -64,7 +64,7 @@
                     {
                         "id": "allid",
                         "chr": "chr22",
-                        "panel": "1000GP",
+                        "panel_id": "1000GP",
                         "tools": "stitch"
                     },
                     "allid.stitch.vcf.gz",
@@ -100,9 +100,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-07-08T15:19:13.509502869"
+        "timestamp": "2025-11-27T16:12:17.352057347"
     }
 }

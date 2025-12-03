@@ -35,7 +35,7 @@ nextflow_workflow {
                     ],
                 ])
                 input[1] = Channel.of([
-                        [id: "1000GP", chr: "22"],
+                        [panel_id: "1000GP", chr: "22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
                 input[2] = Channel.of([
@@ -78,7 +78,7 @@ nextflow_workflow {
                     ],
                 ])
                 input[1] = Channel.of([
-                        [id: "1000GP", chr: "22"],
+                        [panel_id: "1000GP", chr: "22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
                 input[2] = Channel.of([
