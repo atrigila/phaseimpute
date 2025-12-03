@@ -398,7 +398,7 @@ nextflow run nf-core/phaseimpute \
 
 ### STITCH
 
-[STITCH](https://github.com/rwdavies/STITCH) is an R program for low coverage sequencing genotype imputation without using a reference panel. The required inputs for this program are bam samples provided in the input samplesheet (`--input`) and a `.posfile.gz` file with the list of positions to genotype (`--posfile`). See [Posfile section](#samplesheet-posfile) for more information.
+[STITCH](https://github.com/rwdavies/STITCH) is an R program for low coverage sequencing genotype imputation without using a reference panel. The required inputs for this program are bam samples provided in the input samplesheet (`--input`) and a `.posfile.gz` file with the list of positions to genotype (`--posfile`). Internally, the pipeline converts the posfile with CHROM POS REF,ALT file to STITCH’s CHROM POS REF ALT format; users should always provide the comma-separated format described in the [Posfile section](#samplesheet-posfile).
 
 If you do not have a position file, you can run the `--steps panelprep` with a reference panel that will produces the TSV file.
 
