@@ -365,7 +365,7 @@ workflow PIPELINE_INITIALISATION {
     regions              = ch_regions       // [ [chr, region], region ]
     gmap                 = ch_map           // [ [map], map ]
     posfile              = ch_posfile       // [ [panel_id, chr], vcf, index, hap, legend ]
-    chunks               = ch_chunks        // [ [chr], txt ]
+    chunks               = ch_chunks        // [ [panel_id, chr], txt ]
     chunk_model          = chunk_model
     versions             = ch_versions
 }
