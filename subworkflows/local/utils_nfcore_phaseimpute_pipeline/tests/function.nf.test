@@ -428,14 +428,51 @@ nextflow_function {
             function {
                 """
                 input[0] = channel.of([
-                    [id: "test"],
-                    [], // vcf
-                    [], // index
-                    [], // hap
-                    [], // legend
+                    [id: "test"], [], [], [], [],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.posfile", checkIfExists: true)
                 ])
                 input[1] = "stitch"
+                input[2] = "impute"
+                """
+            }
+        }
+        then {
+            assertAll (
+                { assert function.success }
+            )
+        }
+    }
+
+    test ("Test validatePosfileTools good compressed file") {
+        function "validatePosfileTools"
+        tag "validatePosfileTools"
+        when {
+            function {
+                """
+                input[0] = channel.of([
+                    [id: "test"], [], [], [], [],
+                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.posfile.gz", checkIfExists: true)
+                ])
+                input[1] = "stitch"
+                input[2] = "impute"
+                """
+            }
+        }
+        then {
+            assertAll (
+                { assert function.success }
+            )
+        }
+    }
+
+    test ("Test validatePosfileTools no posfile") {
+        function "validatePosfileTools"
+        tag "validatePosfileTools"
+        when {
+            function {
+                """
+                input[0] = channel.of( [[id: "test"], [], [], [], [], []] )
+                input[1] = "glimpse2"
                 input[2] = "impute"
                 """
             }
@@ -454,11 +491,7 @@ nextflow_function {
             function {
                 """
                 input[0] = channel.of([
-                    [id: "test"],
-                    [], // vcf
-                    [], // index
-                    [], // hap
-                    [], // legend
+                    [id: "test"], [], [], [], [],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.posfile.stitch", checkIfExists: true)
                 ])
                 input[1] = "stitch"
@@ -469,8 +502,8 @@ nextflow_function {
         then {
             assertAll (
                 { assert function.failed },
-                { assert check_stdout(function.stdout).contains(
-                    'ERROR ~ Expected 3 columns in 1000GP.chr21.posfile.stitch, found 4 in line: chr21\t16570070\tC\tG. Expression: nextflow.util.LangHelpers.compareEqual(fields.size(), 3)'
+                { assert function.stdout.join('\n').contains(
+                    'ERROR ~ Expected 3 columns in 1000GP.chr21.posfile.stitch, found 4 in line: chr21\t16570070\tC\tG.'
                 ) }
             )
         }

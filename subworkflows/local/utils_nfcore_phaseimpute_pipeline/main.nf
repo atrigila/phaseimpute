@@ -540,15 +540,28 @@ def validatePosfileTools(ch_posfile, tools, steps){
 
     ch_posfile
         .map{ _meta, _vcf, _index, _hap, _legend, posfile ->
-            def lines = posfile.text.readLines()
-            // Check file is not empty
-            assert !lines.isEmpty() : "Posfile ${posfile.name} is empty"
+            if (posfile) {
+                def lines = []
+                def pathFile = posfile instanceof String ? file(posfile) : posfile
+                pathFile.withInputStream { stream ->
+                    def reader = pathFile.name.endsWith('.gz') ?
+                        new java.util.zip.GZIPInputStream(stream).newReader() :
+                        new InputStreamReader(stream)
 
-            // Validate first 3 lines (or fewer if file is shorter)
-            lines.take(3).each { line ->
-                def fields = line.split("\t")
-                assert fields.size() == 3 : "Expected 3 columns in ${posfile.name}, found ${fields.size()} in line: ${line}"
-                assert fields[2].contains(",") : "Third column must contain comma in ${posfile.name}, line: ${line}"
+                    reader.withReader { r ->
+                        (1..3).each {
+                            def line = r.readLine()
+                            if (line != null) lines << line
+                        }
+                    }
+                }
+
+                // Validate first 3 lines (or fewer if file is shorter)
+                lines.each { line ->
+                    def fields = line.split("\t")
+                    assert fields.size() == 3 : "Expected 3 columns in ${posfile.name}, found ${fields.size()} in line: ${line}"
+                    assert fields[2].contains(",") : "Third column must contain comma in ${posfile.name}, line: ${line}"
+                }
             }
         }
 
