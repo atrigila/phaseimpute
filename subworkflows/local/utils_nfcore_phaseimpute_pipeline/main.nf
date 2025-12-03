@@ -534,8 +534,24 @@ def validatePosfileTools(ch_posfile, tools, steps){
             if (steps.contains("validate")) {
                 assert vcf : "Validation step needs a vcf file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
                 assert index : "Validation step needs an index file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
+                assert posfile : "You have not provided a posfile and you've requested to use the validation step. This step requires a posfile file with CHROM\tPOS\tREF,ALT columns to call the variants from the truth BAM file. This file is generated automatically in the panelprep step."
             }
         }
+
+    ch_posfile
+        .map{ _meta, _vcf, _index, _hap, _legend, posfile ->
+            def lines = posfile.text.readLines()
+            // Check file is not empty
+            assert !lines.isEmpty() : "Posfile ${posfile.name} is empty"
+
+            // Validate first 3 lines (or fewer if file is shorter)
+            lines.take(3).each { line ->
+                def fields = line.split("\t")
+                assert fields.size() == 3 : "Expected 3 columns in ${posfile.name}, found ${fields.size()} in line: ${line}"
+                assert fields[2].contains(",") : "Third column must contain comma in ${posfile.name}, line: ${line}"
+            }
+        }
+
     return null
 }
 

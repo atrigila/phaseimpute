@@ -1,16 +1,4 @@
 {
-    "Test getRegionFromFai with specified region without fasta": {
-        "content": [
-            {
-                
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.5"
-        },
-        "timestamp": "2025-06-19T10:53:32.246531145"
-    },
     "Test getRegionFromFai with an error": {
         "content": [
             [
@@ -42,30 +30,6 @@
             "nextflow": "24.10.0"
         },
         "timestamp": "2024-11-06T15:32:04.356171769"
-    },
-    "Test validateInputBatchTools only one vcf": {
-        "content": [
-            [
-                "When using a Variant Calling Format file as input, only one file can be provided. If you have multiple single-sample VCF files, please merge them into a single multisample VCF file."
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.4"
-        },
-        "timestamp": "2025-06-18T15:44:45.241704362"
-    },
-    "Test checkMetaChr warning": {
-        "content": [
-            [
-                "WARN: Chr : [chrY] is missing from test"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.4"
-        },
-        "timestamp": "2025-06-18T15:45:50.70859829"
     },
     "Test Function exportCsv": {
         "content": null,
@@ -139,5 +103,71 @@
             "nextflow": "25.04.4"
         },
         "timestamp": "2025-06-18T15:44:51.349913082"
+    },
+    "Test getRegionFromFai with specified region without fasta": {
+        "content": [
+            {
+                
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-06-19T10:53:32.246531145"
+    },
+    "Test validatePosfileTools wrong file": {
+        "content": [
+            [
+                "[chr21\t16570070\tC\tG, chr21\t16570094\tT\tG, chr21\t16570095\tC\tT]",
+                "ERROR ~ Expected 3 columns in 1000GP.chr21.posfile.stitch, found 4 in line: chr21\t16570070\tC\tG. Expression: nextflow.util.LangHelpers.compareEqual(fields.size(), 3)",
+                "",
+                " -- Check script '/home/llenezet/repositories/phaseimpute/subworkflows/local/utils_nfcore_phaseimpute_pipeline/main.nf' at line: 551 or see '/home/llenezet/repositories/phaseimpute/.nf-test/tests/3c6e66a50e8a64ee0c7ad8158701c335/meta/nextflow.log' file for more details",
+                "WARN: Failed to render CO2e footprint report -- see the log file for details",
+                "WARN: Failed to render execution report -- see the log file for details",
+                "WARN: Failed to render execution timeline -- see the log file for details"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2025-12-03T11:45:38.083671947"
+    },
+    "Test validateInputBatchTools only one vcf": {
+        "content": [
+            [
+                "When using a Variant Calling Format file as input, only one file can be provided. If you have multiple single-sample VCF files, please merge them into a single multisample VCF file."
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-06-18T15:44:45.241704362"
+    },
+    "Test checkMetaChr warning": {
+        "content": [
+            [
+                "WARN: Chr : [chrY] is missing from test"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.4"
+        },
+        "timestamp": "2025-06-18T15:45:50.70859829"
+    },
+    "Test validatePosfileTools good file": {
+        "content": [
+            [
+                "[chr21\t16570070\tC,G, chr21\t16570094\tT,G, chr21\t16570095\tC,T]"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2025-12-03T11:45:30.220171135"
     }
 }

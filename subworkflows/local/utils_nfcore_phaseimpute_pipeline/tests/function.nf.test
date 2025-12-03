@@ -421,6 +421,61 @@ nextflow_function {
         }
     }
 
+    test ("Test validatePosfileTools good file") {
+        function "validatePosfileTools"
+        tag "validatePosfileTools"
+        when {
+            function {
+                """
+                input[0] = channel.of([
+                    [id: "test"],
+                    [], // vcf
+                    [], // index
+                    [], // hap
+                    [], // legend
+                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.posfile", checkIfExists: true)
+                ])
+                input[1] = "stitch"
+                input[2] = "impute"
+                """
+            }
+        }
+        then {
+            assertAll (
+                { assert function.success }
+            )
+        }
+    }
+
+    test ("Test validatePosfileTools wrong file") {
+        function "validatePosfileTools"
+        tag "validatePosfileTools"
+        when {
+            function {
+                """
+                input[0] = channel.of([
+                    [id: "test"],
+                    [], // vcf
+                    [], // index
+                    [], // hap
+                    [], // legend
+                    file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.posfile.stitch", checkIfExists: true)
+                ])
+                input[1] = "stitch"
+                input[2] = "impute"
+                """
+            }
+        }
+        then {
+            assertAll (
+                { assert function.failed },
+                { assert check_stdout(function.stdout).contains(
+                    'ERROR ~ Expected 3 columns in 1000GP.chr21.posfile.stitch, found 4 in line: chr21\t16570070\tC\tG. Expression: nextflow.util.LangHelpers.compareEqual(fields.size(), 3)'
+                ) }
+            )
+        }
+    }
+
     test ("Test getRegionFromFai with all") {
         function "getRegionFromFai"
         tag "getRegionFromFai"
