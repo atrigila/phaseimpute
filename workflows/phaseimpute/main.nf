@@ -372,7 +372,9 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("stitch")) {
             log.info("Impute with STITCH")
 
-            ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
+            if (params.chunks) {
+                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
+            }
 
             // Transform posfile to tabulated format
             GAWK_POSFILE_STITCH(
@@ -385,6 +387,10 @@ workflow PHASEIMPUTE {
 
             BGZIP_POSFILE_STITCH(GAWK_POSFILE_STITCH.out.output)
             ch_versions = ch_versions.mix(BGZIP_POSFILE_STITCH.out.versions.first())
+
+            BGZIP_POSFILE_STITCH.out.output.view()
+            ch_chunks_quilt.view()
+            ch_map.view()
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
