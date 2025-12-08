@@ -76,10 +76,7 @@ nextflow_function {
         then {
             assertAll(
                 { assert workflow.failed },
-                { assert snapshot(
-                    workflow.stdout[2..-1]
-                        .findAll { !it.matches(/.*Nextflow [0-9]+\.[0-9]+\.[0-9]+ is available.*/) }
-                ).match() }
+                { assert workflow.stdout.join("\n").contains("Only 'glimpse' and 'quilt' output format are supported. Got glimpse2") }
             )
         }
     }
