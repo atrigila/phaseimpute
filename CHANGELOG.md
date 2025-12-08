@@ -65,7 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### `Dependencies`
 
 | Dependency | Old version | New version |
-| ---------- | ----------- | ------------|
+| ---------- | ----------- | ----------- |
 | `bcftools` | 1.20        | 1.21        |
 | `gunzip`   | 1.10        | 1.13        |
 | `lbzip2`   |             | 2.5         |
