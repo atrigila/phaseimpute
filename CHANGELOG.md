@@ -18,9 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Dependency | Old version | New version  |
-| ---------- | ----------- | ------------ |
-| `bedtools` | 2.31.1      | No more used |
+| Dependency | Old version | New version    |
+| ---------- | ----------- | -------------- |
+| `bedtools` | 2.31.1      | No longer used |
 
 ### New contributors
 

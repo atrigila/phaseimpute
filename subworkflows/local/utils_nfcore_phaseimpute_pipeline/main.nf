@@ -775,7 +775,7 @@ def toolCitationText() {
         "Reference panel preparation followed several steps.",
         params.normalize && params.remove_samples ? "The reference panel genotypes were normalized and samples" + params.remove_samples + "were removed" :
             params.normalize ? "The reference panel genotypes were normalized" :
-                params.remove_samples ? "Samples" + params.remove_samples + "were removed from the reference panel genotypes" :
+                params.remove_samples ? "Samples " + params.remove_samples.split(",").join(", ") + " were removed from the reference panel genotypes" :
                     "No normalization or sample removal were performed on the reference panel genotypes.",
         params.normalize || params.remove_samples ? "followed by site extraction and format conversion using BCFtools (Danecek et al. 2021).":
             "Site extraction and format conversion was done using BCFtools (Danecek et al. 2021).",
@@ -791,7 +791,7 @@ def toolCitationText() {
         [
             tools_used.contains("glimpse")    ? "GLIMPSE (Rubinacci et al. 2020)" +
                 " with variants called using BCFtools (Danecek et al. 2021) mpileup followed by indexation with Tabix (Li H et al. 2011)" +
-                " when BAM files was provided" : "",
+                " when BAM files were provided" : "",
             tools_used.contains("glimpse2")   ? "GLIMPSE2 (Rubinacci et al. 2023)" : "",
             tools_used.contains("quilt")      ? "QUILT (Davies et al. 2021)"       : "",
             tools_used.contains("stitch")     ? "STITCH (Davies et al. 2016)"      : "",
