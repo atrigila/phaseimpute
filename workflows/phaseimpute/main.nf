@@ -59,7 +59,7 @@ include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/
 // STITCH subworkflows
 include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
 include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
-include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/local/bam_impute_stitch'
+include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/nf-core/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // BEAGLE5 subworkflows
@@ -372,6 +372,8 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("stitch")) {
             log.info("Impute with STITCH")
 
+            ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
+
             // Transform posfile to tabulated format
             GAWK_POSFILE_STITCH(
                 ch_posfile.map{
@@ -386,15 +388,24 @@ workflow PHASEIMPUTE {
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
+                ch_input_bams_withlist.map{
+                    meta, file, index, _bampath_id, bampath_noid, bamnames->
+                    [meta, file, index, bampath_noid, bamnames]
+                },
                 BGZIP_POSFILE_STITCH.out.output,
-                ch_region,
-                ch_fasta
+                ch_chunks_quilt,
+                ch_map,
+                ch_fasta,
+                params.k_val,
+                params.ngen,
+                params.seed
             )
             ch_versions = ch_versions.mix(BAM_IMPUTE_STITCH.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_tbi)
+            CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"stitch"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_STITCH.out.versions)
 
             // Add results to input validate
