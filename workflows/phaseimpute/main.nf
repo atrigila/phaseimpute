@@ -227,6 +227,7 @@ workflow PHASEIMPUTE {
         ch_chunks_glimpse1  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
         ch_chunks_glimpse2  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse2
         ch_chunks_quilt     = VCF_CHUNK_GLIMPSE.out.chunks_quilt
+        ch_chunks_stitch    = VCF_CHUNK_GLIMPSE.out.chunks_quilt
 
         // Create CSVs from panelprep step
         // Phased panel
@@ -373,7 +374,7 @@ workflow PHASEIMPUTE {
             log.info("Impute with STITCH")
 
             if (params.chunks) {
-                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
+                ch_chunks_stitch = chunkPrepareChannel(ch_chunks, "quilt")
             }
 
             // Transform posfile to tabulated format
@@ -395,7 +396,7 @@ workflow PHASEIMPUTE {
                     [meta, file, index, bampath_noid, bamnames]
                 },
                 BGZIP_POSFILE_STITCH.out.output,
-                ch_chunks_quilt,
+                ch_chunks_stitch,
                 ch_map,
                 ch_fasta,
                 params.k_val,
