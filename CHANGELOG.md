@@ -64,17 +64,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Dependency | Old version | New version  |
-| ---------- | ----------- | ------------ |
-| `bcftools` | 1.20        | 1.21         |
-| `gunzip`   | 1.10        | 1.13         |
-| `lbzip2`   |             | 2.5          |
-| `multiqc`  | 1.27        | 1.29         |
-| `r-stitch` | 1.6.10      | 1.7.3        |
-| `shapeit5` | 1.0.0       | 5.1.1        |
-| `vcflib`   | 1.0.3       | 1.0.14       |
-| `beagle5`  |             | 5.2          |
-| `minimac4` |             | 4.1.6        |
+| Dependency | Old version | New version |
+| ---------- | ----------- | ------------|
+| `bcftools` | 1.20        | 1.21        |
+| `gunzip`   | 1.10        | 1.13        |
+| `lbzip2`   |             | 2.5         |
+| `multiqc`  | 1.27        | 1.29        |
+| `r-stitch` | 1.6.10      | 1.7.3       |
+| `shapeit5` | 1.0.0       | 5.1.1       |
+| `vcflib`   | 1.0.3       | 1.0.14      |
+| `beagle5`  |             | 5.2         |
+| `minimac4` |             | 4.1.6       |
 
 ### New contributors
 
