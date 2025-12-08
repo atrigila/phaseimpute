@@ -5,7 +5,7 @@ def chunkPrepareChannel(ch_chunks, tool) {
             empty: true
                 error "ERROR: Empty chunks provided"
         }
-    if(tool == "glimpse"){
+    if(tool == "glimpse1"){
         return ch_chunks_branched.txt.map { chr, txt -> [chr, file(txt)]}
             .splitCsv(header: ['ID', 'Chr', 'RegionIn', 'RegionOut', 'Size1', 'Size2'], sep: "\t", skip: 0)
             .map { meta, it -> [meta, it["RegionIn"], it["RegionOut"]]}
@@ -18,6 +18,6 @@ def chunkPrepareChannel(ch_chunks, tool) {
             }
         return ch_chunks_txt
     } else {
-        error "ERROR: Only 'glimpse' and 'quilt' output format are supported. Got ${tool}"
+        error "ERROR: Only 'glimpse1' and 'quilt' output format are supported. Got ${tool}"
     }
 }

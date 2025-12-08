@@ -306,7 +306,7 @@ workflow PHASEIMPUTE {
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
             if (params.chunks) {
-                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse")
+                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse1")
             }
 
             // Glimpse1 subworkflow
@@ -348,7 +348,7 @@ workflow PHASEIMPUTE {
             log.info("Impute with GLIMPSE2")
 
             if (params.chunks) {
-                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse")
+                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse1")
             }
 
             // Run imputation

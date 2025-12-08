@@ -18,7 +18,7 @@ nextflow_function {
                     [id: "1000GP", chr: "chr21"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21_chunks.txt", checkIfExist:true),
                 ])
-                input[1] = "glimpse"
+                input[1] = "glimpse1"
                 """
             }
         }
@@ -76,7 +76,7 @@ nextflow_function {
         then {
             assertAll(
                 { assert workflow.failed },
-                { assert workflow.stdout.join("\n").contains("ERROR: Only 'glimpse' and 'quilt' output format are supported. Got glimpse2") }
+                { assert workflow.stdout.join("\n").contains("ERROR: Only 'glimpse1' and 'quilt' output format are supported. Got glimpse2") }
             )
         }
     }
@@ -91,7 +91,7 @@ nextflow_function {
                     [id: "1000GP", chr: "chr21"],
                     []
                 ])
-                input[1] = "glimpse"
+                input[1] = "glimpse1"
                 """
             }
         }
