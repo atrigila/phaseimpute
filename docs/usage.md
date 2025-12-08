@@ -426,10 +426,11 @@ nextflow run nf-core/phaseimpute \
 ```
 
 The CSV file provided in `--posfile` must contain three columns [panel, chr, posfile]. See [Posfile section](#samplesheet-posfile) for more information.
+:warning: For stitch panel id should be set to "None" for `--posfile` and `--chunks` in case no `--panel` is provided.
 
 ```console title="posfile.csv"
 panel,chr,posfile
-1000GP,chr22,1000GP.s.norel_chr22.posfile.gz
+None,chr22,1000GP.s.norel_chr22.posfile.gz
 ```
 
 STITCH only handles bi-allelic SNPs.

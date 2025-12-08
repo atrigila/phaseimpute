@@ -18,6 +18,6 @@ def chunkPrepareChannel(ch_chunks, tool) {
             }
         return ch_chunks_txt
     } else {
-        error "Only 'glimpse' and 'quilt' output format are supported. Got ${tool}"
+        error "ERROR: Only 'glimpse' and 'quilt' output format are supported. Got ${tool}"
     }
 }
