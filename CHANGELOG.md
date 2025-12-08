@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### `Changed`
 
 - [#237](https://github.com/nf-core/phaseimpute/pull/237) - Bump version to 1.2.0dev and update `CHANGELOG.md`.
+- [#232](https://github.com/nf-core/phaseimpute/pull/232) - Make posfile generated in the panelprep step.
 - [#231](https://github.com/nf-core/phaseimpute/pull/231) - Use "panel_id" instead of "id" in the meta map for the panel.
 
 ### `Fixed`

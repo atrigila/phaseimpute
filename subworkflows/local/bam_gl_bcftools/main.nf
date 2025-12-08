@@ -1,5 +1,3 @@
-include { GAWK                      } from '../../../modules/nf-core/gawk'
-include { TABIX_BGZIP               } from '../../../modules/nf-core/tabix/bgzip'
 include { BCFTOOLS_MPILEUP          } from '../../../modules/nf-core/bcftools/mpileup'
 include { BCFTOOLS_MERGE            } from '../../../modules/nf-core/bcftools/merge'
 include { BCFTOOLS_ANNOTATE         } from '../../../modules/nf-core/bcftools/annotate'
@@ -8,7 +6,7 @@ workflow BAM_GL_BCFTOOLS {
 
     take:
     ch_bam     // channel: [ [id], bam, bai ]
-    ch_posfile // channel: [ [panel_id, chr], legend]
+    ch_posfile // channel: [ [panel_id, chr], posfile_comma]
     ch_fasta   // channel: [ [genome], fasta, fai]
 
     main:
@@ -16,16 +14,8 @@ workflow BAM_GL_BCFTOOLS {
     ch_versions      = channel.empty()
     ch_multiqc_files = channel.empty()
 
-    // Convert legend to TSV with ','
-    GAWK(ch_posfile, [], false)
-    ch_versions = ch_versions.mix(GAWK.out.versions.first())
-
-    // Compress TSV
-    TABIX_BGZIP(GAWK.out.output)
-    ch_versions = ch_versions.mix(TABIX_BGZIP.out.versions.first())
-
     ch_mpileup = ch_bam
-        .combine(TABIX_BGZIP.out.output)
+        .combine(ch_posfile)
         .map{metaI, bam, _bai, metaPC, tsv ->
                 [metaI + metaPC, bam, tsv]
         }

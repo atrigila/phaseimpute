@@ -18,8 +18,6 @@ nextflow_workflow {
     tag "bcftools/index"
 
     test("Impute with beagle5 one vcf") {
-        tag "test"
-
         when {
             workflow {
                 """

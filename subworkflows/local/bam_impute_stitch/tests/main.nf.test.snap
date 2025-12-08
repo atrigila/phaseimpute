@@ -3,8 +3,7 @@
         "content": [
             [
                 "versions.yml:md5,6f24e95192f2dde0f16d27dfe922b651",
-                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2",
-                "versions.yml:md5,c0772dccc2cc2a3c8f0b3fa5f02312bc"
+                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2"
             ],
             [
                 [
@@ -38,11 +37,6 @@
                         "r-base": "4.4.2",
                         "r-stitch": "1.7.3"
                     }
-                },
-                {
-                    "BAM_IMPUTE_STITCH:GAWK": {
-                        "gawk": "5.3.0"
-                    }
                 }
             ]
         ],
@@ -50,14 +44,13 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-27T16:12:33.286063502"
+        "timestamp": "2025-11-28T16:03:09.018690896"
     },
     "Impute with stitch two individuals with bamlist and renaming": {
         "content": [
             [
                 "versions.yml:md5,6f24e95192f2dde0f16d27dfe922b651",
-                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2",
-                "versions.yml:md5,c0772dccc2cc2a3c8f0b3fa5f02312bc"
+                "versions.yml:md5,8b0020b997bad45e9e3cf0d9b868a3b2"
             ],
             [
                 [
@@ -91,11 +84,6 @@
                         "r-base": "4.4.2",
                         "r-stitch": "1.7.3"
                     }
-                },
-                {
-                    "BAM_IMPUTE_STITCH:GAWK": {
-                        "gawk": "5.3.0"
-                    }
                 }
             ]
         ],
@@ -103,6 +91,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-27T16:12:17.352057347"
+        "timestamp": "2025-11-28T16:02:47.837605207"
     }
 }

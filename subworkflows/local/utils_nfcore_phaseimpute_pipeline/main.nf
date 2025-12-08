@@ -166,13 +166,14 @@ workflow PIPELINE_INITIALISATION {
                         [ meta + [id:meta.id.toString()], file, index ]
                 }
             // Check if all extension are identical
-            getFilesSameExt(ch_input_truth)
+            input_truth_ext = getFilesSameExt(ch_input_truth)
         } else {
             // #TODO Wait for `oneOf()` to be supported in the nextflow_schema.json
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
-        ch_input_truth = channel.of([[], [], []])
+        ch_input_truth = Channel.of([[], [], []])
+        input_truth_ext = ""
     }
 
     //
@@ -254,21 +255,22 @@ workflow PIPELINE_INITIALISATION {
     // Create posfile channel
     //
     if (params.posfile) {
-        ch_posfile = channel // ["meta", "vcf", "index", "hap", "legend"]
+        ch_posfile = channel // ["meta", "vcf", "index", "hap", "legend", "posfile"]
             .fromList(samplesheetToList(params.posfile, "${projectDir}/assets/schema_posfile.json"))
-            .map { meta, vcf, index, hap, legend ->
-                [ meta + [panel_id:meta.panel_id.toString()], vcf, index, hap, legend ]
+            .map { meta, vcf, index, hap, legend, posfile ->
+                [ meta + [panel_id:meta.panel_id.toString()], vcf, index, hap, legend, posfile ]
             }
     } else {
         ch_posfile = ch_panel
-            .map{ metaPC, _vcf, _index -> [metaPC, [], [], [], []]}
+            .map{ metaPC, _vcf, _index -> [metaPC, [], [], [], [], []]}
     }
 
     if (!params.steps.split(',').contains("panelprep") & !params.steps.split(',').contains("all")) {
         validatePosfileTools(
             ch_posfile,
             params.tools ? params.tools.split(','): [],
-            params.steps.split(',')
+            params.steps.split(','),
+            input_truth_ext
         )
     }
 
@@ -334,11 +336,11 @@ workflow PIPELINE_INITIALISATION {
 
     ch_posfile = ch_posfile
         .combine(ch_regions.collect{ metaCR, _region -> metaCR.chr }.toList())
-        .filter { meta, _vcf, _index, _hap, _legend, chrs ->
+        .filter { meta, _vcf, _index, _hap, _legend, _posfile, chrs ->
             meta.chr in chrs
         }
-        .map {meta, vcf, index, hap, legend, _chrs ->
-            [meta, vcf, index, hap, legend]
+        .map {meta, vcf, index, hap, legend, posfile, _chrs ->
+            [meta, vcf, index, hap, legend, posfile]
         }
 
     // Combine map and panel for joint operations
@@ -364,7 +366,7 @@ workflow PIPELINE_INITIALISATION {
     depth                = ch_depth         // [ [depth], depth ]
     regions              = ch_regions       // [ [chr, region], region ]
     gmap                 = ch_map           // [ [map], map ]
-    posfile              = ch_posfile       // [ [panel_id, chr], vcf, index, hap, legend ]
+    posfile              = ch_posfile       // [ [panel_id, chr], vcf, index, hap, legend, posfile ]
     chunks               = ch_chunks        // [ [panel_id, chr], txt ]
     chunk_model          = chunk_model
     versions             = ch_versions
@@ -530,14 +532,14 @@ def validateInputBatchTools(ch_input, batch_size, extension, tools) {
 //
 // Check if posfile is compatible with tools and steps selected
 //
-def validatePosfileTools(ch_posfile, tools, steps){
+def validatePosfileTools(ch_posfile, tools, steps, truth_extension){
     ch_posfile
-        .map{ _meta, vcf, index, hap, legend ->
+        .map{ _meta, vcf, index, hap, legend, posfile ->
             if (tools.contains("glimpse1")) {
-                assert legend : "Glimpse1 tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
+                assert posfile : "Glimpse1 tool needs a posfile file with CHROM\tPOS\tREF,ALT columns. This file can be created through the panelprep step."
             }
             if (tools.contains("stitch")) {
-                assert legend : "Stitch tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
+                assert posfile : "You have not provided a posfile and you've requested to use STITCH. In this pipeline, using STITCH requires a posfile file with CHROM\tPOS\tREF,ALT columns. This file is generated automatically in the panelprep step."
             }
             if (tools.contains("quilt")) {
                 assert legend : "Quilt tool needs a legend file provided in the posfile. This file can be created through the panelprep step."
@@ -546,8 +548,39 @@ def validatePosfileTools(ch_posfile, tools, steps){
             if (steps.contains("validate")) {
                 assert vcf : "Validation step needs a vcf file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
                 assert index : "Validation step needs an index file provided in the posfile for the allele frequency. This file can be created through the panelprep step."
+                if (truth_extension =~ "bam|cram"){
+                    assert posfile : "You have not provided a posfile and you've requested to use the validation step with bam files. This step requires a posfile file with CHROM\tPOS\tREF,ALT columns to call the variants from the truth BAM file. This file is generated automatically in the panelprep step."
+                }
             }
         }
+
+    ch_posfile
+        .map{ _meta, _vcf, _index, _hap, _legend, posfile ->
+            if (posfile) {
+                def lines = []
+                def pathFile = posfile instanceof String ? file(posfile) : posfile
+                pathFile.withInputStream { stream ->
+                    def reader = pathFile.name.endsWith('.gz') ?
+                        new java.util.zip.GZIPInputStream(stream).newReader() :
+                        new InputStreamReader(stream)
+
+                    reader.withReader { r ->
+                        (1..3).each {
+                            def line = r.readLine()
+                            if (line != null) lines << line
+                        }
+                    }
+                }
+
+                // Validate first 3 lines (or fewer if file is shorter)
+                lines.each { line ->
+                    def fields = line.split("\t")
+                    assert fields.size() == 3 : "Expected 3 columns in ${posfile.name}, found ${fields.size()} in line: ${line}"
+                    assert fields[2].contains(",") : "Third column must contain comma in ${posfile.name}, line: ${line}"
+                }
+            }
+        }
+
     return null
 }
 
