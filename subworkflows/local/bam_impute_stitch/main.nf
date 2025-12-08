@@ -1,4 +1,3 @@
-include { GAWK                 } from '../../../modules/nf-core/gawk'
 include { STITCH               } from '../../../modules/nf-core/stitch'
 include { BCFTOOLS_INDEX       } from '../../../modules/nf-core/bcftools/index'
 
@@ -6,7 +5,7 @@ workflow BAM_IMPUTE_STITCH {
 
     take:
     ch_input        // channel:   [ [id], [bam], [bai], bampaths, bamnames ]
-    ch_posfile      // channel:   [ [panel, chr], legend ]
+    ch_posfile      // channel:   [ [panel_id, chr], posfile.stitch ]
     ch_region       // channel:   [ [chr, region], region ]
     ch_fasta        // channel:   [ [genome], fa, fai ]
 
@@ -22,20 +21,13 @@ workflow BAM_IMPUTE_STITCH {
     k_val_params            = params.k_val
     ngen_params             = params.ngen
 
-    // Transform posfile to TSV with ','
-    GAWK(ch_posfile, [], false)
-    ch_versions = ch_versions.mix(GAWK.out.versions.first())
-
-    // Get chromosomes of posfile
-    ch_posfile = GAWK.out.output
-        .map{metaPC, posfile -> [[chr: metaPC.chr], metaPC, posfile]}
-
     // Get chromosomes of fasta
     ch_chromosomes = ch_region
         .map{metaCR, _region -> [[chr: metaCR.chr], metaCR.chr]}
 
     // Make final channel with parameters
     ch_parameters = ch_posfile
+        .map{metaPC, posfile -> [[chr: metaPC.chr], metaPC, posfile]}
         .map { it + input_empty + rdata_empty}
         .join(ch_chromosomes)
         .map { it + k_val_params + ngen_params}
@@ -48,7 +40,7 @@ workflow BAM_IMPUTE_STITCH {
         .map{
             metaI, bam, bai, bampath, bamname, metaPC, posfile, input, rdata, chr, k_val, ngen ->
             [
-                metaI + [chr: metaPC.chr, panel:metaPC.id],
+                metaI + [chr: metaPC.chr, panel_id:metaPC.panel_id],
                 bam, bai, bampath, bamname, posfile, input, rdata, chr, k_val, ngen
             ]
         }

@@ -3,7 +3,28 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.1.0dev
+## v1.2.0dev
+
+### `Added`
+
+### `Changed`
+
+- [#237](https://github.com/nf-core/phaseimpute/pull/237) - Bump version to 1.2.0dev and update `CHANGELOG.md`.
+- [#232](https://github.com/nf-core/phaseimpute/pull/232) - Make posfile generated in the panelprep step.
+- [#231](https://github.com/nf-core/phaseimpute/pull/231) - Use "panel_id" instead of "id" in the meta map for the panel.
+- [#226](https://github.com/nf-core/phaseimpute/pull/226) - Remove `BEDTOOLS` and update automated methods description.
+
+### `Fixed`
+
+### `Dependencies`
+
+| Dependency | Old version | New version  |
+| ---------- | ----------- | ------------ |
+| `bedtools` | 2.31.1      | No more used |
+
+### New contributors
+
+## v1.1.0 - Purple Beagle [2025-12-01]
 
 ### `Added`
 
@@ -27,7 +48,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#199](https://github.com/nf-core/phaseimpute/pull/199) - Update all modules to latest nf-core versions.
 - [#201](https://github.com/nf-core/phaseimpute/pull/201) - Update TEMPLATE to nf-core tools version 3.3.2.
 - [#209](https://github.com/nf-core/phaseimpute/pull/209) - Update TEMPLATE to nf-core tools version 3.4.1.
-- [#226](https://github.com/nf-core/phaseimpute/pull/226) - Remove `BEDTOOLS` and update automated methods description.
+- [#234](https://github.com/nf-core/phaseimpute/pull/234) - Bump version to 1.1.0 for release and fix version error for `BAM/VCF-CHREXTRACT`
+- [#235](https://github.com/nf-core/phaseimpute/pull/234) - Fix reviewer comments (@kubranarci)
+- [#236](https://github.com/nf-core/phaseimpute/pull/236) - Fix reviewer 2 comments (@dialvarezs)
 
 ### `Fixed`
 
@@ -36,13 +59,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#183](https://github.com/nf-core/phaseimpute/pull/183) - Remove wrongfully added files in `BAM_EXTRACT_REGION_SAMTOOLS`.
 - [#185](https://github.com/nf-core/phaseimpute/pull/185) - Fix CSV generation and check that all mentioned path files exist.
 - [#189](https://github.com/nf-core/phaseimpute/pull/189) - Set meta map id as string to avoid error when using numbers in csv files.
+- [#225](https://github.com/nf-core/phaseimpute/pull/225) - Fix `CHRCHECK` config
+- [#230](https://github.com/nf-core/phaseimpute/pull/230) - Fix `test_full` config
 
 ### `Dependencies`
 
 | Dependency | Old version | New version  |
 | ---------- | ----------- | ------------ |
 | `bcftools` | 1.20        | 1.21         |
-| `bedtools` | 2.31.1      | No more used |
 | `gunzip`   | 1.10        | 1.13         |
 | `lbzip2`   |             | 2.5          |
 | `multiqc`  | 1.27        | 1.29         |
