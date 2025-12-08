@@ -99,7 +99,7 @@ nextflow_function {
         then {
             assertAll(
                 { assert workflow.failed },
-                { assert workflow.stdout.join("\n").contains("ERROR: Empty chunks provided") }
+                { assert workflow.stdout.join("\n").contains("ERROR: Empty chunks provided for glimpse1") }
             )
         }
     }

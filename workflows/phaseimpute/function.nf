@@ -3,7 +3,7 @@ def chunkPrepareChannel(ch_chunks, tool) {
             txt: txt != []
                 return [meta, txt]
             empty: true
-                error "ERROR: Empty chunks provided"
+                error "ERROR: Empty chunks file provided for ${tool}"
         }
     if(tool == "glimpse1"){
         return ch_chunks_branched.txt.map { chr, txt -> [chr, file(txt)]}
