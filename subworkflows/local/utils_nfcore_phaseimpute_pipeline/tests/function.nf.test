@@ -682,7 +682,7 @@ nextflow_function {
             )
         }
     }
-    test ("Test toolCitationText - simulate only") {
+    test ("Test toolCitationText - panelprep only") {
         function "toolCitationText"
         tag "toolCitationText"
         when {
@@ -700,6 +700,8 @@ nextflow_function {
         then {
             assertAll(
                 { assert function.success },
+                { assert ["Beagle5", "Minimac4", "STITCH", "QUILT", "vcflib", "SHAPEIT5", "Tabix", "SAMtools"].every { !function.result.contains(it) } },
+                { assert ["BCFtools", "GLIMPSE", "GLIMPSE2", "MultiQC"].every { function.result.contains(it) } },
                 { assert snapshot(function.result).match() }
             )
         }
@@ -726,6 +728,11 @@ nextflow_function {
         then {
             assertAll(
                 { assert function.success },
+                { assert [
+                    "Beagle5", "Minimac4", "STITCH", "QUILT",
+                    "vcflib", "SHAPEIT5", "Tabix", "SAMtools",
+                    "BCFtools", "GLIMPSE", "GLIMPSE2", "MultiQC"
+                ].every { function.result.contains(it) } },
                 { assert snapshot(function.result).match() }
             )
         }

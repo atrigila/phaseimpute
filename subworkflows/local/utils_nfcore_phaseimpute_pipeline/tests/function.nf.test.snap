@@ -41,15 +41,15 @@
         },
         "timestamp": "2024-11-06T15:32:04.356171769"
     },
-    "Test toolCitationText - simulate only": {
+    "Test toolCitationText - panelprep only": {
         "content": [
-            "Tools used in the workflow included the following.  Reference panel preparation followed several steps. The reference panel genotypes were normalized followed by site extraction and format conversion using BCFtools (Danecek et al. 2021).   Finally, the reference panel was split into per-chromosome chunks using GLIMPSE (Rubinacci et al. 2020) and GLIMPSE2 (Rubinacci et al. 2023).   Pipeline results statistics were summarised with MultiQC (Ewels et al. 2016)."
+            "Tools used in the workflow included the following.  Reference panel preparation followed several steps. The reference panel genotypes were normalized followed by site extraction and format conversion using BCFtools (Danecek et al. 2021).   Finally, the reference panel was split into per-chromosome chunks using GLIMPSE (Rubinacci et al. 2021) and GLIMPSE2 (Rubinacci et al. 2023).   Pipeline results statistics were summarised with MultiQC (Ewels et al. 2016)."
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-20T10:51:39.326480793"
+        "timestamp": "2025-12-09T10:34:42.227066873"
     },
     "Test Function exportCsv": {
         "content": null,
@@ -172,12 +172,12 @@
     },
     "Test toolCitationText - all tools and steps": {
         "content": [
-            "Tools used in the workflow included the following. Low-coverage sequencing data simulation was performed with SAMtools (Danecek et al. 2021) subcommand 'depth' and 'view' for downsampling high-coverage BAM files. Reference panel preparation followed several steps. The reference panel genotypes were normalized and samplessample1,sample2were removed followed by site extraction and format conversion using BCFtools (Danecek et al. 2021). Allele frequencies were then computed with vcflib (Garrison et al. 2022). Genotype phasing was performed with SHAPEIT5 (Hofmeister et al. 2023). Finally, the reference panel was split into per-chromosome chunks using GLIMPSE (Rubinacci et al. 2020) and GLIMPSE2 (Rubinacci et al. 2023). Imputation tools used were: GLIMPSE2 (Rubinacci et al. 2023), QUILT (Davies et al. 2021), STITCH (Davies et al. 2016), Beagle5 (Browning et al. 2018), Minimac4 (Das et al. 2016). Imputation accuracy was assessed by comparing imputed genotypes to truth data using GLIMPSE2 (Rubinacci et al. 2023). Truth genotypes were obtained either from array genotyping data provided as input or from high-coverage sequencing data from which genotypes were called using BCFtools (Danecek et al. 2021) mpileup followed by indexation with Tabix (Li H et al. 2011). Pipeline results statistics were summarised with MultiQC (Ewels et al. 2016)."
+            "Tools used in the workflow included the following. Low-coverage sequencing data simulation was performed with SAMtools (Danecek et al. 2021) subcommand 'depth' and 'view' for downsampling high-coverage BAM files. Reference panel preparation followed several steps. The reference panel genotypes were normalized and samplessample1,sample2were removed followed by site extraction and format conversion using BCFtools (Danecek et al. 2021). Allele frequencies were then computed with vcflib (Garrison et al. 2022). Genotype phasing was performed with SHAPEIT5 (Hofmeister et al. 2023). Finally, the reference panel was split into per-chromosome chunks using GLIMPSE (Rubinacci et al. 2021) and GLIMPSE2 (Rubinacci et al. 2023). Imputation tools used were: GLIMPSE2 (Rubinacci et al. 2023), QUILT (Davies et al. 2021), STITCH (Davies et al. 2016), Beagle5 (Browning et al. 2018), Minimac4 (Das et al. 2016). Imputation accuracy was assessed by comparing imputed genotypes to truth data using GLIMPSE2 (Rubinacci et al. 2023). Truth genotypes were obtained either from array genotyping data provided as input or from high-coverage sequencing data from which genotypes were called using BCFtools (Danecek et al. 2021) mpileup followed by indexation with Tabix (Li H et al. 2011). Pipeline results statistics were summarised with MultiQC (Ewels et al. 2016)."
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-20T10:57:08.386773076"
+        "timestamp": "2025-12-09T10:36:23.904280953"
     }
 }

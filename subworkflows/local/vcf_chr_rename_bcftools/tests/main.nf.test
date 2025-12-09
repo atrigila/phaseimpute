@@ -18,7 +18,6 @@ nextflow_workflow {
     tag "gawk"
 
     test("Should run without error") {
-        tag "test"
         when {
             workflow {
                 """
