@@ -395,27 +395,32 @@ For starting from the imputation steps, the required flags are:
 - `--steps impute`
 - `--input input.csv`: The samplesheet containing the input sample files in `bam`, `cram` or `vcf`, `bcf` format.
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5, minimac4]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
-  - `--chunks chunks.csv`: A samplesheet containing chunks per chromosome. These are produced by `--steps panelprep` using `GLIMPSE1` or `GLIMPSE2`.
-  - `--posfile posfile.csv`: A samplesheet containing all the different files required by the imputation tool. This file can be generated with `--steps panelprep`.
-  - `--panel panel.csv`: A samplesheet containing the post-processed reference panel VCF (required by GLIMPSE1, GLIMPSE2). These files can be obtained with `--steps panelprep`.
+- `--tools [glimpse1,glimpse2,quilt,stitch,beagle5,minimac4]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
+- `--posfile posfile.csv`: A samplesheet containing all the different files required by the imputation tool. This file can be generated with `--steps panelprep`.
+- `--panel panel.csv`: A samplesheet containing the post-processed reference panel VCF (required by GLIMPSE1, GLIMPSE2). These files can be obtained with `--steps panelprep`.
 
-#### Summary table of required parameters in `--steps impute`
+Optionnaly you can provide the following flags:
 
-|            | `--steps impute` | `--input` | `--genome` or `--fasta` | `--panel` | `--chunks` | `--posfile` | `--map` |
-| ---------- | ---------------- | --------- | ----------------------- | --------- | ---------- | ----------- | ------- |
-| `GLIMPSE1` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ✅ ³        | ❌      |
-| `GLIMPSE2` | ✅               | ✅ ¹      | ✅                      | ✅        | ✅         | ❌          | ❌      |
-| `QUILT`    | ✅               | ✅ ²      | ✅                      | ❌        | ✅         | ✅ ⁴        | ❌      |
-| `STITCH`   | ✅               | ✅ ²      | ✅                      | ❌        | ✅         | ✅ ³        | ✅      |
-| `BEAGLE5`  | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ❌          | ❌      |
-| `MINIMAC4` | ✅               | ✅ ¹      | ✅                      | ✅        | ❌         | ✅ ⁵        | ❌      |
+- `--chunks chunks.csv`: An optional samplesheet containing chunks per chromosome. These are produced by `--steps panelprep` using `GLIMPSE1` or `GLIMPSE2`. See [chunks section](#samplesheet-chunks) for more informations.
+- `--map map.csv`: An optional samplesheet containing genetic map per chromosome. See [map section](#samplesheet-map) for more informations.
+
+#### Summary table of mandatory (m) and optional (o) parameters in `--steps impute`
+
+|            | `--steps impute`(m) | `--input`(m) | `--genome` or `--fasta`(m) | `--panel`(m) | `--posfile`(m) | `--map`(o) | `--chunks`(o) |
+| ---------- | ------------------- | ------------ | -------------------------- | ------------ | -------------- | ---------- | ------------- |
+| `GLIMPSE1` | ✅                  | ✅ ¹         | ✅                         | ✅           | ✅ ³           | ❌⁶        | ✅            |
+| `GLIMPSE2` | ✅                  | ✅ ¹         | ✅                         | ✅           | ❌             | ❌⁶        | ✅            |
+| `QUILT`    | ✅                  | ✅ ²         | ✅                         | ❌           | ✅ ⁴           | ❌⁶        | ✅            |
+| `STITCH`   | ✅                  | ✅ ²         | ✅                         | ❌           | ✅ ³           | ✅         | ✅            |
+| `BEAGLE5`  | ✅                  | ✅ ¹         | ✅                         | ✅           | ❌             | ❌⁶        | ❌⁶           |
+| `MINIMAC4` | ✅                  | ✅ ¹         | ✅                         | ✅           | ✅ ⁵           | ❌⁶        | ❌⁶           |
 
 > ¹ Alignment files as well as variant calling format (i.e. BAM, CRAM, VCF or BCF)
 > ² Alignment files only (i.e. BAM or CRAM)
 > ³ `GLIMPSE1` and `STITCH`: Should be a CSV with columns [panel id, chr, posfile]
 > ⁴ `QUILT`: Should be a CSV with columns [panel id, chr, hap, legend]
 > ⁵ `MINIMAC4`: Optionally, a VCF with its index can be provided for more control over the imputed positions. Should be a CSV with columns [panel id, chr, vcf, index]
+> ⁶ Not yet supported
 
 Here is a representation on how the input files will be processed depending on the input files type and the selected imputation tool.
 

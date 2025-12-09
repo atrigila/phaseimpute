@@ -223,11 +223,8 @@ workflow PHASEIMPUTE {
         VCF_CHUNK_GLIMPSE(ch_panel_phased, ch_map, chunk_model)
         ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
 
-        // Assign chunks channels
-        ch_chunks_glimpse1  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
-        ch_chunks_glimpse2  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse2
-        ch_chunks_quilt     = VCF_CHUNK_GLIMPSE.out.chunks_quilt
-        ch_chunks_stitch    = VCF_CHUNK_GLIMPSE.out.chunks_quilt
+        // Use glimpse 1 for chunks
+        ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
 
         // Create CSVs from panelprep step
         // Phased panel
@@ -306,9 +303,7 @@ workflow PHASEIMPUTE {
             log.info("Impute with GLIMPSE1")
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
-            if (params.chunks) {
-                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse1")
-            }
+            ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
 
             // Glimpse1 subworkflow
             // Compute GL from BAM files and merge them
@@ -348,9 +343,7 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("glimpse2")) {
             log.info("Impute with GLIMPSE2")
 
-            if (params.chunks) {
-                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse1")
-            }
+            ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
 
             // Run imputation
             BAM_VCF_IMPUTE_GLIMPSE2(
@@ -373,9 +366,7 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("stitch")) {
             log.info("Impute with STITCH")
 
-            if (params.chunks) {
-                ch_chunks_stitch = chunkPrepareChannel(ch_chunks, "quilt")
-            }
+            ch_chunks_stitch = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
 
             // Transform posfile to tabulated format
             GAWK_POSFILE_STITCH(
@@ -419,10 +410,8 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("quilt")) {
             log.info("Impute with QUILT")
 
-            // Use provided chunks if --chunks
-            if (params.chunks) {
-                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
-            }
+            // Use provided chunks if --chunks or whole chromosome
+            ch_chunks_quilt = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
 
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
