@@ -227,7 +227,7 @@ workflow PHASEIMPUTE {
 
         // Use glimpse 1 for chunks
         if (!params.chunks){
-            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
+            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks
         }
 
         // Create CSVs from panelprep step
