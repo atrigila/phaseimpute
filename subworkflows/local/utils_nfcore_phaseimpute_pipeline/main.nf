@@ -863,11 +863,11 @@ def toolBibliographyText() {
         tools_used.contains("stitch")   ? tool_biblio.STITCH   : "",
         tools_used.contains("quilt")    ? tool_biblio.QUILT    : "",
         tool_biblio.MULTIQC,
-        steps_used.contains("panelprep") && params.compute_freq           ? tool_biblio.VCFLIB   : "",
-        steps_used.contains("panelprep") && params.phase                  ? tool_biblio.SHAPEIT5 : "",
-        steps_used.contains("validate") || tools_used.contains("glimpse1") ? tool_biblio.TABIX   : "",
-        tools_used.contains("glimpse1") ? tool_biblio.GLIMPSE : "",
-        tools_used.contains("glimpse2") ? tool_biblio.GLIMPSE2  : ""
+        steps_used.contains("panelprep") && params.compute_freq            ? tool_biblio.VCFLIB   : "",
+        steps_used.contains("panelprep") && params.phase                   ? tool_biblio.SHAPEIT5 : "",
+        steps_used.contains("validate") || tools_used.contains("glimpse1") ? tool_biblio.TABIX    : "",
+        tools_used.contains("glimpse1") ? tool_biblio.GLIMPSE1 : "",
+        tools_used.contains("glimpse2") ? tool_biblio.GLIMPSE2 : ""
     ].join(' ').trim().replaceAll("[,|.] +\\.", ".")
 
     return reference_text
