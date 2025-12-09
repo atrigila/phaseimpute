@@ -213,7 +213,6 @@ workflow PIPELINE_INITIALISATION {
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
-        // #TODO check if panel is required
         ch_panel = ch_regions
             .map{ metaCR, _regions -> [[panel_id: "None"] + metaCR.subMap("chr"), [], []] }
     }
@@ -286,6 +285,45 @@ workflow PIPELINE_INITIALISATION {
     } else {
         ch_chunks = ch_panel
             .map{ metaPC, _vcf, _index -> [metaPC, []] }
+    }
+
+    //
+    // Check panel, chunks and posfile have same panel id
+    //
+    panel_panelid   = ch_panel.map{ metaPC, _vcf, _index -> [metaPC.panel_id]}.unique()
+    chunks_panelid  = ch_chunks.map{ metaPC, _chunks -> [metaPC.panel_id]}.unique()
+    posfile_panelid = ch_posfile.map{ metaPC, _vcf, _index, _hap, _legend, _posfile -> [metaPC.panel_id]}.unique()
+
+    // Get all unique panel id except None
+    panel_id = panel_panelid
+        .mix(chunks_panelid, posfile_panelid)
+        .flatten()
+        .filter { it -> it != "None" }
+        .unique()
+
+    // For each channel if not provided change panel_id to available ones
+    if (!params.panel) {
+        ch_panel = ch_panel
+            .combine(panel_id)
+            .map{ metaPC, vcf, index, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], vcf, index
+            ]}
+    }
+
+    if (!params.chunks) {
+        ch_chunks = ch_chunks
+            .combine(panel_id)
+            .map{ metaPC, chunks, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], chunks
+            ]}
+    }
+
+    if (!params.posfile) {
+        ch_posfile = ch_posfile
+            .combine(panel_id)
+            .map{ metaPC, vcf, index, hap, legend, posfile, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], vcf, index, hap, legend, posfile
+            ]}
     }
 
     //
