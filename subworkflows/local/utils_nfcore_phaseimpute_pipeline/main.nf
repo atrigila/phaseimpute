@@ -448,25 +448,21 @@ def validateInputParameters() {
         assert params.input : "No input provided"
     }
 
-    // Check that posfile and chunks are provided when running impute only. Steps with panelprep generate those files.
+    // Check that posfile and panel are provided when running impute only
     if (params.steps.split(',').contains("impute") && !params.steps.split(',').find { step -> step in ["all", "panelprep"] }) {
         // Required by all tools except glimpse2, beagle5, minimac4
         if (!params.tools.split(',').find { tool -> tool in ["glimpse2", "beagle5", "minimac4"] }) {
             assert params.posfile : "No --posfile provided for --steps impute"
         }
-        // Required by all tools except stitch, beagle5, minimac4
-        if (!params.tools.split(',').find { tool -> tool in ["stitch", "beagle5", "minimac4"] }) {
-            assert params.chunks : "No --chunks provided for --steps impute"
-        }
         // Required by glimpse1 and glimpse2 only
         if (params.tools.split(',').contains("glimpse")) {
             assert params.panel : "No --panel provided for imputation with GLIMPSE"
         }
+    }
 
-        // Check that input_truth is provided when running validate
-        if (params.steps.split(',').find { step -> step in ["all", "validate"] } ) {
-            assert params.input_truth : "No --input_truth was provided for --steps validate"
-        }
+    // Check that input_truth is provided when running validate
+    if (params.steps.split(',').find { step -> step in ["validate"] } && !params.steps.split(',').find { step -> step in ["simulate"] }) {
+        assert params.input_truth : "No --input_truth was provided for --steps validate"
     }
 
     // Emit a warning if both panel and (chunks || posfile) are used as input

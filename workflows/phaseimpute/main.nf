@@ -203,7 +203,9 @@ workflow PHASEIMPUTE {
         ch_versions = ch_versions.mix(VCF_SITES_EXTRACT_BCFTOOLS.out.versions)
 
         // Generate all necessary channels
-        ch_posfile  = VCF_SITES_EXTRACT_BCFTOOLS.out.posfile
+        if (!params.posfile){
+            ch_posfile  = VCF_SITES_EXTRACT_BCFTOOLS.out.posfile
+        }
 
         // Phase panel with Shapeit5
         if (params.phase == true) {
@@ -224,7 +226,9 @@ workflow PHASEIMPUTE {
         ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
 
         // Use glimpse 1 for chunks
-        ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
+        if (!params.chunks){
+            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
+        }
 
         // Create CSVs from panelprep step
         // Phased panel
