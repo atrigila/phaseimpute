@@ -2,8 +2,11 @@ nextflow_pipeline {
 
     name "Test phaseimpute workflow"
     script "main.nf"
+
     tag "pipeline"
     tag "pipeline/phaseimpute"
+
+    config "./nextflow.config"
 
     test("Check test_stitch - with chunks") {
         tag "test_stitch"
@@ -20,14 +23,9 @@ nextflow_pipeline {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    path("${outputDir}/imputation/")
-                        .list()
-                        .collect { getRecursiveFileNames(it, outputDir) }
-                        .flatten(),
-                    path("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
-                    path("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz").vcf.header.getGenotypeSamples().sort()
-                ).match()
-                }
+                    UTILS.getRecursiveFileNames("${outputDir}/imputation/", outputDir),
+                    ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
+                ).match()}
             )
         }
     }
@@ -48,22 +46,10 @@ nextflow_pipeline {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    path("${outputDir}/imputation/")
-                        .list()
-                        .collect { getRecursiveFileNames(it, outputDir) }
-                        .flatten(),
-                    path("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz").vcf.summary.replaceAll(", phasedAutodetect=(false|true)", ""),
-                    path("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz").vcf.header.getGenotypeSamples().sort()
-                ).match()
-                }
+                    UTILS.getRecursiveFileNames("${outputDir}/imputation/", outputDir),
+                    ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
+                ).match()}
             )
         }
     }
-}
-
-def getRecursiveFileNames(fileOrDir, outputDir) {
-    if(file(fileOrDir.toString()).isDirectory()) {
-        return fileOrDir.list().collect { getRecursiveFileNames(it, outputDir) }
-    }
-    return fileOrDir.toString().replace("${outputDir}/", "")
 }
