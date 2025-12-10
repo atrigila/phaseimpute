@@ -297,7 +297,7 @@ For starting from the imputation steps, the required flags are:
 - `--steps impute`
 - `--input input.csv`: The samplesheet containing the input sample files in `bam`, `cram` or `vcf`, `bcf` format.
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5, minimac4]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
+- `--tools [glimpse1,glimpse2,quilt,stitch,beagle5,minimac4]`: A selection of one or more of the available imputation tools. Each imputation tool has their own set of specific flags and input files. These required files are produced by `--steps panelprep` and used as input in:
   - `--chunks chunks.csv`: A samplesheet containing chunks per chromosome. These are produced by `--steps panelprep` using `GLIMPSE1`.
   - `--posfile posfile.csv`: A samplesheet containing all the different files required by the imputation tool. This file can be generated with `--steps panelprep`.
   - `--panel panel.csv`: A samplesheet containing the post-processed reference panel VCF (required by GLIMPSE1, GLIMPSE2). These files can be obtained with `--steps panelprep`.
@@ -345,7 +345,7 @@ To summarize:
   - GLIMPSE1 and STITCH may induce batch effects, so all samples need to be imputed together.
   - GLIMPSE2 and QUILT can process samples in separate batches.
 
-## Imputation tools `--steps impute --tools [glimpse1, glimpse2, quilt, stitch, beagle5, minimac4]`
+## Imputation tools `--steps impute --tools [glimpse1,glimpse2,quilt,stitch,beagle5,minimac4]`
 
 You can choose different software to perform the imputation. In the following sections, the typical commands for running the pipeline with each software are included. Multiple tools can be selected by separating them with a comma (eg. `--tools glimpse1,quilt`).
 
@@ -576,7 +576,7 @@ This mode runs all the previous steps. This requires several flags:
 - `--input input.csv`: The samplesheet containing the input sample files in `bam` or `cram` format.
 - `--depth`: The final depth of the input file [default: 1].
 - `--genome` or `--fasta`: The reference genome of the samples.
-- `--tools [glimpse1, glimpse2, quilt, stitch, beagle5]`: A selection of one or more of the available imputation tools.
+- `--tools [glimpse1,glimpse2,quilt,stitch,beagle5]`: A selection of one or more of the available imputation tools.
 - `--panel panel.csv`: The samplesheet containing the reference panel files in `vcf.gz` format.
 - `--remove_samples`: (optional) A comma-separated list of samples to remove from the reference.
 - `--input_truth input_truth.csv`: The samplesheet containing the truth VCF files in `vcf` format.
