@@ -12,15 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#237](https://github.com/nf-core/phaseimpute/pull/237) - Bump version to 1.2.0dev and update `CHANGELOG.md`.
 - [#232](https://github.com/nf-core/phaseimpute/pull/232) - Make posfile generated in the panelprep step.
 - [#231](https://github.com/nf-core/phaseimpute/pull/231) - Use "panel_id" instead of "id" in the meta map for the panel.
+- [#226](https://github.com/nf-core/phaseimpute/pull/226) - Remove `BEDTOOLS` and update automated methods description.
 - [#239](https://github.com/nf-core/phaseimpute/pull/239) - Move from local to nf-core sbwf for `STITCH` imputation. Set `--chunks` as optional argument. Update `usage.md`.
 
 ### `Fixed`
 
 ### `Dependencies`
 
-| Dependency | Old version | New version |
-| ---------- | ----------- | ----------- |
-|            |             |             |
+| Dependency | Old version | New version    |
+| ---------- | ----------- | -------------- |
+| `bedtools` | 2.31.1      | No longer used |
 
 ### New contributors
 
