@@ -118,18 +118,9 @@
                     "all.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
-                    "impute.csv:md5,d38be2ed93899ffc6b5a1d9c28b06574",
                     "NA12878.stitch.bcftools_stats.txt:md5,994f53d38322b1b2f0a305f5cef594b9",
                     "NA19401.stitch.bcftools_stats.txt:md5,fbf6ca898c25414895ad5d9a6abc084f",
                     "NA20359.stitch.bcftools_stats.txt:md5,93266d3d797ce3ee9cf2a4806bbbcf61",
-                    "all.batch0.stitch.vcf.gz:md5,c349fd67e3c19321504d603ccc09cbf3",
-                    "all.batch0.stitch.vcf.gz.tbi:md5,915b0bfaa34503da748318b3fc1fc5b7",
-                    "NA12878.stitch.vcf.gz:md5,be86892d15d3d48eae9c5bd00a30b2e4",
-                    "NA12878.stitch.vcf.gz.tbi:md5,612532b6eeb41bc116b1fdd177cffcdf",
-                    "NA19401.stitch.vcf.gz:md5,5e06ff2b3253973f935588edb165d30e",
-                    "NA19401.stitch.vcf.gz.tbi:md5,58bfb3144e0835a2fa91081edd428b92",
-                    "NA20359.stitch.vcf.gz:md5,14cdc4cc6312464b50cf0e6e5b246367",
-                    "NA20359.stitch.vcf.gz.tbi:md5,00ac8a830eeb487207168d574286fc86",
                     "bcftools-stats-subtypes.txt:md5,20f016802c19197bd01da87b5bebf585",
                     "bcftools_stats_indel-lengths.txt:md5,45ceadfb316d18af27006953d095dcb0",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,616f14f3cb0c747a410e5e40baaccc32",
@@ -177,7 +168,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-11T12:48:19.480433349"
+        "timestamp": "2025-12-11T14:48:44.546165765"
     },
     "Check test_stitch - with chunks": {
         "content": [
@@ -298,18 +289,9 @@
                     "all.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
-                    "impute.csv:md5,8fb8bb2918e7c8cb480f326bab488141",
                     "NA12878.stitch.bcftools_stats.txt:md5,994f53d38322b1b2f0a305f5cef594b9",
                     "NA19401.stitch.bcftools_stats.txt:md5,fbf6ca898c25414895ad5d9a6abc084f",
                     "NA20359.stitch.bcftools_stats.txt:md5,93266d3d797ce3ee9cf2a4806bbbcf61",
-                    "all.batch0.stitch.vcf.gz:md5,96060b3ab17748b5becb861fa7332f01",
-                    "all.batch0.stitch.vcf.gz.tbi:md5,915b0bfaa34503da748318b3fc1fc5b7",
-                    "NA12878.stitch.vcf.gz:md5,04c9cc801fc6f45203d716c263d0288b",
-                    "NA12878.stitch.vcf.gz.tbi:md5,612532b6eeb41bc116b1fdd177cffcdf",
-                    "NA19401.stitch.vcf.gz:md5,c2f4d8ec951fb48e00792bfd02f2f4c0",
-                    "NA19401.stitch.vcf.gz.tbi:md5,72327e32deeeb83b0ff40f9cb8c4d7e9",
-                    "NA20359.stitch.vcf.gz:md5,6117cf018f798da320317d8a4381fbcb",
-                    "NA20359.stitch.vcf.gz.tbi:md5,00ac8a830eeb487207168d574286fc86",
                     "bcftools-stats-subtypes.txt:md5,20f016802c19197bd01da87b5bebf585",
                     "bcftools_stats_indel-lengths.txt:md5,45ceadfb316d18af27006953d095dcb0",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,616f14f3cb0c747a410e5e40baaccc32",
@@ -357,6 +339,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-11T12:47:28.409175407"
+        "timestamp": "2025-12-11T14:47:42.71447113"
     }
 }
