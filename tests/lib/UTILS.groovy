@@ -1,26 +1,32 @@
 // Helper functions for pipeline tests
 class UTILS {
-    public static def getRecursiveFileNames(fileOrDir, outputDir, variants_md5=true, txt_md5=true) {
-        def f = new File(fileOrDir.toString())
-        if ( f.isDirectory() ) {
-            return f.listFiles()
-                .collect { getRecursiveFileNames(it, outputDir, variants_md5, txt_md5) }
-                .flatten()
-                .sort { it.file }
-        }
-        def check = null
-        def file_name = f.toString().replace("${outputDir}/","")
-        if ( (f.name.endsWith('.txt') || f.name.endsWith('.log')) && txt_md5 ) {
-            check = path(f.toString()).md5
-            return ["file": file_name, "md5": check ]
-        } else if ( f.name.endsWith('.vcf.gz') && variants_md5 ) {
-            check = path(f.toString()).vcf.variantsMD5
-            return ["file": file_name, "variants": check ]
-        } else{
-            return ["file": file_name]
-        }
+    public static def getPipelineResults(outdir, workflow){
+        // stable_name: All files + folders in ${params.outdir}/ with a stable name
+        def stable_name = getAllFilesFromDir(outdir, relative: true, includeDir: true, ignore: ['pipeline_info/*.{html,json,txt}'])
+        // stable_path: All files in ${params.outdir}/ with stable content
+        def stable_path = getAllFilesFromDir(outdir, ignoreFile: 'tests/.nftignore')
+        // bam_files: All bam files
+        def bam_files  = getAllFilesFromDir(outdir, include: ['**/*.bam'])
+        // vcf_files: All vcf files
+        def vcf_files  = getAllFilesFromDir(outdir, include: ['**/*.{vcf,bcf}.gz'])
+        return [
+            // Number of successful tasks
+            workflow.trace.succeeded().size(),
+            // pipeline versions.yml file for multiqc from which Nextflow version is removed because we tests pipelines on multiple Nextflow versions
+            removeNextflowVersion("$outdir/pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"),
+            // All stable path name, with a relative path
+            stable_name,
+            // All files with stable contents
+            stable_path,
+            // All bam files
+            bam_files.collect { file -> [file.getName(), bam(file.toString()).readsMD5] },
+            // All vcf files
+            vcf_files.collect { file -> [
+                file.getName(),
+                path(file.toString()).vcf.variantsMD5
+            ] }
+        ]
     }
-
     public static def vcfDetails(filePath) {
         def summary = path(filePath).vcf.summary.replaceAll(", phasedAutodetect=(false|true)", "")
         def samples = path(filePath).vcf.header.getGenotypeSamples().sort()

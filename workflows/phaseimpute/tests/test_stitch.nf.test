@@ -23,7 +23,7 @@ nextflow_pipeline {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    UTILS.getRecursiveFileNames("${outputDir}/imputation/", outputDir),
+                    UTILS.getPipelineResults(outputDir, workflow),
                     ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
                 ).match()}
             )
@@ -46,7 +46,7 @@ nextflow_pipeline {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    UTILS.getRecursiveFileNames("${outputDir}/imputation/", outputDir),
+                    UTILS.getPipelineResults(outputDir, workflow),
                     ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
                 ).match()}
             )
