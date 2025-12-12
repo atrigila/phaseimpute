@@ -446,7 +446,7 @@ Optionnaly you can provide the following flags:
 |            | `--steps impute`(m) | `--input`(m) | `--genome` or `--fasta`(m) | `--panel`(m) | `--posfile`(m) | `--map`(o) | `--chunks`(o) |
 | ---------- | ------------------- | ------------ | -------------------------- | ------------ | -------------- | ---------- | ------------- |
 | `GLIMPSE1` | ✅                  | ✅ ¹         | ✅                         | ✅           | ✅ ³           | ❌⁶        | ✅            |
-| `GLIMPSE2` | ✅                  | ✅ ¹         | ✅                         | ✅           | ❌             | ❌⁶        | ✅            |
+| `GLIMPSE2` | ✅                  | ✅ ¹         | ✅                         | ✅           | ❌             | ✅         | ✅            |
 | `QUILT`    | ✅                  | ✅ ²         | ✅                         | ❌           | ✅ ⁴           | ❌⁶        | ✅            |
 | `STITCH`   | ✅                  | ✅ ²         | ✅                         | ❌           | ✅ ³           | ✅         | ✅            |
 | `BEAGLE5`  | ✅                  | ✅ ¹         | ✅                         | ✅           | ❌             | ❌⁶        | ❌⁶           |
@@ -634,6 +634,13 @@ nextflow run nf-core/phaseimpute \
 ```
 
 Make sure the CSV file with the input panel is the output from `--step panelprep` or has been previously prepared.
+
+You can optionally provide chunks to parallelize the imputation process using `--chunks`.
+If not provided the full region per chromosome will be used.
+See [Chunks section](#samplesheet-chunks) for more information.
+
+Genetic map can also be provided for better accuracy.
+See [Map section](#samplesheet-map) for more information.
 
 ### BEAGLE5
 
