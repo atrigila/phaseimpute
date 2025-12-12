@@ -213,7 +213,6 @@ workflow PIPELINE_INITIALISATION {
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
-        // #TODO check if panel is required
         ch_panel = ch_regions
             .map{ metaCR, _regions -> [[panel_id: "None"] + metaCR.subMap("chr"), [], []] }
     }
@@ -286,6 +285,53 @@ workflow PIPELINE_INITIALISATION {
     } else {
         ch_chunks = ch_panel
             .map{ metaPC, _vcf, _index -> [metaPC, []] }
+    }
+
+    //
+    // Check panel, chunks and posfile have same panel id
+    //
+    panel_panelid   = ch_panel.map{ metaPC, _vcf, _index -> [metaPC.panel_id]}.unique()
+    chunks_panelid  = ch_chunks.map{ metaPC, _chunks -> [metaPC.panel_id]}.unique()
+    posfile_panelid = ch_posfile.map{ metaPC, _vcf, _index, _hap, _legend, _posfile -> [metaPC.panel_id]}.unique()
+
+    // Get all unique panel id except None
+    panel_id = panel_panelid
+        .mix(chunks_panelid, posfile_panelid)
+        .flatten()
+        .filter { it -> it != "None" }
+        .unique()
+
+    // Check uniqueness of panel_id
+    // TODO add support for multiple panel
+    panel_id
+        .collect()
+        .map{ panel_ids ->
+            assert panel_ids.size() == 1 : "Multiple panel IDs detected: ${panel_ids}. Please provide only one across panel, chunks and posfile."
+        }
+
+    // For each channel if not provided change panel_id to available ones
+    if (!params.panel) {
+        ch_panel = ch_panel
+            .combine(panel_id)
+            .map{ metaPC, vcf, index, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], vcf, index
+            ]}
+    }
+
+    if (!params.chunks) {
+        ch_chunks = ch_chunks
+            .combine(panel_id)
+            .map{ metaPC, chunks, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], chunks
+            ]}
+    }
+
+    if (!params.posfile) {
+        ch_posfile = ch_posfile
+            .combine(panel_id)
+            .map{ metaPC, vcf, index, hap, legend, posfile, panel_id_name -> [
+                metaPC + ['panel_id': panel_id_name], vcf, index, hap, legend, posfile
+            ]}
     }
 
     //
@@ -448,25 +494,21 @@ def validateInputParameters() {
         assert params.input : "No input provided"
     }
 
-    // Check that posfile and chunks are provided when running impute only. Steps with panelprep generate those files.
+    // Check that posfile and panel are provided when running impute only
     if (params.steps.split(',').contains("impute") && !params.steps.split(',').find { step -> step in ["all", "panelprep"] }) {
         // Required by all tools except glimpse2, beagle5, minimac4
         if (!params.tools.split(',').find { tool -> tool in ["glimpse2", "beagle5", "minimac4"] }) {
             assert params.posfile : "No --posfile provided for --steps impute"
         }
-        // Required by all tools except stitch, beagle5, minimac4
-        if (!params.tools.split(',').find { tool -> tool in ["stitch", "beagle5", "minimac4"] }) {
-            assert params.chunks : "No --chunks provided for --steps impute"
-        }
         // Required by glimpse1 and glimpse2 only
         if (params.tools.split(',').find { tool -> tool in ["glimpse1", "glimpse2"] }) {
             assert params.panel : "No --panel provided for imputation with GLIMPSE1 or GLIMPSE2"
         }
+    }
 
-        // Check that input_truth is provided when running validate
-        if (params.steps.split(',').find { step -> step in ["all", "validate"] } ) {
-            assert params.input_truth : "No --input_truth was provided for --steps validate"
-        }
+    // Check that input_truth is provided when running validate
+    if (params.steps.split(',').find { step -> step in ["validate"] } && !params.steps.split(',').find { step -> step in ["simulate"] }) {
+        assert params.input_truth : "No --input_truth was provided for --steps validate"
     }
 
     // Emit a warning if both panel and (chunks || posfile) are used as input

@@ -59,7 +59,7 @@ include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/
 // STITCH subworkflows
 include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
 include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
-include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/local/bam_impute_stitch'
+include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/nf-core/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // BEAGLE5 subworkflows
@@ -203,7 +203,9 @@ workflow PHASEIMPUTE {
         ch_versions = ch_versions.mix(VCF_SITES_EXTRACT_BCFTOOLS.out.versions)
 
         // Generate all necessary channels
-        ch_posfile  = VCF_SITES_EXTRACT_BCFTOOLS.out.posfile
+        if (!params.posfile){
+            ch_posfile  = VCF_SITES_EXTRACT_BCFTOOLS.out.posfile
+        }
 
         // Phase panel with Shapeit5
         if (params.phase == true) {
@@ -223,10 +225,10 @@ workflow PHASEIMPUTE {
         VCF_CHUNK_GLIMPSE(ch_panel_phased, ch_map, chunk_model)
         ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
 
-        // Assign chunks channels
-        ch_chunks_glimpse1  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse1
-        ch_chunks_glimpse2  = VCF_CHUNK_GLIMPSE.out.chunks_glimpse2
-        ch_chunks_quilt     = VCF_CHUNK_GLIMPSE.out.chunks_quilt
+        // Use glimpse 1 for chunks
+        if (!params.chunks){
+            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks
+        }
 
         // Create CSVs from panelprep step
         // Phased panel
@@ -305,9 +307,7 @@ workflow PHASEIMPUTE {
             log.info("Impute with GLIMPSE1")
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
-            if (params.chunks) {
-                ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, "glimpse")
-            }
+            ch_chunks_glimpse1 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
 
             // Glimpse1 subworkflow
             // Compute GL from BAM files and merge them
@@ -347,9 +347,7 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("glimpse2")) {
             log.info("Impute with GLIMPSE2")
 
-            if (params.chunks) {
-                ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, "glimpse")
-            }
+            ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
 
             // Run imputation
             BAM_VCF_IMPUTE_GLIMPSE2(
@@ -372,6 +370,8 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("stitch")) {
             log.info("Impute with STITCH")
 
+            ch_chunks_stitch = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
+
             // Transform posfile to tabulated format
             GAWK_POSFILE_STITCH(
                 ch_posfile.map{
@@ -386,15 +386,24 @@ workflow PHASEIMPUTE {
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
+                ch_input_bams_withlist.map{
+                    meta, file, index, _bampath_id, bampath_noid, bamnames->
+                    [meta, file, index, bampath_noid, bamnames]
+                },
                 BGZIP_POSFILE_STITCH.out.output,
-                ch_region,
-                ch_fasta
+                ch_chunks_stitch,
+                ch_map,
+                ch_fasta,
+                params.k_val,
+                params.ngen,
+                params.seed
             )
             ch_versions = ch_versions.mix(BAM_IMPUTE_STITCH.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_tbi)
+            CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"stitch"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_STITCH.out.versions)
 
             // Add results to input validate
@@ -405,10 +414,8 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("quilt")) {
             log.info("Impute with QUILT")
 
-            // Use provided chunks if --chunks
-            if (params.chunks) {
-                ch_chunks_quilt = chunkPrepareChannel(ch_chunks, "quilt")
-            }
+            // Use provided chunks if --chunks or whole chromosome
+            ch_chunks_quilt = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
 
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
