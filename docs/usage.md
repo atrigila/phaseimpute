@@ -129,9 +129,45 @@ chr21	16609476	A,G
 chr21	16609525	T,A
 ```
 
+## Samplesheet region
+
+You can provide a samplesheet with information about the chromosomal region you want to process.
+These regions will be used to:
+
+- filter input BAM files during downsampling,
+- select regions for phasing when processing the reference panel,
+- filter chromosome chunks for imputation,
+- restrict the region used for statistics in simulation and validation.
+
+Use the `--input_region` parameter to specify its location. It has to be a comma-separated file with 3 columns (i.e., chr, start, end), and a header row as shown in the examples below. Only **one region per chromosome** is accepted.
+
+```bash
+--input_region '[path to samplesheet file]'
+```
+
+If not provided, the fasta index will be necessary to get each chromosome length. This fasta index can be directly provided by the `--fasta_fai` parameter, obtained through `--genome` or computed from the `--fasta` file.
+
+### Structure
+
+A samplesheet file for the input regions look like the one below. This is for 2 chromosomes.
+
+```console title="samplesheet_region.csv"
+chr,start,end
+chr21,16570000,16610000
+chr22,16570000,16610000
+```
+
+| Column  | Description                                                                |
+| ------- | -------------------------------------------------------------------------- |
+| `chr`   | Name of the chromosome. Use the prefix 'chr' if the panel uses the prefix. |
+| `start` | Region start position in base pair.                                        |
+| `end`   | Region end position in base pair.                                          |
+
 ## Samplesheet chunks
 
 You will need a samplesheet with information about the chromosomes chunks to perform imputation on for `--steps impute`. You can generate this samplesheet from `--steps panelprep`. Use the `--chunks` parameter to specify its location. It has to be a comma-separated file with 3 columns (i.e., panel, chr, file), and a header row as shown in the examples below.
+
+If not provided the full region per chromosome will be used instead. See [region section](#samplesheet-region) for more information.
 
 ```bash
 --chunks '[path to samplesheet file]'
@@ -222,6 +258,7 @@ or you can specify a custom genome using:
 
 ```bash
 --fasta Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+--fasta_fai Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz.fai
 ```
 
 ## Running the pipeline: quick example
@@ -544,8 +581,12 @@ bcftools view -G -m 2 -M 2 -v ${vcf}
 bcftools convert --haplegendsample ${vcf} | bcftools query -f'%CHROM\t%POS\t%REF,%ALT\n' | bgzip -c > ${vcf}.posfile.gz
 ```
 
-You can optionally provide chunks to parallelize the imputation process using `--chunks`. See [Chunks section](#samplesheet-chunks) for more information.
-Genetic map can also be provided for better accuracy. See [Map section](#samplesheet-map) for more information.
+You can optionally provide chunks to parallelize the imputation process using `--chunks`.
+If not provided the full region per chromosome will be used.
+See [Chunks section](#samplesheet-chunks) for more information.
+
+Genetic map can also be provided for better accuracy.
+See [Map section](#samplesheet-map) for more information.
 
 ### GLIMPSE1
 
