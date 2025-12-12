@@ -130,19 +130,19 @@
                 [
                     [
                         "all.batch0.glimpse2.vcf.gz",
-                        "69cb0f6b7aed076a6b0e169e632e6c6f"
+                        "258136e6a05acb6d361bba02bbe1f12"
                     ],
                     [
                         "NA12878.glimpse2.vcf.gz",
-                        "f9947daec919b6387e26c5539ea502c5"
+                        "ec0d1259b383b77c76f65229a814bcfc"
                     ],
                     [
                         "NA19401.glimpse2.vcf.gz",
-                        "85c2ceaa2288a7f27252126008dc252e"
+                        "79e3fbd14f8541e65e1eb0f7d9edfbe7"
                     ],
                     [
                         "NA20359.glimpse2.vcf.gz",
-                        "eee9a261bb102db67bea29f629824db1"
+                        "8350f3864ba8e8d22ed267e9758a8bcc"
                     ]
                 ]
             ],
@@ -161,7 +161,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-12T14:49:26.765680204"
+        "timestamp": "2025-12-12T16:22:06.440575512"
     },
     "Check test_glimpse2 - without chunks": {
         "content": [
@@ -294,19 +294,19 @@
                 [
                     [
                         "all.batch0.glimpse2.vcf.gz",
-                        "1e703345b7abc14188cddc48e1a396ba"
+                        "2efdb0ead7f85f77c3939b3f5906e1f8"
                     ],
                     [
                         "NA12878.glimpse2.vcf.gz",
-                        "dd03d689bae608db49eb7ecf2c7055a2"
+                        "2f71e170af4f8e37cd7265709b84427"
                     ],
                     [
                         "NA19401.glimpse2.vcf.gz",
-                        "21d1d6c06ae5e74e115ff072f5f4fed"
+                        "a6cbf6e3d9895aefeb6cb4d0f067eda9"
                     ],
                     [
                         "NA20359.glimpse2.vcf.gz",
-                        "bd54547912abb47c778b08801c82b1fc"
+                        "65ad782ead9d57c82d50bc79225f87d1"
                     ]
                 ]
             ],
@@ -325,6 +325,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-12T14:50:24.977727568"
+        "timestamp": "2025-12-12T16:30:47.976117528"
     }
 }
