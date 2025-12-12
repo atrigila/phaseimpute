@@ -301,6 +301,14 @@ workflow PIPELINE_INITIALISATION {
         .filter { it -> it != "None" }
         .unique()
 
+    // Check uniqueness of panel_id
+    // TODO add support for multiple panel
+    panel_id
+        .collect()
+        .map{ panel_ids ->
+            assert panel_ids.size() == 1 : "Multiple panel IDs detected: ${panel_ids}. Please provide only one across panel, chunks and posfile."
+        }
+
     // For each channel if not provided change panel_id to available ones
     if (!params.panel) {
         ch_panel = ch_panel
