@@ -366,7 +366,7 @@ workflow PHASEIMPUTE {
             )
             ch_versions = ch_versions.mix(BAM_VCF_IMPUTE_GLIMPSE2.out.versions)
             // Concatenate by chromosomes
-            CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.ch_vcf_index.map{
+            CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"glimpse2"], vcf, index]
             })
             ch_versions = ch_versions.mix(CONCAT_GLIMPSE2.out.versions)
