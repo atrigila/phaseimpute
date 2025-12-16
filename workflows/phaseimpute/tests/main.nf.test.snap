@@ -393,38 +393,6 @@
         },
         "timestamp": "2025-11-28T15:26:35.849338999"
     },
-    "Check test_glimpse2": {
-        "content": [
-            [
-                "imputation/batch/all.batch0.id.txt",
-                "imputation/batch/all.batch0.idonly.txt",
-                "imputation/batch/all.batch0.noid.txt",
-                "imputation/csv/impute.csv",
-                "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz",
-                "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz.tbi",
-                "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz",
-                "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz.tbi",
-                "imputation/glimpse2/samples/NA19401.glimpse2.vcf.gz",
-                "imputation/glimpse2/samples/NA19401.glimpse2.vcf.gz.tbi",
-                "imputation/glimpse2/samples/NA20359.glimpse2.vcf.gz",
-                "imputation/glimpse2/samples/NA20359.glimpse2.vcf.gz.tbi",
-                "imputation/stats/NA12878.glimpse2.bcftools_stats.txt",
-                "imputation/stats/NA19401.glimpse2.bcftools_stats.txt",
-                "imputation/stats/NA20359.glimpse2.bcftools_stats.txt"
-            ],
-            "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
-            [
-                "NA12878",
-                "NA19401",
-                "NA20359"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2025-11-13T16:29:10.08315332"
-    },
     "Check test_dog": {
         "content": [
             [

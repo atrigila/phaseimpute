@@ -48,7 +48,7 @@ include { VCF_IMPUTE_GLIMPSE1                        } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE1} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // GLIMPSE2 subworkflows
-include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/local/bam_vcf_impute_glimpse2'
+include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/nf-core/bam_vcf_impute_glimpse2'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE2} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // QUILT subworkflows
@@ -351,16 +351,24 @@ workflow PHASEIMPUTE {
 
             // Run imputation
             BAM_VCF_IMPUTE_GLIMPSE2(
-                ch_input_bams_withlist
-                    .map{ [it[0], it[1], it[2], it[3]] }
-                    .mix(ch_input_type.vcf.combine(Channel.of([[]]))),
-                ch_panel_phased,
+                ch_input_bams_withlist.map{
+                    meta, file, index, bampath_id, _bampath_noid, _bamnames->
+                    [meta, file, index, bampath_id, []]
+                },
+                ch_panel_phased.map{
+                    meta, file, index ->
+                    [meta, file, index, []] // Region ignored as chunks are provided
+                },
                 ch_chunks_glimpse2,
-                ch_fasta
+                ch_map,
+                ch_fasta,
+                false, "", false
             )
             ch_versions = ch_versions.mix(BAM_VCF_IMPUTE_GLIMPSE2.out.versions)
             // Concatenate by chromosomes
-            CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.vcf_tbi)
+            CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"glimpse2"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_GLIMPSE2.out.versions)
 
             // Add results to input validate

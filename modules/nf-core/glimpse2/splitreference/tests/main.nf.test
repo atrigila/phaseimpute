@@ -1,27 +1,28 @@
 nextflow_process {
 
-    name "Test Process GLIMPSE2_CHUNK"
+    name "Test Process GLIMPSE2_SPLITREFERENCE"
     script "../main.nf"
-    process "GLIMPSE2_CHUNK"
-
     config "./nextflow.config"
 
-    tag "glimpse2"
-    tag "glimpse2/chunk"
+    process "GLIMPSE2_SPLITREFERENCE"
+
     tag "modules_nfcore"
     tag "modules"
+    tag "glimpse2"
+    tag "glimpse2/splitreference"
 
     test("Should run without map") {
         when {
             process {
                 """
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'ref1000GP', single_end:false ],
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz", checkIfExists:true),
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz.csi", checkIfExists:true),
-                    "chr22:16570000-16610000", []
+                    "chr22:16600000-16800000",
+                    "chr22:16600000-16800000",
+                    []
                 ]
-                input[1]= "recursive"
                 """
             }
         }
@@ -29,7 +30,11 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                // File has a timestamp in it and is in binary format, so we can only check the name
+                { assert snapshot(
+                    file(process.out.bin_ref[0][1]).name,
+                    process.out.versions
+                ).match() }
             )
         }
     }
@@ -39,13 +44,13 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'ref1000GP', single_end:false ],
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz", checkIfExists:true),
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz.csi", checkIfExists:true),
-                    "chr22:16570000-16610000",
-                    file(params.modules_testdata_base_path + "genomics/homo_sapiens/genome/genetic_map/genome.GRCh38.chr22.glimpse.map", checkIfExists: true)
+                    "chr22:16600000-16800000",
+                    "chr22:16600000-16800000",
+                    file(params.modules_testdata_base_path + "genomics/homo_sapiens/genome/genetic_map/genome.GRCh38.chr22.glimpse.map", checkIfExists:true)
                 ]
-                input[1]= "recursive"
                 """
             }
         }
@@ -53,8 +58,9 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
+                // File has a timestamp in it and is in binary format, so we can only check the name
                 { assert snapshot(
-                    process.out.chunk_chr,
+                    file(process.out.bin_ref[0][1]).name,
                     process.out.versions
                 ).match() }
             )
@@ -67,12 +73,13 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ id:'test' ],
+                    [ id:'ref1000GP', single_end:false ],
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz", checkIfExists:true),
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/popgen/1000GP.chr22.vcf.gz.csi", checkIfExists:true),
-                    "chr22", []
+                    "chr22:16600000-16800000",
+                    "chr22:16600000-16800000",
+                    []
                 ]
-                input[1]= "recursive"
                 """
             }
         }
@@ -86,6 +93,7 @@ nextflow_process {
                 ).match() }
             )
         }
+
     }
 
 }
