@@ -10,7 +10,7 @@ workflow BAM_DOWNSAMPLE_SAMTOOLS {
     ch_fasta  // channel: [ [genome], fasta, fai ]
 
     main:
-    ch_versions      = Channel.empty()
+    ch_versions      = channel.empty()
 
     // Compute mean depth
     SAMTOOLS_DEPTH(ch_bam, [[], []])

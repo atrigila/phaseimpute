@@ -16,7 +16,7 @@ workflow VCF_PHASE_SHAPEIT5 {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // Chunk with Glimpse2
     ch_input_glimpse2 = ch_vcf

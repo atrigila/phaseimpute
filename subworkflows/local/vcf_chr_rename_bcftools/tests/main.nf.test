@@ -21,7 +21,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "multi"],
                         file( params.modules_testdata_base_path + "genomics/homo_sapiens/illumina/vcf/NA24385_sv.vcf.gz",checkIfExist:true),
@@ -66,7 +66,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "input1", chr: "21"],
                         file("https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/homo_sapiens/illumina/vcf/chr21/simulated_sv.vcf.gz",checkIfExist:true),

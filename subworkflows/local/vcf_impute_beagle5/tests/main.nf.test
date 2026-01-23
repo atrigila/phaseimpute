@@ -21,17 +21,17 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: "NA12878", panel_id: "1000GP", chr: "chr22", region: "chr22:16570000-16610000"],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
-                input[2] = Channel.of([
+                input[2] = channel.of([
                     [chr: "chr22"], []
                 ])
                 """
@@ -60,17 +60,17 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: "NA12878", panel_id: "1000GP", chr: "chr22", region: "chr22:16570000-16610000"],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
-                input[2] = Channel.of([
+                input[2] = channel.of([
                     [chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38_chr22.plink.map", checkIfExist:true)
                 ])
@@ -100,7 +100,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [id: "NA12878", panel_id: "1000GP", chr: "chr22", region: "chr22:16570000-16610000"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
@@ -112,12 +112,12 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bcf.csi", checkIfExist:true)
                     ]
                 )
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [panel_id: "1000GP", chr: "chr22"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                 ])
-                input[2] = Channel.of([
+                input[2] = channel.of([
                     [chr: "chr22"], []
                 ])
                 """
@@ -146,7 +146,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [id: "NA12878", panel_id: "1000GP", chr: "chr21", region: "chr21:16570000-16610000"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf", checkIfExist:true),
@@ -158,7 +158,7 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi", checkIfExist:true)
                     ]
                 )
-                input[1] = Channel.of(
+                input[1] = channel.of(
                     [
                         [panel_id: "1000GP", chr: "chr21"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.s.norel.vcf.gz", checkIfExist:true),
@@ -170,7 +170,7 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz.csi", checkIfExist:true)
                     ]
                 )
-                input[2] = Channel.of(
+                input[2] = channel.of(
                     [
                         [chr: "chr21"],
                         file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38_chr21.plink.map", checkIfExist:true)

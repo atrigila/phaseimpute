@@ -10,7 +10,7 @@ workflow VCF_NORMALIZE_BCFTOOLS {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
     ch_fasta = ch_fasta.map { meta, fasta, _fai -> [meta, fasta] }
 
     // Join duplicated biallelic sites into multiallelic records

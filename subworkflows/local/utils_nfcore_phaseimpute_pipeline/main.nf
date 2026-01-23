@@ -172,7 +172,7 @@ workflow PIPELINE_INITIALISATION {
             error "Panel file provided is of another format than CSV (not yet supported). Please separate your panel by chromosome and use the samplesheet format."
         }
     } else {
-        ch_input_truth = Channel.of([[], [], []])
+        ch_input_truth = channel.of([[], [], []])
         input_truth_ext = ""
     }
 

@@ -6,7 +6,7 @@ workflow VCF_SPLIT_BCFTOOLS {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     BCFTOOLS_PLUGINSPLIT(ch_vcf, [], [], [])
     ch_versions = ch_versions.mix(BCFTOOLS_PLUGINSPLIT.out.versions.first())
