@@ -476,7 +476,7 @@ workflow PHASEIMPUTE {
             // Create input channel combining VCF with regions
             ch_input_minimac4 = ch_input_type.vcf
                 .combine(ch_region)
-                .map { meta_vcf, vcf, index, meta_region, region ->
+                .map { meta_vcf, vcf, index, meta_region, _region ->
                     [meta_vcf + meta_region, vcf, index]
                 }
 
