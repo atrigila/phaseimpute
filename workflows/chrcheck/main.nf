@@ -58,7 +58,7 @@ workflow CHRCHECK {
             ch_vcf_renamed = VCF_CHR_RENAME_BCFTOOLS.out.vcf_renamed
         } else {
             ch_vcf_split.to_rename.map {
-                def chr_names = { item -> item[3].size() > params.max_chr_names ? item[3][0..params.max_chr_names - 1] + ['...'] : item[3] }(it)
+                def chr_names = it[3].size() > params.max_chr_names ? it[3][0..params.max_chr_names - 1] + ['...'] : it[3]
                 error "Contig names: ${chr_names} in VCF: ${it[1]} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
             ch_bam_split.to_rename.map {
