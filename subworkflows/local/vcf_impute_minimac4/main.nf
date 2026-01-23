@@ -16,6 +16,7 @@ workflow VCF_IMPUTE_MINIMAC4 {
 
     // Compress reference panel to MSAV format
     MINIMAC4_COMPRESSREF(ch_panel)
+    ch_versions = ch_versions.mix(MINIMAC4_COMPRESSREF.out.versions.first())
 
     // Prepare input channels for MINIMAC4
     ch_minimac4_input = ch_input

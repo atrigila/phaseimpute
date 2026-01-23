@@ -121,7 +121,7 @@
                     },
                     "minimac4/compressref": {
                         "branch": "master",
-                        "git_sha": "94a767478097e92dca1386ea623d9dae9edc025a",
+                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
                         "installed_by": ["modules"]
                     },
                     "minimac4/impute": {
