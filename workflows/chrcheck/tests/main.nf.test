@@ -23,7 +23,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_chr_to_nochr"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz',checkIfExist:true),
@@ -70,7 +70,7 @@ nextflow_workflow {
                 script "../../../subworkflows/local/bam_chr_rename_samtools/main.nf"
                 process {
                     """
-                    input[0] = Channel.fromList([
+                    input[0] = channel.fromList([
                         [
                             [id: "BAM_nochr_to_chr"],
                             file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -87,7 +87,7 @@ nextflow_workflow {
                 """
                 input[0] = PREPROCESS.out.bam_renamed
                     .mix(
-                        Channel.fromList([
+                        channel.fromList([
                             [
                                 [id: "VCF_nochr_to_chr"],
                                 file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/vcf/NA24385_sv.vcf.gz',checkIfExist:true),
@@ -95,7 +95,7 @@ nextflow_workflow {
                             ],
                         ])
                     )
-                    .combine(Channel.of(["chr22"]).collect().toList())
+                    .combine(channel.of(["chr22"]).collect().toList())
                 """
             }
         }
@@ -127,7 +127,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz',checkIfExist:true),
@@ -154,7 +154,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "BAM_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -182,7 +182,7 @@ nextflow_workflow {
             workflow {
                 """
                 lst_chr = ["chr22", "chr34", "GL000207.1", "chr45", "chr46", "chr47", "chr48", "chr49"]
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_AllNoChr"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/vcf/NA24385_sv.vcf.gz',checkIfExist:true),
@@ -207,7 +207,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "BAM_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),

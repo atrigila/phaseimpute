@@ -14,11 +14,11 @@ nextflow_function {
         when {
             function {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: "1000GP", chr: "chr21"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21_chunks.txt", checkIfExist:true),
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [chr: "chr21", region: "chr21:16570000-16610000"],
                     "chr21:16570000-16610000"
                 ])
@@ -43,11 +43,11 @@ nextflow_function {
         when {
             function {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: "1000GP", chr: "chr21"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21_chunks.txt", checkIfExist:true),
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [chr: "chr21", region: "chr21:16570000-16610000"],
                     "chr21:16570000-16610000"
                 ])
@@ -72,8 +72,8 @@ nextflow_function {
         when {
             function {
                 """
-                input[0] = Channel.of([ [id: "1000GP", chr: "chr21"], [] ])
-                input[1] = Channel.of([
+                input[0] = channel.of([ [id: "1000GP", chr: "chr21"], [] ])
+                input[1] = channel.of([
                     [chr: "chr21", region: "chr21:16570000-16610000"],
                     "chr21:16570000-16610000"
                 ])
@@ -98,8 +98,8 @@ nextflow_function {
         when {
             function {
                 """
-                input[0] = Channel.of([ [id: "1000GP", chr: "chr21"], [] ])
-                input[1] = Channel.of([
+                input[0] = channel.of([ [id: "1000GP", chr: "chr21"], [] ])
+                input[1] = channel.of([
                     [chr: "chr21", region: "chr21:16570000-16610000"],
                     "chr21:16570000-16610000"
                 ])
@@ -124,11 +124,11 @@ nextflow_function {
         when {
             function {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: "1000GP", chr: "chr21"],
                     file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21_chunks.txt", checkIfExist:true),
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [chr: "chr21", region: "chr21:16570000-16610000"],
                     "chr21:16570000-16610000"
                 ])

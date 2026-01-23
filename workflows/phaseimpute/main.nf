@@ -108,7 +108,7 @@ workflow PHASEIMPUTE {
 
     main:
 
-    ch_multiqc_files = Channel.empty()
+    ch_multiqc_files = channel.empty()
 
     //
     // Simulate data if asked
@@ -210,7 +210,7 @@ workflow PHASEIMPUTE {
         // Phase panel with Shapeit5
         if (params.phase == true) {
             VCF_PHASE_SHAPEIT5(
-                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.combine(Channel.of([[]])),
+                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.combine(channel.of([[]])),
                 ch_region,
                 [[],[],[]],
                 [[],[],[]],
@@ -553,7 +553,7 @@ workflow PHASEIMPUTE {
         ch_versions = ch_versions.mix(BCFTOOLS_STATS_PANEL.out.versions)
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_PANEL.out.stats.map{ [it[1]] })
 
-        ch_truth_vcf = Channel.empty()
+        ch_truth_vcf = channel.empty()
 
         // Channels for branching
         ch_truth = ch_input_truth
@@ -623,7 +623,7 @@ workflow PHASEIMPUTE {
     // Collate and save software versions
     //
 
-    def topic_versions = Channel.topic("versions")
+    def topic_versions = channel.topic("versions")
         .distinct()
         .branch { entry ->
             versions_file: entry instanceof Path
@@ -652,18 +652,18 @@ workflow PHASEIMPUTE {
     //
     // MODULE: MultiQC
     //
-    ch_multiqc_config                     = Channel.fromPath("$projectDir/assets/multiqc_config.yml", checkIfExists: true)
-    ch_multiqc_custom_config              = params.multiqc_config ? Channel.fromPath(params.multiqc_config, checkIfExists: true) : Channel.empty()
-    ch_multiqc_logo                       = params.multiqc_logo ? Channel.fromPath(params.multiqc_logo, checkIfExists: true) : Channel.empty()
+    ch_multiqc_config                     = channel.fromPath("$projectDir/assets/multiqc_config.yml", checkIfExists: true)
+    ch_multiqc_custom_config              = params.multiqc_config ? channel.fromPath(params.multiqc_config, checkIfExists: true) : channel.empty()
+    ch_multiqc_logo                       = params.multiqc_logo ? channel.fromPath(params.multiqc_logo, checkIfExists: true) : channel.empty()
     summary_params                        = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
-    ch_workflow_summary                   = Channel.value(paramsSummaryMultiqc(summary_params))
+    ch_workflow_summary                   = channel.value(paramsSummaryMultiqc(summary_params))
     ch_multiqc_files                      = ch_multiqc_files.mix(ch_workflow_summary.collectFile(name: 'workflow_summary_mqc.yaml'))
     ch_multiqc_custom_methods_description = params.multiqc_methods_description ? file(params.multiqc_methods_description, checkIfExists: true) : file("$projectDir/assets/methods_description_template.yml", checkIfExists: true)
-    ch_methods_description                = Channel.value(methodsDescriptionText(ch_multiqc_custom_methods_description))
+    ch_methods_description                = channel.value(methodsDescriptionText(ch_multiqc_custom_methods_description))
     ch_multiqc_files                      = ch_multiqc_files.mix(ch_collated_versions)
     ch_multiqc_files                      = ch_multiqc_files.mix(ch_methods_description.collectFile(name: 'methods_description_mqc.yaml', sort: false))
-    ch_multiqc_replace_names              = params.multiqc_replace_names ? Channel.fromPath(params.multiqc_replace_names, checkIfExists: true) : Channel.empty()
-    ch_multiqc_sample_names               = params.multiqc_sample_names ? Channel.fromPath(params.multiqc_sample_names, checkIfExists: true) : Channel.empty()
+    ch_multiqc_replace_names              = params.multiqc_replace_names ? channel.fromPath(params.multiqc_replace_names, checkIfExists: true) : channel.empty()
+    ch_multiqc_sample_names               = params.multiqc_sample_names ? channel.fromPath(params.multiqc_sample_names, checkIfExists: true) : channel.empty()
 
     MULTIQC (
         ch_multiqc_files.collect(),
