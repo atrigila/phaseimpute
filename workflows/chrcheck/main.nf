@@ -25,7 +25,7 @@ workflow CHRCHECK {
             empty: true
         }
 
-        ch_input.other.map {
+        ch_input.other.map { file ->
             error "File: ${file[1]} is not a VCF, BCFT or BAM, CRAM file."
         }
 
