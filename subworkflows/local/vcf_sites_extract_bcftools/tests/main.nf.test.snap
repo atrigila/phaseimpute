@@ -28,7 +28,6 @@
                 ],
                 "1": [
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
                     "versions.yml:md5,775bd20464c616f8eacd53774326f790",
                     "versions.yml:md5,7a82826782ad1f6ea20ba37b55bbb169"
                 ],
@@ -58,7 +57,6 @@
                 ],
                 "versions": [
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
                     "versions.yml:md5,775bd20464c616f8eacd53774326f790",
                     "versions.yml:md5,7a82826782ad1f6ea20ba37b55bbb169"
                 ]
@@ -84,11 +82,6 @@
                     }
                 },
                 {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
                     "VCF_SITES_EXTRACT_BCFTOOLS:TABIX_BGZIP": {
                         "tabix": 1.21
                     }
@@ -102,8 +95,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-02T14:52:35.342592428"
+        "timestamp": "2026-01-25T17:49:20.484753812"
     }
 }
