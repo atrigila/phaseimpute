@@ -106,7 +106,7 @@
                     },
                     "glimpse2/phase": {
                         "branch": "master",
-                        "git_sha": "94a767478097e92dca1386ea623d9dae9edc025a",
+                        "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
                         "installed_by": ["bam_vcf_impute_glimpse2", "modules"]
                     },
                     "glimpse2/splitreference": {
@@ -193,7 +193,7 @@
                     },
                     "stitch": {
                         "branch": "master",
-                        "git_sha": "6adf848ab473ecef1e0d34af291051885cb7b635",
+                        "git_sha": "94a767478097e92dca1386ea623d9dae9edc025a",
                         "installed_by": ["bam_impute_stitch", "modules"]
                     },
                     "tabix/bgzip": {
@@ -217,12 +217,12 @@
                 "nf-core": {
                     "bam_impute_stitch": {
                         "branch": "master",
-                        "git_sha": "31a8820de9546d701166413a81ce338f5c244550",
+                        "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
                         "installed_by": ["subworkflows"]
                     },
                     "bam_vcf_impute_glimpse2": {
                         "branch": "master",
-                        "git_sha": "e337a1d89f92c31041e46dd1509beadce40cb5bb",
+                        "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
                         "installed_by": ["subworkflows"]
                     },
                     "utils_nextflow_pipeline": {
