@@ -12,10 +12,10 @@ workflow VCF_IMPUTE_GLIMPSE1 {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
-    samples_file = Channel.of([[]]).collect()
-    gmap_file    = Channel.of([[]]).collect()
+    samples_file = channel.of([[]]).collect()
+    gmap_file    = channel.of([[]]).collect()
 
     // Combine chunks with panel
     ch_chunks_panel = ch_chunks
