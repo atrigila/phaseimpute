@@ -46,7 +46,6 @@ workflow VCF_IMPUTE_MINIMAC4 {
     BCFTOOLS_INDEX(
         MINIMAC4_IMPUTE.out.vcf
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_INDEX.out.versions.first())
 
     // Join imputed and index files
     ch_vcf_index = MINIMAC4_IMPUTE.out.vcf

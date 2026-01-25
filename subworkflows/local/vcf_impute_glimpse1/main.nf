@@ -39,7 +39,6 @@ workflow VCF_IMPUTE_GLIMPSE1 {
     ch_versions = ch_versions.mix(GLIMPSE_PHASE.out.versions )
 
     BCFTOOLS_INDEX_1 ( GLIMPSE_PHASE.out.phased_variants )
-    ch_versions = ch_versions.mix( BCFTOOLS_INDEX_1.out.versions )
 
     // Ligate all phased files in one and index it
     ligate_input = GLIMPSE_PHASE.out.phased_variants
@@ -51,7 +50,6 @@ workflow VCF_IMPUTE_GLIMPSE1 {
     ch_versions = ch_versions.mix(GLIMPSE_LIGATE.out.versions )
 
     BCFTOOLS_INDEX_2 ( GLIMPSE_LIGATE.out.merged_variants )
-    ch_versions = ch_versions.mix( BCFTOOLS_INDEX_2.out.versions )
 
     // Join imputed and index files
     ch_imputed_vcf_tbi = GLIMPSE_LIGATE.out.merged_variants

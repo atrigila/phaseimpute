@@ -3,7 +3,6 @@
         "content": [
             [
                 "versions.yml:md5,3ba3affc995d9a03ef59f8cf9e7fac38",
-                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
                 "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
             ],
             [
@@ -41,15 +40,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:15:00.114808128"
+        "timestamp": "2026-01-25T18:04:05.915290887"
     },
     "Impute with beagle5 one vcf": {
         "content": [
             [
                 "versions.yml:md5,3ba3affc995d9a03ef59f8cf9e7fac38",
-                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
                 "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
             ],
             [
@@ -74,15 +72,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:16:24.312538831"
+        "timestamp": "2026-01-25T18:02:46.75213351"
     },
     "Impute with beagle5 two vcf": {
         "content": [
             [
                 "versions.yml:md5,3ba3affc995d9a03ef59f8cf9e7fac38",
-                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
                 "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
             ],
             [
@@ -120,15 +117,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:14:41.750539148"
+        "timestamp": "2026-01-25T18:03:37.588979823"
     },
     "Impute with beagle5 one vcf with map": {
         "content": [
             [
                 "versions.yml:md5,3ba3affc995d9a03ef59f8cf9e7fac38",
-                "versions.yml:md5,753bec56d95889bf214c3c932ba0ee42",
                 "versions.yml:md5,abf0a598d8e490f400093600b60c148c"
             ],
             [
@@ -153,8 +149,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:16:37.202770941"
+        "timestamp": "2026-01-25T18:03:10.854734222"
     }
 }

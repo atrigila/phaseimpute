@@ -3,7 +3,6 @@
         "content": [
             [
                 "versions.yml:md5,373fe12da367d3891473f487a9536d04",
-                "versions.yml:md5,99b8cb34e87147cec893f4bcf7a9b244",
                 "versions.yml:md5,a4842af8fedc3522b989d4ee28f08d80"
             ],
             [
@@ -39,15 +38,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:18:37.173928309"
+        "timestamp": "2026-01-25T18:19:56.047834245"
     },
     "Impute with minimac4 one vcf": {
         "content": [
             [
                 "versions.yml:md5,373fe12da367d3891473f487a9536d04",
-                "versions.yml:md5,99b8cb34e87147cec893f4bcf7a9b244",
                 "versions.yml:md5,a4842af8fedc3522b989d4ee28f08d80"
             ],
             [
@@ -71,15 +69,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:18:13.984029491"
+        "timestamp": "2026-01-25T18:19:17.911537807"
     },
     "Impute with minimac4 one vcf with sites": {
         "content": [
             [
                 "versions.yml:md5,373fe12da367d3891473f487a9536d04",
-                "versions.yml:md5,99b8cb34e87147cec893f4bcf7a9b244",
                 "versions.yml:md5,a4842af8fedc3522b989d4ee28f08d80"
             ],
             [
@@ -103,15 +100,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:18:48.705306415"
+        "timestamp": "2026-01-25T18:20:15.707646525"
     },
     "Impute with minimac4 one vcf with map": {
         "content": [
             [
                 "versions.yml:md5,373fe12da367d3891473f487a9536d04",
-                "versions.yml:md5,99b8cb34e87147cec893f4bcf7a9b244",
                 "versions.yml:md5,a4842af8fedc3522b989d4ee28f08d80"
             ],
             [
@@ -135,8 +131,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-27T16:18:25.397125636"
+        "timestamp": "2026-01-25T18:19:36.805765567"
     }
 }

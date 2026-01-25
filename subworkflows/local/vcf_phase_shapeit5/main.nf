@@ -58,7 +58,6 @@ workflow VCF_PHASE_SHAPEIT5 {
     ch_versions = ch_versions.mix(SHAPEIT5_PHASECOMMON.out.versions.first())
 
     VCF_BCFTOOLS_INDEX_1(SHAPEIT5_PHASECOMMON.out.phased_variant)
-    ch_versions = ch_versions.mix(VCF_BCFTOOLS_INDEX_1.out.versions.first())
 
     ch_ligate_input = SHAPEIT5_PHASECOMMON.out.phased_variant
         .join(VCF_BCFTOOLS_INDEX_1.out.csi, failOnMismatch:true, failOnDuplicate:true)
@@ -79,7 +78,6 @@ workflow VCF_PHASE_SHAPEIT5 {
     ch_versions = ch_versions.mix(SHAPEIT5_LIGATE.out.versions.first())
 
     VCF_BCFTOOLS_INDEX_2(SHAPEIT5_LIGATE.out.merged_variants)
-    ch_versions = ch_versions.mix(VCF_BCFTOOLS_INDEX_2.out.versions.first())
 
     ch_vcf_tbi_join = SHAPEIT5_LIGATE.out.merged_variants
         .join(VCF_BCFTOOLS_INDEX_2.out.csi)

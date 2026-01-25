@@ -61,7 +61,6 @@ workflow VCF_IMPUTE_BEAGLE5 {
 
     // Index the imputed VCF files
     BCFTOOLS_INDEX(BEAGLE5_BEAGLE.out.vcf)
-    ch_versions = ch_versions.mix(BCFTOOLS_INDEX.out.versions.first())
 
 
     ch_vcf_index = BEAGLE5_BEAGLE.out.vcf
