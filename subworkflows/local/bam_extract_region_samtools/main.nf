@@ -10,7 +10,7 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
     ch_fasta  // channel: [ [genome], fasta, fai ]
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // Add fasta and region to bam channel
     ch_input_region = ch_bam

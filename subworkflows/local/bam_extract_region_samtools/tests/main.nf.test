@@ -24,7 +24,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = input[0] = Channel.fromList([
+                input[0] = input[0] = channel.fromList([
                     [
                         [id: "NA12878"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bam", checkIfExist:true),
@@ -36,10 +36,10 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bam.bai", checkIfExist:true),
                     ],
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [chr: "chr22", region: "chr22:16600000-16610000"], "chr22:16600000-16610000"
                 ]).collect()
-                input[2] = Channel.of([
+                input[2] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true),
@@ -75,7 +75,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = input[0] = Channel.fromList([
+                input[0] = input[0] = channel.fromList([
                     [
                         [id: "NA12878"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bam", checkIfExist:true),
@@ -87,10 +87,10 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bam.bai", checkIfExist:true),
                     ],
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [chr: "chr22", region: "chr22:16609000-16610000"], "chr22:16609000-16610000"
                 ]).collect()
-                input[2] = Channel.of([
+                input[2] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true),

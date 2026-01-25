@@ -52,9 +52,9 @@ workflow NFCORE_PHASEIMPUTE {
     // Initialise input channels
     //
 
-    ch_input_impute         = Channel.empty()
-    ch_input_simulate       = Channel.empty()
-    ch_input_validate       = Channel.empty()
+    ch_input_impute         = channel.empty()
+    ch_input_simulate       = channel.empty()
+    ch_input_validate       = channel.empty()
 
     //  Check input files for contigs names consistency
     lst_chr = ch_regions.map { it[0].chr }

@@ -15,8 +15,8 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
 
     main:
 
-    ch_versions      = Channel.empty()
-    ch_multiqc_files = Channel.empty()
+    ch_versions      = channel.empty()
+    ch_multiqc_files = channel.empty()
 
     ch_concordance = ch_vcf_emul
         .map{metaIPTC, vcf, csi -> [metaIPTC.subMap("id"), metaIPTC, vcf, csi]}

@@ -6,7 +6,7 @@ workflow VCF_CHR_RENAME_BCFTOOLS {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // Check that prefix is either "chr" or "nochr"
     ch_vcf = ch_vcf.map{

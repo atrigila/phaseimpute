@@ -21,14 +21,14 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                allele_freq = Channel.fromList([
+                allele_freq = channel.fromList([
                     [
                         [panel:'1000GP', chr:'21'], // meta map
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.sites.vcf.gz",checkIfExists:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.sites.vcf.gz.csi",checkIfExists:true)
                     ]
                 ])
-                truth = Channel.fromList([
+                truth = channel.fromList([
                     [[id:'NA12878'], // meta map
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf",checkIfExists:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bcf.csi",checkIfExists:true)],
@@ -36,7 +36,7 @@ nextflow_workflow {
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bcf",checkIfExists:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s.bcf.csi",checkIfExists:true)],
                 ])
-                estimate = Channel.fromList([
+                estimate = channel.fromList([
                     [[id:'NA12878'], // meta map
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s_imputed.bcf",checkIfExists:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s_imputed.bcf.csi",checkIfExists:true)],
@@ -44,7 +44,7 @@ nextflow_workflow {
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s_imputed.bcf",checkIfExists:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA19401/NA19401.s_imputed.bcf.csi",checkIfExists:true)]
                 ])
-                region = Channel.of([ [chr:'21', region:'chr21:16570000-16610000'],  "chr21:16570000-16610000"])
+                region = channel.of([ [chr:'21', region:'chr21:16570000-16610000'],  "chr21:16570000-16610000"])
                 input[0] = estimate
                 input[1] = truth
                 input[2] = allele_freq

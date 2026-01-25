@@ -7,7 +7,7 @@ workflow BAM_CHR_RENAME_SAMTOOLS {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // Rename the chromosome with or without prefix
     SAMTOOLS_REHEADER(
