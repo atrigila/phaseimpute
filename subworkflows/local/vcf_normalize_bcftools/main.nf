@@ -16,7 +16,6 @@ workflow VCF_NORMALIZE_BCFTOOLS {
     // Join duplicated biallelic sites into multiallelic records
     if (params.normalize) {
         BCFTOOLS_NORM(ch_vcf_tbi, ch_fasta)
-        ch_versions = ch_versions.mix(BCFTOOLS_NORM.out.versions.first())
 
         // Join multiallelic VCF and TBI
         ch_multiallelic_vcf_tbi = BCFTOOLS_NORM.out.vcf
