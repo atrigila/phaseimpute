@@ -56,7 +56,6 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
     ch_multiqc_files = ch_multiqc_files.mix(GLIMPSE2_CONCORDANCE.out.rsquare_per_site.map{ _meta, txt -> [txt]})
 
     GUNZIP(GLIMPSE2_CONCORDANCE.out.errors_grp)
-    ch_versions = ch_versions.mix(GUNZIP.out.versions.first())
 
     ADDCOLUMNS(GUNZIP.out.gunzip)
     ch_versions = ch_versions.mix(ADDCOLUMNS.out.versions.first())
