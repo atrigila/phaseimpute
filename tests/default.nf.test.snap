@@ -3,19 +3,19 @@
         "content": [
             {
                 "BAMCHREXTRACT": {
-                    "samtools": 1.2,
+                    "samtools": 1.2
                 },
                 "BCFTOOLS_ANNOTATE": {
                     "bcftools": 1.21
                 },
                 "BCFTOOLS_CONCAT": {
-                    "bcftools": 1.21
+                    "bcftools": 1.22
                 },
                 "BCFTOOLS_INDEX_1": {
-                    "bcftools": 1.21
+                    "bcftools": 1.22
                 },
                 "BCFTOOLS_INDEX_2": {
-                    "bcftools": 1.21
+                    "bcftools": 1.22
                 },
                 "BCFTOOLS_MERGE": {
                     "bcftools": 1.21
@@ -75,8 +75,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-28T15:39:48.617301186"
+        "timestamp": "2026-01-25T19:05:03.458707374"
     }
 }
