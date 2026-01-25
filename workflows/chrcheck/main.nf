@@ -16,7 +16,7 @@ workflow CHRCHECK {
         ch_input // [[id], file, index, [chr]]
 
     main:
-        ch_versions = Channel.empty()
+        ch_versions = channel.empty()
         // Split the input between VCF and BAM files
         ch_input = ch_input.branch{
             bam: it[1] =~ 'bam|cram'
@@ -30,20 +30,20 @@ workflow CHRCHECK {
         }
 
         // Check if channel is empty
-        ch_vcf_split = Channel.empty()
+        ch_vcf_split = channel.empty()
         // Extract the contig names from the VCF files
         VCFCHREXTRACT(ch_input.vcf.map{ meta, file, _index, _chr -> [meta, file] })
         ch_versions = ch_versions.mix(VCFCHREXTRACT.out.versions.first())
         ch_vcf_split = checkChr(VCFCHREXTRACT.out.chr, ch_input.vcf)
 
-        ch_bam_split = Channel.empty()
+        ch_bam_split = channel.empty()
         // Extract the contig names from the BAM files
         BAMCHREXTRACT(ch_input.bam.map{ meta, file, _index, _chr -> [meta, file] })
         ch_versions = ch_versions.mix(BAMCHREXTRACT.out.versions.first())
         ch_bam_split = checkChr(BAMCHREXTRACT.out.chr, ch_input.bam)
 
         if (params.rename_chr == true) {
-            ch_bam_renamed = Channel.empty()
+            ch_bam_renamed = channel.empty()
             // Rename the contigs in the BAM files
             BAM_CHR_RENAME_SAMTOOLS(
                 ch_bam_split.to_rename.map{meta, bam, csi, _diff, prefix -> [meta, bam, csi, prefix]}
@@ -51,7 +51,7 @@ workflow CHRCHECK {
             ch_versions = ch_versions.mix(BAM_CHR_RENAME_SAMTOOLS.out.versions.first())
             ch_bam_renamed = BAM_CHR_RENAME_SAMTOOLS.out.bam_renamed
 
-            ch_vcf_renamed = Channel.empty()
+            ch_vcf_renamed = channel.empty()
             // Rename the contigs in the VCF files
             VCF_CHR_RENAME_BCFTOOLS(ch_vcf_split.to_rename)
             ch_versions = ch_versions.mix(VCF_CHR_RENAME_BCFTOOLS.out.versions.first())
@@ -65,8 +65,8 @@ workflow CHRCHECK {
                 def chr_names = it[3].size() > params.max_chr_names ? it[3][0..params.max_chr_names - 1] + ['...'] : it[3]
                 error "Contig names: ${chr_names} in BAM: ${it[1]} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
-            ch_vcf_renamed = Channel.empty()
-            ch_bam_renamed = Channel.empty()
+            ch_vcf_renamed = channel.empty()
+            ch_bam_renamed = channel.empty()
         }
 
         ch_output = ch_bam_split.no_rename
