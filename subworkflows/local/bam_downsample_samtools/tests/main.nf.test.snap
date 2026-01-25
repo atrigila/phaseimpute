@@ -3,7 +3,6 @@
         "content": [
             [
                 "versions.yml:md5,43ed2e6d85cac7ccd2fb22a733f585dc",
-                "versions.yml:md5,9eef568f4fc903d70199abf5a48bd08f",
                 "versions.yml:md5,a61d007b27e86103db8d68a8c79a98fb"
             ],
             [
@@ -35,11 +34,6 @@
                     }
                 },
                 {
-                    "BAM_DOWNSAMPLE_SAMTOOLS:GAWK": {
-                        "gawk": "5.3.0"
-                    }
-                },
-                {
                     "BAM_DOWNSAMPLE_SAMTOOLS:SAMTOOLS_DEPTH": {
                         "samtools": 1.21
                     }
@@ -47,16 +41,15 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-07-08T15:17:15.126318418"
+        "timestamp": "2026-01-25T18:38:50.407780648"
     },
     "Downsample to 4X": {
         "content": [
             [
                 "versions.yml:md5,43ed2e6d85cac7ccd2fb22a733f585dc",
-                "versions.yml:md5,9eef568f4fc903d70199abf5a48bd08f",
                 "versions.yml:md5,a61d007b27e86103db8d68a8c79a98fb"
             ],
             [
@@ -88,11 +81,6 @@
                     }
                 },
                 {
-                    "BAM_DOWNSAMPLE_SAMTOOLS:GAWK": {
-                        "gawk": "5.3.0"
-                    }
-                },
-                {
                     "BAM_DOWNSAMPLE_SAMTOOLS:SAMTOOLS_DEPTH": {
                         "samtools": 1.21
                     }
@@ -100,9 +88,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-07-08T15:17:24.154102963"
+        "timestamp": "2026-01-25T18:39:11.762409809"
     }
 }

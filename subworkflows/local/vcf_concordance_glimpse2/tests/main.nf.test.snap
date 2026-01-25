@@ -12,9 +12,6 @@
                 ],
                 "1": [
                     "versions.yml:md5,035008d86b5bde01b0261803e59cdc71",
-                    "versions.yml:md5,185cbca93dea56aa1c36636716a6ac89",
-                    "versions.yml:md5,7a2889705dd113cb9ca90ee77aae47a2",
-                    "versions.yml:md5,9e90d37b626a7cbf72f5aec280ca2d39",
                     "versions.yml:md5,cb85a5c4bc22951d41b21bc660e89637",
                     "versions.yml:md5,d2ec7fb40bc455b1804d39f920044f1c"
                 ],
@@ -92,9 +89,6 @@
                 ],
                 "versions": [
                     "versions.yml:md5,035008d86b5bde01b0261803e59cdc71",
-                    "versions.yml:md5,185cbca93dea56aa1c36636716a6ac89",
-                    "versions.yml:md5,7a2889705dd113cb9ca90ee77aae47a2",
-                    "versions.yml:md5,9e90d37b626a7cbf72f5aec280ca2d39",
                     "versions.yml:md5,cb85a5c4bc22951d41b21bc660e89637",
                     "versions.yml:md5,d2ec7fb40bc455b1804d39f920044f1c"
                 ]
@@ -103,21 +97,6 @@
                 {
                     "VCF_CONCORDANCE_GLIMPSE2:GUNZIP": {
                         "gunzip": 1.13
-                    }
-                },
-                {
-                    "VCF_CONCORDANCE_GLIMPSE2:GAWK": {
-                        "gawk": "5.3.0"
-                    }
-                },
-                {
-                    "VCF_CONCORDANCE_GLIMPSE2:GAWK_ERROR_SPL": {
-                        "gawk": "5.3.0"
-                    }
-                },
-                {
-                    "VCF_CONCORDANCE_GLIMPSE2:GAWK_RSQUARE_SPL": {
-                        "gawk": "5.3.0"
                     }
                 },
                 {
@@ -133,9 +112,9 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-07-08T15:23:34.423394654"
+        "timestamp": "2026-01-25T18:40:21.685503236"
     }
 }
