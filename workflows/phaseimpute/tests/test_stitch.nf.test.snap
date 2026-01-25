@@ -8,13 +8,13 @@
                         "samtools": 1.2
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -24,9 +24,6 @@
                     },
                     "BGZIP_POSFILE_STITCH": {
                         "tabix": 1.21
-                    },
-                    "GAWK_POSFILE_STITCH": {
-                        "gawk": "5.3.0"
                     },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
@@ -166,9 +163,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:48:44.546165765"
+        "timestamp": "2026-01-25T22:09:20.951207529"
     },
     "Check test_stitch - with chunks": {
         "content": [
@@ -179,13 +176,13 @@
                         "samtools": 1.2
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -195,9 +192,6 @@
                     },
                     "BGZIP_POSFILE_STITCH": {
                         "tabix": 1.21
-                    },
-                    "GAWK_POSFILE_STITCH": {
-                        "gawk": "5.3.0"
                     },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
@@ -337,9 +331,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:47:42.71447113"
+        "timestamp": "2026-01-25T22:06:42.864354756"
     },
     "Check test_stitch - with chunks - no map": {
         "content": [
@@ -350,13 +344,13 @@
                         "samtools": 1.2
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
                     },
-                    "BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -366,9 +360,6 @@
                     },
                     "BGZIP_POSFILE_STITCH": {
                         "tabix": 1.21
-                    },
-                    "GAWK_POSFILE_STITCH": {
-                        "gawk": "5.3.0"
                     },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
@@ -508,8 +499,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-15T09:16:28.074063559"
+        "timestamp": "2026-01-25T22:08:06.608834813"
     }
 }
