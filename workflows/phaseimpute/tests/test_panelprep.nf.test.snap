@@ -83,6 +83,10 @@
                     "prep_panel/haplegend/1000GP_chr22.legend.gz",
                     "prep_panel/haplegend/1000GP_chr22.samples",
                     "prep_panel/panel",
+                    "prep_panel/panel/1000GP_chr21_16570070-16590517_chunks.bcf",
+                    "prep_panel/panel/1000GP_chr21_16570070-16590517_chunks.bcf.csi",
+                    "prep_panel/panel/1000GP_chr21_16590518-16609998_chunks.bcf",
+                    "prep_panel/panel/1000GP_chr21_16590518-16609998_chunks.bcf.csi",
                     "prep_panel/panel/1000GP_chr21_fixup.vcf.gz",
                     "prep_panel/panel/1000GP_chr21_fixup.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr21_multiallelic.vcf.gz",
@@ -91,6 +95,10 @@
                     "prep_panel/panel/1000GP_chr21_normalized.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr21_phased.vcf.gz",
                     "prep_panel/panel/1000GP_chr21_phased.vcf.gz.csi",
+                    "prep_panel/panel/1000GP_chr22_16570065-16592222_chunks.bcf",
+                    "prep_panel/panel/1000GP_chr22_16570065-16592222_chunks.bcf.csi",
+                    "prep_panel/panel/1000GP_chr22_16592223-16609999_chunks.bcf",
+                    "prep_panel/panel/1000GP_chr22_16592223-16609999_chunks.bcf.csi",
                     "prep_panel/panel/1000GP_chr22_fixup.vcf.gz",
                     "prep_panel/panel/1000GP_chr22_fixup.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr22_multiallelic.vcf.gz",
@@ -99,6 +107,7 @@
                     "prep_panel/panel/1000GP_chr22_normalized.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr22_phased.vcf.gz",
                     "prep_panel/panel/1000GP_chr22_phased.vcf.gz.csi",
+                    "prep_panel/panel/1000GP_chunks.txt",
                     "prep_panel/posfile",
                     "prep_panel/posfile/1000GP.chr21.posfile.txt.gz",
                     "prep_panel/posfile/1000GP.chr22.posfile.txt.gz",
@@ -123,28 +132,9 @@
                     "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73",
                     "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
                     "1000GP_chr22.samples:md5,d8ca3e8336976001de8df6be7ae236cb",
-                    "1000GP_chr21_fixup.vcf.gz:md5,cdcbc36febd6bc0a25160724e4eef870",
-                    "1000GP_chr21_fixup.vcf.gz.tbi:md5,65953d78f2f70da918a7e948b0ea4def",
-                    "1000GP_chr21_multiallelic.vcf.gz:md5,a29d744e4a11d0bb7471a799b7d0e070",
-                    "1000GP_chr21_multiallelic.vcf.gz.tbi:md5,7e7473bc67a853b8c6966f0711879c49",
-                    "1000GP_chr21_normalized.vcf.gz:md5,eb5c214b08fc9b258c6ec9f58456d99f",
-                    "1000GP_chr21_normalized.vcf.gz.tbi:md5,3b8cc70e399f988c2649046e21a8461b",
-                    "1000GP_chr21_phased.vcf.gz:md5,df0edf4a1f9ff33bbf6c035d30dc13cd",
-                    "1000GP_chr21_phased.vcf.gz.csi:md5,2e6aa755bc4b860bbced87696f9fc6cd",
-                    "1000GP_chr22_fixup.vcf.gz:md5,7e9e4da7a5b228192a3ae66675f40f26",
-                    "1000GP_chr22_fixup.vcf.gz.tbi:md5,939d00ffbd1b7a949b2ed7896b9c55cd",
-                    "1000GP_chr22_multiallelic.vcf.gz:md5,9bdf22aac9189849b0792718475b0675",
-                    "1000GP_chr22_multiallelic.vcf.gz.tbi:md5,2547b528139fd7d8c2cbbb455ea120f2",
-                    "1000GP_chr22_normalized.vcf.gz:md5,ada9f1478127bd63a0958ed96f5f69ce",
-                    "1000GP_chr22_normalized.vcf.gz.tbi:md5,9e71ab3c0ead3ea55de972a5c2bc6bcb",
-                    "1000GP_chr22_phased.vcf.gz:md5,85f15aa992ce109c0ad5311be9c3e647",
-                    "1000GP_chr22_phased.vcf.gz.csi:md5,f504e088e6dfd1d9c6dee8cfdb67016c",
+                    "1000GP_chunks.txt:md5,834dea86a63b5a49d36f53c0ac7e01a2",
                     "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
-                    "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
-                    "1000GP_chr21_glimpse1_sites.vcf.gz:md5,41b8e95185e5306acf9e7f3a03edc9ab",
-                    "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,b5d540d97a7c9e6bcc5b8b11515291df",
-                    "1000GP_chr22_glimpse1_sites.vcf.gz:md5,e434ecef146c412b2b16b4d8baa50af2",
-                    "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,1d6965fae8729e4a2625b034638b2645"
+                    "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
                 ],
                 [
                     
@@ -197,6 +187,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T17:16:42.323600067"
+        "timestamp": "2026-02-04T17:40:52.146285003"
     }
 }
