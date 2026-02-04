@@ -60,31 +60,6 @@ nextflow_pipeline {
         }
     }
 
-    test("Check test_validate") {
-        tag "test_validate"
-        config "../../../conf/test_validate.config"
-        when {
-            params {
-                publish_dir_mode = "copy"
-                pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
-                outdir = "$outputDir"
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(
-                    path("${outputDir}/validation/")
-                        .list()
-                        .collect { getRecursiveFileNames(it, outputDir) }
-                        .flatten()
-                ).match() }
-            )
-        }
-
-    }
-
     test("Check test_dog") {
         tag "test_dog"
         config "../../../conf/test_dog.config"
