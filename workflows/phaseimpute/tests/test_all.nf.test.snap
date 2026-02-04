@@ -1,0 +1,687 @@
+{
+    "Check test_all": {
+        "content": [
+            [
+                241,
+                {
+                    "ADDCOLUMNS": {
+                        "gawk": "5.3.0"
+                    },
+                    "BAMCHREXTRACT": {
+                        "samtools": 1.2
+                    },
+                    "BCFTOOLS_ANNOTATE": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_CONCAT": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_CONVERT": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_INDEX": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_INDEX_1": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_INDEX_2": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_MERGE": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_MPILEUP": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_NORM": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_PLUGINSPLIT": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_STATS_PANEL": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_STATS_TOOLS": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_STATS_TRUTH": {
+                        "bcftools": 1.21
+                    },
+                    "BCFTOOLS_VIEW": {
+                        "bcftools": 1.21
+                    },
+                    "BGZIP_POSFILE_STITCH": {
+                        "tabix": 1.21
+                    },
+                    "FILTER_CHR_DWN": {
+                        "gawk": "5.3.0"
+                    },
+                    "FILTER_CHR_INP": {
+                        "gawk": "5.3.0"
+                    },
+                    "GAWK": {
+                        "gawk": "5.3.0"
+                    },
+                    "GAWK_ERROR_SPL": {
+                        "gawk": "5.3.0"
+                    },
+                    "GAWK_POSFILE_STITCH": {
+                        "gawk": "5.3.0"
+                    },
+                    "GAWK_RSQUARE_SPL": {
+                        "gawk": "5.3.0"
+                    },
+                    "GLIMPSE2_CHUNK": {
+                        "glimpse2": "2.0.0"
+                    },
+                    "GLIMPSE2_CONCORDANCE": {
+                        "glimpse2": "2.0.0"
+                    },
+                    "GLIMPSE2_LIGATE": {
+                        "glimpse2": "2.0.0"
+                    },
+                    "GLIMPSE2_PHASE": {
+                        "glimpse2": "2.0.0"
+                    },
+                    "GLIMPSE_CHUNK": {
+                        "glimpse": "1.1.1"
+                    },
+                    "GLIMPSE_LIGATE": {
+                        "glimpse": "1.1.1"
+                    },
+                    "GLIMPSE_PHASE": {
+                        "glimpse": "1.1.1"
+                    },
+                    "GUNZIP": {
+                        "gunzip": 1.13
+                    },
+                    "QUILT_QUILT": {
+                        "r-base": "4.3.1",
+                        "r-quilt": "1.0.5"
+                    },
+                    "SAMTOOLS_COVERAGE_DWN": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_COVERAGE_INP": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_DEPTH": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_FAIDX": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_INDEX": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_MERGE": {
+                        "samtools": 1.21
+                    },
+                    "SAMTOOLS_VIEW": {
+                        "samtools": 1.21
+                    },
+                    "SHAPEIT5_LIGATE": {
+                        "shapeit5": "5.1.1"
+                    },
+                    "SHAPEIT5_PHASECOMMON": {
+                        "shapeit5": "5.1.1"
+                    },
+                    "STITCH": {
+                        "r-base": "4.4.2",
+                        "r-stitch": "1.7.3"
+                    },
+                    "TABIX_BGZIP": {
+                        "tabix": 1.21
+                    },
+                    "VCFLIB_VCFFIXUP": {
+                        "vcflib": "1.0.14"
+                    },
+                    "VCF_BCFTOOLS_INDEX_1": {
+                        "bcftools": 1.21
+                    },
+                    "VCF_BCFTOOLS_INDEX_2": {
+                        "bcftools": 1.21
+                    },
+                    "Workflow": {
+                        "nf-core/phaseimpute": "v1.2.0dev"
+                    }
+                },
+                [
+                    "imputation",
+                    "imputation/batch",
+                    "imputation/batch/all.batch0.id.txt",
+                    "imputation/batch/all.batch0.idonly.txt",
+                    "imputation/batch/all.batch0.noid.txt",
+                    "imputation/csv",
+                    "imputation/csv/impute.csv",
+                    "imputation/glimpse1",
+                    "imputation/glimpse1/concat",
+                    "imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz",
+                    "imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/samples",
+                    "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz",
+                    "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz",
+                    "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz",
+                    "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse2",
+                    "imputation/glimpse2/concat",
+                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz",
+                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/samples",
+                    "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz",
+                    "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/samples/NA19401.glimpse2.vcf.gz",
+                    "imputation/glimpse2/samples/NA19401.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/samples/NA20359.glimpse2.vcf.gz",
+                    "imputation/glimpse2/samples/NA20359.glimpse2.vcf.gz.tbi",
+                    "imputation/quilt",
+                    "imputation/quilt/concat",
+                    "imputation/quilt/concat/all.batch0.quilt.vcf.gz",
+                    "imputation/quilt/concat/all.batch0.quilt.vcf.gz.tbi",
+                    "imputation/quilt/samples",
+                    "imputation/quilt/samples/NA12878.quilt.vcf.gz",
+                    "imputation/quilt/samples/NA12878.quilt.vcf.gz.tbi",
+                    "imputation/quilt/samples/NA19401.quilt.vcf.gz",
+                    "imputation/quilt/samples/NA19401.quilt.vcf.gz.tbi",
+                    "imputation/quilt/samples/NA20359.quilt.vcf.gz",
+                    "imputation/quilt/samples/NA20359.quilt.vcf.gz.tbi",
+                    "imputation/stats",
+                    "imputation/stats/NA12878.glimpse1.bcftools_stats.txt",
+                    "imputation/stats/NA12878.glimpse2.bcftools_stats.txt",
+                    "imputation/stats/NA12878.quilt.bcftools_stats.txt",
+                    "imputation/stats/NA12878.stitch.bcftools_stats.txt",
+                    "imputation/stats/NA19401.glimpse1.bcftools_stats.txt",
+                    "imputation/stats/NA19401.glimpse2.bcftools_stats.txt",
+                    "imputation/stats/NA19401.quilt.bcftools_stats.txt",
+                    "imputation/stats/NA19401.stitch.bcftools_stats.txt",
+                    "imputation/stats/NA20359.glimpse1.bcftools_stats.txt",
+                    "imputation/stats/NA20359.glimpse2.bcftools_stats.txt",
+                    "imputation/stats/NA20359.quilt.bcftools_stats.txt",
+                    "imputation/stats/NA20359.stitch.bcftools_stats.txt",
+                    "imputation/stitch",
+                    "imputation/stitch/concat",
+                    "imputation/stitch/concat/all.batch0.stitch.vcf.gz",
+                    "imputation/stitch/concat/all.batch0.stitch.vcf.gz.tbi",
+                    "imputation/stitch/samples",
+                    "imputation/stitch/samples/NA12878.stitch.vcf.gz",
+                    "imputation/stitch/samples/NA12878.stitch.vcf.gz.tbi",
+                    "imputation/stitch/samples/NA19401.stitch.vcf.gz",
+                    "imputation/stitch/samples/NA19401.stitch.vcf.gz.tbi",
+                    "imputation/stitch/samples/NA20359.stitch.vcf.gz",
+                    "imputation/stitch/samples/NA20359.stitch.vcf.gz.tbi",
+                    "multiqc",
+                    "multiqc/multiqc_data",
+                    "multiqc/multiqc_data/bcftools-stats-subtypes.txt",
+                    "multiqc/multiqc_data/bcftools_stats_indel-lengths.txt",
+                    "multiqc/multiqc_data/bcftools_stats_variant_depths.txt",
+                    "multiqc/multiqc_data/bcftools_stats_vqc_Count_Indels.txt",
+                    "multiqc/multiqc_data/bcftools_stats_vqc_Count_SNP.txt",
+                    "multiqc/multiqc_data/bcftools_stats_vqc_Count_Transitions.txt",
+                    "multiqc/multiqc_data/bcftools_stats_vqc_Count_Transversions.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Best_genotype_r-squared_indels_.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_.txt",
+                    "multiqc/multiqc_data/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_.txt",
+                    "multiqc/multiqc_data/glimpse-err-spl-table.txt",
+                    "multiqc/multiqc_data/llms-full.txt",
+                    "multiqc/multiqc_data/multiqc.log",
+                    "multiqc/multiqc_data/multiqc.parquet",
+                    "multiqc/multiqc_data/multiqc_bcftools_stats.txt",
+                    "multiqc/multiqc_data/multiqc_citations.txt",
+                    "multiqc/multiqc_data/multiqc_data.json",
+                    "multiqc/multiqc_data/multiqc_general_stats.txt",
+                    "multiqc/multiqc_data/multiqc_glimpse_err_grp.txt",
+                    "multiqc/multiqc_data/multiqc_glimpse_err_spl.txt",
+                    "multiqc/multiqc_data/multiqc_samtools_coverage.txt",
+                    "multiqc/multiqc_data/multiqc_software_versions.txt",
+                    "multiqc/multiqc_data/multiqc_sources.txt",
+                    "multiqc/multiqc_data/samtools-coverage-table.txt",
+                    "multiqc/multiqc_data/samtools-coverage_BQ.txt",
+                    "multiqc/multiqc_data/samtools-coverage_Bases.txt",
+                    "multiqc/multiqc_data/samtools-coverage_Coverage.txt",
+                    "multiqc/multiqc_data/samtools-coverage_MQ.txt",
+                    "multiqc/multiqc_data/samtools-coverage_Mean_depth.txt",
+                    "multiqc/multiqc_data/samtools-coverage_Reads.txt",
+                    "multiqc/multiqc_plots",
+                    "multiqc/multiqc_plots/pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools-stats-subtypes-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools-stats-subtypes-pct.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_indel-lengths-log.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_variant_depths.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Indels.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_SNP.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Transitions.pdf",
+                    "multiqc/multiqc_plots/pdf/bcftools_stats_vqc_Count_Transversions.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-log.pdf",
+                    "multiqc/multiqc_plots/pdf/glimpse-err-spl-table.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage-table.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_BQ-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_BQ-log.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Bases-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Bases-log.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Coverage-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Coverage-log.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_MQ-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_MQ-log.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Mean_depth-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Mean_depth-log.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Reads-cnt.pdf",
+                    "multiqc/multiqc_plots/pdf/samtools-coverage_Reads-log.pdf",
+                    "multiqc/multiqc_plots/png",
+                    "multiqc/multiqc_plots/png/bcftools-stats-subtypes-cnt.png",
+                    "multiqc/multiqc_plots/png/bcftools-stats-subtypes-pct.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-cnt.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_indel-lengths-log.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_variant_depths.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Indels.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_SNP.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Transitions.png",
+                    "multiqc/multiqc_plots/png/bcftools_stats_vqc_Count_Transversions.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-cnt.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-log.png",
+                    "multiqc/multiqc_plots/png/glimpse-err-spl-table.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage-table.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_BQ-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_BQ-log.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Bases-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Bases-log.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Coverage-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Coverage-log.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_MQ-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_MQ-log.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Mean_depth-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Mean_depth-log.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Reads-cnt.png",
+                    "multiqc/multiqc_plots/png/samtools-coverage_Reads-log.png",
+                    "multiqc/multiqc_plots/svg",
+                    "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-cnt.svg",
+                    "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-pct.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-cnt.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_indel-lengths-log.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_variant_depths.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Indels.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_SNP.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Transitions.svg",
+                    "multiqc/multiqc_plots/svg/bcftools_stats_vqc_Count_Transversions.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Best_genotype_r-squared_indels_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-cnt.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_-log.svg",
+                    "multiqc/multiqc_plots/svg/glimpse-err-spl-table.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage-table.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_BQ-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_BQ-log.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Bases-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Bases-log.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Coverage-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Coverage-log.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_MQ-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_MQ-log.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Mean_depth-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Mean_depth-log.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Reads-cnt.svg",
+                    "multiqc/multiqc_plots/svg/samtools-coverage_Reads-log.svg",
+                    "multiqc/multiqc_report.html",
+                    "pipeline_info",
+                    "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml",
+                    "prep_panel",
+                    "prep_panel/chunks",
+                    "prep_panel/chunks/glimpse1",
+                    "prep_panel/chunks/glimpse1/1000GP_chr21_chunks_glimpse1.txt",
+                    "prep_panel/chunks/glimpse1/1000GP_chr22_chunks_glimpse1.txt",
+                    "prep_panel/chunks/glimpse2",
+                    "prep_panel/chunks/glimpse2/1000GP_chr21_chunks_glimpse2.txt",
+                    "prep_panel/chunks/glimpse2/1000GP_chr22_chunks_glimpse2.txt",
+                    "prep_panel/csv",
+                    "prep_panel/csv/chunks_glimpse1.csv",
+                    "prep_panel/csv/panel.csv",
+                    "prep_panel/csv/posfile.csv",
+                    "prep_panel/haplegend",
+                    "prep_panel/haplegend/1000GP_chr21.hap.gz",
+                    "prep_panel/haplegend/1000GP_chr21.legend.gz",
+                    "prep_panel/haplegend/1000GP_chr21.samples",
+                    "prep_panel/haplegend/1000GP_chr22.hap.gz",
+                    "prep_panel/haplegend/1000GP_chr22.legend.gz",
+                    "prep_panel/haplegend/1000GP_chr22.samples",
+                    "prep_panel/panel",
+                    "prep_panel/panel/1000GP_chr21_phased.vcf.gz",
+                    "prep_panel/panel/1000GP_chr21_phased.vcf.gz.csi",
+                    "prep_panel/panel/1000GP_chr22_phased.vcf.gz",
+                    "prep_panel/panel/1000GP_chr22_phased.vcf.gz.csi",
+                    "prep_panel/posfile",
+                    "prep_panel/posfile/1000GP.chr21.posfile.txt.gz",
+                    "prep_panel/posfile/1000GP.chr22.posfile.txt.gz",
+                    "prep_panel/sites",
+                    "prep_panel/sites/1000GP_chr21_glimpse1_sites.vcf.gz",
+                    "prep_panel/sites/1000GP_chr21_glimpse1_sites.vcf.gz.tbi",
+                    "prep_panel/sites/1000GP_chr22_glimpse1_sites.vcf.gz",
+                    "prep_panel/sites/1000GP_chr22_glimpse1_sites.vcf.gz.tbi",
+                    "prep_panel/stats",
+                    "prep_panel/stats/1000GP.panel.bcftools_stats.txt",
+                    "simulation",
+                    "simulation/csv",
+                    "simulation/csv/simulate.csv",
+                    "simulation/samples",
+                    "simulation/samples/NA12878.depth_1x.bam",
+                    "simulation/samples/NA12878.depth_1x.bam.csi",
+                    "simulation/samples/NA19401.depth_1x.bam",
+                    "simulation/samples/NA19401.depth_1x.bam.csi",
+                    "simulation/samples/NA20359.depth_1x.bam",
+                    "simulation/samples/NA20359.depth_1x.bam.csi",
+                    "validation",
+                    "validation/concat",
+                    "validation/concat/all.batch0.truth.vcf.gz",
+                    "validation/concat/all.batch0.truth.vcf.gz.tbi",
+                    "validation/samples",
+                    "validation/samples/NA12878.truth.vcf.gz",
+                    "validation/samples/NA12878.truth.vcf.gz.tbi",
+                    "validation/samples/NA19401.truth.vcf.gz",
+                    "validation/samples/NA19401.truth.vcf.gz.tbi",
+                    "validation/samples/NA20359.truth.vcf.gz",
+                    "validation/samples/NA20359.truth.vcf.gz.tbi",
+                    "validation/stats",
+                    "validation/stats/AllSamples.txt",
+                    "validation/stats/NA12878.truth.bcftools_stats.txt",
+                    "validation/stats/NA12878_P1000GP_Tglimpse1_SNP.txt",
+                    "validation/stats/NA12878_P1000GP_Tglimpse2_SNP.txt",
+                    "validation/stats/NA12878_P1000GP_Tquilt_SNP.txt",
+                    "validation/stats/NA12878_P1000GP_Tstitch_SNP.txt",
+                    "validation/stats/NA19401.truth.bcftools_stats.txt",
+                    "validation/stats/NA19401_P1000GP_Tglimpse1_SNP.txt",
+                    "validation/stats/NA19401_P1000GP_Tglimpse2_SNP.txt",
+                    "validation/stats/NA19401_P1000GP_Tquilt_SNP.txt",
+                    "validation/stats/NA19401_P1000GP_Tstitch_SNP.txt",
+                    "validation/stats/NA20359.truth.bcftools_stats.txt",
+                    "validation/stats/NA20359_P1000GP_Tglimpse1_SNP.txt",
+                    "validation/stats/NA20359_P1000GP_Tglimpse2_SNP.txt",
+                    "validation/stats/NA20359_P1000GP_Tquilt_SNP.txt",
+                    "validation/stats/NA20359_P1000GP_Tstitch_SNP.txt"
+                ],
+                [
+                    "all.batch0.id.txt:md5,a4c01a39309f9522d5b01108e3b75c64",
+                    "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
+                    "all.batch0.noid.txt:md5,276f71c6daa405e34b4b88783aeef913",
+                    "NA12878.glimpse1.bcftools_stats.txt:md5,99540b424213d0f1d19b124b58f2aef3",
+                    "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
+                    "NA12878.quilt.bcftools_stats.txt:md5,3e76a1f94b1f329a394a666a280053d7",
+                    "NA12878.stitch.bcftools_stats.txt:md5,994f53d38322b1b2f0a305f5cef594b9",
+                    "NA19401.glimpse1.bcftools_stats.txt:md5,7721a67c0a9e8577ce4989d0636351d5",
+                    "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
+                    "NA19401.quilt.bcftools_stats.txt:md5,61270a3361f5bef26923a8d0efaf5190",
+                    "NA19401.stitch.bcftools_stats.txt:md5,fbf6ca898c25414895ad5d9a6abc084f",
+                    "NA20359.glimpse1.bcftools_stats.txt:md5,234914fa488b4e770f0d17ac7c116374",
+                    "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
+                    "NA20359.quilt.bcftools_stats.txt:md5,28871f0ce4a6e8a707817ade3848a2b2",
+                    "NA20359.stitch.bcftools_stats.txt:md5,93266d3d797ce3ee9cf2a4806bbbcf61",
+                    "bcftools-stats-subtypes.txt:md5,30837458e3113f0dd225e3255f3f60ec",
+                    "bcftools_stats_indel-lengths.txt:md5,b21a8620a2c35b139b63670f6d73566a",
+                    "bcftools_stats_variant_depths.txt:md5,de340d708b850e7925f06c93d80fcb43",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,875d304a8746b43d554bd40a21d7f656",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,8ce87689d9251ea02ba636ac2ff2c8b8",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,223909ccbf9b4379a6f2d6457b78b762",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,889325de0d97369d4cab7a6366f73205",
+                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_.txt:md5,0638bef88d6e3e3e36cd69cadae80bcd",
+                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_.txt:md5,0638bef88d6e3e3e36cd69cadae80bcd",
+                    "glimpse-err-grp-plot_Best_genotype_r-squared_indels_.txt:md5,d06bfb4f7ac819694a09f2408b4e6320",
+                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_.txt:md5,a1e97c612b7cb1d06819e33879cdd261",
+                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_.txt:md5,a1e97c612b7cb1d06819e33879cdd261",
+                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_.txt:md5,d06bfb4f7ac819694a09f2408b4e6320",
+                    "glimpse-err-spl-table.txt:md5,02b834b63053a9eb2db97e3b78fe708b",
+                    "multiqc_bcftools_stats.txt:md5,b9e21a0efd2ef621799745e32fe9c461",
+                    "multiqc_citations.txt:md5,ee6bc9f24685a1dc6fe9c1d756535e77",
+                    "multiqc_general_stats.txt:md5,99533c4bc8ddb1069868b8328e20f699",
+                    "multiqc_glimpse_err_grp.txt:md5,9d1fb257a03ae1d2a778b8fa5ee3ea4b",
+                    "multiqc_glimpse_err_spl.txt:md5,bc789e9f64554e508aa8a1249c3a1156",
+                    "multiqc_samtools_coverage.txt:md5,adf64737e5abe78627c649e353b17d4b",
+                    "samtools-coverage-table.txt:md5,3f03d3fd86635cfd9a22d007e92c3228",
+                    "samtools-coverage_BQ.txt:md5,75db1c8d119efbd04b0c9a9d08cf6835",
+                    "samtools-coverage_Bases.txt:md5,d93d300e3cff40ffc6f8fa85c37958d2",
+                    "samtools-coverage_Coverage.txt:md5,dc6d3ccc2d2ccc88266e82df31c3d842",
+                    "samtools-coverage_MQ.txt:md5,ad135ddb87cfe61af98ac2dee3eb3259",
+                    "samtools-coverage_Mean_depth.txt:md5,14b99630378bbf450fbea1e135102142",
+                    "samtools-coverage_Reads.txt:md5,b72c4141a74f77fbae8c1f22a9d34217",
+                    "1000GP_chr21_chunks_glimpse1.txt:md5,64ca4a1655363e4a4e558836e5ac12f9",
+                    "1000GP_chr22_chunks_glimpse1.txt:md5,3344e171251722cf58ae31136da223ac",
+                    "1000GP_chr21_chunks_glimpse2.txt:md5,834dea86a63b5a49d36f53c0ac7e01a2",
+                    "1000GP_chr22_chunks_glimpse2.txt:md5,c363e235162ca0f7d22e5604c192e256",
+                    "chunks_glimpse1.csv:md5,e92a9efcb8b36dbf6b9a6572c4ab5c39",
+                    "panel.csv:md5,de5389e243a4a5240fe8b25195652e02",
+                    "posfile.csv:md5,fb62e5f732d13fcd5cb0b860d9fee082",
+                    "1000GP_chr21.hap.gz:md5,64d7fdfc96ce79848cf9c3c220e6774f",
+                    "1000GP_chr21.legend.gz:md5,3f7edc4c153521a0871c9d51f7da2372",
+                    "1000GP_chr21.samples:md5,d8ca3e8336976001de8df6be7ae236cb",
+                    "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73",
+                    "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
+                    "1000GP_chr22.samples:md5,d8ca3e8336976001de8df6be7ae236cb",
+                    "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
+                    "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
+                    "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
+                    "simulate.csv:md5,ac00bc81fef75f0099fffb43dc021ab4",
+                    "NA12878.depth_1x.bam:md5,7bd9073f682f98e4f6a7a09f1f1d2a87",
+                    "NA12878.depth_1x.bam.csi:md5,8c120443fd36ef403eaf402f56ca1695",
+                    "NA19401.depth_1x.bam:md5,e8ae6fbc77b01a16188dc18d8d99ca2a",
+                    "NA19401.depth_1x.bam.csi:md5,0ce09ff47343a2abb7e0ae8c2cb1bb45",
+                    "NA20359.depth_1x.bam:md5,8561b9b9ba8a9f71e5679b2f235ee9cf",
+                    "NA20359.depth_1x.bam.csi:md5,ae9b0e746cafbb80b16eaf7b38f768d3",
+                    "all.batch0.truth.vcf.gz:md5,4f445e85d7a96cb626677eef6583e55d",
+                    "all.batch0.truth.vcf.gz.tbi:md5,c20f7a5ea909bdae84aa79c585287433",
+                    "NA12878.truth.vcf.gz:md5,b028bb77aacb0d7a0d8b1de01e19a7c0",
+                    "NA12878.truth.vcf.gz.tbi:md5,8f9b7323449278a66d8307a3e3ab9f7c",
+                    "NA19401.truth.vcf.gz:md5,341e5793c2cb7efae39b53026fba8a97",
+                    "NA19401.truth.vcf.gz.tbi:md5,90e0ea38ab9000415fb4861e439240d3",
+                    "NA20359.truth.vcf.gz:md5,8bf0dbc72a98bc0b1cb669cb477032b6",
+                    "NA20359.truth.vcf.gz.tbi:md5,79bde0b5295cecc3450fd8b13c0c0f99",
+                    "AllSamples.txt:md5,d8193c1f0e1f9b3c67ac40fa99a69c12",
+                    "NA12878.truth.bcftools_stats.txt:md5,bf3771cd532fe7e0519d037f18272057",
+                    "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,0ee332d8d20b0ae393c26a309125d4a3",
+                    "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,cbcc7568f0952ab4b4eee3371cc7c135",
+                    "NA12878_P1000GP_Tquilt_SNP.txt:md5,d39b2be437b1b31548f487112a5565d2",
+                    "NA12878_P1000GP_Tstitch_SNP.txt:md5,c6356dad5f780e9fa7216d6be130acf5",
+                    "NA19401.truth.bcftools_stats.txt:md5,633ad472ef97d29cae255b45a500dc20",
+                    "NA19401_P1000GP_Tglimpse1_SNP.txt:md5,fba1e91c6dfaaeb77c934b9750a79641",
+                    "NA19401_P1000GP_Tglimpse2_SNP.txt:md5,783944223e14881a693b702ae77597d1",
+                    "NA19401_P1000GP_Tquilt_SNP.txt:md5,0253f7b365b3268086797b22e2017f3a",
+                    "NA19401_P1000GP_Tstitch_SNP.txt:md5,c6294174f645957a7d3b1199e6faf068",
+                    "NA20359.truth.bcftools_stats.txt:md5,76f012e31d566bc73c6bd794e9f82944",
+                    "NA20359_P1000GP_Tglimpse1_SNP.txt:md5,6eab682cf4e551da52ac29be56503b49",
+                    "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,058926ede6e238a9cea027418e6ab833",
+                    "NA20359_P1000GP_Tquilt_SNP.txt:md5,a681e7abacef5c10aceb0894bf6c4db5",
+                    "NA20359_P1000GP_Tstitch_SNP.txt:md5,817a27fcdaa77a3e1edf40c6bde6b4fc"
+                ],
+                [
+                    [
+                        "NA12878.depth_1x.bam",
+                        "34ddba3b819bc0fdb2cffccaf34db3b7"
+                    ],
+                    [
+                        "NA19401.depth_1x.bam",
+                        "b599461e824a8cc323c6cfa7f8f25b24"
+                    ],
+                    [
+                        "NA20359.depth_1x.bam",
+                        "433d87eaf2dfc5ee8fb0ebeb13012aa5"
+                    ]
+                ],
+                [
+                    [
+                        "all.batch0.glimpse1.vcf.gz",
+                        "4c48af56c7d67eb20777b5369377dc4b"
+                    ],
+                    [
+                        "NA12878.glimpse1.vcf.gz",
+                        "aa23c7f498aaecfa4b41204b08fc2d1b"
+                    ],
+                    [
+                        "NA19401.glimpse1.vcf.gz",
+                        "725da5086ab2a6ef4e4eaa759423cca7"
+                    ],
+                    [
+                        "NA20359.glimpse1.vcf.gz",
+                        "559b72d6f81f69dee4b14de6d8cb904a"
+                    ],
+                    [
+                        "all.batch0.glimpse2.vcf.gz",
+                        "6de9501b5827bc023ca62d252c86823f"
+                    ],
+                    [
+                        "NA12878.glimpse2.vcf.gz",
+                        "27fab5e6a5766c8e82869a3ee58dac83"
+                    ],
+                    [
+                        "NA19401.glimpse2.vcf.gz",
+                        "91f77182ec4063f91cbcbfa86aaa0af1"
+                    ],
+                    [
+                        "NA20359.glimpse2.vcf.gz",
+                        "e255b641628f91dc18ca3f111f4efe75"
+                    ],
+                    [
+                        "all.batch0.quilt.vcf.gz",
+                        "df04ab0bc98810a678a431f63e8cbe42"
+                    ],
+                    [
+                        "NA12878.quilt.vcf.gz",
+                        "de4b773c752cfb134c480b2e7b05553"
+                    ],
+                    [
+                        "NA19401.quilt.vcf.gz",
+                        "9ed1a117c8511ffe71bd16e29be4d0e2"
+                    ],
+                    [
+                        "NA20359.quilt.vcf.gz",
+                        "6ba55a93520ac438f423cef4486a1a9b"
+                    ],
+                    [
+                        "all.batch0.stitch.vcf.gz",
+                        "2147e55f18327e66dc073441f1db23dd"
+                    ],
+                    [
+                        "NA12878.stitch.vcf.gz",
+                        "89ecfcca6c4c40d01e2564f796cbc897"
+                    ],
+                    [
+                        "NA19401.stitch.vcf.gz",
+                        "fb8e053be811a21824b891331e41a74d"
+                    ],
+                    [
+                        "NA20359.stitch.vcf.gz",
+                        "dfa153bbc3baec01e7613b6450f3caac"
+                    ],
+                    [
+                        "1000GP_chr21_phased.vcf.gz",
+                        "717edbcf352f88374ef5cc752ec65bb"
+                    ],
+                    [
+                        "1000GP_chr22_phased.vcf.gz",
+                        "481928a52994a1c1dcdc147199f053c7"
+                    ],
+                    [
+                        "1000GP_chr21_glimpse1_sites.vcf.gz",
+                        "6a6015e06338ef14f58749dd067f4a78"
+                    ],
+                    [
+                        "1000GP_chr22_glimpse1_sites.vcf.gz",
+                        "321a19489c56a5d670ee49b26d9052b9"
+                    ],
+                    [
+                        "all.batch0.truth.vcf.gz",
+                        "83f2bfc948a3d2a449b0239e73843c56"
+                    ],
+                    [
+                        "NA12878.truth.vcf.gz",
+                        "7c37879a396314354b76f8a5a90a40fc"
+                    ],
+                    [
+                        "NA19401.truth.vcf.gz",
+                        "e0722e6af17e3837459a7cf23de886b8"
+                    ],
+                    [
+                        "NA20359.truth.vcf.gz",
+                        "b63773c8d5a695b27a0108ec0c7590e7"
+                    ]
+                ]
+            ],
+            {
+                "all.glimpse1": {
+                    "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=false]",
+                    "samples": [
+                        "NA12878",
+                        "NA19401",
+                        "NA20359"
+                    ]
+                },
+                "all.glimpse2": {
+                    "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
+                    "samples": [
+                        "NA12878",
+                        "NA19401",
+                        "NA20359"
+                    ]
+                },
+                "all.quilt": {
+                    "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
+                    "samples": [
+                        "NA12878",
+                        "NA19401",
+                        "NA20359"
+                    ]
+                },
+                "all.stitch": {
+                    "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=false]",
+                    "samples": [
+                        "NA12878",
+                        "NA19401",
+                        "NA20359"
+                    ]
+                }
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-04T20:48:20.790282057"
+    }
+}
