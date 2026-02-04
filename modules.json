@@ -28,8 +28,8 @@
                             "bam_impute_stitch",
                             "bam_vcf_impute_glimpse2",
                             "modules",
-                            "vcf_impute_glimpse",
-                            "vcf_impute_beagle5"
+                            "vcf_impute_beagle5",
+                            "vcf_impute_glimpse"
                         ]
                     },
                     "bcftools/merge": {
@@ -255,7 +255,7 @@
                         "branch": "master",
                         "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
                         "installed_by": ["subworkflows"]
-                    }
+                    },
                     "vcf_impute_beagle5": {
                         "branch": "master",
                         "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
