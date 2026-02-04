@@ -83,8 +83,16 @@
                     "prep_panel/haplegend/1000GP_chr22.legend.gz",
                     "prep_panel/haplegend/1000GP_chr22.samples",
                     "prep_panel/panel",
+                    "prep_panel/panel/1000GP_chr21_fixup.vcf.gz",
+                    "prep_panel/panel/1000GP_chr21_fixup.vcf.gz.tbi",
+                    "prep_panel/panel/1000GP_chr21_normalized.vcf.gz",
+                    "prep_panel/panel/1000GP_chr21_normalized.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr21_phased.vcf.gz",
                     "prep_panel/panel/1000GP_chr21_phased.vcf.gz.csi",
+                    "prep_panel/panel/1000GP_chr22_fixup.vcf.gz",
+                    "prep_panel/panel/1000GP_chr22_fixup.vcf.gz.tbi",
+                    "prep_panel/panel/1000GP_chr22_normalized.vcf.gz",
+                    "prep_panel/panel/1000GP_chr22_normalized.vcf.gz.tbi",
                     "prep_panel/panel/1000GP_chr22_phased.vcf.gz",
                     "prep_panel/panel/1000GP_chr22_phased.vcf.gz.csi",
                     "prep_panel/posfile",
@@ -111,15 +119,23 @@
                     "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73",
                     "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
                     "1000GP_chr22.samples:md5,d8ca3e8336976001de8df6be7ae236cb",
-                    "1000GP_chr21_phased.vcf.gz:md5,f931f2c631aa9b4527f00412a9ef4568",
-                    "1000GP_chr21_phased.vcf.gz.csi:md5,c26feb5595861cf8b9c6ba11a426eab8",
-                    "1000GP_chr22_phased.vcf.gz:md5,e2c80e72979b8ef973d7580c51eeaebf",
-                    "1000GP_chr22_phased.vcf.gz.csi:md5,f504e088e6dfd1d9c6dee8cfdb67016c",
+                    "1000GP_chr21_fixup.vcf.gz:md5,08352f760a8811109dcb6985cfcc16e2",
+                    "1000GP_chr21_fixup.vcf.gz.tbi:md5,65953d78f2f70da918a7e948b0ea4def",
+                    "1000GP_chr21_normalized.vcf.gz:md5,cc6213430837afaa61d05c8d4fc9fc1d",
+                    "1000GP_chr21_normalized.vcf.gz.tbi:md5,3b8cc70e399f988c2649046e21a8461b",
+                    "1000GP_chr21_phased.vcf.gz:md5,690f3a6e13b12ec2fbbdeef9875b70a5",
+                    "1000GP_chr21_phased.vcf.gz.csi:md5,85e3873ed8e6cb7a6b2a02749df485bc",
+                    "1000GP_chr22_fixup.vcf.gz:md5,7ea9e72bae8f47ef44cc4b55b5eccab5",
+                    "1000GP_chr22_fixup.vcf.gz.tbi:md5,939d00ffbd1b7a949b2ed7896b9c55cd",
+                    "1000GP_chr22_normalized.vcf.gz:md5,96c2d0ec18da944b9a772db3d188ef02",
+                    "1000GP_chr22_normalized.vcf.gz.tbi:md5,8f7a7f48dcc8957e37eb4081d55b5fa5",
+                    "1000GP_chr22_phased.vcf.gz:md5,3be604e64a2566c432922ce1c697b77d",
+                    "1000GP_chr22_phased.vcf.gz.csi:md5,bab88a02cdf03fa64dc8aa1f36c12926",
                     "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
                     "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
-                    "1000GP_chr21_glimpse1_sites.vcf.gz:md5,173e5e6265bfd940a00d5839f7354126",
+                    "1000GP_chr21_glimpse1_sites.vcf.gz:md5,7b47ef49c199b10aa2a6f5f78782ae95",
                     "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,b5d540d97a7c9e6bcc5b8b11515291df",
-                    "1000GP_chr22_glimpse1_sites.vcf.gz:md5,8e63f68e38adc5597e75b95329395e1d",
+                    "1000GP_chr22_glimpse1_sites.vcf.gz:md5,269e37f03d0daccc82d281165e6c2b4d",
                     "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,1d6965fae8729e4a2625b034638b2645"
                 ],
                 [
@@ -127,8 +143,24 @@
                 ],
                 [
                     [
+                        "1000GP_chr21_fixup.vcf.gz",
+                        "1a7f840b5311e45cad2210779cc90d7e"
+                    ],
+                    [
+                        "1000GP_chr21_normalized.vcf.gz",
+                        "1a7f840b5311e45cad2210779cc90d7e"
+                    ],
+                    [
                         "1000GP_chr21_phased.vcf.gz",
                         "717edbcf352f88374ef5cc752ec65bb"
+                    ],
+                    [
+                        "1000GP_chr22_fixup.vcf.gz",
+                        "e028aaa747cdb57516927d6dbd849ead"
+                    ],
+                    [
+                        "1000GP_chr22_normalized.vcf.gz",
+                        "e028aaa747cdb57516927d6dbd849ead"
                     ],
                     [
                         "1000GP_chr22_phased.vcf.gz",
@@ -149,6 +181,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T16:46:52.63545339"
+        "timestamp": "2026-02-04T16:59:18.829727564"
     }
 }
