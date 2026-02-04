@@ -499,21 +499,7 @@
                     "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
                     "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
                     "simulate.csv:md5,ac00bc81fef75f0099fffb43dc021ab4",
-                    "NA12878.depth_1x.bam:md5,7bd9073f682f98e4f6a7a09f1f1d2a87",
-                    "NA12878.depth_1x.bam.csi:md5,8c120443fd36ef403eaf402f56ca1695",
-                    "NA19401.depth_1x.bam:md5,e8ae6fbc77b01a16188dc18d8d99ca2a",
-                    "NA19401.depth_1x.bam.csi:md5,0ce09ff47343a2abb7e0ae8c2cb1bb45",
-                    "NA20359.depth_1x.bam:md5,8561b9b9ba8a9f71e5679b2f235ee9cf",
-                    "NA20359.depth_1x.bam.csi:md5,ae9b0e746cafbb80b16eaf7b38f768d3",
-                    "all.batch0.truth.vcf.gz:md5,4f445e85d7a96cb626677eef6583e55d",
-                    "all.batch0.truth.vcf.gz.tbi:md5,c20f7a5ea909bdae84aa79c585287433",
-                    "NA12878.truth.vcf.gz:md5,b028bb77aacb0d7a0d8b1de01e19a7c0",
-                    "NA12878.truth.vcf.gz.tbi:md5,8f9b7323449278a66d8307a3e3ab9f7c",
-                    "NA19401.truth.vcf.gz:md5,341e5793c2cb7efae39b53026fba8a97",
-                    "NA19401.truth.vcf.gz.tbi:md5,90e0ea38ab9000415fb4861e439240d3",
-                    "NA20359.truth.vcf.gz:md5,8bf0dbc72a98bc0b1cb669cb477032b6",
-                    "NA20359.truth.vcf.gz.tbi:md5,79bde0b5295cecc3450fd8b13c0c0f99",
-                    "AllSamples.txt:md5,d8193c1f0e1f9b3c67ac40fa99a69c12",
+                    "AllSamples.txt:md5,62429ee960729b5950f6f75701eaa7d4",
                     "NA12878.truth.bcftools_stats.txt:md5,bf3771cd532fe7e0519d037f18272057",
                     "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,0ee332d8d20b0ae393c26a309125d4a3",
                     "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,cbcc7568f0952ab4b4eee3371cc7c135",
@@ -682,6 +668,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T20:48:20.790282057"
+        "timestamp": "2026-02-04T21:16:53.85728168"
     }
 }

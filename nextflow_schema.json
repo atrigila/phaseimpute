@@ -80,7 +80,9 @@
                 "publish_all": {
                     "type": "boolean",
                     "description": "Publish each process output",
-                    "pattern": "true|false"
+                    "default": false,
+                    "pattern": "true|false",
+                    "hidden": true
                 }
             }
         },
