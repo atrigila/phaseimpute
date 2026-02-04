@@ -25,6 +25,7 @@ nextflow_workflow {
             params {
                 max_cpus   = 2
                 max_memory = '2.GB'
+                normalize = true
                 compute_freq = false
                 remove_samples = null
             }
@@ -59,14 +60,11 @@ nextflow_workflow {
                     workflow.out.vcf_tbi.collect{[
                         it[0],
                         path(it[1]).getFileName().toString(),
-                        path(it[2]).getFileName().toString()
-                    ] },
-                    workflow.out.vcf_tbi.collect{
-                        path(it[1]).vcf.summary
-                    },
-                    workflow.out.vcf_tbi.collect{
+                        path(it[2]).getFileName().toString(),
+                        path(it[1]).vcf.variantsMD5,
+                        path(it[1]).vcf.summary,
                         path(it[1]).vcf.header.getGenotypeSamples().size()
-                    },
+                    ] },
                     workflow.out.versions.collect{ path(it).yaml }
                 ).match() },
                 { workflow.out.vcf_tbi.collect{
@@ -81,6 +79,7 @@ nextflow_workflow {
             params {
                 max_cpus   = 2
                 max_memory = '2.GB'
+                normalize = true
                 compute_freq = true
                 remove_samples = "HG00109,HG00110,HG00111,HG00112,HG00113,HG00114"
             }
@@ -115,14 +114,11 @@ nextflow_workflow {
                     workflow.out.vcf_tbi.collect{[
                         it[0],
                         path(it[1]).getFileName().toString(),
-                        path(it[2]).getFileName().toString()
-                    ] },
-                    workflow.out.vcf_tbi.collect{
-                        path(it[1]).vcf.summary
-                    },
-                    workflow.out.vcf_tbi.collect{
+                        path(it[2]).getFileName().toString(),
+                        path(it[1]).vcf.variantsMD5,
+                        path(it[1]).vcf.summary,
                         path(it[1]).vcf.header.getGenotypeSamples().size()
-                    },
+                    ] },
                     workflow.out.versions.collect{ path(it).yaml }
                 ).match() }
             )
