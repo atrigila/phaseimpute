@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
-- [#249](https://github.com/nf-core/phaseimpute/pull/249) - Add new `publish_all` hidden parameter to help during debugging.
+- [#249](https://github.com/nf-core/phaseimpute/pull/249) - Add new `publish_all` hidden parameter to help during debugging. Add csv content checking in nf-test.
 
 ### `Changed`
 
