@@ -144,6 +144,40 @@
                         "NA20359.glimpse2.vcf.gz",
                         "a170c839de5c48d171475b885fa00439"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.glimpse2.vcf.gz:md5,968766241a653c4cb0882a72435b2f18",
+                                "NA19401.glimpse2.vcf.gz:md5,f661a597012c9b42fc28f25189273e54",
+                                "NA20359.glimpse2.vcf.gz:md5,8259dfa61b73fadd80b21dcf4287b963"
+                            ],
+                            "index": [
+                                "NA12878.glimpse2.vcf.gz.tbi:md5,3b0f5bccee963037593a99c1cbbfb700",
+                                "NA19401.glimpse2.vcf.gz.tbi:md5,91be66cea0c0b16ac319a2229b35d79c",
+                                "NA20359.glimpse2.vcf.gz.tbi:md5,fdc5634df8179357d7ad405c7ac08023"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "glimpse2",
+                                "glimpse2",
+                                "glimpse2"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -159,9 +193,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-15T09:24:17.962272616"
+        "timestamp": "2026-02-05T12:46:34.709151253"
     },
     "Check test_glimpse2 - with chunks": {
         "content": [
@@ -308,6 +342,40 @@
                         "NA20359.glimpse2.vcf.gz",
                         "8350f3864ba8e8d22ed267e9758a8bcc"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.glimpse2.vcf.gz:md5,5476b9cef378fc6ec2698836c0347fd1",
+                                "NA19401.glimpse2.vcf.gz:md5,d7f5d0e3a4eab7109eda897ab22c35d1",
+                                "NA20359.glimpse2.vcf.gz:md5,5f3f5329c3ac5d83cd0fa007b018aff8"
+                            ],
+                            "index": [
+                                "NA12878.glimpse2.vcf.gz.tbi:md5,d496cda90964812ada0791a2a5777fd4",
+                                "NA19401.glimpse2.vcf.gz.tbi:md5,e707a996de3fe398d808c9f370b00292",
+                                "NA20359.glimpse2.vcf.gz.tbi:md5,cf908c24066d81f38cc23caefce4548f"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "glimpse2",
+                                "glimpse2",
+                                "glimpse2"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -323,9 +391,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-13T11:34:49.444254648"
+        "timestamp": "2026-02-05T12:45:30.577467268"
     },
     "Check test_glimpse2 - without chunks": {
         "content": [
@@ -472,6 +540,40 @@
                         "NA20359.glimpse2.vcf.gz",
                         "65ad782ead9d57c82d50bc79225f87d1"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.glimpse2.vcf.gz:md5,bb378b2ea6ef9a7c4290ef2dd9a6a5f8",
+                                "NA19401.glimpse2.vcf.gz:md5,3015e94fb2121f3c099ce304fcead7bc",
+                                "NA20359.glimpse2.vcf.gz:md5,723647d827e4fd3dd0d0e139440d2d8c"
+                            ],
+                            "index": [
+                                "NA12878.glimpse2.vcf.gz.tbi:md5,f3659f19097af9e9befc6acc97ab7014",
+                                "NA19401.glimpse2.vcf.gz.tbi:md5,7f8000dfdb0195bf095e3d0beaf06cc0",
+                                "NA20359.glimpse2.vcf.gz.tbi:md5,ddc7cdd0779acafbb8135de3a3e23969"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "glimpse2",
+                                "glimpse2",
+                                "glimpse2"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -487,8 +589,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-13T11:35:44.177351184"
+        "timestamp": "2026-02-05T12:47:36.302527881"
     }
 }

@@ -151,6 +151,40 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.stitch.vcf.gz:md5,41cd4a28b9b4d0092cf897aceac73ae6",
+                                "NA19401.stitch.vcf.gz:md5,e3c2866a72925fda78361f570ab7a521",
+                                "NA20359.stitch.vcf.gz:md5,7f007513a8cf4863668620d594921f5a"
+                            ],
+                            "index": [
+                                "NA12878.stitch.vcf.gz.tbi:md5,7f31ab2a7145b33b6dd9bb009394fa4d",
+                                "NA19401.stitch.vcf.gz.tbi:md5,58bfb3144e0835a2fa91081edd428b92",
+                                "NA20359.stitch.vcf.gz.tbi:md5,00ac8a830eeb487207168d574286fc86"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "stitch",
+                                "stitch",
+                                "stitch"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -166,9 +200,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:48:44.546165765"
+        "timestamp": "2026-02-05T12:51:57.012729762"
     },
     "Check test_stitch - with chunks": {
         "content": [
@@ -322,6 +356,40 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.stitch.vcf.gz:md5,44d594c7f428d339d3a7b3157ffabcd8",
+                                "NA19401.stitch.vcf.gz:md5,151fb3e889d6c373989a5b020ef1d677",
+                                "NA20359.stitch.vcf.gz:md5,cf8e54463ae86106d7362b0082533249"
+                            ],
+                            "index": [
+                                "NA12878.stitch.vcf.gz.tbi:md5,612532b6eeb41bc116b1fdd177cffcdf",
+                                "NA19401.stitch.vcf.gz.tbi:md5,72327e32deeeb83b0ff40f9cb8c4d7e9",
+                                "NA20359.stitch.vcf.gz.tbi:md5,00ac8a830eeb487207168d574286fc86"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "stitch",
+                                "stitch",
+                                "stitch"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -337,9 +405,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:47:42.71447113"
+        "timestamp": "2026-02-05T12:49:34.048446202"
     },
     "Check test_stitch - with chunks - no map": {
         "content": [
@@ -493,6 +561,40 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.stitch.vcf.gz:md5,6138c26a44f082752bc6ae3e9720890c",
+                                "NA19401.stitch.vcf.gz:md5,2a59383413f07bce408d32a8f627900a",
+                                "NA20359.stitch.vcf.gz:md5,7edcac514a6a6793ee74c9267c85f491"
+                            ],
+                            "index": [
+                                "NA12878.stitch.vcf.gz.tbi:md5,612532b6eeb41bc116b1fdd177cffcdf",
+                                "NA19401.stitch.vcf.gz.tbi:md5,58bfb3144e0835a2fa91081edd428b92",
+                                "NA20359.stitch.vcf.gz.tbi:md5,00ac8a830eeb487207168d574286fc86"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "stitch",
+                                "stitch",
+                                "stitch"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -508,8 +610,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-15T09:16:28.074063559"
+        "timestamp": "2026-02-05T12:50:46.845749669"
     }
 }
