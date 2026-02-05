@@ -157,7 +157,7 @@
                     "validation/samples/NA20359.truth.vcf.gz",
                     "validation/samples/NA20359.truth.vcf.gz.tbi",
                     "validation/stats",
-                    "validation/stats/AllSamples.csv",
+                    "validation/stats/AllSamples.txt",
                     "validation/stats/NA12878.truth.bcftools_stats.txt",
                     "validation/stats/NA12878_SNP.txt",
                     "validation/stats/NA19401.truth.bcftools_stats.txt",
@@ -186,7 +186,7 @@
                     "multiqc_glimpse_err_grp.txt:md5,91738f447116e750a356c3d74b47ff42",
                     "multiqc_glimpse_err_spl.txt:md5,dcef407887aa18cc564883fa46a7da19",
                     "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
-                    "AllSamples.csv:md5,8e84c088b83ca17b6d72443f25fff35a",
+                    "AllSamples.txt:md5,8e84c088b83ca17b6d72443f25fff35a",
                     "NA12878.truth.bcftools_stats.txt:md5,17fedf85670e3e67dc38ea4ed65721af",
                     "NA12878_SNP.txt:md5,88996cab2016d66d2275a4a863515286",
                     "NA19401.truth.bcftools_stats.txt:md5,7e034bced77e4e726d97a8bc3a2ce6c5",
@@ -212,27 +212,7 @@
                     ]
                 ],
                 [
-                    {
-                        "fileName": "AllSamples.csv",
-                        "rows": [
-                            "#GCsVAF id n_genotypes mean_AF #val_gt_RR #val_gt_RA #val_gt_AA filtered_gp RR_hom_matches RA_het_matches AA_hom_matches RR_hom_mismatches RA_het_mismatches AA_hom_mismatches RR_hom_mismatches_rate_percent RA_het_mismatches_rate_percent AA_hom_mimatches_rate_percent ID Depth GPArray Tools Panel",
-                            "GCsVAF 0 1398 0.001537 1397 1 0 0 1397 1 0 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA12878 null null [] null",
-                            "GCsVAF 1 182 0.022211 176 6 0 0 176 6 0 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA12878 null null [] null",
-                            "GCsVAF 2 61 0.070511 60 1 0 0 60 1 0 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA12878 null null [] null",
-                            "GCsVAF 3 49 0.143106 34 15 0 0 34 15 0 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA12878 null null [] null",
-                            "GCsVAF 4 48 0.360630 33 13 2 0 33 13 2 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA12878 null null [] null",
-                            "GCsVAF 0 1398 0.001537 1397 1 0 0 1397 1 0 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA19401 null null [] null",
-                            "GCsVAF 1 182 0.022211 164 7 11 0 164 7 11 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA19401 null null [] null",
-                            "GCsVAF 2 61 0.070511 42 5 14 0 42 5 14 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA19401 null null [] null",
-                            "GCsVAF 3 49 0.143106 41 5 3 0 41 5 3 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA19401 null null [] null",
-                            "GCsVAF 4 48 0.360630 14 3 31 0 14 3 31 0 0 0 0.000 0.000 0.000 1.000000 1.000000 NA19401 null null [] null",
-                            "GCsVAF 0 1398 0.001537 1391 7 0 0 1391 7 0 0 0 0 0.000 0.000 0.000 1.000000 0.998890 NA20359 null null [] null",
-                            "GCsVAF 1 182 0.022211 158 24 0 0 158 23 0 0 1 0 0.000 4.167 0.000 0.952306 0.983844 NA20359 null null [] null",
-                            "GCsVAF 2 61 0.070511 47 14 0 0 47 14 0 0 0 0 0.000 0.000 0.000 1.000000 0.997725 NA20359 null null [] null",
-                            "GCsVAF 3 49 0.143106 28 20 1 0 28 20 1 0 0 0 0.000 0.000 0.000 1.000000 0.999999 NA20359 null null [] null",
-                            "GCsVAF 4 48 0.360630 17 7 24 0 17 7 24 0 0 0 0.000 0.000 0.000 1.000000 0.998607 NA20359 null null [] null"
-                        ]
-                    }
+                    
                 ]
             ]
         ],
@@ -240,6 +220,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T14:33:24.862706345"
+        "timestamp": "2026-02-05T15:33:19.071290468"
     }
 }
