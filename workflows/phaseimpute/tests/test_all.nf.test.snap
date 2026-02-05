@@ -623,6 +623,196 @@
                         "NA20359.truth.vcf.gz",
                         "b63773c8d5a695b27a0108ec0c7590e7"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "columnNames": [
+                            "sample",
+                            "tools",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 12,
+                        "columns": {
+                            "file": [
+                                "NA12878.glimpse1.vcf.gz:md5,b68e05a310e9c087f208aa3f56b61094",
+                                "NA12878.glimpse2.vcf.gz:md5,79b7f31707e64c048f65a1c2877954d3",
+                                "NA12878.quilt.vcf.gz:md5,8ebe7e8495e00410b1e4ab23565344b6",
+                                "NA12878.stitch.vcf.gz:md5,965c7f19dc7a2fea20439c63916e6763",
+                                "NA19401.glimpse1.vcf.gz:md5,9cfb79b96b9574d12779f1d2d6d80251",
+                                "NA19401.glimpse2.vcf.gz:md5,cfd7d0216f5ed57db944e54766c82888",
+                                "NA19401.quilt.vcf.gz:md5,cb294ae4c415073a73aaf8110707b14f",
+                                "NA19401.stitch.vcf.gz:md5,a5d04b80dd07cf50eda2f719716a94e3",
+                                "NA20359.glimpse1.vcf.gz:md5,cef76dffa78f3725c1dd3ccfb8273966",
+                                "NA20359.glimpse2.vcf.gz:md5,3f8d743546dc5e348b6978c479b02ace",
+                                "NA20359.quilt.vcf.gz:md5,ded0fee771b80ae05c9ac464e911eaa5",
+                                "NA20359.stitch.vcf.gz:md5,8a0ab47ea7536f75900658b473bae9f4"
+                            ],
+                            "index": [
+                                "NA12878.glimpse1.vcf.gz.tbi:md5,9c0f976233c1308085f406644a2dd5ff",
+                                "NA12878.glimpse2.vcf.gz.tbi:md5,359bd3c68915fa628a9a99bdc498ef07",
+                                "NA12878.quilt.vcf.gz.tbi:md5,65780fbb88baa72d883e701cffeb5973",
+                                "NA12878.stitch.vcf.gz.tbi:md5,1e006b35c17bc1a66d80be05a680ccde",
+                                "NA19401.glimpse1.vcf.gz.tbi:md5,daa4f3ae09230dc7ca05811e3bd1a876",
+                                "NA19401.glimpse2.vcf.gz.tbi:md5,53c31f393b4b0ced6f8f39828380da9d",
+                                "NA19401.quilt.vcf.gz.tbi:md5,579b1c105deb3a68c4948d606894e806",
+                                "NA19401.stitch.vcf.gz.tbi:md5,3a5ca4f7c65cd5d4af9a438a78cb7b22",
+                                "NA20359.glimpse1.vcf.gz.tbi:md5,bfe07243771b9484d785abc536a3ac75",
+                                "NA20359.glimpse2.vcf.gz.tbi:md5,61ee831face77874945b36c2b627cc04",
+                                "NA20359.quilt.vcf.gz.tbi:md5,e71d369adffabe679d8278ae2f3c66d4",
+                                "NA20359.stitch.vcf.gz.tbi:md5,88949cbbbe7bdb08dc294e0a6d113f33"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA12878",
+                                "NA12878",
+                                "NA12878",
+                                "NA19401",
+                                "NA19401",
+                                "NA19401",
+                                "NA19401",
+                                "NA20359",
+                                "NA20359",
+                                "NA20359",
+                                "NA20359"
+                            ],
+                            "tools": [
+                                "glimpse1",
+                                "glimpse2",
+                                "quilt",
+                                "stitch",
+                                "glimpse1",
+                                "glimpse2",
+                                "quilt",
+                                "stitch",
+                                "glimpse1",
+                                "glimpse2",
+                                "quilt",
+                                "stitch"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "chunks_glimpse1.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "file"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "file": [
+                                "1000GP_chr21_chunks_glimpse1.txt:md5,64ca4a1655363e4a4e558836e5ac12f9",
+                                "1000GP_chr22_chunks_glimpse1.txt:md5,3344e171251722cf58ae31136da223ac"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "panel.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "vcf",
+                            "index"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "vcf": [
+                                "1000GP_chr21_phased.vcf.gz:md5,063ac6ad7ff2177eb98b2d11537a6d89",
+                                "1000GP_chr22_phased.vcf.gz:md5,bbc8513306532e18ebea14866317a0ab"
+                            ],
+                            "index": [
+                                "1000GP_chr21_phased.vcf.gz.csi:md5,c26feb5595861cf8b9c6ba11a426eab8",
+                                "1000GP_chr22_phased.vcf.gz.csi:md5,f504e088e6dfd1d9c6dee8cfdb67016c"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "posfile.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "vcf",
+                            "index",
+                            "hap",
+                            "legend",
+                            "posfile"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "hap": [
+                                "1000GP_chr21.hap.gz:md5,64d7fdfc96ce79848cf9c3c220e6774f",
+                                "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73"
+                            ],
+                            "legend": [
+                                "1000GP_chr21.legend.gz:md5,3f7edc4c153521a0871c9d51f7da2372",
+                                "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037"
+                            ],
+                            "vcf": [
+                                "1000GP_chr21_glimpse1_sites.vcf.gz:md5,888d77fd4ef82abc7bc3a76a0bb0c92f",
+                                "1000GP_chr22_glimpse1_sites.vcf.gz:md5,af614670236dc9b16fee92078520fed0"
+                            ],
+                            "posfile": [
+                                "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
+                                "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
+                            ],
+                            "index": [
+                                "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,1fca57b715e11d56c1e4e244bbcf1a80",
+                                "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,7304840a59b8959f733c84afbc4e59b8"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "simulate.csv",
+                        "columnNames": [
+                            "sample",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.depth_1x.bam:md5,fe3f99cf650f7b5542bb261ceb6b7343",
+                                "NA19401.depth_1x.bam:md5,e0d63213c9d442bae2bbd24e5b9ceda0",
+                                "NA20359.depth_1x.bam:md5,00fd30601c658cd367c3456917868373"
+                            ],
+                            "index": [
+                                "NA12878.depth_1x.bam.csi:md5,a11b9a7a15b8146df60ae575411a6db2",
+                                "NA19401.depth_1x.bam.csi:md5,e9ecb686f799219dcb2935b3f8ab2607",
+                                "NA20359.depth_1x.bam.csi:md5,18750341b88ecbeb7c7abe31a0d21a3f"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ]
+                        }
+                    }
                 ]
             ],
             {
@@ -664,6 +854,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T21:16:53.85728168"
+        "timestamp": "2026-02-05T12:32:07.687430439"
     }
 }

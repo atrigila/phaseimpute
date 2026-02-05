@@ -145,6 +145,34 @@
                 ],
                 [
                     
+                ],
+                [
+                    {
+                        "fileName": "simulate.csv",
+                        "columnNames": [
+                            "sample",
+                            "file",
+                            "index"
+                        ],
+                        "rowCount": 3,
+                        "columns": {
+                            "file": [
+                                "NA12878.depth_1x.bam:md5,846398587d4e83e0bd476f1e588189b6",
+                                "NA19401.depth_1x.bam:md5,248fa394db21b0210d114e85f9d979c7",
+                                "NA20359.depth_1x.bam:md5,b082fc0f201d88e619e891dfc378425f"
+                            ],
+                            "index": [
+                                "NA12878.depth_1x.bam.csi:md5,bbeb6a3a625b6c991d467a2be8390f6f",
+                                "NA19401.depth_1x.bam.csi:md5,0a1f63690023fe554a59d9d11860e0c4",
+                                "NA20359.depth_1x.bam.csi:md5,7a9f38f3e088f38531f86618e32b5d54"
+                            ],
+                            "sample": [
+                                "NA12878",
+                                "NA19401",
+                                "NA20359"
+                            ]
+                        }
+                    }
                 ]
             ]
         ],
@@ -152,6 +180,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T22:01:52.172473832"
+        "timestamp": "2026-02-05T12:23:37.293584326"
     }
 }

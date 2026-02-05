@@ -131,6 +131,102 @@
                         "1000GP_chr22_glimpse1_sites.vcf.gz",
                         "321a19489c56a5d670ee49b26d9052b9"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "chunks_glimpse1.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "file"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "file": [
+                                "1000GP_chr21_chunks_glimpse1.txt:md5,64ca4a1655363e4a4e558836e5ac12f9",
+                                "1000GP_chr22_chunks_glimpse1.txt:md5,3344e171251722cf58ae31136da223ac"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "panel.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "vcf",
+                            "index"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "vcf": [
+                                "1000GP_chr21_phased.vcf.gz:md5,532523fcc873a8e9cdcee50d48f080d7",
+                                "1000GP_chr22_phased.vcf.gz:md5,fd3a9c8cf85a894f89dd8cee04fca447"
+                            ],
+                            "index": [
+                                "1000GP_chr21_phased.vcf.gz.csi:md5,c26feb5595861cf8b9c6ba11a426eab8",
+                                "1000GP_chr22_phased.vcf.gz.csi:md5,f504e088e6dfd1d9c6dee8cfdb67016c"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    },
+                    {
+                        "fileName": "posfile.csv",
+                        "columnNames": [
+                            "panel",
+                            "chr",
+                            "vcf",
+                            "index",
+                            "hap",
+                            "legend",
+                            "posfile"
+                        ],
+                        "rowCount": 2,
+                        "columns": {
+                            "hap": [
+                                "1000GP_chr21.hap.gz:md5,64d7fdfc96ce79848cf9c3c220e6774f",
+                                "1000GP_chr22.hap.gz:md5,9500b831dcfee86a98577dde9e2cce73"
+                            ],
+                            "legend": [
+                                "1000GP_chr21.legend.gz:md5,3f7edc4c153521a0871c9d51f7da2372",
+                                "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037"
+                            ],
+                            "vcf": [
+                                "1000GP_chr21_glimpse1_sites.vcf.gz:md5,c5297cb4a80a70349d979241ccf4475f",
+                                "1000GP_chr22_glimpse1_sites.vcf.gz:md5,83c374975b1095e0356419c56af541ae"
+                            ],
+                            "posfile": [
+                                "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
+                                "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
+                            ],
+                            "index": [
+                                "1000GP_chr21_glimpse1_sites.vcf.gz.tbi:md5,275e525c446e8e865a89ecdf22bc08d7",
+                                "1000GP_chr22_glimpse1_sites.vcf.gz.tbi:md5,7304840a59b8959f733c84afbc4e59b8"
+                            ],
+                            "panel": [
+                                "1000GP",
+                                "1000GP"
+                            ],
+                            "chr": [
+                                "chr21",
+                                "chr22"
+                            ]
+                        }
+                    }
                 ]
             ]
         ],
@@ -138,6 +234,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T21:19:08.589986203"
+        "timestamp": "2026-02-05T12:28:13.881484062"
     }
 }

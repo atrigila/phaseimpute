@@ -6,9 +6,11 @@ class UTILS {
         // stable_path: All files in ${params.outdir}/ with stable content
         def stable_path = getAllFilesFromDir(outdir, ignoreFile: 'tests/.nftignore')
         // bam_files: All bam files
-        def bam_files  = getAllFilesFromDir(outdir, include: ['**/*.bam'])
+        def bam_files   = getAllFilesFromDir(outdir, include: ['**/*.bam'])
         // vcf_files: All vcf files
-        def vcf_files  = getAllFilesFromDir(outdir, include: ['**/*.{vcf,bcf}.gz'])
+        def vcf_files   = getAllFilesFromDir(outdir, include: ['**/*.{vcf,bcf}.gz'])
+        // csv_files: All csv files
+        def csv_files   = getAllFilesFromDir(outdir, include: ['**/*.csv'])
         return [
             // Number of successful tasks
             workflow.trace.succeeded().size(),
@@ -19,12 +21,25 @@ class UTILS {
             // All files with stable contents
             stable_path,
             // All bam files
-            bam_files.collect { file -> [file.getName(), bam(file.toString()).readsMD5] },
+            bam_files.collect { file -> [
+                file.getName(),
+                bam(file.toString()).readsMD5
+            ] },
             // All vcf files
             vcf_files.collect { file -> [
                 file.getName(),
                 path(file.toString()).vcf.variantsMD5
-            ] }
+            ] },
+            // All csv files
+            csv_files.collect { file ->
+                def csvView = path(file.toString()).csv.view()
+                [
+                    fileName: file.getName(),
+                    columnNames: csvView.columnNames,
+                    rowCount: csvView.rowCount,
+                    columns: csvView.columns
+                ]
+            }
         ]
     }
     public static def vcfDetails(filePath) {
