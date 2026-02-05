@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
+- [#249](https://github.com/nf-core/phaseimpute/pull/249) - Add new `publish_all` hidden parameter to help during debugging. Add csv content checking in nf-test.
 - [#248](https://github.com/nf-core/phaseimpute/pull/248) - Add chromosomes concatenation to `BAM_GL_BCFTOOLS`
 
 ### `Changed`
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#239](https://github.com/nf-core/phaseimpute/pull/239) - Move from local to nf-core sbwf for `STITCH` imputation. Set `--chunks` as optional argument. Update `usage.md`.
 - [#240](https://github.com/nf-core/phaseimpute/pull/240) - Move from local to nf-core sbwf for `GLIMPSE2` imputation. Update `usage.md`.
 - [#247](https://github.com/nf-core/phaseimpute/pull/243) - Move from local to nf-core sbwf for `BEAGLE5` imputation. Update `usage.md`.
+- [#249](https://github.com/nf-core/phaseimpute/pull/249) - Move `test_all`, `test_sim`, `test_panelprep`, `test_validate` to independant nf-test with md5sum assertion.
 - [#248](https://github.com/nf-core/phaseimpute/pull/248) - Move from local to nf-core sbwf for `GLIMPSE1` imputation. Set output channels to `vcf_index`. Update `usage.md`.
 
 ### `Fixed`

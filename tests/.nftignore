@@ -11,4 +11,7 @@ multiqc/multiqc_report.html
 fastqc/*_fastqc.{html,zip}
 pipeline_info/*.{html,json,txt,yml}
 imputation/*/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
-imputation/csv/impute.csv
+prep_panel/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
+validation/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
+simulation/*/*.{bam}{.csi,}
+*/csv/*.csv

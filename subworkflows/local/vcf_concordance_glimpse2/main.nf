@@ -65,7 +65,17 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
 
     GAWK(
         ADDCOLUMNS.out.txt
-            .toSortedList { a, b -> a[0].id <=> b[0].id }
+            .map { meta, files ->
+                // Normalize tools to always be a list
+                def normalizedMeta = meta.clone()
+                normalizedMeta.tools = (meta.tools instanceof List) ? meta.tools : [meta.tools]
+                [normalizedMeta, files]
+            }
+            .toSortedList { a, b ->
+                def keyA = "${a[0].id},${a[0].tools.sort().join(',')}"
+                def keyB = "${b[0].id},${b[0].tools.sort().join(',')}"
+                keyA <=> keyB
+            }
             .map { sorted_list ->
                 def all_files = sorted_list.collect { it[1] }
                 [["id": "AllSamples"], all_files]

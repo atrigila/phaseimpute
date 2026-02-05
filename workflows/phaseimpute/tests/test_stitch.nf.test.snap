@@ -151,6 +151,17 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,stitch,NA12878.stitch.vcf.gz,NA12878.stitch.vcf.gz.tbi",
+                            "NA19401,stitch,NA19401.stitch.vcf.gz,NA19401.stitch.vcf.gz.tbi",
+                            "NA20359,stitch,NA20359.stitch.vcf.gz,NA20359.stitch.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -166,9 +177,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:48:44.546165765"
+        "timestamp": "2026-02-05T13:42:04.088520557"
     },
     "Check test_stitch - with chunks": {
         "content": [
@@ -322,6 +333,17 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,stitch,NA12878.stitch.vcf.gz,NA12878.stitch.vcf.gz.tbi",
+                            "NA19401,stitch,NA19401.stitch.vcf.gz,NA19401.stitch.vcf.gz.tbi",
+                            "NA20359,stitch,NA20359.stitch.vcf.gz,NA20359.stitch.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -337,9 +359,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-11T14:47:42.71447113"
+        "timestamp": "2026-02-05T13:39:52.387005829"
     },
     "Check test_stitch - with chunks - no map": {
         "content": [
@@ -493,6 +515,17 @@
                         "NA20359.stitch.vcf.gz",
                         "cf07a0cc1d678c906d5c9bbe19ff9a03"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,stitch,NA12878.stitch.vcf.gz,NA12878.stitch.vcf.gz.tbi",
+                            "NA19401,stitch,NA19401.stitch.vcf.gz,NA19401.stitch.vcf.gz.tbi",
+                            "NA20359,stitch,NA20359.stitch.vcf.gz,NA20359.stitch.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -508,8 +541,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-15T09:16:28.074063559"
+        "timestamp": "2026-02-05T13:41:02.306608609"
     }
 }
