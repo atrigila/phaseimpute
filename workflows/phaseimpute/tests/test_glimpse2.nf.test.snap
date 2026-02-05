@@ -144,6 +144,17 @@
                         "NA20359.glimpse2.vcf.gz",
                         "a170c839de5c48d171475b885fa00439"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,glimpse2,NA12878.glimpse2.vcf.gz,NA12878.glimpse2.vcf.gz.tbi",
+                            "NA19401,glimpse2,NA19401.glimpse2.vcf.gz,NA19401.glimpse2.vcf.gz.tbi",
+                            "NA20359,glimpse2,NA20359.glimpse2.vcf.gz,NA20359.glimpse2.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -159,9 +170,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-15T09:24:17.962272616"
+        "timestamp": "2026-02-05T13:35:00.580060776"
     },
     "Check test_glimpse2 - with chunks": {
         "content": [
@@ -308,6 +319,17 @@
                         "NA20359.glimpse2.vcf.gz",
                         "8350f3864ba8e8d22ed267e9758a8bcc"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,glimpse2,NA12878.glimpse2.vcf.gz,NA12878.glimpse2.vcf.gz.tbi",
+                            "NA19401,glimpse2,NA19401.glimpse2.vcf.gz,NA19401.glimpse2.vcf.gz.tbi",
+                            "NA20359,glimpse2,NA20359.glimpse2.vcf.gz,NA20359.glimpse2.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -323,9 +345,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-13T11:34:49.444254648"
+        "timestamp": "2026-02-05T13:33:57.037507262"
     },
     "Check test_glimpse2 - without chunks": {
         "content": [
@@ -472,6 +494,17 @@
                         "NA20359.glimpse2.vcf.gz",
                         "65ad782ead9d57c82d50bc79225f87d1"
                     ]
+                ],
+                [
+                    {
+                        "fileName": "impute.csv",
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,glimpse2,NA12878.glimpse2.vcf.gz,NA12878.glimpse2.vcf.gz.tbi",
+                            "NA19401,glimpse2,NA19401.glimpse2.vcf.gz,NA19401.glimpse2.vcf.gz.tbi",
+                            "NA20359,glimpse2,NA20359.glimpse2.vcf.gz,NA20359.glimpse2.vcf.gz.tbi"
+                        ]
+                    }
                 ]
             ],
             {
@@ -487,8 +520,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-12-13T11:35:44.177351184"
+        "timestamp": "2026-02-05T13:36:01.951503193"
     }
 }
