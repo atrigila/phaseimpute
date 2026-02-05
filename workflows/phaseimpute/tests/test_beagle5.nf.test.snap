@@ -147,35 +147,12 @@
                 [
                     {
                         "fileName": "impute.csv",
-                        "columnNames": [
-                            "sample",
-                            "tools",
-                            "file",
-                            "index"
-                        ],
-                        "rowCount": 3,
-                        "columns": {
-                            "file": [
-                                "NA12878.beagle5.vcf.gz:md5,cfae447cafd4a8ebe8e11ff199559d82",
-                                "NA19401.beagle5.vcf.gz:md5,d69820307ea68659259c79087ed9f2eb",
-                                "NA20359.beagle5.vcf.gz:md5,a38491509a10f41f56718d91214e06cb"
-                            ],
-                            "index": [
-                                "NA12878.beagle5.vcf.gz.tbi:md5,35a9494299b796c017fec5cb8e179402",
-                                "NA19401.beagle5.vcf.gz.tbi:md5,306f9b5205f34291006839cfbc788494",
-                                "NA20359.beagle5.vcf.gz.tbi:md5,fef4224c84fc8cf07f31489bab38b857"
-                            ],
-                            "sample": [
-                                "NA12878",
-                                "NA19401",
-                                "NA20359"
-                            ],
-                            "tools": [
-                                "beagle5",
-                                "beagle5",
-                                "beagle5"
-                            ]
-                        }
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,beagle5,NA12878.beagle5.vcf.gz,NA12878.beagle5.vcf.gz.tbi",
+                            "NA19401,beagle5,NA19401.beagle5.vcf.gz,NA19401.beagle5.vcf.gz.tbi",
+                            "NA20359,beagle5,NA20359.beagle5.vcf.gz,NA20359.beagle5.vcf.gz.tbi"
+                        ]
                     }
                 ]
             ],
@@ -192,7 +169,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:01:05.324804325"
+        "timestamp": "2026-02-05T13:52:23.088817088"
     },
     "Check test_beagle5 - with chunks - no map": {
         "content": [
@@ -342,35 +319,12 @@
                 [
                     {
                         "fileName": "impute.csv",
-                        "columnNames": [
-                            "sample",
-                            "tools",
-                            "file",
-                            "index"
-                        ],
-                        "rowCount": 3,
-                        "columns": {
-                            "file": [
-                                "NA12878.beagle5.vcf.gz:md5,af98254789f84371ce8f2de656a80eda",
-                                "NA19401.beagle5.vcf.gz:md5,d2336c1d2ba1c7deafcb249ae81efe47",
-                                "NA20359.beagle5.vcf.gz:md5,3a5e2d6f8ecde605e9e83f591284cc82"
-                            ],
-                            "index": [
-                                "NA12878.beagle5.vcf.gz.tbi:md5,76719a389d98a2bd32327c03a9129dd2",
-                                "NA19401.beagle5.vcf.gz.tbi:md5,a6b0d302222a06fd6407e4773a418044",
-                                "NA20359.beagle5.vcf.gz.tbi:md5,ea22ee29d07ef56a4fca4de28e93b66a"
-                            ],
-                            "sample": [
-                                "NA12878",
-                                "NA19401",
-                                "NA20359"
-                            ],
-                            "tools": [
-                                "beagle5",
-                                "beagle5",
-                                "beagle5"
-                            ]
-                        }
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,beagle5,NA12878.beagle5.vcf.gz,NA12878.beagle5.vcf.gz.tbi",
+                            "NA19401,beagle5,NA19401.beagle5.vcf.gz,NA19401.beagle5.vcf.gz.tbi",
+                            "NA20359,beagle5,NA20359.beagle5.vcf.gz,NA20359.beagle5.vcf.gz.tbi"
+                        ]
                     }
                 ]
             ],
@@ -387,7 +341,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T12:59:36.983052327"
+        "timestamp": "2026-02-05T13:50:52.724694422"
     },
     "Check test_beagle5 - with chunks": {
         "content": [
@@ -537,35 +491,12 @@
                 [
                     {
                         "fileName": "impute.csv",
-                        "columnNames": [
-                            "sample",
-                            "tools",
-                            "file",
-                            "index"
-                        ],
-                        "rowCount": 3,
-                        "columns": {
-                            "file": [
-                                "NA12878.beagle5.vcf.gz:md5,48ca11cf36f2734a982d739cea19866f",
-                                "NA19401.beagle5.vcf.gz:md5,177b5bccc2a1cc8e0129e70015505ca9",
-                                "NA20359.beagle5.vcf.gz:md5,2c7dc56f99a75b5e4264a35f1448798c"
-                            ],
-                            "index": [
-                                "NA12878.beagle5.vcf.gz.tbi:md5,35a9494299b796c017fec5cb8e179402",
-                                "NA19401.beagle5.vcf.gz.tbi:md5,78d0424e7f4121ae87692327a3a5a898",
-                                "NA20359.beagle5.vcf.gz.tbi:md5,5f368df3cd45574799574b058a5b7f01"
-                            ],
-                            "sample": [
-                                "NA12878",
-                                "NA19401",
-                                "NA20359"
-                            ],
-                            "tools": [
-                                "beagle5",
-                                "beagle5",
-                                "beagle5"
-                            ]
-                        }
+                        "rows": [
+                            "sample,tools,file,index",
+                            "NA12878,beagle5,NA12878.beagle5.vcf.gz,NA12878.beagle5.vcf.gz.tbi",
+                            "NA19401,beagle5,NA19401.beagle5.vcf.gz,NA19401.beagle5.vcf.gz.tbi",
+                            "NA20359,beagle5,NA20359.beagle5.vcf.gz,NA20359.beagle5.vcf.gz.tbi"
+                        ]
                     }
                 ]
             ],
@@ -582,6 +513,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T12:58:11.046242701"
+        "timestamp": "2026-02-05T13:49:21.159421473"
     }
 }

@@ -32,12 +32,10 @@ class UTILS {
             ] },
             // All csv files
             csv_files.collect { file ->
-                def csvView = path(file.toString()).csv.view()
+                def normalizedContent = path(file.toString()).text.replaceAll(/[^,\n]*\/([^,\n]+)/, '$1')
                 [
                     fileName: file.getName(),
-                    columnNames: csvView.columnNames,
-                    rowCount: csvView.rowCount,
-                    columns: csvView.columns
+                    rows: normalizedContent.readLines()
                 ]
             }
         ]
