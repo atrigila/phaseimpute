@@ -35,7 +35,7 @@ workflow BAM_GL_BCFTOOLS {
         .map{ metaIPC, vcf, tbi -> [metaIPC.subMap("panel_id", "chr", "batch"), [metaIPC, vcf, tbi]] }
         .groupTuple(sort: { it1, it2 -> it1[0]["id"] <=> it2[0]["id"] }) // Sort by id
         .map{ metaPC, filestups -> [
-            metaPC + [id: "all", metas: filestups.collect{it -> it[0]}],
+            metaPC + [id: "all_samples", metas: filestups.collect{it -> it[0]}],
             filestups.collect{it -> it[1]},
             filestups.collect{it -> it[2]},
             filestups.collect{it -> it[1]}.size()
