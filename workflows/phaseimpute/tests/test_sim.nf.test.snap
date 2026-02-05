@@ -127,14 +127,7 @@
                     "samtools-coverage_Coverage.txt:md5,75e19d4d867246a16014aad2619d202f",
                     "samtools-coverage_MQ.txt:md5,5d873a8b749435d6004d435b400ffdc0",
                     "samtools-coverage_Mean_depth.txt:md5,904a6cb33fbd84ac48f1293b7a6da0df",
-                    "samtools-coverage_Reads.txt:md5,7f799c1652fd5dae35714b5fa69e74be",
-                    "simulate.csv:md5,c5ada657be753ad33caa2bc55c11eb7c",
-                    "NA12878.depth_1x.bam:md5,c61e6f9b16aa88d2ec8bcd918c6629cc",
-                    "NA12878.depth_1x.bam.csi:md5,a4c1663e6673b015c39112b7efd01027",
-                    "NA19401.depth_1x.bam:md5,2a0ba225a7de0834556b17ba154bda2f",
-                    "NA19401.depth_1x.bam.csi:md5,b0eeaae4a1a96fc3225f3006c6e1c0ac",
-                    "NA20359.depth_1x.bam:md5,641a297c81e900394b3a28735703f036",
-                    "NA20359.depth_1x.bam.csi:md5,a107cc53b164df9b5d721ccfe870b587"
+                    "samtools-coverage_Reads.txt:md5,7f799c1652fd5dae35714b5fa69e74be"
                 ],
                 [
                     [
@@ -159,6 +152,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-04T16:25:59.722542799"
+        "timestamp": "2026-02-04T22:01:52.172473832"
     }
 }

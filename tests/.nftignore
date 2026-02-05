@@ -14,4 +14,4 @@ imputation/*/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
 prep_panel/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
 validation/*/*.{vcf,bcf}{.gz,}{.tbi,.csi,}
 simulation/*/*.{bam}{.csi,}
-imputation/csv/impute.csv
+*/csv/*.csv
