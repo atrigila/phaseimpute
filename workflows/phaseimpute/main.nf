@@ -281,7 +281,7 @@ workflow PHASEIMPUTE {
         ch_input_bams = ch_input_type.bam
             .toSortedList { it1, it2 -> it1[0]["id"] <=> it2[0]["id"] }
             .map { list -> list.collate(params.batch_size)
-                .collect{ nb_batch += 1; [[id: "all", batch: nb_batch], it] } }
+                .collect{ nb_batch += 1; [[id: "all_samples", batch: nb_batch], it] } }
             .map { list -> [list.collect{ it[0] }, list.collect{ it[1] }] }
             .transpose()
             .map { metaI, filestuples-> [

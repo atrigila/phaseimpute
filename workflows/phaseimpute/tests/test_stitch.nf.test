@@ -24,7 +24,7 @@ nextflow_pipeline {
                 { assert workflow.success },
                 { assert snapshot(
                     UTILS.getPipelineResults(outputDir, workflow),
-                    ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
+                    ["all_samples.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all_samples.batch0.stitch.vcf.gz")]
                 ).match()}
             )
         }
@@ -47,7 +47,7 @@ nextflow_pipeline {
                 { assert workflow.success },
                 { assert snapshot(
                     UTILS.getPipelineResults(outputDir, workflow),
-                    ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
+                    ["all_samples.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all_samples.batch0.stitch.vcf.gz")]
                 ).match()}
             )
         }
@@ -70,7 +70,7 @@ nextflow_pipeline {
                 { assert workflow.success },
                 { assert snapshot(
                     UTILS.getPipelineResults(outputDir, workflow),
-                    ["all.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all.batch0.stitch.vcf.gz")]
+                    ["all_samples.batch0.stitch": UTILS.vcfDetails("$outputDir/imputation/stitch/concat/all_samples.batch0.stitch.vcf.gz")]
                 ).match()}
             )
         }
