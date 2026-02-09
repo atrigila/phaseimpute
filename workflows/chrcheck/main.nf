@@ -25,8 +25,8 @@ workflow CHRCHECK {
             empty: true
         }
 
-        ch_input.other.map {
-            error "File: ${file[1]} is not a VCF, BCFT or BAM, CRAM file."
+        ch_input.other.map { meta, file, index, chr ->
+            error "File: ${file} is not a VCF, BCFT or BAM, CRAM file."
         }
 
         // Check if channel is empty
@@ -57,13 +57,13 @@ workflow CHRCHECK {
             ch_versions = ch_versions.mix(VCF_CHR_RENAME_BCFTOOLS.out.versions.first())
             ch_vcf_renamed = VCF_CHR_RENAME_BCFTOOLS.out.vcf_renamed
         } else {
-            ch_vcf_split.to_rename.map {
-                def chr_names = it[3].size() > params.max_chr_names ? it[3][0..params.max_chr_names - 1] + ['...'] : it[3]
-                error "Contig names: ${chr_names} in VCF: ${it[1]} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
+            ch_vcf_split.to_rename.map { meta, file, index, chr ->
+                def chr_names = chr.size() > params.max_chr_names ? chr[0..params.max_chr_names - 1] + ['...'] : chr
+                error "Contig names: ${chr_names} in VCF: ${file} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
-            ch_bam_split.to_rename.map {
-                def chr_names = it[3].size() > params.max_chr_names ? it[3][0..params.max_chr_names - 1] + ['...'] : it[3]
-                error "Contig names: ${chr_names} in BAM: ${it[1]} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
+            ch_bam_split.to_rename.map { meta, file, index, chr ->
+                def chr_names = chr.size() > params.max_chr_names ? chr[0..params.max_chr_names - 1] + ['...'] : chr
+                error "Contig names: ${chr_names} in BAM: ${file} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
             ch_vcf_renamed = channel.empty()
             ch_bam_renamed = channel.empty()
