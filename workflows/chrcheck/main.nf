@@ -14,14 +14,16 @@ include { diffChr                 } from './function.nf'
 workflow CHRCHECK {
     take:
         ch_input // [[id], file, index, [chr]]
+        rename_chr // boolean
+        max_chr_names // int
 
     main:
         ch_versions = channel.empty()
         // Split the input between VCF and BAM files
-        ch_input = ch_input.branch{ file ->
-            bam: file[1] =~ 'bam|cram'
-            vcf: file[1] =~ 'vcf|bcf'
-            other: file[1].size() > 0
+        ch_input = ch_input.branch{ _meta, file, _index, _chr_diff ->
+            bam: file =~ 'bam|cram'
+            vcf: file =~ 'vcf|bcf'
+            other: file.size() > 0
             empty: true
         }
 
@@ -42,7 +44,7 @@ workflow CHRCHECK {
         ch_versions = ch_versions.mix(BAMCHREXTRACT.out.versions.first())
         ch_bam_split = checkChr(BAMCHREXTRACT.out.chr, ch_input.bam)
 
-        if (params.rename_chr == true) {
+        if (rename_chr) {
             ch_bam_renamed = channel.empty()
             // Rename the contigs in the BAM files
             BAM_CHR_RENAME_SAMTOOLS(
@@ -57,12 +59,12 @@ workflow CHRCHECK {
             ch_versions = ch_versions.mix(VCF_CHR_RENAME_BCFTOOLS.out.versions.first())
             ch_vcf_renamed = VCF_CHR_RENAME_BCFTOOLS.out.vcf_renamed
         } else {
-            ch_vcf_split.to_rename.map { _meta, file, _index, chr ->
-                def chr_names = chr.size() > params.max_chr_names ? chr[0..params.max_chr_names - 1] + ['...'] : chr
+            ch_vcf_split.to_rename.map { _meta, file, _index, diff, _prefix ->
+                def chr_names = diff.size() > max_chr_names ? diff[0..max_chr_names - 1] + ['...'] : diff
                 error "Contig names: ${chr_names} in VCF: ${file} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
-            ch_bam_split.to_rename.map { _meta, file, _index, chr ->
-                def chr_names = chr.size() > params.max_chr_names ? chr[0..params.max_chr_names - 1] + ['...'] : chr
+            ch_bam_split.to_rename.map { _meta, file, _index, diff, _prefix ->
+                def chr_names = diff.size() > max_chr_names ? diff[0..max_chr_names - 1] + ['...'] : diff
                 error "Contig names: ${chr_names} in BAM: ${file} are not present in reference genome with same writing. Please set `rename_chr` to `true` to rename the contigs."
             }
             ch_vcf_renamed = channel.empty()
