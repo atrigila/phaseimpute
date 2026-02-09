@@ -69,7 +69,7 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
         ADDCOLUMNS.out.txt
             .toSortedList { a, b -> a[0].id <=> b[0].id }
             .map { sorted_list ->
-                def all_files = sorted_list.collect { meta, file -> file }
+                def all_files = sorted_list.collect { _meta, file -> file }
                 [["id": "AllSamples"], all_files]
             },
         [],
