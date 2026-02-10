@@ -22,7 +22,7 @@ include { exportCsv                   } from '../../subworkflows/local/utils_nfc
 
 // Simulate subworkflows
 include { BAM_EXTRACT_REGION_SAMTOOLS                } from '../../subworkflows/local/bam_extract_region_samtools'
-include { BAM_DOWNSAMPLE_SAMTOOLS                    } from '../../subworkflows/local/bam_downsample_samtools'
+include { BAM_SUBSAMPLEDEPTH_SAMTOOLS                } from '../../subworkflows/nf-core/bam_subsampledepth_samtools'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_INP } from '../../modules/nf-core/samtools/coverage'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_DWN } from '../../modules/nf-core/samtools/coverage'
 include { GAWK as FILTER_CHR_INP                     } from '../../modules/nf-core/gawk'
