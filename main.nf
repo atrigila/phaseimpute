@@ -45,6 +45,8 @@ workflow NFCORE_PHASEIMPUTE {
     ch_chunks      // channel: samplesheet read in from --chunks
     chunk_model    // parameter: chunk model
     ch_versions    // channel: versions of software used
+    rename_chr     // parameter: rename chromosome prefix
+    max_chr_names  // parameter: max number of chr to show in message
 
     main:
 
@@ -57,19 +59,22 @@ workflow NFCORE_PHASEIMPUTE {
     ch_input_validate       = channel.empty()
 
     //  Check input files for contigs names consistency
-    lst_chr = ch_regions.map { it[0].chr }
+    lst_chr = ch_regions.map {meta, _region -> meta.chr }
         .unique()
         .collect()
         .toList()
 
-    CHRCHECK_INPUT(ch_input.combine(lst_chr))
+    CHRCHECK_INPUT(ch_input.combine(lst_chr), rename_chr, max_chr_names)
     ch_input = CHRCHECK_INPUT.out.output
     ch_versions = ch_versions.mix(CHRCHECK_INPUT.out.versions)
 
-    CHRCHECK_TRUTH(ch_input_truth.combine(lst_chr))
+    CHRCHECK_TRUTH(ch_input_truth.combine(lst_chr), rename_chr, max_chr_names)
     ch_input_truth = CHRCHECK_TRUTH.out.output
 
-    CHRCHECK_PANEL(ch_panel.map{ meta, file, index -> [meta, file, index, [meta.chr]]})
+    CHRCHECK_PANEL(
+        ch_panel.map{ meta, file, index -> [meta, file, index, [meta.chr]]},
+        rename_chr, max_chr_names
+    )
     ch_panel = CHRCHECK_PANEL.out.output
 
     if (params.steps.split(',').contains("simulate") || params.steps.split(',').contains("all")) {
@@ -140,7 +145,9 @@ workflow {
         PIPELINE_INITIALISATION.out.posfile,
         PIPELINE_INITIALISATION.out.chunks,
         PIPELINE_INITIALISATION.out.chunk_model,
-        PIPELINE_INITIALISATION.out.versions
+        PIPELINE_INITIALISATION.out.versions,
+        params.rename_chr,
+        params.max_chr_names
     )
     //
     // SUBWORKFLOW: Run completion tasks
