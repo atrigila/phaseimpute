@@ -18,6 +18,16 @@ input:
         Index file of the input file.
         Array of reference contigs.
         Structure: [ meta, file, index, [chr] ]
+  - rename_chr:
+      type: boolean
+      description: |
+        Should the chromosome in the input file be renamed if
+        they can be solved by adding or removing the 'chr' prefix.
+  - max_chr_names:
+      type: int
+      description: |
+        Maximum number of chromosome to show in warning and error
+        messages.
 output:
   - output:
       type: file

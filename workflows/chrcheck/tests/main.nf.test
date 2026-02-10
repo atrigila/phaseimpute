@@ -2,6 +2,7 @@ nextflow_workflow {
 
     name "Test workflow CHRCHECK"
     script "../main.nf"
+    config "./nextflow.config"
 
     workflow "CHRCHECK"
 
@@ -19,7 +20,6 @@ nextflow_workflow {
     tag "samtools/index"
 
     test("Rename: VCF BAM chr + fasta no chr") {
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
@@ -37,6 +37,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -64,7 +66,6 @@ nextflow_workflow {
     }
 
     test("Rename: VCF no chr + fasta chr") {
-        config "./nextflow_rename.config"
         setup {
             run("BAM_CHR_RENAME_SAMTOOLS", alias: "PREPROCESS") {
                 script "../../../subworkflows/local/bam_chr_rename_samtools/main.nf"
@@ -96,6 +97,8 @@ nextflow_workflow {
                         ])
                     )
                     .combine(channel.of(["chr22"]).collect().toList())
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -123,7 +126,6 @@ nextflow_workflow {
     }
 
     test("Error : missing renaming VCF") {
-        config "./nextflow.config"
         when {
             workflow {
                 """
@@ -135,6 +137,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = false
+                input[2] = 4
                 """
             }
         }
@@ -150,7 +154,6 @@ nextflow_workflow {
     }
 
     test("Error : missing renaming BAM") {
-        config "./nextflow.config"
         when {
             workflow {
                 """
@@ -162,6 +165,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = false
+                input[2] = 4
                 """
             }
         }
@@ -177,7 +182,6 @@ nextflow_workflow {
     }
 
     test("Error : still difference after renaming VCF"){
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
@@ -190,6 +194,8 @@ nextflow_workflow {
                         lst_chr
                     ],
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -203,7 +209,6 @@ nextflow_workflow {
     }
 
     test("Error : still difference after renaming BAM"){
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
@@ -215,6 +220,8 @@ nextflow_workflow {
                         ["chr1"]
                     ],
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
