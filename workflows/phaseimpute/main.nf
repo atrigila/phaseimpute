@@ -158,12 +158,11 @@ workflow PHASEIMPUTE {
 
         if (params.depth) {
             // Downsample input to desired depth
-            BAM_DOWNSAMPLE_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
-            ch_versions     = ch_versions.mix(BAM_DOWNSAMPLE_SAMTOOLS.out.versions)
-            ch_input_impute = BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul
+            BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
+            ch_input_impute = BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled
 
             // Compute coverage of input files
-            SAMTOOLS_COVERAGE_DWN(BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul, ch_fasta)
+            SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
             ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
