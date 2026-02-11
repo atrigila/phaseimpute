@@ -16,6 +16,9 @@
                     "BEAGLE5_BEAGLE": {
                         "beagle": "5.5rev27Feb25.75f"
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -169,7 +172,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:52:23.088817088"
+        "timestamp": "2026-02-11T11:39:52.583478478"
     },
     "Check test_beagle5 - with chunks - no map": {
         "content": [
@@ -188,6 +191,9 @@
                     "BEAGLE5_BEAGLE": {
                         "beagle": "5.5rev27Feb25.75f"
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -341,7 +347,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:50:52.724694422"
+        "timestamp": "2026-02-11T11:38:20.964067574"
     },
     "Check test_beagle5 - with chunks": {
         "content": [
@@ -360,6 +366,9 @@
                     "BEAGLE5_BEAGLE": {
                         "beagle": "5.5rev27Feb25.75f"
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -513,6 +522,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:49:21.159421473"
+        "timestamp": "2026-02-11T11:36:49.162503836"
     }
 }

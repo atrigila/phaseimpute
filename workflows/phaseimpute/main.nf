@@ -157,7 +157,7 @@ workflow PHASEIMPUTE {
 
         if (params.depth) {
             // Downsample input to desired depth
-            BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim.view(), ch_depth.view(), ch_fasta.view())
+            BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
             ch_input_impute = BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled
 
             // Compute coverage of input files

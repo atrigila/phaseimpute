@@ -34,7 +34,7 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
         ch_bam_region
             .map{
                 metaICR, bam, index ->
-                def meta_keys = metaICR.keySet() - ['chr', 'region']
+                def meta_keys = metaICR.keySet() - ['chr', 'region', 'region_selected']
                 [metaICR.subMap(meta_keys) + [chr: "all"], bam, index]
             }
             .groupTuple(sort: true),
