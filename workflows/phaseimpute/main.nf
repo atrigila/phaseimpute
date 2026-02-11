@@ -153,7 +153,6 @@ workflow PHASEIMPUTE {
             filter_chr_program,
             false
         )
-        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ _meta, file -> file })
 
         if (params.depth) {
@@ -170,7 +169,6 @@ workflow PHASEIMPUTE {
                 filter_chr_program,
                 false
             )
-            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
         }
 
@@ -393,7 +391,6 @@ workflow PHASEIMPUTE {
                         meta, posfile
                     ]
                 }, [], false)
-            ch_versions = ch_versions.mix(GAWK_POSFILE_STITCH.out.versions.first())
 
             BGZIP_POSFILE_STITCH(GAWK_POSFILE_STITCH.out.output)
             ch_versions = ch_versions.mix(BGZIP_POSFILE_STITCH.out.versions.first())

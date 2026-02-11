@@ -16,7 +16,7 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
     ch_input_region = ch_bam
         .combine(ch_region)
         .map{ metaI, bam, index, metaCR, region ->
-            [ metaI + metaCR, bam, index, region, [] ]
+            [ metaI + metaCR + ["region_selected": region], bam, index ]
         }
 
     // Extract region of interest
