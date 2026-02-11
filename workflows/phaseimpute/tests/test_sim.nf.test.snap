@@ -23,7 +23,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_DEPTH": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_FAIDX": {
                         "samtools": 1.21
@@ -35,7 +35,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_VIEW": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -119,28 +119,28 @@
                 ],
                 [
                     "multiqc_citations.txt:md5,ee1baba4adea57b43a9ae59ce7e1dd7f",
-                    "multiqc_general_stats.txt:md5,28d051d4d9cc0ac8c9bcf85c3cf4a77f",
-                    "multiqc_samtools_coverage.txt:md5,02c7f6459618fcba1db4b86bed669da7",
-                    "samtools-coverage-table.txt:md5,7f170aa6706313aeafb407e5ce4fac07",
-                    "samtools-coverage_BQ.txt:md5,4ad1928c6fd53747ef24ba938eba383f",
-                    "samtools-coverage_Bases.txt:md5,e9a3ef6426ca0a1c8a750674482f1c30",
-                    "samtools-coverage_Coverage.txt:md5,75e19d4d867246a16014aad2619d202f",
-                    "samtools-coverage_MQ.txt:md5,5d873a8b749435d6004d435b400ffdc0",
-                    "samtools-coverage_Mean_depth.txt:md5,904a6cb33fbd84ac48f1293b7a6da0df",
-                    "samtools-coverage_Reads.txt:md5,7f799c1652fd5dae35714b5fa69e74be"
+                    "multiqc_general_stats.txt:md5,1e64ff0511d612e5be9c79b1f9118bcf",
+                    "multiqc_samtools_coverage.txt:md5,f9ccbacabb9dd66667a3b53c6da46339",
+                    "samtools-coverage-table.txt:md5,8e75baaecf0bffbf3374030767847daf",
+                    "samtools-coverage_BQ.txt:md5,b4588f44fc39d32a501760469ed8d051",
+                    "samtools-coverage_Bases.txt:md5,16d42af3e25438d3ad2c5bf7580188ff",
+                    "samtools-coverage_Coverage.txt:md5,e2d1202f2b50e37af12a4d0ca3ed6aa0",
+                    "samtools-coverage_MQ.txt:md5,678629db8f597832c92e40e34a030a5b",
+                    "samtools-coverage_Mean_depth.txt:md5,ca2ee0346807443e9008fb84a2d7697e",
+                    "samtools-coverage_Reads.txt:md5,428b91fe12113a3fafa1c7a91bd353e9"
                 ],
                 [
                     [
                         "NA12878.depth_1x.bam",
-                        "8c209f019e6818ac7fdc6b138cac7d9c"
+                        "272e610bed32eeaa815658ca49f7ad35"
                     ],
                     [
                         "NA19401.depth_1x.bam",
-                        "6638acde6b3eda7a1519acd001557a28"
+                        "fae9a19d3e52d7e476f7458338e8da62"
                     ],
                     [
                         "NA20359.depth_1x.bam",
-                        "e3941a75c99d5deb5b1b06a7546948f2"
+                        "60213ec054efd437f1652031d1c4b139"
                     ]
                 ],
                 [
@@ -163,6 +163,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:25:26.709519943"
+        "timestamp": "2026-02-11T10:48:52.548359016"
     }
 }

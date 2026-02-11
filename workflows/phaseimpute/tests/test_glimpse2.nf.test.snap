@@ -22,6 +22,9 @@
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -172,7 +175,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:35:00.580060776"
+        "timestamp": "2026-02-11T11:44:22.491316878"
     },
     "Check test_glimpse2 - with chunks": {
         "content": [
@@ -196,6 +199,9 @@
                     },
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
+                    },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
                     },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
@@ -347,7 +353,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:33:57.037507262"
+        "timestamp": "2026-02-11T11:43:21.064246048"
     },
     "Check test_glimpse2 - without chunks": {
         "content": [
@@ -371,6 +377,9 @@
                     },
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
+                    },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
                     },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
@@ -522,6 +531,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:36:01.951503193"
+        "timestamp": "2026-02-11T11:45:20.938219248"
     }
 }

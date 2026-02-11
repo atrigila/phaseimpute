@@ -73,10 +73,16 @@
                     "GAWK_ERROR_SPL": {
                         "gawk": "5.3.0"
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GAWK_POSFILE_STITCH": {
                         "gawk": "5.3.0"
                     },
                     "GAWK_RSQUARE_SPL": {
+                        "gawk": "5.3.0"
+                    },
+                    "GAWK_TRUTH": {
                         "gawk": "5.3.0"
                     },
                     "GLIMPSE2_CHUNK": {
@@ -114,7 +120,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_DEPTH": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_FAIDX": {
                         "samtools": 1.21
@@ -126,7 +132,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_VIEW": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SHAPEIT5_LIGATE": {
                         "shapeit5": "5.1.1"
@@ -457,31 +463,31 @@
                     "NA20359.stitch.bcftools_stats.txt:md5,93266d3d797ce3ee9cf2a4806bbbcf61",
                     "bcftools-stats-subtypes.txt:md5,30837458e3113f0dd225e3255f3f60ec",
                     "bcftools_stats_indel-lengths.txt:md5,b21a8620a2c35b139b63670f6d73566a",
-                    "bcftools_stats_variant_depths.txt:md5,de340d708b850e7925f06c93d80fcb43",
-                    "bcftools_stats_vqc_Count_Indels.txt:md5,875d304a8746b43d554bd40a21d7f656",
-                    "bcftools_stats_vqc_Count_SNP.txt:md5,8ce87689d9251ea02ba636ac2ff2c8b8",
-                    "bcftools_stats_vqc_Count_Transitions.txt:md5,223909ccbf9b4379a6f2d6457b78b762",
-                    "bcftools_stats_vqc_Count_Transversions.txt:md5,889325de0d97369d4cab7a6366f73205",
-                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_.txt:md5,2731238baa3b289ba04f154c95473eda",
-                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_.txt:md5,2731238baa3b289ba04f154c95473eda",
+                    "bcftools_stats_variant_depths.txt:md5,d70e08029731e6a1b5357e4c40fa62a4",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,aa016709f394bbecc020b7a58c6a82fc",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,8aaae043d1c93bd0f695c7ba502d6903",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,a979732b816a777b55b8c2e7333cf0dd",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,7ebab237b189c2da1e1be30a7e82278c",
+                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_.txt:md5,b648bc043dc65ff6aa7c23d6b448b3f8",
+                    "glimpse-err-grp-plot_Best_genotype_r-squared_SNPs_indels_.txt:md5,b648bc043dc65ff6aa7c23d6b448b3f8",
                     "glimpse-err-grp-plot_Best_genotype_r-squared_indels_.txt:md5,d06bfb4f7ac819694a09f2408b4e6320",
-                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_.txt:md5,09c0cdc224b5d3e4235aa6e547769041",
-                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_.txt:md5,09c0cdc224b5d3e4235aa6e547769041",
+                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_.txt:md5,b0b5ab16a03f9c5386675f85d54cc17c",
+                    "glimpse-err-grp-plot_Imputed_dosage_r-squared_SNPs_indels_.txt:md5,b0b5ab16a03f9c5386675f85d54cc17c",
                     "glimpse-err-grp-plot_Imputed_dosage_r-squared_indels_.txt:md5,d06bfb4f7ac819694a09f2408b4e6320",
-                    "glimpse-err-spl-table.txt:md5,10e244cccdc2ed426d02b69d824e994e",
+                    "glimpse-err-spl-table.txt:md5,d26c24e186598959a9e39c6dcab1314b",
                     "multiqc_bcftools_stats.txt:md5,b9e21a0efd2ef621799745e32fe9c461",
                     "multiqc_citations.txt:md5,ee6bc9f24685a1dc6fe9c1d756535e77",
-                    "multiqc_general_stats.txt:md5,0ac06a6c85d2490ed0f0942e5ec33435",
-                    "multiqc_glimpse_err_grp.txt:md5,b30016ae91212f807e149c68afd75dc1",
-                    "multiqc_glimpse_err_spl.txt:md5,ee6c45531400b126f46a54ccc37d5867",
-                    "multiqc_samtools_coverage.txt:md5,adf64737e5abe78627c649e353b17d4b",
-                    "samtools-coverage-table.txt:md5,3f03d3fd86635cfd9a22d007e92c3228",
-                    "samtools-coverage_BQ.txt:md5,75db1c8d119efbd04b0c9a9d08cf6835",
-                    "samtools-coverage_Bases.txt:md5,d93d300e3cff40ffc6f8fa85c37958d2",
-                    "samtools-coverage_Coverage.txt:md5,dc6d3ccc2d2ccc88266e82df31c3d842",
-                    "samtools-coverage_MQ.txt:md5,ad135ddb87cfe61af98ac2dee3eb3259",
-                    "samtools-coverage_Mean_depth.txt:md5,14b99630378bbf450fbea1e135102142",
-                    "samtools-coverage_Reads.txt:md5,b72c4141a74f77fbae8c1f22a9d34217",
+                    "multiqc_general_stats.txt:md5,c316f8a20a0d0bc11f56597ead19c251",
+                    "multiqc_glimpse_err_grp.txt:md5,d39513bcec1b42f9fd9b99377f81d1bc",
+                    "multiqc_glimpse_err_spl.txt:md5,1a39a3ee76fb5d99f52ea0b81e90f85f",
+                    "multiqc_samtools_coverage.txt:md5,6895b2524f6a136b53c9c9e957d262d8",
+                    "samtools-coverage-table.txt:md5,120b0c67b1514ba15cb2c3a52d840497",
+                    "samtools-coverage_BQ.txt:md5,5c29b2eb9b1d828cc92a67a4ff8943a4",
+                    "samtools-coverage_Bases.txt:md5,68c2fe0d9735ddc9dcf853283965a33d",
+                    "samtools-coverage_Coverage.txt:md5,a7c2f78709f541ce39feb465844f5e3f",
+                    "samtools-coverage_MQ.txt:md5,0ad5368c7d8b528dd4e53952fb64ea3d",
+                    "samtools-coverage_Mean_depth.txt:md5,5f1c291701c1523cb36cc8b3ad0494f5",
+                    "samtools-coverage_Reads.txt:md5,51a2dde7594b38da2732ccd86056b820",
                     "1000GP_chr21_chunks_glimpse1.txt:md5,64ca4a1655363e4a4e558836e5ac12f9",
                     "1000GP_chr22_chunks_glimpse1.txt:md5,3344e171251722cf58ae31136da223ac",
                     "1000GP_chr21_chunks_glimpse2.txt:md5,834dea86a63b5a49d36f53c0ac7e01a2",
@@ -495,101 +501,101 @@
                     "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
                     "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
                     "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
-                    "AllSamples.txt:md5,979878b66292c16029c52e52f32ba3f0",
+                    "AllSamples.txt:md5,760495a9d31a5c93faa0c330faeac83d",
                     "NA12878.truth.bcftools_stats.txt:md5,bf3771cd532fe7e0519d037f18272057",
-                    "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,d880b537bb000d055f99d4e2af8a1b54",
-                    "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,cbcc7568f0952ab4b4eee3371cc7c135",
-                    "NA12878_P1000GP_Tquilt_SNP.txt:md5,d39b2be437b1b31548f487112a5565d2",
-                    "NA12878_P1000GP_Tstitch_SNP.txt:md5,c6356dad5f780e9fa7216d6be130acf5",
+                    "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,a8f9ede70857395e525442fd8408af67",
+                    "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,175c1e75595f8d2794b13ff14079b537",
+                    "NA12878_P1000GP_Tquilt_SNP.txt:md5,b15483a7860942ca48c60165d264e3b4",
+                    "NA12878_P1000GP_Tstitch_SNP.txt:md5,f34c239b4f10654fa8db1a8998abc3fe",
                     "NA19401.truth.bcftools_stats.txt:md5,633ad472ef97d29cae255b45a500dc20",
-                    "NA19401_P1000GP_Tglimpse1_SNP.txt:md5,0c8fa58de319c76c35397f1d92e9a46f",
-                    "NA19401_P1000GP_Tglimpse2_SNP.txt:md5,783944223e14881a693b702ae77597d1",
-                    "NA19401_P1000GP_Tquilt_SNP.txt:md5,0253f7b365b3268086797b22e2017f3a",
-                    "NA19401_P1000GP_Tstitch_SNP.txt:md5,c6294174f645957a7d3b1199e6faf068",
+                    "NA19401_P1000GP_Tglimpse1_SNP.txt:md5,0b7890eac5d1988b351941895f2785c6",
+                    "NA19401_P1000GP_Tglimpse2_SNP.txt:md5,0c3df00f2f3100a2f43d1cdda0fae25f",
+                    "NA19401_P1000GP_Tquilt_SNP.txt:md5,b2457a395c68491e87868b1190c37453",
+                    "NA19401_P1000GP_Tstitch_SNP.txt:md5,a471c4da4f5290f97a9d397fe7caba30",
                     "NA20359.truth.bcftools_stats.txt:md5,76f012e31d566bc73c6bd794e9f82944",
-                    "NA20359_P1000GP_Tglimpse1_SNP.txt:md5,7502ebe2a99315b248c2f81cf2eae0b1",
-                    "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,058926ede6e238a9cea027418e6ab833",
-                    "NA20359_P1000GP_Tquilt_SNP.txt:md5,a681e7abacef5c10aceb0894bf6c4db5",
-                    "NA20359_P1000GP_Tstitch_SNP.txt:md5,817a27fcdaa77a3e1edf40c6bde6b4fc"
+                    "NA20359_P1000GP_Tglimpse1_SNP.txt:md5,a521a2d9d659e6918fe150b468dbceba",
+                    "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,8c1d9b763c18d31308d6b67e071e8bcd",
+                    "NA20359_P1000GP_Tquilt_SNP.txt:md5,e3dee1e6b8b36c2b3feb7d0bf4d9515c",
+                    "NA20359_P1000GP_Tstitch_SNP.txt:md5,89a0a1c7a32680630710e09bb3c9b487"
                 ],
                 [
                     [
                         "NA12878.depth_1x.bam",
-                        "34ddba3b819bc0fdb2cffccaf34db3b7"
+                        "dc551537ba58eff2b963531cf79100be"
                     ],
                     [
                         "NA19401.depth_1x.bam",
-                        "b599461e824a8cc323c6cfa7f8f25b24"
+                        "d8efbef9945eb65dc7a5a5d94b928df3"
                     ],
                     [
                         "NA20359.depth_1x.bam",
-                        "433d87eaf2dfc5ee8fb0ebeb13012aa5"
+                        "1f0cd7f2be5f0d4572f1757850766ea7"
                     ]
                 ],
                 [
                     [
-                        "all_samples.batch0.glimpse1.vcf.gz",
-                        "f7647153d99bfbc3b4b0edb301adb915"
+                        "all.batch0.glimpse1.vcf.gz",
+                        "539ed1166cd1ee038a91936e1a7739a6"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "1cc3b40ac431ec19bf8301dbc943ee21"
+                        "2d91791cff039506e6d31ea4ccf6a0b2"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "d67ebb7376a5937a4f0108028b271d60"
+                        "d28cf5f5fb9b61433319135031718956"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "eab029a4830bc9c688fdd613af8a0212"
+                        "2fd7a3a292d230a9110f470e8cac6fc3"
                     ],
                     [
-                        "all_samples.batch0.glimpse2.vcf.gz",
-                        "6de9501b5827bc023ca62d252c86823f"
+                        "all.batch0.glimpse2.vcf.gz",
+                        "f332635fe2ae8cfaa8c52e198f410b1c"
                     ],
                     [
                         "NA12878.glimpse2.vcf.gz",
-                        "27fab5e6a5766c8e82869a3ee58dac83"
+                        "4d026ce7b47d944c67fb9a0dc0c52682"
                     ],
                     [
                         "NA19401.glimpse2.vcf.gz",
-                        "91f77182ec4063f91cbcbfa86aaa0af1"
+                        "ce7da8c7180a19ca3f188ac73bfa2434"
                     ],
                     [
                         "NA20359.glimpse2.vcf.gz",
-                        "e255b641628f91dc18ca3f111f4efe75"
+                        "a5725630da1a08b0b648e4d346ddd3a"
                     ],
                     [
-                        "all_samples.batch0.quilt.vcf.gz",
-                        "df04ab0bc98810a678a431f63e8cbe42"
+                        "all.batch0.quilt.vcf.gz",
+                        "8f79b9f1cf338ed7ebf3582f291ce0d4"
                     ],
                     [
                         "NA12878.quilt.vcf.gz",
-                        "de4b773c752cfb134c480b2e7b05553"
+                        "a9899e7d48ba4de9c5b93f8ed468f485"
                     ],
                     [
                         "NA19401.quilt.vcf.gz",
-                        "9ed1a117c8511ffe71bd16e29be4d0e2"
+                        "fe48d81bc3fe15cf234689d481a558b0"
                     ],
                     [
                         "NA20359.quilt.vcf.gz",
-                        "6ba55a93520ac438f423cef4486a1a9b"
+                        "7c1d6d68ec7bed56a393e5871d802c05"
                     ],
                     [
-                        "all_samples.batch0.stitch.vcf.gz",
-                        "2147e55f18327e66dc073441f1db23dd"
+                        "all.batch0.stitch.vcf.gz",
+                        "7af8c4233811287a978498d7c8813d66"
                     ],
                     [
                         "NA12878.stitch.vcf.gz",
-                        "89ecfcca6c4c40d01e2564f796cbc897"
+                        "446589706cde591b26958449e881298a"
                     ],
                     [
                         "NA19401.stitch.vcf.gz",
-                        "fb8e053be811a21824b891331e41a74d"
+                        "f03ca092482de20eb8651cdd420bce58"
                     ],
                     [
                         "NA20359.stitch.vcf.gz",
-                        "dfa153bbc3baec01e7613b6450f3caac"
+                        "4d97b7e4dfbae1cf9641836971fe76ea"
                     ],
                     [
                         "1000GP_chr21_phased.vcf.gz",
@@ -717,6 +723,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-07T20:47:10.26489674"
+        "timestamp": "2026-02-11T11:07:53.336152812"
     }
 }

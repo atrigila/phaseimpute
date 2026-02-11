@@ -23,7 +23,6 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
 
     // Transform posfile to TSV with ','
     GAWK(BCFTOOLS_CONVERT.out.legend, [], false)
-    ch_versions = ch_versions.mix(GAWK.out.versions.first())
 
     // Compress TSV
     TABIX_BGZIP(GAWK.out.output)

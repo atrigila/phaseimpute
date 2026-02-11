@@ -3,7 +3,7 @@
         "content": [
             {
                 "BAMCHREXTRACT": {
-                    "samtools": 1.2,
+                    "samtools": 1.2
                 },
                 "BCFTOOLS_ANNOTATE": {
                     "bcftools": 1.21
@@ -22,6 +22,9 @@
                 },
                 "BCFTOOLS_STATS_TOOLS": {
                     "bcftools": 1.21
+                },
+                "GAWK_IMPUTED": {
+                    "gawk": "5.3.0"
                 },
                 "GLIMPSE_LIGATE": {
                     "glimpse": "1.1.1"
@@ -69,8 +72,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-28T15:39:48.617301186"
+        "timestamp": "2026-02-11T12:15:24.036659025"
     }
 }

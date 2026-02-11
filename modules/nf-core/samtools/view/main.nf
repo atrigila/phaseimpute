@@ -4,11 +4,11 @@ process SAMTOOLS_VIEW {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0' :
-        'biocontainers/samtools:1.21--h50ea8bc_0' }"
+        'https://depot.galaxyproject.org/singularity/samtools:1.22.1--h96c455f_0' :
+        'biocontainers/samtools:1.22.1--h96c455f_0' }"
 
     input:
-    tuple val(meta), path(input), path(index), val(region), val(subsample)
+    tuple val(meta), path(input), path(index)
     tuple val(meta2), path(fasta), path(fai)
     path qname
     val index_format
@@ -22,7 +22,7 @@ process SAMTOOLS_VIEW {
     tuple val(meta), path("${prefix}.${file_type}.crai"),                      emit: crai,             optional: true
     tuple val(meta), path("${prefix}.unselected.${file_type}"),                emit: unselected,       optional: true
     tuple val(meta), path("${prefix}.unselected.${file_type}.{csi,crai}"),     emit: unselected_index, optional: true
-    path  "versions.yml",                                                      emit: versions
+    tuple val("${task.process}"), val('samtools'), eval('samtools version | sed "1!d;s/.* //"'), emit: versions_samtools, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -32,8 +32,6 @@ process SAMTOOLS_VIEW {
     def args2 = task.ext.args2 ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
     def reference = fasta ? "--reference ${fasta}" : ""
-    def region_cmd     = region     ? "${region}"                : ""
-    def subsample_cmd  = subsample  ? "--subsample ${subsample}" : ""
     file_type = args.contains("--output-fmt sam") ? "sam" :
                 args.contains("--output-fmt bam") ? "bam" :
                 args.contains("--output-fmt cram") ? "cram" :
@@ -59,16 +57,9 @@ process SAMTOOLS_VIEW {
         ${reference} \\
         ${readnames} \\
         $args \\
-        ${subsample_cmd} \\
         -o ${output_file} \\
         $input \\
-        $args2 \\
-        ${region_cmd}
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//')
-    END_VERSIONS
+        $args2
     """
 
     stub:
@@ -99,10 +90,5 @@ process SAMTOOLS_VIEW {
     ${index}
     ${unselected}
     ${unselected_index}
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//')
-    END_VERSIONS
     """
 }
