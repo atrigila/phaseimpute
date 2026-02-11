@@ -26,7 +26,6 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
         [],
         "csi"
     )
-    ch_versions = ch_versions.mix(SAMTOOLS_VIEW.out.versions.first())
 
     ch_bam_region = SAMTOOLS_VIEW.out.bam
         .join(SAMTOOLS_VIEW.out.csi)
