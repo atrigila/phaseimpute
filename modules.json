@@ -231,7 +231,7 @@
                     },
                     "bam_subsampledepth_samtools": {
                         "branch": "master",
-                        "git_sha": "73430dcbcf7e1ccd49a2d6e1aded064c705748a7",
+                        "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
                         "installed_by": ["subworkflows"]
                     },
                     "bam_vcf_impute_glimpse2": {

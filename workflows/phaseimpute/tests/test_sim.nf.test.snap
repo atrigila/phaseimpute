@@ -2,35 +2,10 @@
     "Check test_sim": {
         "content": [
             [
-                20,
-                {
-                    "BAMCHREXTRACT": {
-                        "samtools": 1.2
-                    },
-                    "SAMTOOLS_COVERAGE_INP": {
-                        "samtools": 1.21
-                    },
-                    "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
-                    },
-                    "SAMTOOLS_INDEX": {
-                        "samtools": 1.21
-                    },
-                    "SAMTOOLS_MERGE": {
-                        "samtools": 1.21
-                    },
-                    "SAMTOOLS_VIEW": {
-                        "samtools": 1.21
-                    },
-                    "Workflow": {
-                        "nf-core/phaseimpute": "v1.2.0dev"
-                    }
-                },
+                0,
+                null,
                 [
-                    "pipeline_info",
-                    "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml",
-                    "simulation",
-                    "simulation/csv"
+                    "pipeline_info"
                 ],
                 [
                     
@@ -50,6 +25,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T12:19:57.317593309"
+        "timestamp": "2026-02-11T10:27:50.161128346"
     }
 }
