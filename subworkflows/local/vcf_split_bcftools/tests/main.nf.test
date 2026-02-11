@@ -21,7 +21,7 @@ nextflow_workflow {
                 script "../../../../modules/nf-core/bcftools/merge/main.nf"
                 process {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [id: "allSamples.batch0"],
                         [file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s_imputed.bcf", checkIfExist:true),
@@ -33,7 +33,7 @@ nextflow_workflow {
                         []
                     ]
                 )
-                input[1] = Channel.of([
+                input[1] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true),
@@ -81,7 +81,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: 'NA12878'],
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s_imputed.bcf", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s_imputed.bcf.csi", checkIfExist:true),
@@ -111,7 +111,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [id: 'dbsnp_146.hg38'],
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz", checkIfExist:true),
                     file(params.modules_testdata_base_path + "genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz.tbi", checkIfExist:true),

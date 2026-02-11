@@ -7,7 +7,7 @@ def checkChr(ch_chr, ch_input){
         .map{meta, chr, file, index, lst ->
             [
                 meta, file, index,
-                chr.readLines()*.split(' ').collect{it[0]},
+                chr.readLines()*.split(' ').collect{line -> line[0]},
                 lst
             ]
         }
@@ -34,11 +34,11 @@ def diffChr(chr_target, chr_ref, file) {
         def new_chr = []
         def to_rename = []
         if (prefix == "chr") {
-            chr_target.each{ new_chr += "chr${it}" }
-            diff.each{ to_rename += it.replace('chr', '') }
+            chr_target.each{ chr -> new_chr += "chr${chr}" }
+            diff.each{ chr -> to_rename += chr.replace('chr', '') }
         } else {
-            chr_target.each{ new_chr += it.replace('chr', '') }
-            diff.each{ to_rename += "chr${it}" }
+            chr_target.each{ chr -> new_chr += chr.replace('chr', '') }
+            diff.each{ chr -> to_rename += "chr${chr}" }
         }
         def new_diff = diff - new_chr
         if (new_diff.size() != 0) {

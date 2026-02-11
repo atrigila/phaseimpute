@@ -21,7 +21,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "test_paired"],
                         file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -64,7 +64,7 @@ nextflow_workflow {
                 script "../main.nf"
                 process {
                     """
-                    input[0] = Channel.fromList([
+                    input[0] = channel.fromList([
                         [
                             [id: "test_paired"],
                             file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),

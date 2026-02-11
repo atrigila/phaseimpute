@@ -25,7 +25,9 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
             , by: 0
         )
         .combine(ch_vcf_freq)
-        .combine(ch_region.map{[it[1]]}.collect().toList())
+        .combine(ch_region.map{ _meta, region ->
+            [ region ]
+        }.collect().toList())
         .map{ _metaI, metaIPTC, emul, e_csi, truth, t_csi, _metaP, freq, f_csi, regions ->
             [metaIPTC, emul, e_csi, truth, t_csi, freq, f_csi, [], regions]
         }
@@ -62,9 +64,19 @@ workflow VCF_CONCORDANCE_GLIMPSE2 {
 
     GAWK(
         ADDCOLUMNS.out.txt
-            .toSortedList { a, b -> a[0].id <=> b[0].id }
+            .map { meta, files ->
+                // Normalize tools to always be a list
+                def normalizedMeta = meta.clone()
+                normalizedMeta.tools = (meta.tools instanceof List) ? meta.tools : [meta.tools]
+                [normalizedMeta, files]
+            }
+            .toSortedList { a, b ->
+                def keyA = "${a[0].id},${a[0].tools.sort().join(',')}"
+                def keyB = "${b[0].id},${b[0].tools.sort().join(',')}"
+                keyA <=> keyB
+            }
             .map { sorted_list ->
-                def all_files = sorted_list.collect { it[1] }
+                def all_files = sorted_list.collect { _meta, file -> file }
                 [["id": "AllSamples"], all_files]
             },
         [],

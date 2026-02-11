@@ -12,7 +12,7 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id:'test_bcf'], // meta map
                         file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/vcf/test.bcf', checkIfExists: true)

@@ -63,7 +63,7 @@ include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // BEAGLE5 subworkflows
-include { VCF_IMPUTE_BEAGLE5                         } from '../../subworkflows/local/vcf_impute_beagle5'
+include { VCF_IMPUTE_BEAGLE5                         } from '../../subworkflows/nf-core/vcf_impute_beagle5'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_BEAGLE5 } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // MINIMAC4 subworkflows
@@ -116,8 +116,8 @@ workflow PHASEIMPUTE {
     if (params.steps.split(',').contains("simulate") || params.steps.split(',').contains("all")) {
         // Test if the input are all bam files
         getFilesSameExt(ch_input_sim)
-            .map{ if (it != "bam" & it != "cram") {
-                error "All input files must be in the same format, either BAM or CRAM, to perform simulation: ${it}"
+            .map{ ext -> if (ext != "bam" & ext != "cram") {
+                error "All input files must be in the same format, either BAM or CRAM, to perform simulation: ${ext}"
             } }
 
         if (params.input_region) {
@@ -153,7 +153,8 @@ workflow PHASEIMPUTE {
             filter_chr_program,
             false
         )
-        ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ it[1] })
+        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
+        ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ _meta, file -> file })
 
         if (params.depth) {
             // Downsample input to desired depth
@@ -170,7 +171,8 @@ workflow PHASEIMPUTE {
                 filter_chr_program,
                 false
             )
-            ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ it[1] })
+            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
+            ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
         }
 
         if (params.genotype) {
@@ -264,9 +266,9 @@ workflow PHASEIMPUTE {
     if (params.steps.split(',').contains("impute") || params.steps.split(',').contains("all")) {
         // Split input files into BAMs and VCFs
         ch_input_type = ch_input_impute
-            .branch {
-                bam: it[1] =~ 'bam|cram'
-                vcf: it[1] =~ '(vcf|bcf)(.gz)*'
+            .branch { _meta, file, _index ->
+                bam: file =~ 'bam|cram'
+                vcf: file =~ '(vcf|bcf)(.gz)*'
                 other: true
             }
 
@@ -279,17 +281,24 @@ workflow PHASEIMPUTE {
         ch_input_bams = ch_input_type.bam
             .toSortedList { it1, it2 -> it1[0]["id"] <=> it2[0]["id"] }
             .map { list -> list.collate(params.batch_size)
-                .collect{ nb_batch += 1; [[id: "all", batch: nb_batch], it] } }
-            .map { list -> [list.collect{ it[0] }, list.collect{ it[1] }] }
+                .collect{ it -> nb_batch += 1; [
+                    [id: "all", batch: nb_batch], it]
+                }
+            }
+            .map { list -> [
+                list.collect{ it -> it[0] },
+                list.collect{ it -> it[1] }
+            ] }
             .transpose()
             .map { metaI, filestuples-> [
-                metaI + [metas: filestuples.collect{it[0].findAll{it.key != "batch"}}],
-                filestuples.collect{it[1]}, filestuples.collect{it[2]}
+                metaI + [metas: filestuples.collect{ meta, _file, _index -> meta.findAll{keys -> keys.key != "batch"}}],
+                filestuples.collect{_meta, file, _index -> file},
+                filestuples.collect{_meta, _file, index -> index}
             ] }
 
         LISTTOFILE(
             ch_input_bams.map{ meta, file, _index -> [
-                meta, file, meta.metas.collect { it.id }
+                meta, file, meta.metas.collect {meta_i -> meta_i.id }
             ] }
         )
 
@@ -297,7 +306,7 @@ workflow PHASEIMPUTE {
             .join(LISTTOFILE.out.txt)
 
         // Use panel from parameters if provided
-        if (params.panel && !params.steps.split(',').find { it in ["all", "panelprep"] }) {
+        if (params.panel && !params.steps.split(',').find { step -> step in ["all", "panelprep"] }) {
             ch_panel_phased = ch_panel
         }
 
@@ -392,8 +401,9 @@ workflow PHASEIMPUTE {
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
                 ch_input_bams_withlist.map{
-                    meta, file, index, _bampath_id, bampath_noid, bamnames->
-                    [meta, file, index, bampath_noid, bamnames]
+                    meta, file, index, _bampath_id, bampath_noid, bamnames -> [
+                        meta, file, index, bampath_noid, bamnames
+                    ]
                 },
                 BGZIP_POSFILE_STITCH.out.output,
                 ch_chunks_stitch,
@@ -424,7 +434,11 @@ workflow PHASEIMPUTE {
 
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
-                ch_input_bams_withlist.map{ [it[0], it[1], it[2], it[4], it[5]] },
+                ch_input_bams_withlist.map{
+                    meta, file, index, _bampath_id, bampath_noid, bamnames -> [
+                        meta, file, index, bampath_noid, bamnames
+                    ]
+                },
                 ch_posfile.map{
                     meta, _site, _site_index, hap, legend, _posfile -> [
                         meta, hap, legend
@@ -444,23 +458,23 @@ workflow PHASEIMPUTE {
         }
 
         if (params.tools.split(',').contains("beagle5")) {
-            // Create input channel combining VCF with regions
-            ch_input_beagle5 = ch_input_type.vcf
-                .combine(ch_region)
-                .map { meta_vcf, vcf, index, meta_region, _region ->
-                    [meta_vcf + meta_region, vcf, index]
-                }
+            log.info("Impute with BEAGLE5")
+            ch_chunks_beagle5 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
+                .map{ meta, _regionin, regionout -> [meta, regionout]}
 
             // Impute with BEAGLE5
             VCF_IMPUTE_BEAGLE5(
-                ch_input_beagle5,
+                ch_input_type.vcf,
                 ch_panel_phased,
+                ch_chunks_beagle5,
                 ch_map
             )
             ch_versions = ch_versions.mix(VCF_IMPUTE_BEAGLE5.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_BEAGLE5(VCF_IMPUTE_BEAGLE5.out.vcf_index)
+            CONCAT_BEAGLE5(VCF_IMPUTE_BEAGLE5.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"beagle5"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_BEAGLE5.out.versions)
 
             // Add results to input validate
@@ -473,7 +487,7 @@ workflow PHASEIMPUTE {
             // Create input channel combining VCF with regions
             ch_input_minimac4 = ch_input_type.vcf
                 .combine(ch_region)
-                .map { meta_vcf, vcf, index, meta_region, region ->
+                .map { meta_vcf, vcf, index, meta_region, _region ->
                     [meta_vcf + meta_region, vcf, index]
                 }
 
@@ -515,9 +529,9 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ [it[0], it[1]] })
+            ch_fasta.map{ meta, fasta, _index -> [ meta, fasta ] })
         ch_versions = ch_versions.mix(BCFTOOLS_STATS_TOOLS.out.versions)
-        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TOOLS.out.stats.map{ [it[1]] })
+        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TOOLS.out.stats.map{ _meta, file -> [ file ] })
 
         // Export all files to csv
         exportCsv(
@@ -546,18 +560,18 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ [it[0], it[1]] })
+            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] })
         ch_versions = ch_versions.mix(BCFTOOLS_STATS_PANEL.out.versions)
-        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_PANEL.out.stats.map{ [it[1]] })
+        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_PANEL.out.stats.map{ _meta, file -> [ file ] })
 
         ch_truth_vcf = channel.empty()
 
         // Channels for branching
         ch_truth = ch_input_truth
-            .map { [it[0], it[1], it[2], getFileExtension(it[1])] }
-            .branch {
-                bam: it[3] =~ 'bam|cram'
-                vcf: it[3] =~ '(vcf|bcf)(.gz)*'
+            .map { meta, file, index -> [meta, file, index, getFileExtension(file)] }
+            .branch { _meta, _file, _index, ext ->
+                bam: ext =~ 'bam|cram'
+                vcf: ext =~ '(vcf|bcf)(.gz)*'
                 other: true
             }
 
@@ -565,7 +579,7 @@ workflow PHASEIMPUTE {
             .map{ error "Input files must be either BAM/CRAM or VCF/BCF" }
 
         GL_TRUTH(
-            ch_truth.bam.map { [it[0], it[1], it[2]] },
+            ch_truth.bam.map { meta, file, index, _ext -> [meta, file, index] },
             ch_posfile.map{
                 meta, _site, _site_index, _hap, _legend, posfile -> [
                     meta, posfile
@@ -577,7 +591,7 @@ workflow PHASEIMPUTE {
 
         // Mix the original vcf and the computed vcf
         ch_truth_vcf = ch_truth.vcf
-            .map { [it[0], it[1], it[2]] }
+            .map { meta, file, index, _ext -> [meta, file, index] }
             .mix(GL_TRUTH.out.vcf_tbi)
 
         // Concatenate truth vcf by chromosomes
@@ -600,10 +614,10 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ [it[0], it[1]] }
+            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] }
         )
         ch_versions = ch_versions.mix(BCFTOOLS_STATS_TRUTH.out.versions)
-        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TRUTH.out.stats.map{ [it[1]] })
+        ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TRUTH.out.stats.map{ _meta, file -> [ file ] })
 
         // Compute concordance analysis
         VCF_CONCORDANCE_GLIMPSE2(

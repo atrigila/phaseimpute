@@ -24,7 +24,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),

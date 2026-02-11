@@ -12,7 +12,10 @@
                         "chr": "chr21"
                     },
                     "1000GP_chr21.vcf.gz",
-                    "1000GP_chr21.vcf.gz.tbi"
+                    "1000GP_chr21.vcf.gz.tbi",
+                    "64eb594d9ef4ea0d779d551cff4c766",
+                    "VcfFile [chromosomes=[chr21], sampleCount=3190, variantCount=836, phased=true, phasedAutodetect=true]",
+                    3190
                 ],
                 [
                     {
@@ -20,16 +23,11 @@
                         "chr": "chr22"
                     },
                     "1000GP_chr22.vcf.gz",
-                    "1000GP_chr22.vcf.gz.tbi"
+                    "1000GP_chr22.vcf.gz.tbi",
+                    "a75586bb43ffc826868d043c03ebcb06",
+                    "VcfFile [chromosomes=[chr22], sampleCount=3190, variantCount=903, phased=true, phasedAutodetect=true]",
+                    3190
                 ]
-            ],
-            [
-                "VcfFile [chromosomes=[chr21], sampleCount=3190, variantCount=836, phased=true, phasedAutodetect=true]",
-                "VcfFile [chromosomes=[chr22], sampleCount=3190, variantCount=903, phased=true, phasedAutodetect=true]"
-            ],
-            [
-                3190,
-                3190
             ],
             [
                 {
@@ -48,7 +46,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-25T18:29:23.688725992"
+        "timestamp": "2026-02-04T17:06:05.986753979"
     },
     "Normalize vcf without computing frequencies nor removing samples": {
         "content": [
@@ -62,7 +60,10 @@
                         "chr": "chr21"
                     },
                     "1000GP_chr21_biallelic_snps.vcf.gz",
-                    "1000GP_chr21_biallelic_snps.vcf.gz.tbi"
+                    "1000GP_chr21_biallelic_snps.vcf.gz.tbi",
+                    "1a7f840b5311e45cad2210779cc90d7e",
+                    "VcfFile [chromosomes=[chr21], sampleCount=3196, variantCount=836, phased=true, phasedAutodetect=true]",
+                    3196
                 ],
                 [
                     {
@@ -70,16 +71,11 @@
                         "chr": "chr22"
                     },
                     "1000GP_chr22_biallelic_snps.vcf.gz",
-                    "1000GP_chr22_biallelic_snps.vcf.gz.tbi"
+                    "1000GP_chr22_biallelic_snps.vcf.gz.tbi",
+                    "e028aaa747cdb57516927d6dbd849ead",
+                    "VcfFile [chromosomes=[chr22], sampleCount=3196, variantCount=903, phased=true, phasedAutodetect=true]",
+                    3196
                 ]
-            ],
-            [
-                "VcfFile [chromosomes=[chr21], sampleCount=3196, variantCount=836, phased=true, phasedAutodetect=true]",
-                "VcfFile [chromosomes=[chr22], sampleCount=3196, variantCount=903, phased=true, phasedAutodetect=true]"
-            ],
-            [
-                3196,
-                3196
             ],
             [
                 {
@@ -93,6 +89,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-25T18:28:46.627450782"
+        "timestamp": "2026-02-04T17:05:38.598772915"
     }
 }

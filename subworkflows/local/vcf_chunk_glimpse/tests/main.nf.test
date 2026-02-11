@@ -25,7 +25,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
@@ -37,7 +37,7 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.s.norel.vcf.gz.csi", checkIfExist:true),
                     ]
                 )
-                input[1] = Channel.of(
+                input[1] = channel.of(
                     [
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38_chr22.glimpse.map", checkIfExist:true)
@@ -75,7 +75,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
@@ -87,7 +87,7 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.s.norel.vcf.gz.csi", checkIfExist:true),
                     ]
                 )
-                input[1] = Channel.of(
+                input[1] = channel.of(
                     [[panel_id: "1000GP", chr: "chr22"], []],
                     [[panel_id: "1000GP", chr: "chr21"], []]
                 )
@@ -119,7 +119,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.s.norel.vcf.gz", checkIfExist:true),
@@ -131,7 +131,7 @@ nextflow_workflow {
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr21/1000GP.chr21.s.norel.vcf.gz.csi", checkIfExist:true),
                     ]
                 )
-                input[1] = Channel.of(
+                input[1] = channel.of(
                     [[panel_id: "1000GP", chr: "chr22"], []],
                     [[panel_id: "1000GP", chr: "chr21"], []]
                 )

@@ -21,11 +21,11 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                bampath = Channel.of(
+                bampath = channel.of(
                     "NA12878.s.bam",
                     "NA19401.s.bam"
                 ).collectFile(name: 'bampath.txt', newLine: true)
-                ch_samples = Channel.fromList([
+                ch_samples = channel.fromList([
                     [
                         [id: "allid"],
                         [
@@ -38,17 +38,17 @@ nextflow_workflow {
                         ]
                     ],
                 ])
-                input[0] = ch_samples.combine(bampath).combine(Channel.of([[]]))
-                input[1] = Channel.of([
+                input[0] = ch_samples.combine(bampath).combine(channel.of([[]]))
+                input[1] = channel.of([
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
-                input[2] = Channel.of(
+                input[2] = channel.of(
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
-                input[3] = Channel.of([
+                input[3] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)
@@ -78,15 +78,15 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                bampath = Channel.of(
+                bampath = channel.of(
                     "NA12878.s.bam",
                     "NA19401.s.bam"
                 ).collectFile(name: 'bampath.txt', newLine: true)
-                bamname = Channel.of(
+                bamname = channel.of(
                     "MySample1",
                     "MySample2"
                 ).collectFile(name: 'bamname.txt', newLine: true)
-                ch_samples = Channel.fromList([
+                ch_samples = channel.fromList([
                     [
                         [id: "allid"],
                         [
@@ -100,16 +100,16 @@ nextflow_workflow {
                     ],
                 ])
                 input[0] = ch_samples.combine(bampath).combine(bamname)
-                input[1] = Channel.of([
+                input[1] = channel.of([
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
-                input[2] = Channel.of(
+                input[2] = channel.of(
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
-                input[3] = Channel.of([
+                input[3] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)
@@ -140,7 +140,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "NA12878"],
                         file(params.pipelines_testdata_base_path + "hum_data/individuals/NA12878/NA12878.s.bam", checkIfExist:true),
@@ -149,16 +149,16 @@ nextflow_workflow {
                         []
                     ]
                 ])
-                input[1] = Channel.of([
+                input[1] = channel.of([
                         [panel_id: "1000GP", chr: "chr22"],
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.hap.gz", checkIfExist:true),
                         file(params.pipelines_testdata_base_path + "hum_data/panel/chr22/1000GP.chr22.legend.gz", checkIfExist:true)
                     ]).collect()
-                input[2] = Channel.of(
+                input[2] = channel.of(
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16570065", "16597215"],
                     [[chr: "chr22", panel_id: "1000GP"], "chr22", "16587172", "16609999"]
                 )
-                input[3] = Channel.of([
+                input[3] = channel.of([
                     [id: "GRCh38"],
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz", checkIfExist:true),
                     file(params.pipelines_testdata_base_path + "hum_data/reference_genome/GRCh38.s.fa.gz.fai", checkIfExist:true)

@@ -2,6 +2,7 @@ nextflow_workflow {
 
     name "Test workflow CHRCHECK"
     script "../main.nf"
+    config "./nextflow.config"
 
     workflow "CHRCHECK"
 
@@ -19,11 +20,10 @@ nextflow_workflow {
     tag "samtools/index"
 
     test("Rename: VCF BAM chr + fasta no chr") {
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_chr_to_nochr"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz',checkIfExist:true),
@@ -37,6 +37,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -64,13 +66,12 @@ nextflow_workflow {
     }
 
     test("Rename: VCF no chr + fasta chr") {
-        config "./nextflow_rename.config"
         setup {
             run("BAM_CHR_RENAME_SAMTOOLS", alias: "PREPROCESS") {
                 script "../../../subworkflows/local/bam_chr_rename_samtools/main.nf"
                 process {
                     """
-                    input[0] = Channel.fromList([
+                    input[0] = channel.fromList([
                         [
                             [id: "BAM_nochr_to_chr"],
                             file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -87,7 +88,7 @@ nextflow_workflow {
                 """
                 input[0] = PREPROCESS.out.bam_renamed
                     .mix(
-                        Channel.fromList([
+                        channel.fromList([
                             [
                                 [id: "VCF_nochr_to_chr"],
                                 file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/vcf/NA24385_sv.vcf.gz',checkIfExist:true),
@@ -95,7 +96,9 @@ nextflow_workflow {
                             ],
                         ])
                     )
-                    .combine(Channel.of(["chr22"]).collect().toList())
+                    .combine(channel.of(["chr22"]).collect().toList())
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -123,11 +126,10 @@ nextflow_workflow {
     }
 
     test("Error : missing renaming VCF") {
-        config "./nextflow.config"
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/vcf/dbsnp_146.hg38.vcf.gz',checkIfExist:true),
@@ -135,6 +137,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = false
+                input[2] = 4
                 """
             }
         }
@@ -150,11 +154,10 @@ nextflow_workflow {
     }
 
     test("Error : missing renaming BAM") {
-        config "./nextflow.config"
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "BAM_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -162,6 +165,8 @@ nextflow_workflow {
                         ["22"]
                     ]
                 ])
+                input[1] = false
+                input[2] = 4
                 """
             }
         }
@@ -177,12 +182,11 @@ nextflow_workflow {
     }
 
     test("Error : still difference after renaming VCF"){
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
                 lst_chr = ["chr22", "chr34", "GL000207.1", "chr45", "chr46", "chr47", "chr48", "chr49"]
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "VCF_AllNoChr"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/vcf/NA24385_sv.vcf.gz',checkIfExist:true),
@@ -190,6 +194,8 @@ nextflow_workflow {
                         lst_chr
                     ],
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
@@ -203,11 +209,10 @@ nextflow_workflow {
     }
 
     test("Error : still difference after renaming BAM"){
-        config "./nextflow_rename.config"
         when {
             workflow {
                 """
-                input[0] = Channel.fromList([
+                input[0] = channel.fromList([
                     [
                         [id: "BAM_chr22"],
                         file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam', checkIfExist:true),
@@ -215,6 +220,8 @@ nextflow_workflow {
                         ["chr1"]
                     ],
                 ])
+                input[1] = true
+                input[2] = 4
                 """
             }
         }
