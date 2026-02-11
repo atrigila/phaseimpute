@@ -22,7 +22,7 @@ include { exportCsv                   } from '../../subworkflows/local/utils_nfc
 
 // Simulate subworkflows
 include { BAM_EXTRACT_REGION_SAMTOOLS                } from '../../subworkflows/local/bam_extract_region_samtools'
-include { BAM_DOWNSAMPLE_SAMTOOLS                    } from '../../subworkflows/local/bam_downsample_samtools'
+include { BAM_SUBSAMPLEDEPTH_SAMTOOLS                } from '../../subworkflows/nf-core/bam_subsampledepth_samtools'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_INP } from '../../modules/nf-core/samtools/coverage'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_DWN } from '../../modules/nf-core/samtools/coverage'
 include { GAWK as FILTER_CHR_INP                     } from '../../modules/nf-core/gawk'
@@ -153,17 +153,15 @@ workflow PHASEIMPUTE {
             filter_chr_program,
             false
         )
-        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ _meta, file -> file })
 
         if (params.depth) {
             // Downsample input to desired depth
-            BAM_DOWNSAMPLE_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
-            ch_versions     = ch_versions.mix(BAM_DOWNSAMPLE_SAMTOOLS.out.versions)
-            ch_input_impute = BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul
+            BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
+            ch_input_impute = BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled
 
             // Compute coverage of input files
-            SAMTOOLS_COVERAGE_DWN(BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul, ch_fasta)
+            SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
             ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
@@ -171,7 +169,6 @@ workflow PHASEIMPUTE {
                 filter_chr_program,
                 false
             )
-            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
         }
 
@@ -394,7 +391,6 @@ workflow PHASEIMPUTE {
                         meta, posfile
                     ]
                 }, [], false)
-            ch_versions = ch_versions.mix(GAWK_POSFILE_STITCH.out.versions.first())
 
             BGZIP_POSFILE_STITCH(GAWK_POSFILE_STITCH.out.output)
             ch_versions = ch_versions.mix(BGZIP_POSFILE_STITCH.out.versions.first())

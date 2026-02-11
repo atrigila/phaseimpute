@@ -28,6 +28,9 @@
                     "GAWK_RSQUARE_SPL": {
                         "gawk": "5.3.0"
                     },
+                    "GAWK_TRUTH": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_CONCORDANCE": {
                         "glimpse2": "2.0.0"
                     },
@@ -220,6 +223,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T15:33:19.071290468"
+        "timestamp": "2026-02-11T11:42:01.264936606"
     }
 }

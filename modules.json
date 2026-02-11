@@ -76,8 +76,8 @@
                     },
                     "gawk": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
-                        "installed_by": ["modules"]
+                        "git_sha": "76b1f53edcf72798d8515c82f4728ad44b3dd902",
+                        "installed_by": ["bam_subsampledepth_samtools", "modules"]
                     },
                     "glimpse/chunk": {
                         "branch": "master",
@@ -158,8 +158,8 @@
                     },
                     "samtools/depth": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
-                        "installed_by": ["modules"],
+                        "git_sha": "128c609f2812f748ec8d9566fc2953b72099fdcf",
+                        "installed_by": ["bam_subsampledepth_samtools", "modules"],
                         "patch": "modules/nf-core/samtools/depth/samtools-depth.diff"
                     },
                     "samtools/faidx": {
@@ -186,9 +186,8 @@
                     },
                     "samtools/view": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/samtools/view/samtools-view.diff"
+                        "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
+                        "installed_by": ["bam_subsampledepth_samtools", "modules"]
                     },
                     "shapeit5/ligate": {
                         "branch": "master",
@@ -228,6 +227,11 @@
                     "bam_impute_stitch": {
                         "branch": "master",
                         "git_sha": "31a8820de9546d701166413a81ce338f5c244550",
+                        "installed_by": ["subworkflows"]
+                    },
+                    "bam_subsampledepth_samtools": {
+                        "branch": "master",
+                        "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
                         "installed_by": ["subworkflows"]
                     },
                     "bam_vcf_impute_glimpse2": {

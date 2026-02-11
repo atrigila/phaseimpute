@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#240](https://github.com/nf-core/phaseimpute/pull/240) - Move from local to nf-core sbwf for `GLIMPSE2` imputation. Update `usage.md`.
 - [#247](https://github.com/nf-core/phaseimpute/pull/243) - Move from local to nf-core sbwf for `BEAGLE5` imputation. Update `usage.md`.
 - [#249](https://github.com/nf-core/phaseimpute/pull/249) - Move `test_all`, `test_sim`, `test_panelprep`, `test_validate` to independant nf-test with md5sum assertion.
+- [#252](https://github.com/nf-core/phaseimpute/pull/252) - Move downsampling subworkflow to use nf-core, add `--subsample-seed ${params.seed}` to `SAMTOOLS_VIEW`.
 
 ### `Fixed`
 
