@@ -11,7 +11,13 @@
                         "bcftools": 1.21
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MERGE": {
                         "bcftools": 1.21
@@ -180,7 +186,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T17:24:28.817471181"
+        "timestamp": "2026-02-12T15:05:15.533898274"
     },
     "Check test_glimpse1 - with chunks": {
         "content": [
@@ -194,7 +200,13 @@
                         "bcftools": 1.21
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MERGE": {
                         "bcftools": 1.21
@@ -363,7 +375,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T17:23:15.197311008"
+        "timestamp": "2026-02-12T15:02:48.18046299"
     },
     "Check test_glimpse1 - without chunks": {
         "content": [
@@ -377,7 +389,13 @@
                         "bcftools": 1.21
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MERGE": {
                         "bcftools": 1.21
@@ -546,6 +564,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T17:25:37.548250871"
+        "timestamp": "2026-02-12T15:07:34.683848662"
     }
 }

@@ -32,7 +32,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_MERGE": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_VIEW": {
                         "samtools": "1.22.1"
@@ -163,6 +163,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T10:48:52.548359016"
+        "timestamp": "2026-02-12T02:10:00.701198718"
     }
 }
