@@ -8,7 +8,7 @@
                         "gawk": "5.3.0"
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -223,6 +223,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T11:42:01.264936606"
+        "timestamp": "2026-02-12T01:36:00.230194667"
     }
 }

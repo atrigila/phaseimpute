@@ -5,7 +5,13 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -172,7 +178,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T11:39:52.583478478"
+        "timestamp": "2026-02-12T01:32:29.287109561"
     },
     "Check test_beagle5 - with chunks - no map": {
         "content": [
@@ -180,7 +186,13 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -347,7 +359,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T11:38:20.964067574"
+        "timestamp": "2026-02-12T01:29:19.666962903"
     },
     "Check test_beagle5 - with chunks": {
         "content": [
@@ -355,7 +367,13 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -522,6 +540,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T11:36:49.162503836"
+        "timestamp": "2026-02-12T01:26:16.717021941"
     }
 }
