@@ -229,7 +229,7 @@
                 "nf-core": {
                     "bam_impute_quilt": {
                         "branch": "master",
-                        "git_sha": "a71947212e656d421bb9f72103454aab1e5b6f3f",
+                        "git_sha": "a5642cbeec63bd7131794cbb657d8a25bf6ae569",
                         "installed_by": ["subworkflows"]
                     },
                     "bam_impute_stitch": {
