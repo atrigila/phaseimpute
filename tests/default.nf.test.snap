@@ -11,6 +11,12 @@
                 "BCFTOOLS_CONCAT": {
                     "bcftools": 1.22
                 },
+                "BCFTOOLS_INDEX_LIGATE": {
+                    "bcftools": 1.22
+                },
+                "BCFTOOLS_INDEX_PHASE": {
+                    "bcftools": 1.22
+                },
                 "BCFTOOLS_MERGE": {
                     "bcftools": 1.21
                 },
@@ -74,6 +80,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T12:15:24.036659025"
+        "timestamp": "2026-02-12T00:32:43.218685714"
     }
 }

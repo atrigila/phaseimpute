@@ -14,25 +14,19 @@
                         "bcftools": 1.21
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
-                    },
-                    "BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
-                    },
-                    "BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_LIGATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_PHASE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MERGE": {
                         "bcftools": 1.21
@@ -41,7 +35,7 @@
                         "bcftools": 1.21
                     },
                     "BCFTOOLS_NORM": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
                         "bcftools": 1.21
@@ -129,7 +123,7 @@
                         "samtools": 1.21
                     },
                     "SAMTOOLS_MERGE": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_VIEW": {
                         "samtools": "1.22.1"
@@ -151,10 +145,10 @@
                         "vcflib": "1.0.14"
                     },
                     "VCF_BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "VCF_BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -723,6 +717,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-11T17:29:57.261259835"
+        "timestamp": "2026-02-12T01:05:26.603297636"
     }
 }

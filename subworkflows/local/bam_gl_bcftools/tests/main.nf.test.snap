@@ -4,8 +4,7 @@
             [
                 "versions.yml:md5,3b0fee3aa670345abd0d2f9058050d65",
                 "versions.yml:md5,5c1d0190110ff1887f49323dec613345",
-                "versions.yml:md5,627428fc0c462d764ef59f3f58cb4202",
-                "versions.yml:md5,85e298b4e9dd35ea49f5696b117f759b"
+                "versions.yml:md5,627428fc0c462d764ef59f3f58cb4202"
             ],
             [
                 [
@@ -37,11 +36,6 @@
                     "BAM_GL_BCFTOOLS:BCFTOOLS_MPILEUP": {
                         "bcftools": 1.21
                     }
-                },
-                {
-                    "BAM_GL_BCFTOOLS:VCF_CONCATENATE_BCFTOOLS:BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
-                    }
                 }
             ]
         ],
@@ -49,7 +43,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T22:23:21.518307093"
+        "timestamp": "2026-02-12T00:25:48.93778582"
     },
     "Compute genotype likelihood with only one input": {
         "content": [
