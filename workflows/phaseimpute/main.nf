@@ -34,6 +34,7 @@ include { VCF_SITES_EXTRACT_BCFTOOLS                 } from '../../subworkflows/
 include { VCF_PHASE_SHAPEIT5                         } from '../../subworkflows/local/vcf_phase_shapeit5'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_PANEL   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_PANEL     } from '../../modules/nf-core/bcftools/stats'
+include { VCF_CHUNK_GLIMPSE                          } from '../../subworkflows/local/vcf_chunk_glimpse'
 include { chunkPrepareChannel                        } from './function.nf'
 
 // Imputation
@@ -52,13 +53,14 @@ include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE2} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // QUILT subworkflows
-include { VCF_CHUNK_GLIMPSE                          } from '../../subworkflows/local/vcf_chunk_glimpse'
-include { BAM_IMPUTE_QUILT                           } from '../../subworkflows/local/bam_impute_quilt'
+include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
+include { BAM_IMPUTE_QUILT                           } from '../../subworkflows/nf-core/bam_impute_quilt'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // STITCH subworkflows
-include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
+include { GAWK as GAWK_POSFILE_QUILT                 } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_POSFILE_QUILT         } from '../../modules/nf-core/tabix/bgzip'
 include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/nf-core/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
@@ -441,6 +443,25 @@ workflow PHASEIMPUTE {
             // Use provided chunks if --chunks or whole chromosome
             ch_chunks_quilt = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
 
+            // Transform posfile to tabulated format
+            GAWK_POSFILE_QUILT(
+                ch_posfile.map{
+                    meta, _site, _site_index, _hap, _legend, posfile -> [
+                        meta, posfile
+                    ]
+                }, [], false
+            )
+
+            BGZIP_POSFILE_QUILT(GAWK_POSFILE_QUILT.out.output)
+            ch_versions = ch_versions.mix(BGZIP_POSFILE_QUILT.out.versions.first())
+
+            ch_posfile_quilt = ch_posfile
+                .map{
+                    meta, _site, _site_index, hap, legend, _posfile -> [
+                        meta, hap, legend
+                    ]
+                }.join(BGZIP_POSFILE_QUILT.out.output)
+
             // Impute BAMs with QUILT
             BAM_IMPUTE_QUILT(
                 ch_input_bams_withlist.map{
@@ -448,18 +469,20 @@ workflow PHASEIMPUTE {
                         meta, file, index, bampath_noid, bamnames
                     ]
                 },
-                ch_posfile.map{
-                    meta, _site, _site_index, hap, legend, _posfile -> [
-                        meta, hap, legend
-                    ]
-                },
+                ch_posfile_quilt,
                 ch_chunks_quilt,
-                ch_fasta
+                ch_map,
+                ch_fasta,
+                params.ngen,
+                params.buffer
             )
-            ch_versions = ch_versions.mix(BAM_IMPUTE_QUILT.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_QUILT(BAM_IMPUTE_QUILT.out.vcf_tbi)
+            CONCAT_QUILT(BAM_IMPUTE_QUILT.out.vcf_index
+                .map{
+                    meta, vcf, index -> [meta + [tools:"quilt"], vcf, index]
+                }
+            )
             ch_versions = ch_versions.mix(CONCAT_QUILT.out.versions)
 
             // Add results to input validate
