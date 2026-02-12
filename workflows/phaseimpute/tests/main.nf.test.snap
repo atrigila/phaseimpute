@@ -110,38 +110,6 @@
         },
         "timestamp": "2025-11-13T16:36:52.646749749"
     },
-    "Check test_quilt": {
-        "content": [
-            [
-                "imputation/batch/all_samples.batch0.id.txt",
-                "imputation/batch/all_samples.batch0.idonly.txt",
-                "imputation/batch/all_samples.batch0.noid.txt",
-                "imputation/csv/impute.csv",
-                "imputation/quilt/concat/all_samples.batch0.quilt.vcf.gz",
-                "imputation/quilt/concat/all_samples.batch0.quilt.vcf.gz.tbi",
-                "imputation/quilt/samples/NA12878.quilt.vcf.gz",
-                "imputation/quilt/samples/NA12878.quilt.vcf.gz.tbi",
-                "imputation/quilt/samples/NA19401.quilt.vcf.gz",
-                "imputation/quilt/samples/NA19401.quilt.vcf.gz.tbi",
-                "imputation/quilt/samples/NA20359.quilt.vcf.gz",
-                "imputation/quilt/samples/NA20359.quilt.vcf.gz.tbi",
-                "imputation/stats/NA12878.quilt.bcftools_stats.txt",
-                "imputation/stats/NA19401.quilt.bcftools_stats.txt",
-                "imputation/stats/NA20359.quilt.bcftools_stats.txt"
-            ],
-            "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
-            [
-                "NA12878",
-                "NA19401",
-                "NA20359"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2025-11-13T16:30:13.091032307"
-    },
     "Check test_dog": {
         "content": [
             [
