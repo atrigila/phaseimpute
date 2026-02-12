@@ -53,14 +53,14 @@ include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE2} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // QUILT subworkflows
-include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
+include { GAWK as GAWK_POSFILE_QUILT                 } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_POSFILE_QUILT         } from '../../modules/nf-core/tabix/bgzip'
 include { BAM_IMPUTE_QUILT                           } from '../../subworkflows/nf-core/bam_impute_quilt'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_QUILT   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // STITCH subworkflows
-include { GAWK as GAWK_POSFILE_QUILT                 } from '../../modules/nf-core/gawk'
-include { TABIX_BGZIP as BGZIP_POSFILE_QUILT         } from '../../modules/nf-core/tabix/bgzip'
+include { GAWK as GAWK_POSFILE_STITCH                } from '../../modules/nf-core/gawk'
+include { TABIX_BGZIP as BGZIP_POSFILE_STITCH        } from '../../modules/nf-core/tabix/bgzip'
 include { BAM_IMPUTE_STITCH                          } from '../../subworkflows/nf-core/bam_impute_stitch'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_STITCH  } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
