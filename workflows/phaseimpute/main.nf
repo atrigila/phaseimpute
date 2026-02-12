@@ -22,7 +22,7 @@ include { exportCsv                   } from '../../subworkflows/local/utils_nfc
 
 // Simulate subworkflows
 include { BAM_EXTRACT_REGION_SAMTOOLS                } from '../../subworkflows/local/bam_extract_region_samtools'
-include { BAM_DOWNSAMPLE_SAMTOOLS                    } from '../../subworkflows/local/bam_downsample_samtools'
+include { BAM_SUBSAMPLEDEPTH_SAMTOOLS                } from '../../subworkflows/nf-core/bam_subsampledepth_samtools'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_INP } from '../../modules/nf-core/samtools/coverage'
 include { SAMTOOLS_COVERAGE as SAMTOOLS_COVERAGE_DWN } from '../../modules/nf-core/samtools/coverage'
 include { GAWK as FILTER_CHR_INP                     } from '../../modules/nf-core/gawk'
@@ -44,7 +44,7 @@ include { VCF_SPLIT_BCFTOOLS as SPLIT_IMPUTED        } from '../../subworkflows/
 
 // GLIMPSE1 subworkflows
 include { BAM_GL_BCFTOOLS as GL_GLIMPSE1             } from '../../subworkflows/local/bam_gl_bcftools'
-include { VCF_IMPUTE_GLIMPSE1                        } from '../../subworkflows/local/vcf_impute_glimpse1'
+include { VCF_IMPUTE_GLIMPSE                         } from '../../subworkflows/nf-core/vcf_impute_glimpse'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE1} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // GLIMPSE2 subworkflows
@@ -153,17 +153,15 @@ workflow PHASEIMPUTE {
             filter_chr_program,
             false
         )
-        ch_versions = ch_versions.mix(FILTER_CHR_INP.out.versions.first())
         ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_INP.out.output.map{ _meta, file -> file })
 
         if (params.depth) {
             // Downsample input to desired depth
-            BAM_DOWNSAMPLE_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
-            ch_versions     = ch_versions.mix(BAM_DOWNSAMPLE_SAMTOOLS.out.versions)
-            ch_input_impute = BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul
+            BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
+            ch_input_impute = BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled
 
             // Compute coverage of input files
-            SAMTOOLS_COVERAGE_DWN(BAM_DOWNSAMPLE_SAMTOOLS.out.bam_emul, ch_fasta)
+            SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
             ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
@@ -171,7 +169,6 @@ workflow PHASEIMPUTE {
                 filter_chr_program,
                 false
             )
-            ch_versions = ch_versions.mix(FILTER_CHR_DWN.out.versions.first())
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
         }
 
@@ -282,7 +279,7 @@ workflow PHASEIMPUTE {
             .toSortedList { it1, it2 -> it1[0]["id"] <=> it2[0]["id"] }
             .map { list -> list.collate(params.batch_size)
                 .collect{ it -> nb_batch += 1; [
-                    [id: "all", batch: nb_batch], it]
+                    [id: "all_samples", batch: nb_batch], it]
                 }
             }
             .map { list -> [
@@ -332,22 +329,34 @@ workflow PHASEIMPUTE {
 
             // Combine vcf and processed bam
             ch_input_glimpse1 = ch_input_type.vcf
-                .mix(GL_GLIMPSE1.out.vcf_tbi)
+                .mix(GL_GLIMPSE1.out.vcf_index)
+                .map{
+                    meta, vcf, index -> [
+                        meta, vcf, index, [] // Ignore infos for the moment
+                    ]
+                }
 
             // Run imputation
-            VCF_IMPUTE_GLIMPSE1(
+            VCF_IMPUTE_GLIMPSE(
                 ch_input_glimpse1,
-                ch_panel_phased,
-                ch_chunks_glimpse1
+                ch_panel_phased.map{
+                    meta, file, index ->
+                    [meta, file, index, []] // Region ignored as chunks are provided
+                },
+                ch_chunks_glimpse1,
+                ch_map,
+                false // Do not compute chunks
             )
-            ch_versions = ch_versions.mix(VCF_IMPUTE_GLIMPSE1.out.versions)
+            ch_versions = ch_versions.mix(VCF_IMPUTE_GLIMPSE.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_GLIMPSE1(VCF_IMPUTE_GLIMPSE1.out.vcf_tbi)
+            CONCAT_GLIMPSE1(VCF_IMPUTE_GLIMPSE.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"glimpse1"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_GLIMPSE1.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE1.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE1.out.vcf_index)
 
         }
 
@@ -379,7 +388,7 @@ workflow PHASEIMPUTE {
             ch_versions = ch_versions.mix(CONCAT_GLIMPSE2.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE2.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE2.out.vcf_index)
         }
 
         if (params.tools.split(',').contains("stitch")) {
@@ -422,7 +431,7 @@ workflow PHASEIMPUTE {
             ch_versions = ch_versions.mix(CONCAT_STITCH.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_STITCH.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_STITCH.out.vcf_index)
 
         }
 
@@ -454,7 +463,7 @@ workflow PHASEIMPUTE {
             ch_versions = ch_versions.mix(CONCAT_QUILT.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_index)
         }
 
         if (params.tools.split(',').contains("beagle5")) {
@@ -478,7 +487,7 @@ workflow PHASEIMPUTE {
             ch_versions = ch_versions.mix(CONCAT_BEAGLE5.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_index)
         }
 
         if (params.tools.split(',').contains("minimac4")) {
@@ -509,7 +518,7 @@ workflow PHASEIMPUTE {
             ch_versions = ch_versions.mix(CONCAT_MINIMAC4.out.versions)
 
             // Add results to input validate
-            ch_input_validate = ch_input_validate.mix(CONCAT_MINIMAC4.out.vcf_tbi)
+            ch_input_validate = ch_input_validate.mix(CONCAT_MINIMAC4.out.vcf_index)
         }
 
         // Prepare renaming file
@@ -551,7 +560,7 @@ workflow PHASEIMPUTE {
             ]
         })
         ch_versions    = ch_versions.mix(CONCAT_PANEL.out.versions)
-        ch_panel_sites = CONCAT_PANEL.out.vcf_tbi
+        ch_panel_sites = CONCAT_PANEL.out.vcf_index
 
         // Compute stats on panel
         BCFTOOLS_STATS_PANEL(
@@ -592,16 +601,12 @@ workflow PHASEIMPUTE {
         // Mix the original vcf and the computed vcf
         ch_truth_vcf = ch_truth.vcf
             .map { meta, file, index, _ext -> [meta, file, index] }
-            .mix(GL_TRUTH.out.vcf_tbi)
-
-        // Concatenate truth vcf by chromosomes
-        CONCAT_TRUTH(ch_truth_vcf)
-        ch_versions = ch_versions.mix(CONCAT_TRUTH.out.versions)
+            .mix(GL_TRUTH.out.vcf_index)
 
         // Prepare renaming file
-        BCFTOOLS_QUERY_TRUTH(CONCAT_TRUTH.out.vcf_tbi, [], [], [])
+        BCFTOOLS_QUERY_TRUTH(ch_truth_vcf, [], [], [])
         GAWK_TRUTH(BCFTOOLS_QUERY_TRUTH.out.output, [], false)
-        ch_split_truth = CONCAT_TRUTH.out.vcf_tbi.join(GAWK_TRUTH.out.output)
+        ch_split_truth = ch_truth_vcf.join(GAWK_TRUTH.out.output)
 
         // Split truth vcf by samples
         SPLIT_TRUTH(ch_split_truth)

@@ -8,10 +8,10 @@
                 [
                     {
                         "id": "1000GP",
-                        "chr": "all"
+                        "chr": "all_chr"
                     },
-                    "1000GP_all.vcf.gz",
-                    "1000GP_all.vcf.gz.tbi"
+                    "1000GP_all_chr.vcf.gz",
+                    "1000GP_all_chr.vcf.gz.tbi"
                 ]
             ],
             [
@@ -25,6 +25,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-25T17:50:20.668009086"
+        "timestamp": "2026-02-05T22:22:34.11862946"
     }
 }

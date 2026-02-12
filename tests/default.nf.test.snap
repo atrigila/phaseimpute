@@ -11,12 +11,6 @@
                 "BCFTOOLS_CONCAT": {
                     "bcftools": 1.22
                 },
-                "BCFTOOLS_INDEX_1": {
-                    "bcftools": 1.22
-                },
-                "BCFTOOLS_INDEX_2": {
-                    "bcftools": 1.22
-                },
                 "BCFTOOLS_MERGE": {
                     "bcftools": 1.21
                 },
@@ -29,6 +23,9 @@
                 "BCFTOOLS_STATS_TOOLS": {
                     "bcftools": 1.21
                 },
+                "GAWK_IMPUTED": {
+                    "gawk": "5.3.0"
+                },
                 "GLIMPSE_LIGATE": {
                     "glimpse": "1.1.1"
                 },
@@ -40,12 +37,12 @@
                 }
             },
             [
-                "imputation/batch/all.batch0.id.txt",
-                "imputation/batch/all.batch0.idonly.txt",
-                "imputation/batch/all.batch0.noid.txt",
+                "imputation/batch/all_samples.batch0.id.txt",
+                "imputation/batch/all_samples.batch0.idonly.txt",
+                "imputation/batch/all_samples.batch0.noid.txt",
                 "imputation/csv/impute.csv",
-                "imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz",
-                "imputation/glimpse1/concat/all.batch0.glimpse1.vcf.gz.tbi",
+                "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz",
+                "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz.tbi",
                 "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz",
                 "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz.tbi",
                 "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz",
@@ -77,6 +74,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-25T19:05:03.458707374"
+        "timestamp": "2026-02-11T12:15:24.036659025"
     }
 }

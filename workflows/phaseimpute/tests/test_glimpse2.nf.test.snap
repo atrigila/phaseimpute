@@ -22,6 +22,9 @@
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -38,15 +41,15 @@
                 [
                     "imputation",
                     "imputation/batch",
-                    "imputation/batch/all.batch0.id.txt",
-                    "imputation/batch/all.batch0.idonly.txt",
-                    "imputation/batch/all.batch0.noid.txt",
+                    "imputation/batch/all_samples.batch0.id.txt",
+                    "imputation/batch/all_samples.batch0.idonly.txt",
+                    "imputation/batch/all_samples.batch0.noid.txt",
                     "imputation/csv",
                     "imputation/csv/impute.csv",
                     "imputation/glimpse2",
                     "imputation/glimpse2/concat",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz.tbi",
                     "imputation/glimpse2/samples",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz.tbi",
@@ -108,9 +111,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "all.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
-                    "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
-                    "all.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
+                    "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
+                    "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
                     "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
                     "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
                     "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
@@ -129,7 +132,7 @@
                 ],
                 [
                     [
-                        "all.batch0.glimpse2.vcf.gz",
+                        "all_samples.batch0.glimpse2.vcf.gz",
                         "2c4ff9c4583dda15c5cee64a533312e5"
                     ],
                     [
@@ -158,7 +161,7 @@
                 ]
             ],
             {
-                "all.batch0.glimpse2": {
+                "all_samples.batch0.glimpse2": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
                     "samples": [
                         "NA12878",
@@ -172,7 +175,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:35:00.580060776"
+        "timestamp": "2026-02-11T11:44:22.491316878"
     },
     "Check test_glimpse2 - with chunks": {
         "content": [
@@ -197,6 +200,9 @@
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -213,15 +219,15 @@
                 [
                     "imputation",
                     "imputation/batch",
-                    "imputation/batch/all.batch0.id.txt",
-                    "imputation/batch/all.batch0.idonly.txt",
-                    "imputation/batch/all.batch0.noid.txt",
+                    "imputation/batch/all_samples.batch0.id.txt",
+                    "imputation/batch/all_samples.batch0.idonly.txt",
+                    "imputation/batch/all_samples.batch0.noid.txt",
                     "imputation/csv",
                     "imputation/csv/impute.csv",
                     "imputation/glimpse2",
                     "imputation/glimpse2/concat",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz.tbi",
                     "imputation/glimpse2/samples",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz.tbi",
@@ -283,9 +289,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "all.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
-                    "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
-                    "all.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
+                    "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
+                    "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
                     "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
                     "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
                     "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
@@ -304,7 +310,7 @@
                 ],
                 [
                     [
-                        "all.batch0.glimpse2.vcf.gz",
+                        "all_samples.batch0.glimpse2.vcf.gz",
                         "258136e6a05acb6d361bba02bbe1f12"
                     ],
                     [
@@ -333,7 +339,7 @@
                 ]
             ],
             {
-                "all.batch0.glimpse2": {
+                "all_samples.batch0.glimpse2": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
                     "samples": [
                         "NA12878",
@@ -347,7 +353,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:33:57.037507262"
+        "timestamp": "2026-02-11T11:43:21.064246048"
     },
     "Check test_glimpse2 - without chunks": {
         "content": [
@@ -372,6 +378,9 @@
                     "BCFTOOLS_STATS_TOOLS": {
                         "bcftools": 1.21
                     },
+                    "GAWK_IMPUTED": {
+                        "gawk": "5.3.0"
+                    },
                     "GLIMPSE2_LIGATE": {
                         "glimpse2": "2.0.0"
                     },
@@ -388,15 +397,15 @@
                 [
                     "imputation",
                     "imputation/batch",
-                    "imputation/batch/all.batch0.id.txt",
-                    "imputation/batch/all.batch0.idonly.txt",
-                    "imputation/batch/all.batch0.noid.txt",
+                    "imputation/batch/all_samples.batch0.id.txt",
+                    "imputation/batch/all_samples.batch0.idonly.txt",
+                    "imputation/batch/all_samples.batch0.noid.txt",
                     "imputation/csv",
                     "imputation/csv/impute.csv",
                     "imputation/glimpse2",
                     "imputation/glimpse2/concat",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz",
-                    "imputation/glimpse2/concat/all.batch0.glimpse2.vcf.gz.tbi",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz",
+                    "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz.tbi",
                     "imputation/glimpse2/samples",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz",
                     "imputation/glimpse2/samples/NA12878.glimpse2.vcf.gz.tbi",
@@ -458,9 +467,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "all.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
-                    "all.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
-                    "all.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
+                    "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
+                    "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
                     "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
                     "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
                     "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
@@ -479,7 +488,7 @@
                 ],
                 [
                     [
-                        "all.batch0.glimpse2.vcf.gz",
+                        "all_samples.batch0.glimpse2.vcf.gz",
                         "2efdb0ead7f85f77c3939b3f5906e1f8"
                     ],
                     [
@@ -508,7 +517,7 @@
                 ]
             ],
             {
-                "all.batch0.glimpse2": {
+                "all_samples.batch0.glimpse2": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
                     "samples": [
                         "NA12878",
@@ -522,6 +531,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:36:01.951503193"
+        "timestamp": "2026-02-11T11:45:20.938219248"
     }
 }

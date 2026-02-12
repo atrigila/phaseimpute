@@ -28,6 +28,7 @@
                 ],
                 "1": [
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
+                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
                     "versions.yml:md5,775bd20464c616f8eacd53774326f790"
                 ],
                 "posfile": [
@@ -56,6 +57,7 @@
                 ],
                 "versions": [
                     "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
+                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
                     "versions.yml:md5,775bd20464c616f8eacd53774326f790"
                 ]
             },
@@ -90,6 +92,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-25T18:42:17.399806457"
+        "timestamp": "2026-02-11T13:54:05.126649854"
     }
 }
