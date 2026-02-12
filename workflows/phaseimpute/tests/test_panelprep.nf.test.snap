@@ -5,13 +5,13 @@
                 38,
                 {
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_NORM": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_VIEW": {
                         "bcftools": 1.21
@@ -41,10 +41,10 @@
                         "vcflib": "1.0.14"
                     },
                     "VCF_BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "VCF_BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -164,6 +164,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-05T13:32:27.529176466"
+        "timestamp": "2026-02-12T02:06:02.361736753"
     }
 }
