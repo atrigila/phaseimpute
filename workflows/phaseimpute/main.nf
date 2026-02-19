@@ -69,7 +69,7 @@ include { VCF_IMPUTE_BEAGLE5                         } from '../../subworkflows/
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_BEAGLE5 } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // MINIMAC4 subworkflows
-include { VCF_IMPUTE_MINIMAC4                        } from '../../subworkflows/local/vcf_impute_minimac4'
+include { VCF_IMPUTE_MINIMAC4                        } from '../../subworkflows/nf-core/vcf_impute_minimac4'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_MINIMAC4} from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // Imputation stats
@@ -516,6 +516,9 @@ workflow PHASEIMPUTE {
         if (params.tools.split(',').contains("minimac4")) {
             log.info("Impute with MINIMAC4")
 
+            ch_chunks_minimac4 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
+                .map{ meta, _regionin, regionout -> [meta, regionout]}
+
             // Create input channel combining VCF with regions
             ch_input_minimac4 = ch_input_type.vcf
                 .combine(ch_region)
@@ -527,17 +530,19 @@ workflow PHASEIMPUTE {
             VCF_IMPUTE_MINIMAC4(
                 ch_input_minimac4,
                 ch_panel_phased,
-                ch_map,
                 ch_posfile.map{
                     meta, site, site_index, _hap, _legend, _posfile -> [
                         meta, site, site_index
                     ]
-                }
+                },
+                ch_chunks_minimac4,
+                ch_map
             )
-            ch_versions = ch_versions.mix(VCF_IMPUTE_MINIMAC4.out.versions)
 
             // Concatenate by chromosomes
-            CONCAT_MINIMAC4(VCF_IMPUTE_MINIMAC4.out.vcf_index)
+            CONCAT_MINIMAC4(VCF_IMPUTE_MINIMAC4.out.vcf_index.map{
+                meta, vcf, index -> [meta + [tools:"minimac4"], vcf, index]
+            })
             ch_versions = ch_versions.mix(CONCAT_MINIMAC4.out.versions)
 
             // Add results to input validate
