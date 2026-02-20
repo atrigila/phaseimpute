@@ -7,9 +7,9 @@ nextflow_pipeline {
     tag "test_minimac4"
 
     config "./nextflow.config"
-    config "../../../conf/test_minimac4.config"
 
     test("Check test_minimac4 - with chunks") {
+        config "../../../conf/test_minimac4.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -30,6 +30,7 @@ nextflow_pipeline {
     }
 
     test("Check test_minimac4 - with chunks - no map") {
+        config "../../../conf/test_minimac4.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -51,6 +52,7 @@ nextflow_pipeline {
     }
 
     test("Check test_minimac4 - without chunks") {
+        config "../../../conf/test_minimac4.config"
         when {
             params {
                 publish_dir_mode = "copy"

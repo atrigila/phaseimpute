@@ -8,9 +8,9 @@ nextflow_pipeline {
     tag "test_stitch"
 
     config "./nextflow.config"
-    config "../../../conf/test_stitch.config"
 
     test("Check test_stitch - with chunks") {
+        config "../../../conf/test_stitch.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -31,6 +31,7 @@ nextflow_pipeline {
     }
 
     test("Check test_stitch - with chunks - no map") {
+        config "../../../conf/test_stitch.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -52,6 +53,7 @@ nextflow_pipeline {
     }
 
     test("Check test_stitch - without chunks") {
+        config "../../../conf/test_stitch.config"
         when {
             params {
                 publish_dir_mode = "copy"

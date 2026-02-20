@@ -7,9 +7,9 @@ nextflow_pipeline {
     tag "test_validate"
 
     config "./nextflow.config"
-    config "../../../conf/test_validate.config"
 
     test("Check test_validate") {
+        config "../../../conf/test_validate.config"
         when {
             params {
                 publish_dir_mode = "copy"

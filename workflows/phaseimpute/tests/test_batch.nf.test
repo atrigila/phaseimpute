@@ -8,9 +8,9 @@ nextflow_pipeline {
     tag "test_batch"
 
     config "./nextflow.config"
-    config "../../../conf/test_batch.config"
 
     test("Check test_batch") {
+        config "../../../conf/test_batch.config"
         when {
             params {
                 publish_dir_mode = "copy"

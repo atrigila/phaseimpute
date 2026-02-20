@@ -7,9 +7,9 @@ nextflow_pipeline {
     tag "test_all"
 
     config "./nextflow.config"
-    config "../../../conf/test_all.config"
 
     test("Check test_all") {
+        config "../../../conf/test_all.config"
         when {
             params {
                 publish_dir_mode = "copy"
