@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#252](https://github.com/nf-core/phaseimpute/pull/252) - Move downsampling subworkflow to use nf-core, add `--subsample-seed ${params.seed}` to `SAMTOOLS_VIEW`.
 - [#254](https://github.com/nf-core/phaseimpute/pull/254) - Move from local to nf-core sbwf for `QUILT` imputation, add posfile and map usage to it. Update `usage.md`.
 - [#255](https://github.com/nf-core/phaseimpute/pull/255) - Move from local to nf-core sbwf for `MINIMAC4` imputation. Update `usage.md`.
+- [#257](https://github.com/nf-core/phaseimpute/pull/257) - Move from local to nf-core sbwf for `SHAPEIT5` imputation. Compute chunks only if not provided. Compute chunks before phasing and use it for phasing sbwf.
 
 ### `Fixed`
 

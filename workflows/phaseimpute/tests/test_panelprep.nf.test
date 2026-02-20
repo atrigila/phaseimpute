@@ -7,9 +7,9 @@ nextflow_pipeline {
     tag "test_panelprep"
 
     config "./nextflow.config"
+    config "../../../conf/test_panelprep.config"
 
     test("Check test_panelprep - no chunks") {
-        config "../../../conf/test_panelprep.config"
         when {
             params {
                 publish_dir_mode = "copy"
@@ -29,7 +29,6 @@ nextflow_pipeline {
     }
 
     test("Check test_panelprep - with chunks") {
-        config "../../../conf/test_panelprep.config"
         when {
             params {
                 publish_dir_mode = "copy"

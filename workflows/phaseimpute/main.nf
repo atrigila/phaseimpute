@@ -349,7 +349,7 @@ workflow PHASEIMPUTE {
 
             // Run imputation
             VCF_IMPUTE_GLIMPSE(
-                ch_input_glimpse1,
+                ch_input_glimpse1.view(),
                 ch_panel_phased.map{
                     meta, file, index ->
                     [meta, file, index, []] // Region ignored as chunks are provided
@@ -381,7 +381,7 @@ workflow PHASEIMPUTE {
                 ch_input_bams_withlist.map{
                     meta, file, index, bampath_id, _bampath_noid, _bamnames->
                     [meta, file, index, bampath_id, []]
-                },
+                }.view(),
                 ch_panel_phased.map{
                     meta, file, index ->
                     [meta, file, index, []] // Region ignored as chunks are provided
