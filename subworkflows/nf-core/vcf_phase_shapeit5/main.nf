@@ -47,9 +47,9 @@ workflow VCF_PHASE_SHAPEIT5 {
     }
 
     ch_chunks
-        .filter { _meta, regionout -> regionout.size() == 0 }
-        .subscribe {
-            error "ERROR: ch_chunks channel is empty. Please provide a valid channel or set chunk parameter to true."
+        .filter { _meta, regionout -> regionout.size() > 0 }
+        .ifEmpty {
+            error("ERROR: ch_chunks channel is empty. ...")
         }
 
     // Make channel with all parameters
