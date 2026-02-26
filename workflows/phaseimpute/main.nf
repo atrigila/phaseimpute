@@ -31,7 +31,7 @@ include { GAWK as FILTER_CHR_DWN                     } from '../../modules/nf-co
 // Panelprep subworkflows
 include { VCF_NORMALIZE_BCFTOOLS                     } from '../../subworkflows/local/vcf_normalize_bcftools'
 include { VCF_SITES_EXTRACT_BCFTOOLS                 } from '../../subworkflows/local/vcf_sites_extract_bcftools'
-include { VCF_PHASE_SHAPEIT5                         } from '../../subworkflows/local/vcf_phase_shapeit5'
+include { VCF_PHASE_SHAPEIT5                         } from '../../subworkflows/nf-core/vcf_phase_shapeit5'
 include { VCF_CONCATENATE_BCFTOOLS as CONCAT_PANEL   } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_PANEL     } from '../../modules/nf-core/bcftools/stats'
 include { VCF_CHUNK_GLIMPSE                          } from '../../subworkflows/local/vcf_chunk_glimpse'
@@ -206,27 +206,44 @@ workflow PHASEIMPUTE {
             ch_posfile  = VCF_SITES_EXTRACT_BCFTOOLS.out.posfile
         }
 
-        // Phase panel with Shapeit5
-        if (params.phase == true) {
-            VCF_PHASE_SHAPEIT5(
-                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.combine(channel.of([[]])),
-                ch_region,
-                [[],[],[]],
-                [[],[],[]],
+        // Use glimpse 1 for chunks if not provided
+        if (!params.chunks){
+            // Create chunks from reference VCF
+            VCF_CHUNK_GLIMPSE(
+                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi,
                 ch_map,
                 chunk_model
             )
-            ch_panel_phased = VCF_PHASE_SHAPEIT5.out.vcf_tbi
-            ch_versions = ch_versions.mix(VCF_PHASE_SHAPEIT5.out.versions)
+            ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
+            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks
+
+            // Chunks
+            exportCsv(
+                ch_chunks
+                .map{ meta, file ->
+                    [meta, [2:"prep_panel/chunks/glimpse1"], file]
+                },
+                ["panel_id", "chr"], "panel,chr,file",
+                "chunks_glimpse1.csv", "prep_panel/csv"
+            )
         }
 
-        // Create chunks from reference VCF
-        VCF_CHUNK_GLIMPSE(ch_panel_phased, ch_map, chunk_model)
-        ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
+        // Phase panel with Shapeit5
+        if (params.phase == true) {
+            // Use chunks from parameters and use region with buffer region
+            ch_chunks_phase = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
 
-        // Use glimpse 1 for chunks
-        if (!params.chunks){
-            ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks
+            VCF_PHASE_SHAPEIT5(
+                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.combine(channel.of([[], []])), // No pedigree, no region
+                ch_chunks_phase.map{ meta, _regionin, regionout -> [meta, regionout]},
+                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.map{ meta, _vcf, _index -> [meta, [], []]}, // No ref
+                VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi.map{ meta, vcf, index -> [meta, [], []]}, // No scaffold
+                ch_map,
+                false,
+                chunk_model
+            )
+            ch_panel_phased = VCF_PHASE_SHAPEIT5.out.vcf_index
+            ch_versions = ch_versions.mix(VCF_PHASE_SHAPEIT5.out.versions)
         }
 
         // Create CSVs from panelprep step
@@ -248,14 +265,6 @@ workflow PHASEIMPUTE {
             },
             ["panel_id", "chr"], "panel,chr,vcf,index,hap,legend,posfile",
             "posfile.csv", "prep_panel/csv"
-        )
-        // Chunks
-        exportCsv(
-            VCF_CHUNK_GLIMPSE.out.chunks.map{ meta, file ->
-                [meta, [2:"prep_panel/chunks/glimpse1"], file]
-            },
-            ["panel_id", "chr"], "panel,chr,file",
-            "chunks_glimpse1.csv", "prep_panel/csv"
         )
     }
 

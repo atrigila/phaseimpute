@@ -4,11 +4,11 @@ nextflow_pipeline {
     script "main.nf"
     tag "pipeline"
     tag "pipeline/phaseimpute"
+    tag "test_minimac4"
 
     config "./nextflow.config"
 
     test("Check test_minimac4 - with chunks") {
-        tag "test_minimac4"
         config "../../../conf/test_minimac4.config"
         when {
             params {
@@ -30,7 +30,6 @@ nextflow_pipeline {
     }
 
     test("Check test_minimac4 - with chunks - no map") {
-        tag "test_minimac4"
         config "../../../conf/test_minimac4.config"
         when {
             params {
@@ -53,7 +52,6 @@ nextflow_pipeline {
     }
 
     test("Check test_minimac4 - without chunks") {
-        tag "test_minimac4"
         config "../../../conf/test_minimac4.config"
         when {
             params {

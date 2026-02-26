@@ -5,11 +5,11 @@ nextflow_pipeline {
 
     tag "pipeline"
     tag "pipeline/phaseimpute"
+    tag "test_quilt"
 
     config "./nextflow.config"
 
     test("Check test_quilt - with chunks") {
-        tag "test_quilt"
         config "../../../conf/test_quilt.config"
         when {
             params {
@@ -31,7 +31,6 @@ nextflow_pipeline {
     }
 
     test("Check test_quilt - with chunks - no map") {
-        tag "test_quilt"
         config "../../../conf/test_quilt.config"
         when {
             params {
@@ -54,7 +53,6 @@ nextflow_pipeline {
     }
 
     test("Check test_quilt - without chunks") {
-        tag "test_quilt"
         config "../../../conf/test_quilt.config"
         when {
             params {
