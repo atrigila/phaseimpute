@@ -21,11 +21,11 @@ workflow VCF_PHASE_SHAPEIT5 {
 
     if ( chunk == true ){
         // Error if pre-defined chunks are provided when chunking is activated
-    ch_chunks
-        .filter { _meta, regionout -> regionout.size() == 0 }
-        .ifEmpty {
-            error("ERROR: Cannot provide pre-defined chunks (regionin) when chunk=true. ...")
-        }
+        ch_chunks
+            .filter { _meta, regionout -> regionout.size() > 0 }
+            .subscribe {
+                error "ERROR: Cannot provide pre-defined chunks (regionin) when chunk=true. Please either set chunk=false to use provided chunks, or remove input chunks to enable automatic chunking."
+            }
 
         // Chunk reference panel
         ch_vcf_map = ch_vcf
@@ -47,9 +47,9 @@ workflow VCF_PHASE_SHAPEIT5 {
     }
 
     ch_chunks
-        .filter { _meta, regionout -> regionout.size() > 0 }
-        .ifEmpty {
-            error("ERROR: ch_chunks channel is empty. ...")
+        .filter { _meta, regionout -> regionout.size() == 0 }
+        .subscribe {
+            error "ERROR: ch_chunks channel is empty. Please provide a valid channel or set chunk parameter to true."
         }
 
     // Make channel with all parameters
