@@ -38,7 +38,6 @@ workflow VCF_NORMALIZE_BCFTOOLS {
 
         // Index fixed panel
         BCFTOOLS_INDEX(VCFLIB_VCFFIXUP.out.vcf)
-        ch_versions = ch_versions.mix(BCFTOOLS_INDEX.out.versions.first())
 
         // Join fixed vcf and tbi
         ch_vcf_tbi = VCFLIB_VCFFIXUP.out.vcf
