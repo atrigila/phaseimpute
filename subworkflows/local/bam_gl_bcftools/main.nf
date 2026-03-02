@@ -18,7 +18,7 @@ workflow BAM_GL_BCFTOOLS {
     ch_mpileup = ch_bam
         .combine(ch_posfile)
         .map{metaI, bam, _bai, metaPC, tsv ->
-                [metaI + metaPC, bam, tsv]
+                [metaI + metaPC, bam, tsv, tsv]
         }
 
     BCFTOOLS_MPILEUP(
@@ -26,7 +26,6 @@ workflow BAM_GL_BCFTOOLS {
         ch_fasta,
         false
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_MPILEUP.out.versions.first())
     ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_MPILEUP.out.stats.map{ it -> it[1] })
 
     // Branch depending on number of files
