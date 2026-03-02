@@ -9,7 +9,6 @@ workflow VCF_SPLIT_BCFTOOLS {
     ch_versions = channel.empty()
 
     BCFTOOLS_PLUGINSPLIT(ch_vcf, [], [], [])
-    ch_versions = ch_versions.mix(BCFTOOLS_PLUGINSPLIT.out.versions.first())
 
     ch_vcf_samples = BCFTOOLS_PLUGINSPLIT.out.vcf
         .transpose()
