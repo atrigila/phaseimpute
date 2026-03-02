@@ -18,7 +18,6 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
 
     // Extract sites positions
     BCFTOOLS_VIEW(ch_vcf, [], [], [])
-    ch_versions = ch_versions.mix(BCFTOOLS_VIEW.out.versions.first())
 
     // Transform posfile to TSV with ','
     GAWK(BCFTOOLS_CONVERT.out.legend, [], false)
