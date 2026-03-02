@@ -50,16 +50,13 @@ workflow BAM_GL_BCFTOOLS {
         ch_all_vcf.more.map{it -> [it[0], it[1], it[2], []] },
         ch_fasta
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_MERGE.out.versions.first())
 
     // Mix all vcfs
     ch_to_concat = ch_all_vcf.one
         .map{it -> [it[0], it[1][0], it[2][0]] }
         .mix(
             BCFTOOLS_MERGE.out.vcf
-                .join(BCFTOOLS_MERGE.out.tbi.mix(
-                    BCFTOOLS_MERGE.out.csi
-                ))
+                .join(BCFTOOLS_MERGE.out.index)
         )
 
     // Merge all chromosomes
