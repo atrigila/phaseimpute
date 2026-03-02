@@ -26,11 +26,6 @@
                         "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
                     ]
                 ],
-                "1": [
-                    "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
-                    "versions.yml:md5,775bd20464c616f8eacd53774326f790"
-                ],
                 "posfile": [
                     [
                         {
@@ -54,11 +49,6 @@
                         "1000GP_chr22.legend.gz:md5,82f6f97f61e68b4872cc14c0125ff037",
                         "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541"
                     ]
-                ],
-                "versions": [
-                    "versions.yml:md5,4c26423b76a6d9ff520103dd2ebfd753",
-                    "versions.yml:md5,5781a81f52eb1daf57bef4f255ff5d58",
-                    "versions.yml:md5,775bd20464c616f8eacd53774326f790"
                 ]
             },
             [
@@ -76,27 +66,13 @@
                 ]
             ],
             [
-                {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_SITES_EXTRACT_BCFTOOLS:TABIX_BGZIP": {
-                        "tabix": 1.21
-                    }
-                }
+                
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-11T13:54:05.126649854"
+        "timestamp": "2026-03-02T22:07:31.534769388"
     }
 }

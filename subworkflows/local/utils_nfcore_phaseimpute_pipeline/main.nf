@@ -111,16 +111,16 @@ workflow PIPELINE_INITIALISATION {
             [genome:genome],
             getGenomeAttribute('fasta'), []
         ])
-        fai       = getGenomeAttribute('fai')
+        fai = getGenomeAttribute('fai')
         if (fai == null) {
             SAMTOOLS_FAIDX(ch_fasta, false)
-            fai         = SAMTOOLS_FAIDX.out.fai.map{ _meta, fasta_fai -> fasta_fai }
+            fai = SAMTOOLS_FAIDX.out.fai.map{ _meta, fasta_fai -> fasta_fai }
         } else {
             fai = channel.of(file(fai, checkIfExists:true))
         }
     } else if (params.fasta) {
         genome = file(params.fasta, checkIfExists:true).getBaseName()
-        ch_fasta  = channel.of([
+        ch_fasta = channel.of([
             [genome:genome],
             file(params.fasta, checkIfExists:true),
             []
@@ -129,10 +129,13 @@ workflow PIPELINE_INITIALISATION {
             fai = channel.of(file(params.fasta_fai, checkIfExists:true))
         } else {
             SAMTOOLS_FAIDX(ch_fasta, false)
-            fai         = SAMTOOLS_FAIDX.out.fai.map{ _meta, fasta_fai -> fasta_fai }
+            fai = SAMTOOLS_FAIDX.out.fai.map{ _meta, fasta_fai -> fasta_fai }
         }
     }
-    ch_ref_gen = ch_fasta.combine(fai).collect()
+    ch_ref_gen = ch_fasta
+        .map{ meta, fasta, _fai -> [meta, fasta] }
+        .combine(fai)
+        .collect()
 
     //
     // Create channel from input file provided through params.input

@@ -2,9 +2,6 @@
     "Normalize vcf with computing frequencies after removing samples": {
         "content": [
             [
-                "versions.yml:md5,b82381b87b4e5030c151bbe2fa9f9b15",
-                "versions.yml:md5,bb4a2ef039eaec905ccee379094e5988",
-                "versions.yml:md5,e0f34f5e0f0ad85a215da15912c06d78",
                 "versions.yml:md5,e49001985e5cda966c98d9bd4b2aabba"
             ],
             [
@@ -33,21 +30,6 @@
             ],
             [
                 {
-                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_NORM": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
                     "VCF_NORMALIZE_BCFTOOLS:VCFLIB_VCFFIXUP": {
                         "vcflib": "1.0.14"
                     }
@@ -56,15 +38,14 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-04T17:06:05.986753979"
+        "timestamp": "2026-03-02T22:06:59.016922716"
     },
     "Normalize vcf without computing frequencies nor removing samples": {
         "content": [
             [
-                "versions.yml:md5,bb4a2ef039eaec905ccee379094e5988",
-                "versions.yml:md5,e0f34f5e0f0ad85a215da15912c06d78"
+                
             ],
             [
                 [
@@ -91,22 +72,13 @@
                 ]
             ],
             [
-                {
-                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_NORM": {
-                        "bcftools": 1.21
-                    }
-                },
-                {
-                    "VCF_NORMALIZE_BCFTOOLS:BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
-                    }
-                }
+                
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-04T17:05:38.598772915"
+        "timestamp": "2026-03-02T22:05:46.272921036"
     }
 }

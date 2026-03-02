@@ -66,7 +66,6 @@ workflow NFCORE_PHASEIMPUTE {
 
     CHRCHECK_INPUT(ch_input.combine(lst_chr), rename_chr, max_chr_names)
     ch_input = CHRCHECK_INPUT.out.output
-    ch_versions = ch_versions.mix(CHRCHECK_INPUT.out.versions)
 
     CHRCHECK_TRUTH(ch_input_truth.combine(lst_chr), rename_chr, max_chr_names)
     ch_input_truth = CHRCHECK_TRUTH.out.output
