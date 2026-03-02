@@ -358,7 +358,6 @@ workflow PHASEIMPUTE {
                 ch_map,
                 false // Do not compute chunks
             )
-            ch_versions = ch_versions.mix(VCF_IMPUTE_GLIMPSE.out.versions)
 
             // Concatenate by chromosomes
             CONCAT_GLIMPSE1(VCF_IMPUTE_GLIMPSE.out.vcf_index.map{
@@ -433,7 +432,6 @@ workflow PHASEIMPUTE {
                 params.ngen,
                 params.seed
             )
-            ch_versions = ch_versions.mix(BAM_IMPUTE_STITCH.out.versions)
 
             // Concatenate by chromosomes
             CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_index.map{
