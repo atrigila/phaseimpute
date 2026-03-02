@@ -41,12 +41,11 @@ workflow VCF_CHR_RENAME_BCFTOOLS {
         .combine(ch_rename_file, by: 0)
         .map {
             _filename, meta, vcf, index, rename_file ->
-            [meta, vcf, index, [], [], [], rename_file]
+            [meta, vcf, index, [], [], [], [], rename_file]
         }
 
     // Rename the chromosome without prefix
     BCFTOOLS_ANNOTATE(ch_annotate_input)
-    ch_versions = ch_versions.mix(BCFTOOLS_ANNOTATE.out.versions.first())
 
     ch_vcf_renamed = BCFTOOLS_ANNOTATE.out.vcf
         .join(BCFTOOLS_ANNOTATE.out.tbi.mix(

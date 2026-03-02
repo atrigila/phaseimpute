@@ -68,9 +68,8 @@ workflow BAM_GL_BCFTOOLS {
 
     // Annotate the variants
     BCFTOOLS_ANNOTATE(VCF_CONCATENATE_BCFTOOLS.out.vcf_index
-        .combine(channel.of([[], [], [], []]))
+        .combine(channel.of([[], [], [], [], []]))
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_ANNOTATE.out.versions.first())
 
     // Output
     ch_output = BCFTOOLS_ANNOTATE.out.vcf
