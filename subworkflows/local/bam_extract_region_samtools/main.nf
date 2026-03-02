@@ -43,7 +43,6 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
     ch_versions = ch_versions.mix(SAMTOOLS_MERGE.out.versions.first())
 
     SAMTOOLS_INDEX(SAMTOOLS_MERGE.out.bam)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions.first())
 
     ch_bam_region_all = SAMTOOLS_MERGE.out.bam
         .join(SAMTOOLS_INDEX.out.bai)

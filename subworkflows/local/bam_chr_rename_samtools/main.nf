@@ -27,7 +27,6 @@ workflow BAM_CHR_RENAME_SAMTOOLS {
     ch_versions = ch_versions.mix(SAMTOOLS_REHEADER.out.versions.first())
 
     SAMTOOLS_INDEX(SAMTOOLS_REHEADER.out.bam)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions.first())
 
     ch_bam_renamed = SAMTOOLS_REHEADER.out.bam
         .combine(SAMTOOLS_INDEX.out.bai, by:0)
