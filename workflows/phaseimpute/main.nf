@@ -575,8 +575,8 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ meta, fasta, _index -> [ meta, fasta ] })
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_TOOLS.out.versions)
+            ch_fasta.map{ meta, fasta, _index -> [ meta, fasta ] }
+        )
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TOOLS.out.stats.map{ _meta, file -> [ file ] })
 
         // Export all files to csv
@@ -606,8 +606,8 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] })
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_PANEL.out.versions)
+            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] }
+        )
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_PANEL.out.stats.map{ _meta, file -> [ file ] })
 
         ch_truth_vcf = channel.empty()
@@ -658,7 +658,6 @@ workflow PHASEIMPUTE {
             [[],[]],
             ch_fasta.map{ meta, fasta, _index -> [meta, fasta] }
         )
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_TRUTH.out.versions)
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TRUTH.out.stats.map{ _meta, file -> [ file ] })
 
         // Compute concordance analysis
