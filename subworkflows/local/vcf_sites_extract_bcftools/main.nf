@@ -24,7 +24,6 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
 
     // Compress TSV
     TABIX_BGZIP(GAWK.out.output)
-    ch_versions = ch_versions.mix(TABIX_BGZIP.out.versions.first())
 
     // Join extracted sites and index
     ch_posfile = BCFTOOLS_VIEW.out.vcf
