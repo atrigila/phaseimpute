@@ -8,9 +8,8 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
     ch_bam    // channel: [ [id], bam, bai ]
     ch_region // channel: [ [chr, region], val(chr:start-end) ]
     ch_fasta  // channel: [ [genome], fasta, fai ]
-    main:
 
-    ch_versions = channel.empty()
+    main:
 
     // Add fasta and region to bam channel
     ch_input_region = ch_bam
@@ -48,5 +47,4 @@ workflow BAM_EXTRACT_REGION_SAMTOOLS {
 
     emit:
         bam_region = ch_bam_region_all // channel: [ [id, chr], bam, index ]
-        versions   = ch_versions       // channel: [ versions.yml ]
 }

@@ -10,7 +10,6 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
 
     main:
 
-    ch_versions = channel.empty()
     ch_fasta = ch_fasta.map { meta, fasta, _fai -> [meta, fasta] }
 
     // Convert VCF to Hap and Legend files
@@ -34,5 +33,4 @@ workflow VCF_SITES_EXTRACT_BCFTOOLS {
 
     emit:
     posfile       = ch_posfile          // channel: [ [id, chr], vcf, csi, hap, legend, posfile ]
-    versions      = ch_versions         // channel: [ versions.yml ]
 }

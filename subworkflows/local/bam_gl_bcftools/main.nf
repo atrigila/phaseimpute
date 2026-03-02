@@ -60,7 +60,6 @@ workflow BAM_GL_BCFTOOLS {
 
     // Merge all chromosomes
     VCF_CONCATENATE_BCFTOOLS(ch_to_concat)
-    ch_versions = ch_versions.mix(VCF_CONCATENATE_BCFTOOLS.out.versions.first())
 
     // Annotate the variants
     BCFTOOLS_ANNOTATE(VCF_CONCATENATE_BCFTOOLS.out.vcf_index
@@ -76,6 +75,5 @@ workflow BAM_GL_BCFTOOLS {
 
     emit:
     vcf_index     = ch_output        // channel: [ [id, panel], vcf, index ]
-    versions      = ch_versions      // channel: [ versions.yml ]
     multiqc_files = ch_multiqc_files
 }
