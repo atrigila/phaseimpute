@@ -148,7 +148,6 @@ workflow PHASEIMPUTE {
 
         // Compute coverage of input files
         SAMTOOLS_COVERAGE_INP(ch_input_sim, ch_fasta)
-        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions.first())
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
@@ -164,7 +163,6 @@ workflow PHASEIMPUTE {
 
             // Compute coverage of input files
             SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
-            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
