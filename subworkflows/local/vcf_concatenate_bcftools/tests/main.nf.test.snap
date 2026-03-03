@@ -1,7 +1,6 @@
 {
     "Concatenate vcf": {
         "content": [
-            null,
             [
                 [
                     {
@@ -14,15 +13,12 @@
             ],
             [
                 "VcfFile [chromosomes=[chr21, chr22], sampleCount=3196, variantCount=1739, phased=true, phasedAutodetect=true]"
-            ],
-            [
-                
             ]
         ],
+        "timestamp": "2026-03-03T11:21:18.820980035",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-02T22:04:50.793278268"
+        }
     }
 }

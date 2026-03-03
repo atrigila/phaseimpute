@@ -1,9 +1,9 @@
 {
     "Check test_sim": {
         "content": [
-            [
-                35,
-                {
+            {
+                "workflow size": 35,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -41,7 +41,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "multiqc",
                     "multiqc/multiqc_data",
                     "multiqc/multiqc_data/llms-full.txt",
@@ -117,7 +117,7 @@
                     "simulation/samples/NA20359.depth_1x.bam",
                     "simulation/samples/NA20359.depth_1x.bam.csi"
                 ],
-                [
+                "stable path": [
                     "multiqc_citations.txt:md5,ee1baba4adea57b43a9ae59ce7e1dd7f",
                     "multiqc_general_stats.txt:md5,1e64ff0511d612e5be9c79b1f9118bcf",
                     "multiqc_samtools_coverage.txt:md5,f9ccbacabb9dd66667a3b53c6da46339",
@@ -129,7 +129,7 @@
                     "samtools-coverage_Mean_depth.txt:md5,ca2ee0346807443e9008fb84a2d7697e",
                     "samtools-coverage_Reads.txt:md5,428b91fe12113a3fafa1c7a91bd353e9"
                 ],
-                [
+                "BAM files": [
                     [
                         "NA12878.depth_1x.bam",
                         "272e610bed32eeaa815658ca49f7ad35"
@@ -143,10 +143,10 @@
                         "60213ec054efd437f1652031d1c4b139"
                     ]
                 ],
-                [
+                "VCF files": [
                     
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "simulate.csv",
                         "rows": [
@@ -157,9 +157,9 @@
                         ]
                     }
                 ]
-            ]
+            }
         ],
-        "timestamp": "2026-03-03T09:45:28.591769149",
+        "timestamp": "2026-03-03T12:24:59.97216643",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

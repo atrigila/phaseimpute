@@ -1,7 +1,6 @@
 {
     "Split one sample vcf file": {
         "content": [
-            null,
             [
                 [
                     {
@@ -10,20 +9,16 @@
                     "NA12878.vcf.gz",
                     "NA12878.vcf.gz.tbi"
                 ]
-            ],
-            [
-                
             ]
         ],
+        "timestamp": "2026-03-03T11:27:51.743038935",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-02T22:08:19.405459128"
+        }
     },
     "Split multiple vcf file - with renaming": {
         "content": [
-            null,
             [
                 [
                     {
@@ -51,15 +46,12 @@
                 "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=1739, phased=true, phasedAutodetect=true]",
                 "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=1739, phased=true, phasedAutodetect=true]",
                 "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=1739, phased=true, phasedAutodetect=true]"
-            ],
-            [
-                
             ]
         ],
+        "timestamp": "2026-03-03T11:27:40.431376455",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-02T22:08:11.437177241"
+        }
     }
 }

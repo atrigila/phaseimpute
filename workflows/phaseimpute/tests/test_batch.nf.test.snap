@@ -1,9 +1,9 @@
 {
     "Check test_batch": {
         "content": [
-            [
-                123,
-                {
+            {
+                "workflow size": 123,
+                "versions": {
                     "ADDCOLUMNS": {
                         "gawk": "5.3.0"
                     },
@@ -90,7 +90,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -257,7 +257,7 @@
                     "validation/stats/NA20359_P1000GP_Tglimpse2_SNP.txt",
                     "validation/stats/NA20359_P1000GP_Tquilt_SNP.txt"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,3c45ad855aa40de6e979b7c4bb697a83",
                     "all_samples.batch0.idonly.txt:md5,a9a5ab03ba2329ce141c76bb5bb25cda",
                     "all_samples.batch0.noid.txt:md5,603fcb6ef7c13985ecc2094ce1c6a29c",
@@ -301,10 +301,10 @@
                     "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,da7ce6c0f54c442fda1ff612cf5c5d09",
                     "NA20359_P1000GP_Tquilt_SNP.txt:md5,7d0ef6423bf4ea9346765db912779dcc"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.glimpse2.vcf.gz",
                         "c6a8b917e04ed1a4457e06beeb0e399f"
@@ -358,7 +358,7 @@
                         "3834cc13ce04bb53696883b7f6de7b42"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -372,7 +372,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.glimpse2": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=1739, phased=true]",
@@ -388,7 +388,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:21:12.090566318",
+        "timestamp": "2026-03-03T12:02:33.942758922",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

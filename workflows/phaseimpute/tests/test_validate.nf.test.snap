@@ -1,9 +1,9 @@
 {
     "Check test_validate": {
         "content": [
-            [
-                38,
-                {
+            {
+                "workflow size": 38,
+                "versions": {
                     "ADDCOLUMNS": {
                         "gawk": "5.3.0"
                     },
@@ -50,7 +50,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "multiqc",
                     "multiqc/multiqc_data",
                     "multiqc/multiqc_data/bcftools-stats-subtypes.txt",
@@ -171,7 +171,7 @@
                     "validation/stats/NA20359.truth.bcftools_stats.txt",
                     "validation/stats/NA20359_SNP.txt"
                 ],
-                [
+                "stable path": [
                     "bcftools-stats-subtypes.txt:md5,3e44e7e7b563c851f28837f25baf90b9",
                     "bcftools_stats_indel-lengths.txt:md5,86e12861d56c7563080cf9927e703eb6",
                     "bcftools_stats_variant_depths.txt:md5,3b866c21f480ca072ffaa5f03d55d7c6",
@@ -200,10 +200,10 @@
                     "NA20359.truth.bcftools_stats.txt:md5,d38bf9d569b4ebaaf0ec263791a29b39",
                     "NA20359_SNP.txt:md5,6a701caafb156d43f62c4dcea58ffcc4"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "NA12878.truth.vcf.gz",
                         "1c6e1633095b15b785a9a447b189b3dd"
@@ -217,12 +217,12 @@
                         "3834cc13ce04bb53696883b7f6de7b42"
                     ]
                 ],
-                [
+                "CSV files": [
                     
                 ]
-            ]
+            }
         ],
-        "timestamp": "2026-03-03T09:49:12.397369652",
+        "timestamp": "2026-03-03T12:28:34.99598863",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

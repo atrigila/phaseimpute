@@ -1,9 +1,9 @@
 {
     "Check test_dog": {
         "content": [
-            [
-                86,
-                {
+            {
+                "workflow size": 86,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -93,7 +93,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -211,7 +211,7 @@
                     "prep_panel/sites/658Dog_chr22_glimpse1_sites.vcf.gz",
                     "prep_panel/sites/658Dog_chr22_glimpse1_sites.vcf.gz.tbi"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,2181a5165013a23885b1b8c986765963",
                     "all_samples.batch0.idonly.txt:md5,b8903a12c45a3a7d10a69ee27f502c87",
                     "all_samples.batch0.noid.txt:md5,3efb890bd71c27e79d736153c6870953",
@@ -241,10 +241,10 @@
                     "658Dog.chr21.posfile.txt.gz:md5,3c619e8c80d87e36096a77d048fb9077",
                     "658Dog.chr22.posfile.txt.gz:md5,845632cc4a33f76ab05225cb23930d85"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
                         "7740e8162ec6e258f2fed47b4105f4b8"
@@ -286,7 +286,7 @@
                         "1a884f2ef710ee27a3fa647388c27d45"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -321,7 +321,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.glimpse1": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=2245, phased=false]",
@@ -343,7 +343,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:28:08.755842402",
+        "timestamp": "2026-03-03T12:07:04.400807015",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

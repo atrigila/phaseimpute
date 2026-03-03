@@ -1,9 +1,9 @@
 {
     "Check test_quilt - without chunks": {
         "content": [
-            [
-                23,
-                {
+            {
+                "workflow size": 23,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -48,7 +48,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -120,7 +120,7 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
@@ -137,10 +137,10 @@
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
                     "multiqc_general_stats.txt:md5,ca0be109c548005ec711fd5b7fcb1655"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.quilt.vcf.gz",
                         "4f838ebfc7e3ba5260e1c405d68b8eec"
@@ -158,7 +158,7 @@
                         "6f58cf2fc59933dd6aae3eaf9fb22a34"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -169,7 +169,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.batch0.quilt": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
@@ -181,7 +181,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:44:40.890547636",
+        "timestamp": "2026-03-03T12:24:11.254267307",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -189,9 +189,9 @@
     },
     "Check test_quilt - with chunks": {
         "content": [
-            [
-                25,
-                {
+            {
+                "workflow size": 25,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -236,7 +236,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -308,7 +308,7 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
@@ -325,10 +325,10 @@
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
                     "multiqc_general_stats.txt:md5,ca0be109c548005ec711fd5b7fcb1655"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.quilt.vcf.gz",
                         "1a0d4125290fd1783048211b5657cf27"
@@ -346,7 +346,7 @@
                         "b9a0759000a772e621bc0395a4c3df57"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -357,7 +357,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.batch0.quilt": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
@@ -369,7 +369,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:42:06.367767737",
+        "timestamp": "2026-03-03T12:21:36.063264887",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -377,9 +377,9 @@
     },
     "Check test_quilt - with chunks - no map": {
         "content": [
-            [
-                25,
-                {
+            {
+                "workflow size": 25,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -424,7 +424,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -496,7 +496,7 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
@@ -513,10 +513,10 @@
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
                     "multiqc_general_stats.txt:md5,ca0be109c548005ec711fd5b7fcb1655"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.quilt.vcf.gz",
                         "1a0d4125290fd1783048211b5657cf27"
@@ -534,7 +534,7 @@
                         "b9a0759000a772e621bc0395a4c3df57"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -545,7 +545,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.batch0.quilt": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=true]",
@@ -557,7 +557,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:43:23.440226468",
+        "timestamp": "2026-03-03T12:22:53.533539493",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

@@ -56,7 +56,6 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.versions,
                     workflow.out.vcf_index.collect{[
                         it[0],
                         path(it[1]).getFileName().toString(),
@@ -64,8 +63,7 @@ nextflow_workflow {
                     ] },
                     workflow.out.vcf_index.collect{
                         path(it[1]).vcf.summary
-                    },
-                    workflow.out.versions.collect{ path(it).yaml }
+                    }
                 ).match() }
             )
         }
@@ -99,7 +97,6 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.versions,
                     workflow.out.vcf_index.collect{[
                         it[0],
                         path(it[1]).getFileName().toString(),
@@ -107,8 +104,7 @@ nextflow_workflow {
                     ] },
                     workflow.out.vcf_index.collect{
                         path(it[1]).vcf.summary
-                    },
-                    workflow.out.versions.collect{ path(it).yaml }
+                    }
                 ).match() }
             )
         }

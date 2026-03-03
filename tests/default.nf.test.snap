@@ -1,9 +1,9 @@
 {
     "-profile test": {
         "content": [
-            [
-                36,
-                {
+            {
+                "workflow size": 36,
+                "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
                     },
@@ -53,7 +53,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -129,7 +129,7 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
@@ -147,28 +147,28 @@
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
                     "multiqc_general_stats.txt:md5,835d8d185aa5146f9c88e1cc27706094"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "13e4f157d3e91a61fbb25ec99b6abb9e"
+                        "ca1eb2ed1e0a1208c3e28bd45ea538ed"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "6cd405ebc8785acdcd9c880904c7f865"
+                        "b97143f1d479742d29d4dd8c7c650a5f"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "227451ca7dae4c5b68a36ac30199199c"
+                        "ecb6e4abf76a19597f5376d90e5b665f"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "64d9f4b33c3eb05e141891c2a0817481"
+                        "c105814280a82af5cdac29040754ae3b"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -179,7 +179,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.glimpse1": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=false]",
@@ -191,7 +191,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T11:08:27.113710301",
+        "timestamp": "2026-03-03T11:35:17.141328961",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
