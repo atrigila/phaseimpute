@@ -46,7 +46,7 @@ workflow BAM_GL_BCFTOOLS {
     // Merge VCFs all individuals
     BCFTOOLS_MERGE(
         ch_all_vcf.more.map{it -> [it[0], it[1], it[2], []] },
-        ch_fasta.map{meta, fasta, fai -> [meta, fasta, fai, []]}
+        ch_fasta
     )
 
     // Mix all vcfs
