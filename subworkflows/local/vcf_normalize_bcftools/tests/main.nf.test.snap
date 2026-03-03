@@ -2,9 +2,6 @@
     "Normalize vcf with computing frequencies after removing samples": {
         "content": [
             [
-                "versions.yml:md5,e49001985e5cda966c98d9bd4b2aabba"
-            ],
-            [
                 [
                     {
                         "id": "1000GP",
@@ -27,26 +24,16 @@
                     "VcfFile [chromosomes=[chr22], sampleCount=3190, variantCount=903, phased=true, phasedAutodetect=true]",
                     3190
                 ]
-            ],
-            [
-                {
-                    "VCF_NORMALIZE_BCFTOOLS:VCFLIB_VCFFIXUP": {
-                        "vcflib": "1.0.14"
-                    }
-                }
             ]
         ],
+        "timestamp": "2026-03-03T09:15:18.429164508",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-02T22:06:59.016922716"
+        }
     },
     "Normalize vcf without computing frequencies nor removing samples": {
         "content": [
-            [
-                
-            ],
             [
                 [
                     {
@@ -70,15 +57,12 @@
                     "VcfFile [chromosomes=[chr22], sampleCount=3196, variantCount=903, phased=true, phasedAutodetect=true]",
                     3196
                 ]
-            ],
-            [
-                
             ]
         ],
+        "timestamp": "2026-03-03T09:14:55.305746317",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.4",
             "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-02T22:05:46.272921036"
+        }
     }
 }
