@@ -74,10 +74,7 @@
     "Test validateInputBatchTools vcf only for glimpse": {
         "content": [
             [
-                "Stitch or Quilt software cannot run with VCF or BCF files. Please provide alignment files (i.e. BAM or CRAM).",
-                "WARN: Failed to render CO2e footprint report -- see the log file for details",
-                "WARN: Failed to render execution report -- see the log file for details",
-                "WARN: Failed to render execution timeline -- see the log file for details"
+                "Stitch or Quilt software cannot run with VCF or BCF files. Please provide alignment files (i.e. BAM or CRAM)."
             ]
         ],
         "meta": {

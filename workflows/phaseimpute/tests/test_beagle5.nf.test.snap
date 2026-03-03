@@ -5,16 +5,25 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BEAGLE5_BEAGLE": {
-                        "beagle": "5.5rev27Feb25.75f"
+                        "beagle": 5.5
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
@@ -23,10 +32,10 @@
                         "glimpse2": "2.0.0"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -105,9 +114,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.beagle5.bcftools_stats.txt:md5,6fa8e266447c0ff1c22d6f8ae36bf9bb",
-                    "NA19401.beagle5.bcftools_stats.txt:md5,053686e1dbe0a25cad0efed5cf2ad04a",
-                    "NA20359.beagle5.bcftools_stats.txt:md5,9ffd9717a055f8f6fe1c0092da3ebf30",
+                    "NA12878.beagle5.bcftools_stats.txt:md5,c566e085ea568923629dc3c2b32cfb22",
+                    "NA19401.beagle5.bcftools_stats.txt:md5,04aae4a7745dbd48d7302134b916b018",
+                    "NA20359.beagle5.bcftools_stats.txt:md5,469cbccc6108243b88729eacd7d8d9af",
                     "bcftools-stats-subtypes.txt:md5,82c393ee7646f820b76e6bf60e5824c4",
                     "bcftools_stats_indel-lengths.txt:md5,94d4acd5ae34c2890e554f8c19bf57a6",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,df541ae8fffdb02f3a568b692185350b",
@@ -168,11 +177,11 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:26:40.191916494",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-11T11:39:52.583478478"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Check test_beagle5 - with chunks - no map": {
         "content": [
@@ -180,16 +189,25 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BEAGLE5_BEAGLE": {
-                        "beagle": "5.5rev27Feb25.75f"
+                        "beagle": 5.5
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
@@ -198,10 +216,10 @@
                         "glimpse2": "2.0.0"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -280,9 +298,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.beagle5.bcftools_stats.txt:md5,6fa8e266447c0ff1c22d6f8ae36bf9bb",
-                    "NA19401.beagle5.bcftools_stats.txt:md5,053686e1dbe0a25cad0efed5cf2ad04a",
-                    "NA20359.beagle5.bcftools_stats.txt:md5,9ffd9717a055f8f6fe1c0092da3ebf30",
+                    "NA12878.beagle5.bcftools_stats.txt:md5,c566e085ea568923629dc3c2b32cfb22",
+                    "NA19401.beagle5.bcftools_stats.txt:md5,04aae4a7745dbd48d7302134b916b018",
+                    "NA20359.beagle5.bcftools_stats.txt:md5,469cbccc6108243b88729eacd7d8d9af",
                     "bcftools-stats-subtypes.txt:md5,82c393ee7646f820b76e6bf60e5824c4",
                     "bcftools_stats_indel-lengths.txt:md5,94d4acd5ae34c2890e554f8c19bf57a6",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,df541ae8fffdb02f3a568b692185350b",
@@ -343,11 +361,11 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:25:39.319931014",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-11T11:38:20.964067574"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Check test_beagle5 - with chunks": {
         "content": [
@@ -355,16 +373,25 @@
                 46,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BEAGLE5_BEAGLE": {
-                        "beagle": "5.5rev27Feb25.75f"
+                        "beagle": 5.5
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
@@ -373,10 +400,10 @@
                         "glimpse2": "2.0.0"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -455,9 +482,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.beagle5.bcftools_stats.txt:md5,6fa8e266447c0ff1c22d6f8ae36bf9bb",
-                    "NA19401.beagle5.bcftools_stats.txt:md5,053686e1dbe0a25cad0efed5cf2ad04a",
-                    "NA20359.beagle5.bcftools_stats.txt:md5,9ffd9717a055f8f6fe1c0092da3ebf30",
+                    "NA12878.beagle5.bcftools_stats.txt:md5,c566e085ea568923629dc3c2b32cfb22",
+                    "NA19401.beagle5.bcftools_stats.txt:md5,04aae4a7745dbd48d7302134b916b018",
+                    "NA20359.beagle5.bcftools_stats.txt:md5,469cbccc6108243b88729eacd7d8d9af",
                     "bcftools-stats-subtypes.txt:md5,82c393ee7646f820b76e6bf60e5824c4",
                     "bcftools_stats_indel-lengths.txt:md5,94d4acd5ae34c2890e554f8c19bf57a6",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,df541ae8fffdb02f3a568b692185350b",
@@ -518,10 +545,10 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:24:36.873975005",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-11T11:36:49.162503836"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

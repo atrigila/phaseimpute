@@ -5,16 +5,22 @@
                 36,
                 {
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_NORM": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK": {
                         "gawk": "5.3.0"
@@ -26,7 +32,7 @@
                         "glimpse": "1.1.1"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SHAPEIT5_LIGATE": {
                         "shapeit5": "5.1.1"
@@ -36,6 +42,9 @@
                     },
                     "TABIX_BGZIP": {
                         "tabix": 1.21
+                    },
+                    "VCFCHREXTRACT": {
+                        "bcftools": 1.22
                     },
                     "VCFLIB_VCFFIXUP": {
                         "vcflib": "1.0.14"
@@ -154,7 +163,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-02-19T22:23:01.740011576",
+        "timestamp": "2026-03-03T09:39:57.327029869",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -166,22 +175,28 @@
                 32,
                 {
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_NORM": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK": {
                         "gawk": "5.3.0"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SHAPEIT5_LIGATE": {
                         "shapeit5": "5.1.1"
@@ -191,6 +206,9 @@
                     },
                     "TABIX_BGZIP": {
                         "tabix": 1.21
+                    },
+                    "VCFCHREXTRACT": {
+                        "bcftools": 1.22
                     },
                     "VCFLIB_VCFFIXUP": {
                         "vcflib": "1.0.14"
@@ -289,7 +307,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-02-19T22:43:21.957598735",
+        "timestamp": "2026-03-03T09:40:48.411252658",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

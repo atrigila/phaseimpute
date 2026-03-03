@@ -5,16 +5,28 @@
                 60,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
+                    },
+                    "GLIMPSE2_LIGATE": {
+                        "glimpse2": "2.0.0"
                     },
                     "MINIMAC4_COMPRESSREF": {
                         "minimac4": "4.1.6"
@@ -23,10 +35,10 @@
                         "minimac4": "4.1.6"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -105,9 +117,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.minimac4.bcftools_stats.txt:md5,512207546154b2d025f7548d8af5ed44",
-                    "NA19401.minimac4.bcftools_stats.txt:md5,94a21347545f8c638203682c207f38b8",
-                    "NA20359.minimac4.bcftools_stats.txt:md5,2d76824534c1c590cab1fcd0d122fda6",
+                    "NA12878.minimac4.bcftools_stats.txt:md5,36118c4128a03608a9aa39fab426fcfe",
+                    "NA19401.minimac4.bcftools_stats.txt:md5,dd7ded8ca642151ca96a281b7410bffb",
+                    "NA20359.minimac4.bcftools_stats.txt:md5,aadca3e840500a903413e9c14e6fedd0",
                     "bcftools-stats-subtypes.txt:md5,a6ea6fbba2fab0d9899174bee8f9c68f",
                     "bcftools_stats_indel-lengths.txt:md5,fb768eb77d336d51ee409cf5fbdcdb3b",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,32c5907548ebc4be9a4e581cab80a997",
@@ -168,11 +180,11 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:37:50.673007155",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-12T16:57:42.865095507"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Check test_minimac4 - with chunks": {
         "content": [
@@ -180,16 +192,28 @@
                 60,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
+                    },
+                    "GLIMPSE2_LIGATE": {
+                        "glimpse2": "2.0.0"
                     },
                     "MINIMAC4_COMPRESSREF": {
                         "minimac4": "4.1.6"
@@ -198,10 +222,10 @@
                         "minimac4": "4.1.6"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -280,9 +304,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.minimac4.bcftools_stats.txt:md5,512207546154b2d025f7548d8af5ed44",
-                    "NA19401.minimac4.bcftools_stats.txt:md5,94a21347545f8c638203682c207f38b8",
-                    "NA20359.minimac4.bcftools_stats.txt:md5,2d76824534c1c590cab1fcd0d122fda6",
+                    "NA12878.minimac4.bcftools_stats.txt:md5,36118c4128a03608a9aa39fab426fcfe",
+                    "NA19401.minimac4.bcftools_stats.txt:md5,dd7ded8ca642151ca96a281b7410bffb",
+                    "NA20359.minimac4.bcftools_stats.txt:md5,aadca3e840500a903413e9c14e6fedd0",
                     "bcftools-stats-subtypes.txt:md5,a6ea6fbba2fab0d9899174bee8f9c68f",
                     "bcftools_stats_indel-lengths.txt:md5,fb768eb77d336d51ee409cf5fbdcdb3b",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,32c5907548ebc4be9a4e581cab80a997",
@@ -343,11 +367,11 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:36:51.805223589",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-12T16:56:20.53461515"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Check test_minimac4 - without chunks": {
         "content": [
@@ -355,16 +379,28 @@
                 60,
                 {
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_LIGATE": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX_PHASE": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK_IMPUTED": {
                         "gawk": "5.3.0"
+                    },
+                    "GLIMPSE2_LIGATE": {
+                        "glimpse2": "2.0.0"
                     },
                     "MINIMAC4_COMPRESSREF": {
                         "minimac4": "4.1.6"
@@ -373,10 +409,10 @@
                         "minimac4": "4.1.6"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -455,9 +491,9 @@
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml"
                 ],
                 [
-                    "NA12878.minimac4.bcftools_stats.txt:md5,512207546154b2d025f7548d8af5ed44",
-                    "NA19401.minimac4.bcftools_stats.txt:md5,94a21347545f8c638203682c207f38b8",
-                    "NA20359.minimac4.bcftools_stats.txt:md5,2d76824534c1c590cab1fcd0d122fda6",
+                    "NA12878.minimac4.bcftools_stats.txt:md5,36118c4128a03608a9aa39fab426fcfe",
+                    "NA19401.minimac4.bcftools_stats.txt:md5,dd7ded8ca642151ca96a281b7410bffb",
+                    "NA20359.minimac4.bcftools_stats.txt:md5,aadca3e840500a903413e9c14e6fedd0",
                     "bcftools-stats-subtypes.txt:md5,a6ea6fbba2fab0d9899174bee8f9c68f",
                     "bcftools_stats_indel-lengths.txt:md5,fb768eb77d336d51ee409cf5fbdcdb3b",
                     "bcftools_stats_vqc_Count_Indels.txt:md5,32c5907548ebc4be9a4e581cab80a997",
@@ -518,10 +554,10 @@
                 }
             }
         ],
+        "timestamp": "2026-03-03T09:39:06.882612042",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-12T16:59:17.866815903"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

@@ -5,7 +5,7 @@
                 35,
                 {
                     "BAMCHREXTRACT": {
-                        "samtools": 1.2
+                        "samtools": "1.22.1"
                     },
                     "FILTER_CHR_DWN": {
                         "gawk": "5.3.0"
@@ -17,22 +17,22 @@
                         "gawk": "5.3.0"
                     },
                     "SAMTOOLS_COVERAGE_DWN": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_COVERAGE_INP": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_DEPTH": {
                         "samtools": "1.22.1"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_INDEX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_MERGE": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_VIEW": {
                         "samtools": "1.22.1"
@@ -159,10 +159,10 @@
                 ]
             ]
         ],
+        "timestamp": "2026-03-03T09:45:28.591769149",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-11T10:48:52.548359016"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

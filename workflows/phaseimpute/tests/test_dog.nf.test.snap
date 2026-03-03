@@ -5,34 +5,40 @@
                 86,
                 {
                     "BAMCHREXTRACT": {
-                        "samtools": 1.2
+                        "samtools": "1.22.1"
                     },
                     "BCFTOOLS_ANNOTATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_LIGATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_PHASE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MPILEUP": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BGZIP_POSFILE_QUILT": {
                         "tabix": 1.21
@@ -64,6 +70,9 @@
                     "GLIMPSE_PHASE": {
                         "glimpse": "1.1.1"
                     },
+                    "LISTTOFILE": {
+                        "gawk": "5.3.0"
+                    },
                     "QUILT_QUILT": {
                         "r-base": "4.3.1",
                         "r-quilt": "1.0.5"
@@ -76,6 +85,9 @@
                     },
                     "TABIX_BGZIP": {
                         "tabix": 1.21
+                    },
+                    "VCFCHREXTRACT": {
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -203,9 +215,9 @@
                     "all_samples.batch0.id.txt:md5,2181a5165013a23885b1b8c986765963",
                     "all_samples.batch0.idonly.txt:md5,b8903a12c45a3a7d10a69ee27f502c87",
                     "all_samples.batch0.noid.txt:md5,3efb890bd71c27e79d736153c6870953",
-                    "dog_1735.glimpse1.bcftools_stats.txt:md5,73c664e61ea7a8fee4880d7219bedc27",
-                    "dog_1735.glimpse2.bcftools_stats.txt:md5,1265ba28e72199ec3d0079bf65e30ded",
-                    "dog_1735.quilt.bcftools_stats.txt:md5,fc32717325fb393083e7fbf83f9f7ad0",
+                    "dog_1735.glimpse1.bcftools_stats.txt:md5,d8e81c6461489ab484959a2db84f249c",
+                    "dog_1735.glimpse2.bcftools_stats.txt:md5,3dcefcccb3a8e51608356c02cb9190b0",
+                    "dog_1735.quilt.bcftools_stats.txt:md5,4aa056976d4b87fbc7f458d4ce5c39b3",
                     "bcftools-stats-subtypes.txt:md5,9397a3e17ce0d48f612401c6b5af1c07",
                     "bcftools_stats_indel-lengths.txt:md5,d8317eb4309527c63e41fdd735edb4f3",
                     "bcftools_stats_variant_depths.txt:md5,146d5444723388afdcda0f0798a37f0a",
@@ -331,7 +343,7 @@
                 }
             }
         ],
-        "timestamp": "2026-02-20T14:30:08.449795797",
+        "timestamp": "2026-03-03T09:28:08.755842402",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

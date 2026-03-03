@@ -8,16 +8,19 @@
                         "gawk": "5.3.0"
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_TRUTH": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_PANEL": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TRUTH": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "GAWK": {
                         "gawk": "5.3.0"
@@ -38,10 +41,10 @@
                         "gunzip": 1.13
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "VCFCHREXTRACT": {
-                        "bcftools": 1.2
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
@@ -188,13 +191,13 @@
                     "multiqc_general_stats.txt:md5,07f5ebe79055238bfcdd6fe2dae5e213",
                     "multiqc_glimpse_err_grp.txt:md5,91738f447116e750a356c3d74b47ff42",
                     "multiqc_glimpse_err_spl.txt:md5,dcef407887aa18cc564883fa46a7da19",
-                    "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
+                    "1000GP.panel.bcftools_stats.txt:md5,ca5eb47541961f3b757c83b77a307a5f",
                     "AllSamples.txt:md5,8e84c088b83ca17b6d72443f25fff35a",
-                    "NA12878.truth.bcftools_stats.txt:md5,17fedf85670e3e67dc38ea4ed65721af",
+                    "NA12878.truth.bcftools_stats.txt:md5,edf521ce34766a8f9063fd88297bb869",
                     "NA12878_SNP.txt:md5,88996cab2016d66d2275a4a863515286",
-                    "NA19401.truth.bcftools_stats.txt:md5,7e034bced77e4e726d97a8bc3a2ce6c5",
+                    "NA19401.truth.bcftools_stats.txt:md5,57e1ae30a08fd25cfca3bce9dcf68b95",
                     "NA19401_SNP.txt:md5,518ba241a4f9ac3aeee06754e64063ee",
-                    "NA20359.truth.bcftools_stats.txt:md5,348dce308e0fdaab25b86435bb1dd56d",
+                    "NA20359.truth.bcftools_stats.txt:md5,d38bf9d569b4ebaaf0ec263791a29b39",
                     "NA20359_SNP.txt:md5,6a701caafb156d43f62c4dcea58ffcc4"
                 ],
                 [
@@ -219,10 +222,10 @@
                 ]
             ]
         ],
+        "timestamp": "2026-03-03T09:49:12.397369652",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-11T11:42:01.264936606"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }
