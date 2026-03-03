@@ -51,9 +51,8 @@
                     },
                     "bcftools/pluginsplit": {
                         "branch": "master",
-                        "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/bcftools/pluginsplit/bcftools-pluginsplit.diff"
+                        "git_sha": "440edf75d8782913115a7b72a88392a227f72cc1",
+                        "installed_by": ["modules"]
                     },
                     "bcftools/query": {
                         "branch": "master",
@@ -154,7 +153,7 @@
                     },
                     "samtools/coverage": {
                         "branch": "master",
-                        "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
+                        "git_sha": "440edf75d8782913115a7b72a88392a227f72cc1",
                         "installed_by": ["modules"]
                     },
                     "samtools/depth": {
@@ -174,12 +173,12 @@
                     },
                     "samtools/merge": {
                         "branch": "master",
-                        "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
+                        "git_sha": "440edf75d8782913115a7b72a88392a227f72cc1",
                         "installed_by": ["modules"]
                     },
                     "samtools/reheader": {
                         "branch": "master",
-                        "git_sha": "a48818de259aa642c8eb55231f15043dd185e7cb",
+                        "git_sha": "440edf75d8782913115a7b72a88392a227f72cc1",
                         "installed_by": ["modules"],
                         "patch": "modules/nf-core/samtools/reheader/samtools-reheader.diff"
                     },
