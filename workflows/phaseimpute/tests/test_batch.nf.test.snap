@@ -1,35 +1,44 @@
 {
     "Check test_batch": {
         "content": [
-            [
-                123,
-                {
+            {
+                "workflow size": 123,
+                "versions": {
                     "ADDCOLUMNS": {
                         "gawk": "5.3.0"
                     },
                     "BAMCHREXTRACT": {
-                        "samtools": 1.2
+                        "samtools": "1.22.1"
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_INDEX": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_LIGATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_PHASE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_TRUTH": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_PANEL": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TRUTH": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BGZIP_POSFILE_QUILT": {
                         "tabix": 1.21
@@ -64,18 +73,24 @@
                     "GUNZIP": {
                         "gunzip": 1.13
                     },
+                    "LISTTOFILE": {
+                        "gawk": "5.3.0"
+                    },
                     "QUILT_QUILT": {
                         "r-base": "4.3.1",
                         "r-quilt": "1.0.5"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
+                    },
+                    "VCFCHREXTRACT": {
+                        "bcftools": 1.22
                     },
                     "Workflow": {
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -242,19 +257,19 @@
                     "validation/stats/NA20359_P1000GP_Tglimpse2_SNP.txt",
                     "validation/stats/NA20359_P1000GP_Tquilt_SNP.txt"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,3c45ad855aa40de6e979b7c4bb697a83",
                     "all_samples.batch0.idonly.txt:md5,a9a5ab03ba2329ce141c76bb5bb25cda",
                     "all_samples.batch0.noid.txt:md5,603fcb6ef7c13985ecc2094ce1c6a29c",
                     "all_samples.batch1.id.txt:md5,41d3f29a40566b10760e53b4112b9cb9",
                     "all_samples.batch1.idonly.txt:md5,5732a4ed24904236f034a6e13be24cff",
                     "all_samples.batch1.noid.txt:md5,cc74a26d0a0449bdb003ce20644996b7",
-                    "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
-                    "NA12878.quilt.bcftools_stats.txt:md5,3e76a1f94b1f329a394a666a280053d7",
-                    "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
-                    "NA19401.quilt.bcftools_stats.txt:md5,61270a3361f5bef26923a8d0efaf5190",
-                    "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
-                    "NA20359.quilt.bcftools_stats.txt:md5,28871f0ce4a6e8a707817ade3848a2b2",
+                    "NA12878.glimpse2.bcftools_stats.txt:md5,4551f4274b0c2e04d6c8f41454dc9b88",
+                    "NA12878.quilt.bcftools_stats.txt:md5,06be906390f87548cff77877dff5c981",
+                    "NA19401.glimpse2.bcftools_stats.txt:md5,cca5d4895da3203386fa9ee061044d12",
+                    "NA19401.quilt.bcftools_stats.txt:md5,eaf59f02e81aeaafdc1953e92687d5d0",
+                    "NA20359.glimpse2.bcftools_stats.txt:md5,fa7efcf9b006db08bd66e61f54d04f4a",
+                    "NA20359.quilt.bcftools_stats.txt:md5,24972d94b67f8d0bcfe88fa052c1f279",
                     "bcftools-stats-subtypes.txt:md5,325c6b7429ecf340b8bda9c8d2a6d79f",
                     "bcftools_stats_indel-lengths.txt:md5,f858f78b2375ce895506467ed372a46d",
                     "bcftools_stats_variant_depths.txt:md5,3b866c21f480ca072ffaa5f03d55d7c6",
@@ -274,22 +289,22 @@
                     "multiqc_general_stats.txt:md5,55ffda22b30bf13174fc8c81047d6ed7",
                     "multiqc_glimpse_err_grp.txt:md5,7303ceb7e80ab2b188f2dd355b6a1498",
                     "multiqc_glimpse_err_spl.txt:md5,b59190a0f0295ec4da4a6527980c874d",
-                    "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
+                    "1000GP.panel.bcftools_stats.txt:md5,ca5eb47541961f3b757c83b77a307a5f",
                     "AllSamples.txt:md5,5bbc52fa94514bc7fca3cc345a7db6c0",
-                    "NA12878.truth.bcftools_stats.txt:md5,17fedf85670e3e67dc38ea4ed65721af",
+                    "NA12878.truth.bcftools_stats.txt:md5,edf521ce34766a8f9063fd88297bb869",
                     "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,8b1e30077b2d79f678ba18a54614cd95",
                     "NA12878_P1000GP_Tquilt_SNP.txt:md5,e0001f03ebd16bff3ce24fe82ae54656",
-                    "NA19401.truth.bcftools_stats.txt:md5,7e034bced77e4e726d97a8bc3a2ce6c5",
+                    "NA19401.truth.bcftools_stats.txt:md5,57e1ae30a08fd25cfca3bce9dcf68b95",
                     "NA19401_P1000GP_Tglimpse2_SNP.txt:md5,bb657ce7e1378e6e30e2e01e7af347f2",
                     "NA19401_P1000GP_Tquilt_SNP.txt:md5,07f89127662623c61ea126b9d8c9abb6",
-                    "NA20359.truth.bcftools_stats.txt:md5,348dce308e0fdaab25b86435bb1dd56d",
+                    "NA20359.truth.bcftools_stats.txt:md5,d38bf9d569b4ebaaf0ec263791a29b39",
                     "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,da7ce6c0f54c442fda1ff612cf5c5d09",
                     "NA20359_P1000GP_Tquilt_SNP.txt:md5,7d0ef6423bf4ea9346765db912779dcc"
                 ],
-                [
+                "BAM files": [
                     
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.glimpse2.vcf.gz",
                         "c6a8b917e04ed1a4457e06beeb0e399f"
@@ -343,7 +358,7 @@
                         "3834cc13ce04bb53696883b7f6de7b42"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -357,7 +372,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.glimpse2": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=1, variantCount=1739, phased=true]",
@@ -373,7 +388,7 @@
                 }
             }
         ],
-        "timestamp": "2026-02-20T14:37:06.761099509",
+        "timestamp": "2026-03-03T12:02:33.942758922",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

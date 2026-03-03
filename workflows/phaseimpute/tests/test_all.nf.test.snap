@@ -1,62 +1,62 @@
 {
     "Check test_all": {
         "content": [
-            [
-                242,
-                {
+            {
+                "workflow size": 242,
+                "versions": {
                     "ADDCOLUMNS": {
                         "gawk": "5.3.0"
                     },
                     "BAMCHREXTRACT": {
-                        "samtools": 1.2
+                        "samtools": "1.22.1"
                     },
                     "BCFTOOLS_ANNOTATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_CONCAT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_CONVERT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX": {
-                        "bcftools": 1.21
-                    },
-                    "BCFTOOLS_INDEX_1": {
-                        "bcftools": 1.21
-                    },
-                    "BCFTOOLS_INDEX_2": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_LIGATE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_INDEX_PHASE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MERGE": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_MPILEUP": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_NORM": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_PLUGINSPLIT": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_IMPUTED": {
+                        "bcftools": 1.22
+                    },
+                    "BCFTOOLS_QUERY_TRUTH": {
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_PANEL": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TOOLS": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_STATS_TRUTH": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BCFTOOLS_VIEW": {
-                        "bcftools": 1.21
+                        "bcftools": 1.22
                     },
                     "BGZIP_POSFILE_QUILT": {
                         "tabix": 1.21
@@ -115,27 +115,30 @@
                     "GUNZIP": {
                         "gunzip": 1.13
                     },
+                    "LISTTOFILE": {
+                        "gawk": "5.3.0"
+                    },
                     "QUILT_QUILT": {
                         "r-base": "4.3.1",
                         "r-quilt": "1.0.5"
                     },
                     "SAMTOOLS_COVERAGE_DWN": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_COVERAGE_INP": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_DEPTH": {
                         "samtools": "1.22.1"
                     },
                     "SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_INDEX": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_MERGE": {
-                        "samtools": 1.21
+                        "samtools": "1.22.1"
                     },
                     "SAMTOOLS_VIEW": {
                         "samtools": "1.22.1"
@@ -148,10 +151,13 @@
                     },
                     "STITCH": {
                         "r-base": "4.4.2",
-                        "r-stitch": "1.7.3"
+                        "r-quilt": "1.7.3"
                     },
                     "TABIX_BGZIP": {
                         "tabix": 1.21
+                    },
+                    "VCFCHREXTRACT": {
+                        "bcftools": 1.22
                     },
                     "VCFLIB_VCFFIXUP": {
                         "vcflib": "1.0.14"
@@ -160,7 +166,7 @@
                         "nf-core/phaseimpute": "v1.2.0dev"
                     }
                 },
-                [
+                "stable name": [
                     "imputation",
                     "imputation/batch",
                     "imputation/batch/all_samples.batch0.id.txt",
@@ -445,22 +451,22 @@
                     "validation/stats/NA20359_P1000GP_Tquilt_SNP.txt",
                     "validation/stats/NA20359_P1000GP_Tstitch_SNP.txt"
                 ],
-                [
+                "stable path": [
                     "all_samples.batch0.id.txt:md5,a4c01a39309f9522d5b01108e3b75c64",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,276f71c6daa405e34b4b88783aeef913",
-                    "NA12878.glimpse1.bcftools_stats.txt:md5,99540b424213d0f1d19b124b58f2aef3",
-                    "NA12878.glimpse2.bcftools_stats.txt:md5,5ba6b1b27ac5854a2ecf55fc0f8a22f9",
-                    "NA12878.quilt.bcftools_stats.txt:md5,3e76a1f94b1f329a394a666a280053d7",
-                    "NA12878.stitch.bcftools_stats.txt:md5,994f53d38322b1b2f0a305f5cef594b9",
-                    "NA19401.glimpse1.bcftools_stats.txt:md5,7721a67c0a9e8577ce4989d0636351d5",
-                    "NA19401.glimpse2.bcftools_stats.txt:md5,c08797787df151d7879976cbfe278349",
-                    "NA19401.quilt.bcftools_stats.txt:md5,61270a3361f5bef26923a8d0efaf5190",
-                    "NA19401.stitch.bcftools_stats.txt:md5,fbf6ca898c25414895ad5d9a6abc084f",
-                    "NA20359.glimpse1.bcftools_stats.txt:md5,234914fa488b4e770f0d17ac7c116374",
-                    "NA20359.glimpse2.bcftools_stats.txt:md5,9914feff5725ed303909b7e09a9fc9e4",
-                    "NA20359.quilt.bcftools_stats.txt:md5,28871f0ce4a6e8a707817ade3848a2b2",
-                    "NA20359.stitch.bcftools_stats.txt:md5,93266d3d797ce3ee9cf2a4806bbbcf61",
+                    "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
+                    "NA12878.glimpse2.bcftools_stats.txt:md5,4551f4274b0c2e04d6c8f41454dc9b88",
+                    "NA12878.quilt.bcftools_stats.txt:md5,06be906390f87548cff77877dff5c981",
+                    "NA12878.stitch.bcftools_stats.txt:md5,6991969d019398e8704ea4cb269a315b",
+                    "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
+                    "NA19401.glimpse2.bcftools_stats.txt:md5,cca5d4895da3203386fa9ee061044d12",
+                    "NA19401.quilt.bcftools_stats.txt:md5,eaf59f02e81aeaafdc1953e92687d5d0",
+                    "NA19401.stitch.bcftools_stats.txt:md5,2370cce588665aa328b941a0bd1a847e",
+                    "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
+                    "NA20359.glimpse2.bcftools_stats.txt:md5,fa7efcf9b006db08bd66e61f54d04f4a",
+                    "NA20359.quilt.bcftools_stats.txt:md5,24972d94b67f8d0bcfe88fa052c1f279",
+                    "NA20359.stitch.bcftools_stats.txt:md5,752a126486b629de8a34f826ade67086",
                     "bcftools-stats-subtypes.txt:md5,30837458e3113f0dd225e3255f3f60ec",
                     "bcftools_stats_indel-lengths.txt:md5,b21a8620a2c35b139b63670f6d73566a",
                     "bcftools_stats_variant_depths.txt:md5,d70e08029731e6a1b5357e4c40fa62a4",
@@ -500,25 +506,25 @@
                     "1000GP_chr22.samples:md5,d8ca3e8336976001de8df6be7ae236cb",
                     "1000GP.chr21.posfile.txt.gz:md5,33d064c5132000799f3df9ea31967e12",
                     "1000GP.chr22.posfile.txt.gz:md5,f5997df5995dcdbc4ab31e1084b83541",
-                    "1000GP.panel.bcftools_stats.txt:md5,e0d0b672e2cb7531b5e452de05c988be",
+                    "1000GP.panel.bcftools_stats.txt:md5,ca5eb47541961f3b757c83b77a307a5f",
                     "AllSamples.txt:md5,7532ffd859efbbf854efa6110b3c4e4f",
-                    "NA12878.truth.bcftools_stats.txt:md5,bf3771cd532fe7e0519d037f18272057",
+                    "NA12878.truth.bcftools_stats.txt:md5,ceee2009cd4a74d74baf170d32f66952",
                     "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,2528024cd7013dcbb14aa2af665a1064",
                     "NA12878_P1000GP_Tglimpse2_SNP.txt:md5,3c85cfdfe3bcde49ac4e8dd63ffe8fe0",
                     "NA12878_P1000GP_Tquilt_SNP.txt:md5,bd09185888d528a2b32536eb6d804182",
                     "NA12878_P1000GP_Tstitch_SNP.txt:md5,f34c239b4f10654fa8db1a8998abc3fe",
-                    "NA19401.truth.bcftools_stats.txt:md5,633ad472ef97d29cae255b45a500dc20",
+                    "NA19401.truth.bcftools_stats.txt:md5,43291b0c73e060d00cde702b7d0887fb",
                     "NA19401_P1000GP_Tglimpse1_SNP.txt:md5,675b2558732855d74075e273a1403260",
                     "NA19401_P1000GP_Tglimpse2_SNP.txt:md5,f9716583bf003939801d8a6f89547088",
                     "NA19401_P1000GP_Tquilt_SNP.txt:md5,b2457a395c68491e87868b1190c37453",
                     "NA19401_P1000GP_Tstitch_SNP.txt:md5,a471c4da4f5290f97a9d397fe7caba30",
-                    "NA20359.truth.bcftools_stats.txt:md5,76f012e31d566bc73c6bd794e9f82944",
+                    "NA20359.truth.bcftools_stats.txt:md5,df053793f79724f1967ace49f13eafc1",
                     "NA20359_P1000GP_Tglimpse1_SNP.txt:md5,f23379c2009de5aad1258cca9e8a5b1e",
                     "NA20359_P1000GP_Tglimpse2_SNP.txt:md5,84ad7cc8aedc6ceeee899730de8c5315",
                     "NA20359_P1000GP_Tquilt_SNP.txt:md5,e3dee1e6b8b36c2b3feb7d0bf4d9515c",
                     "NA20359_P1000GP_Tstitch_SNP.txt:md5,89a0a1c7a32680630710e09bb3c9b487"
                 ],
-                [
+                "BAM files": [
                     [
                         "NA12878.depth_1x.bam",
                         "dc551537ba58eff2b963531cf79100be"
@@ -532,7 +538,7 @@
                         "1f0cd7f2be5f0d4572f1757850766ea7"
                     ]
                 ],
-                [
+                "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
                         "51e6cb537e0cfdf3cb128aa6a7eee3f3"
@@ -630,7 +636,7 @@
                         "b63773c8d5a695b27a0108ec0c7590e7"
                     ]
                 ],
-                [
+                "CSV files": [
                     {
                         "fileName": "impute.csv",
                         "rows": [
@@ -683,7 +689,7 @@
                         ]
                     }
                 ]
-            ],
+            },
             {
                 "all_samples.glimpse1": {
                     "summary": "VcfFile [chromosomes=[chr21, chr22], sampleCount=3, variantCount=1739, phased=false]",
@@ -719,7 +725,7 @@
                 }
             }
         ],
-        "timestamp": "2026-02-19T22:50:55.697340754",
+        "timestamp": "2026-03-03T12:00:55.307242161",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

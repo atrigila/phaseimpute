@@ -7,8 +7,6 @@ workflow VCF_CONCATENATE_BCFTOOLS {
 
     main:
 
-    ch_versions = channel.empty()
-
     // Keep only id from meta
     ch_vcf_index_grouped = ch_vcf_index
         .map{ metaIPTC, vcf, index -> [metaIPTC.subMap("id", "tools", "panel_id", "batch") + ["chr": "all_chr"], vcf, index] }
@@ -21,7 +19,6 @@ workflow VCF_CONCATENATE_BCFTOOLS {
 
     // Ligate and concatenate chunks
     BCFTOOLS_CONCAT(ch_vcf_index_grouped.more.map{ it -> [it[0], it[1], it[2]] })
-    ch_versions = ch_versions.mix(BCFTOOLS_CONCAT.out.versions.first())
 
     // Join VCFs and TBIs
     ch_vcf_index_concat = BCFTOOLS_CONCAT.out.vcf
@@ -37,5 +34,4 @@ workflow VCF_CONCATENATE_BCFTOOLS {
 
     emit:
     vcf_index    = ch_vcf_index_join // channel: [ [id], vcf, index ]
-    versions     = ch_versions     // channel: [ versions.yml ]
 }

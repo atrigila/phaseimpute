@@ -12,13 +12,12 @@ workflow BAM_GL_BCFTOOLS {
 
     main:
 
-    ch_versions      = channel.empty()
     ch_multiqc_files = channel.empty()
 
     ch_mpileup = ch_bam
         .combine(ch_posfile)
         .map{metaI, bam, _bai, metaPC, tsv ->
-                [metaI + metaPC, bam, tsv]
+                [metaI + metaPC, bam, tsv, tsv]
         }
 
     BCFTOOLS_MPILEUP(
@@ -26,7 +25,6 @@ workflow BAM_GL_BCFTOOLS {
         ch_fasta,
         false
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_MPILEUP.out.versions.first())
     ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_MPILEUP.out.stats.map{ it -> it[1] })
 
     // Branch depending on number of files
@@ -50,27 +48,22 @@ workflow BAM_GL_BCFTOOLS {
         ch_all_vcf.more.map{it -> [it[0], it[1], it[2], []] },
         ch_fasta
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_MERGE.out.versions.first())
 
     // Mix all vcfs
     ch_to_concat = ch_all_vcf.one
         .map{it -> [it[0], it[1][0], it[2][0]] }
         .mix(
             BCFTOOLS_MERGE.out.vcf
-                .join(BCFTOOLS_MERGE.out.tbi.mix(
-                    BCFTOOLS_MERGE.out.csi
-                ))
+                .join(BCFTOOLS_MERGE.out.index)
         )
 
     // Merge all chromosomes
     VCF_CONCATENATE_BCFTOOLS(ch_to_concat)
-    ch_versions = ch_versions.mix(VCF_CONCATENATE_BCFTOOLS.out.versions.first())
 
     // Annotate the variants
     BCFTOOLS_ANNOTATE(VCF_CONCATENATE_BCFTOOLS.out.vcf_index
-        .combine(channel.of([[], [], [], []]))
+        .combine(channel.of([[], [], [], [], []]))
     )
-    ch_versions = ch_versions.mix(BCFTOOLS_ANNOTATE.out.versions.first())
 
     // Output
     ch_output = BCFTOOLS_ANNOTATE.out.vcf
@@ -81,6 +74,5 @@ workflow BAM_GL_BCFTOOLS {
 
     emit:
     vcf_index     = ch_output        // channel: [ [id, panel], vcf, index ]
-    versions      = ch_versions      // channel: [ versions.yml ]
     multiqc_files = ch_multiqc_files
 }

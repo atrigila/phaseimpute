@@ -106,7 +106,6 @@ workflow PHASEIMPUTE {
     ch_posfile              // channel: posfile       [ [id, chr], vcf, index, hap, legend, posfile]
     ch_chunks               // channel: chunks        [ [chr], txt]
     chunk_model             // parameter: chunk model
-    ch_versions             // channel: versions of software used
 
     main:
 
@@ -125,7 +124,6 @@ workflow PHASEIMPUTE {
         if (params.input_region) {
             // Split the bam into the regions specified
             BAM_EXTRACT_REGION_SAMTOOLS(ch_input_sim, ch_region, ch_fasta)
-            ch_versions  = ch_versions.mix(BAM_EXTRACT_REGION_SAMTOOLS.out.versions)
             ch_input_sim = BAM_EXTRACT_REGION_SAMTOOLS.out.bam_region
         }
 
@@ -148,7 +146,6 @@ workflow PHASEIMPUTE {
 
         // Compute coverage of input files
         SAMTOOLS_COVERAGE_INP(ch_input_sim, ch_fasta)
-        ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_INP.out.versions.first())
 
         FILTER_CHR_INP(
             SAMTOOLS_COVERAGE_INP.out.coverage,
@@ -164,7 +161,6 @@ workflow PHASEIMPUTE {
 
             // Compute coverage of input files
             SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
-            ch_versions = ch_versions.mix(SAMTOOLS_COVERAGE_DWN.out.versions.first())
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
@@ -195,11 +191,9 @@ workflow PHASEIMPUTE {
         // Normalize indels in panel
         VCF_NORMALIZE_BCFTOOLS(ch_panel, ch_fasta)
         ch_panel_phased = VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi
-        ch_versions = ch_versions.mix(VCF_NORMALIZE_BCFTOOLS.out.versions)
 
         // Extract sites from normalized vcf
         VCF_SITES_EXTRACT_BCFTOOLS(ch_panel_phased, ch_fasta)
-        ch_versions = ch_versions.mix(VCF_SITES_EXTRACT_BCFTOOLS.out.versions)
 
         // Generate all necessary channels
         if (!params.posfile){
@@ -214,7 +208,6 @@ workflow PHASEIMPUTE {
                 ch_map,
                 chunk_model
             )
-            ch_versions = ch_versions.mix(VCF_CHUNK_GLIMPSE.out.versions)
             ch_chunks  = VCF_CHUNK_GLIMPSE.out.chunks
 
             // Chunks
@@ -243,7 +236,6 @@ workflow PHASEIMPUTE {
                 chunk_model
             )
             ch_panel_phased = VCF_PHASE_SHAPEIT5.out.vcf_index
-            ch_versions = ch_versions.mix(VCF_PHASE_SHAPEIT5.out.versions)
         }
 
         // Create CSVs from panelprep step
@@ -336,7 +328,6 @@ workflow PHASEIMPUTE {
                 ch_fasta
             )
             ch_multiqc_files = ch_multiqc_files.mix(GL_GLIMPSE1.out.multiqc_files)
-            ch_versions = ch_versions.mix(GL_GLIMPSE1.out.versions)
 
             // Combine vcf and processed bam
             ch_input_glimpse1 = ch_input_type.vcf
@@ -358,13 +349,11 @@ workflow PHASEIMPUTE {
                 ch_map,
                 false // Do not compute chunks
             )
-            ch_versions = ch_versions.mix(VCF_IMPUTE_GLIMPSE.out.versions)
 
             // Concatenate by chromosomes
             CONCAT_GLIMPSE1(VCF_IMPUTE_GLIMPSE.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"glimpse1"], vcf, index]
             })
-            ch_versions = ch_versions.mix(CONCAT_GLIMPSE1.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE1.out.vcf_index)
@@ -391,12 +380,11 @@ workflow PHASEIMPUTE {
                 ch_fasta,
                 false, "", false
             )
-            ch_versions = ch_versions.mix(BAM_VCF_IMPUTE_GLIMPSE2.out.versions)
+
             // Concatenate by chromosomes
             CONCAT_GLIMPSE2(BAM_VCF_IMPUTE_GLIMPSE2.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"glimpse2"], vcf, index]
             })
-            ch_versions = ch_versions.mix(CONCAT_GLIMPSE2.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE2.out.vcf_index)
@@ -416,7 +404,6 @@ workflow PHASEIMPUTE {
                 }, [], false)
 
             BGZIP_POSFILE_STITCH(GAWK_POSFILE_STITCH.out.output)
-            ch_versions = ch_versions.mix(BGZIP_POSFILE_STITCH.out.versions.first())
 
             // Impute with STITCH
             BAM_IMPUTE_STITCH (
@@ -433,13 +420,11 @@ workflow PHASEIMPUTE {
                 params.ngen,
                 params.seed
             )
-            ch_versions = ch_versions.mix(BAM_IMPUTE_STITCH.out.versions)
 
             // Concatenate by chromosomes
             CONCAT_STITCH(BAM_IMPUTE_STITCH.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"stitch"], vcf, index]
             })
-            ch_versions = ch_versions.mix(CONCAT_STITCH.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_STITCH.out.vcf_index)
@@ -462,7 +447,6 @@ workflow PHASEIMPUTE {
             )
 
             BGZIP_POSFILE_QUILT(GAWK_POSFILE_QUILT.out.output)
-            ch_versions = ch_versions.mix(BGZIP_POSFILE_QUILT.out.versions.first())
 
             ch_posfile_quilt = ch_posfile
                 .map{
@@ -492,7 +476,6 @@ workflow PHASEIMPUTE {
                     meta, vcf, index -> [meta + [tools:"quilt"], vcf, index]
                 }
             )
-            ch_versions = ch_versions.mix(CONCAT_QUILT.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_index)
@@ -510,13 +493,11 @@ workflow PHASEIMPUTE {
                 ch_chunks_beagle5,
                 ch_map
             )
-            ch_versions = ch_versions.mix(VCF_IMPUTE_BEAGLE5.out.versions)
 
             // Concatenate by chromosomes
             CONCAT_BEAGLE5(VCF_IMPUTE_BEAGLE5.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"beagle5"], vcf, index]
             })
-            ch_versions = ch_versions.mix(CONCAT_BEAGLE5.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_index)
@@ -552,7 +533,6 @@ workflow PHASEIMPUTE {
             CONCAT_MINIMAC4(VCF_IMPUTE_MINIMAC4.out.vcf_index.map{
                 meta, vcf, index -> [meta + [tools:"minimac4"], vcf, index]
             })
-            ch_versions = ch_versions.mix(CONCAT_MINIMAC4.out.versions)
 
             // Add results to input validate
             ch_input_validate = ch_input_validate.mix(CONCAT_MINIMAC4.out.vcf_index)
@@ -565,7 +545,6 @@ workflow PHASEIMPUTE {
 
         // Split result by samples
         SPLIT_IMPUTED(ch_split_imputed)
-        ch_versions = ch_versions.mix(SPLIT_IMPUTED.out.versions)
         ch_input_validate = SPLIT_IMPUTED.out.vcf_tbi
 
         // Compute stats on imputed files
@@ -575,8 +554,8 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ meta, fasta, _index -> [ meta, fasta ] })
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_TOOLS.out.versions)
+            ch_fasta.map{ meta, fasta, _index -> [ meta, fasta ] }
+        )
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TOOLS.out.stats.map{ _meta, file -> [ file ] })
 
         // Export all files to csv
@@ -596,7 +575,6 @@ workflow PHASEIMPUTE {
                 meta, site, site_index
             ]
         })
-        ch_versions    = ch_versions.mix(CONCAT_PANEL.out.versions)
         ch_panel_sites = CONCAT_PANEL.out.vcf_index
 
         // Compute stats on panel
@@ -606,8 +584,8 @@ workflow PHASEIMPUTE {
             [[],[]],
             [[],[]],
             [[],[]],
-            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] })
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_PANEL.out.versions)
+            ch_fasta.map{ meta, fasta, _index -> [meta, fasta] }
+        )
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_PANEL.out.stats.map{ _meta, file -> [ file ] })
 
         ch_truth_vcf = channel.empty()
@@ -633,7 +611,6 @@ workflow PHASEIMPUTE {
             },
             ch_fasta
         )
-        ch_versions = ch_versions.mix(GL_TRUTH.out.versions)
 
         // Mix the original vcf and the computed vcf
         ch_truth_vcf = ch_truth.vcf
@@ -647,7 +624,6 @@ workflow PHASEIMPUTE {
 
         // Split truth vcf by samples
         SPLIT_TRUTH(ch_split_truth)
-        ch_versions = ch_versions.mix(SPLIT_TRUTH.out.versions)
 
         // Compute stats on truth files
         BCFTOOLS_STATS_TRUTH(
@@ -658,7 +634,6 @@ workflow PHASEIMPUTE {
             [[],[]],
             ch_fasta.map{ meta, fasta, _index -> [meta, fasta] }
         )
-        ch_versions = ch_versions.mix(BCFTOOLS_STATS_TRUTH.out.versions)
         ch_multiqc_files = ch_multiqc_files.mix(BCFTOOLS_STATS_TRUTH.out.stats.map{ _meta, file -> [ file ] })
 
         // Compute concordance analysis
@@ -669,7 +644,6 @@ workflow PHASEIMPUTE {
             ch_region
         )
         ch_multiqc_files = ch_multiqc_files.mix(VCF_CONCORDANCE_GLIMPSE2.out.multiqc_files)
-        ch_versions      = ch_versions.mix(VCF_CONCORDANCE_GLIMPSE2.out.versions)
     }
 
     //
@@ -693,7 +667,7 @@ workflow PHASEIMPUTE {
             "${process}:\n${tool_versions.join('\n')}"
         }
 
-    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+    softwareVersionsToYAML(topic_versions.versions_file)
         .mix(topic_versions_string)
         .collectFile(
             storeDir: "${params.outdir}/pipeline_info",
@@ -729,7 +703,6 @@ workflow PHASEIMPUTE {
 
     emit:
     multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
-    versions       = ch_versions                 // channel: [ path(versions.yml) ]
 }
 
 /*

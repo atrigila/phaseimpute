@@ -79,9 +79,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2025-11-20T11:01:52.287211665"
+        "timestamp": "2026-03-02T21:55:12.272972242"
     },
     "Test validateInputBatchTools success batch": {
         "content": [
@@ -120,9 +120,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2025-11-20T11:02:11.540721972"
+        "timestamp": "2026-03-02T21:55:26.941007713"
     },
     "Test getRegionFromFai with specified region without fasta": {
         "content": [
@@ -154,9 +154,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2025-11-20T11:02:01.851664319"
+        "timestamp": "2026-03-02T21:55:19.791976369"
     },
     "Test checkMetaChr warning": {
         "content": [
