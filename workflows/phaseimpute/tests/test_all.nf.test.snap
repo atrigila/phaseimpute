@@ -149,6 +149,10 @@
                     "SHAPEIT5_PHASECOMMON": {
                         "shapeit5": "5.1.1"
                     },
+                    "STITCH": {
+                        "r-base": "4.4.2",
+                        "r-quilt": "1.7.3"
+                    },
                     "TABIX_BGZIP": {
                         "tabix": 1.21
                     },
@@ -721,7 +725,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T09:19:26.090273441",
+        "timestamp": "2026-03-03T10:32:12.162533581",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
