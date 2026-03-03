@@ -40,8 +40,6 @@ workflow PIPELINE_INITIALISATION {
 
     main:
 
-    ch_versions = channel.empty()
-
     //
     // Print version and exit if required and dump pipeline parameters to JSON file
     //
@@ -423,7 +421,6 @@ workflow PIPELINE_INITIALISATION {
     posfile              = ch_posfile       // [ [panel_id, chr], vcf, index, hap, legend, posfile ]
     chunks               = ch_chunks        // [ [panel_id, chr], txt ]
     chunk_model          = chunk_model
-    versions             = ch_versions
 }
 
 /*

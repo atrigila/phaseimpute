@@ -12,7 +12,6 @@ workflow BAM_GL_BCFTOOLS {
 
     main:
 
-    ch_versions      = channel.empty()
     ch_multiqc_files = channel.empty()
 
     ch_mpileup = ch_bam
