@@ -8,8 +8,7 @@
                     "bcftools/annotate": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/bcftools/annotate/bcftools-annotate.diff"
+                        "installed_by": ["modules"]
                     },
                     "bcftools/concat": {
                         "branch": "master",
@@ -38,14 +37,12 @@
                     "bcftools/merge": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/bcftools/merge/bcftools-merge.diff"
+                        "installed_by": ["modules"]
                     },
                     "bcftools/mpileup": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/bcftools/mpileup/bcftools-mpileup.diff"
+                        "installed_by": ["modules"]
                     },
                     "bcftools/norm": {
                         "branch": "master",
@@ -153,20 +150,17 @@
                     "quilt/quilt": {
                         "branch": "master",
                         "git_sha": "4e2990cc0df18823d11b192df73039c80fdebc7c",
-                        "installed_by": ["bam_impute_quilt", "modules"],
-                        "patch": "modules/nf-core/quilt/quilt/quilt-quilt.diff"
+                        "installed_by": ["bam_impute_quilt", "modules"]
                     },
                     "samtools/coverage": {
                         "branch": "master",
                         "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/samtools/coverage/samtools-coverage.diff"
+                        "installed_by": ["modules"]
                     },
                     "samtools/depth": {
                         "branch": "master",
                         "git_sha": "128c609f2812f748ec8d9566fc2953b72099fdcf",
-                        "installed_by": ["bam_subsampledepth_samtools", "modules"],
-                        "patch": "modules/nf-core/samtools/depth/samtools-depth.diff"
+                        "installed_by": ["bam_subsampledepth_samtools", "modules"]
                     },
                     "samtools/faidx": {
                         "branch": "master",
@@ -181,8 +175,7 @@
                     "samtools/merge": {
                         "branch": "master",
                         "git_sha": "b2e78932ef01165fd85829513eaca29eff8e640a",
-                        "installed_by": ["modules"],
-                        "patch": "modules/nf-core/samtools/merge/samtools-merge.diff"
+                        "installed_by": ["modules"]
                     },
                     "samtools/reheader": {
                         "branch": "master",
