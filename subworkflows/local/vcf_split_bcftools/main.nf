@@ -6,7 +6,7 @@ workflow VCF_SPLIT_BCFTOOLS {
 
     main:
 
-    BCFTOOLS_PLUGINSPLIT(ch_vcf, [], [], [])
+    BCFTOOLS_PLUGINSPLIT(ch_vcf.combine(channel.of([[], [], []])))
 
     ch_vcf_samples = BCFTOOLS_PLUGINSPLIT.out.vcf
         .transpose()
