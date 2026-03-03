@@ -153,19 +153,19 @@
                 "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "ca1eb2ed1e0a1208c3e28bd45ea538ed"
+                        "382c43720e1187f9e2324e0ac87ea3be"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "b97143f1d479742d29d4dd8c7c650a5f"
+                        "223a9b6ea48ff9c11215bf9c00c8dbcb"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "ecb6e4abf76a19597f5376d90e5b665f"
+                        "34dbf34cde4412b1327a72fb8eb14e6f"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "c105814280a82af5cdac29040754ae3b"
+                        "bd4fde5baf064d7a88c513d6ba3cb62a"
                     ]
                 ],
                 "CSV files": [
@@ -191,7 +191,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T11:35:17.141328961",
+        "timestamp": "2026-03-03T17:25:56.010643633",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
