@@ -15,6 +15,7 @@ nextflow_pipeline {
                 publish_dir_mode = "copy"
                 pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
+                publish_all = true
             }
         }
 
