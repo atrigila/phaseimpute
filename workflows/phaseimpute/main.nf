@@ -44,9 +44,9 @@ include { GAWK as GAWK_IMPUTED                       } from '../../modules/nf-co
 include { VCF_SPLIT_BCFTOOLS as SPLIT_IMPUTED        } from '../../subworkflows/local/vcf_split_bcftools'
 
 // GLIMPSE1 subworkflows
-include { BAM_GL_BCFTOOLS as GL_GLIMPSE1             } from '../../subworkflows/local/bam_gl_bcftools'
-include { VCF_IMPUTE_GLIMPSE                         } from '../../subworkflows/nf-core/vcf_impute_glimpse'
-include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE1} from '../../subworkflows/local/vcf_concatenate_bcftools'
+include { BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS as GL_GLIMPSE1 } from '../../subworkflows/nf-core/bam_variant_calling_mpileup_bcftools'
+include { VCF_IMPUTE_GLIMPSE                                  } from '../../subworkflows/nf-core/vcf_impute_glimpse'
+include { VCF_CONCATENATE_BCFTOOLS as CONCAT_GLIMPSE1         } from '../../subworkflows/local/vcf_concatenate_bcftools'
 
 // GLIMPSE2 subworkflows
 include { BAM_VCF_IMPUTE_GLIMPSE2                    } from '../../subworkflows/nf-core/bam_vcf_impute_glimpse2'
@@ -76,13 +76,13 @@ include { VCF_CONCATENATE_BCFTOOLS as CONCAT_MINIMAC4} from '../../subworkflows/
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_TOOLS     } from '../../modules/nf-core/bcftools/stats'
 
 // Concordance subworkflows
-include { BAM_GL_BCFTOOLS as GL_TRUTH                } from '../../subworkflows/local/bam_gl_bcftools'
-include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_TRUTH     } from '../../modules/nf-core/bcftools/query'
-include { GAWK as GAWK_TRUTH                         } from '../../modules/nf-core/gawk'
-include { VCF_SPLIT_BCFTOOLS as SPLIT_TRUTH          } from '../../subworkflows/local/vcf_split_bcftools'
-include { BCFTOOLS_STATS as BCFTOOLS_STATS_TRUTH     } from '../../modules/nf-core/bcftools/stats'
-include { VCF_CONCATENATE_BCFTOOLS as CONCAT_TRUTH   } from '../../subworkflows/local/vcf_concatenate_bcftools'
-include { VCF_CONCORDANCE_GLIMPSE2                   } from '../../subworkflows/local/vcf_concordance_glimpse2'
+include { BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS as GL_TRUTH } from '../../subworkflows/nf-core/bam_variant_calling_mpileup_bcftools'
+include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_TRUTH           } from '../../modules/nf-core/bcftools/query'
+include { GAWK as GAWK_TRUTH                               } from '../../modules/nf-core/gawk'
+include { VCF_SPLIT_BCFTOOLS as SPLIT_TRUTH                } from '../../subworkflows/local/vcf_split_bcftools'
+include { BCFTOOLS_STATS as BCFTOOLS_STATS_TRUTH           } from '../../modules/nf-core/bcftools/stats'
+include { VCF_CONCATENATE_BCFTOOLS as CONCAT_TRUTH         } from '../../subworkflows/local/vcf_concatenate_bcftools'
+include { VCF_CONCORDANCE_GLIMPSE2                         } from '../../subworkflows/local/vcf_concordance_glimpse2'
 
 
 /*
@@ -325,7 +325,12 @@ workflow PHASEIMPUTE {
                         meta, posfile
                     ]
                 },
-                ch_fasta
+                ch_fasta,
+                "id",
+                "all_samples",
+                [ "panel_id", "id", "batch", "tools" ],
+                false,
+                true
             )
             ch_multiqc_files = ch_multiqc_files.mix(GL_GLIMPSE1.out.multiqc_files)
 
@@ -609,7 +614,12 @@ workflow PHASEIMPUTE {
                     meta, posfile
                 ]
             },
-            ch_fasta
+            ch_fasta,
+            "id",
+            "all_samples",
+            [ "panel_id", "id" ],
+            false,
+            true
         )
 
         // Mix the original vcf and the computed vcf

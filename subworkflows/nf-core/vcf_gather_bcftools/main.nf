@@ -16,8 +16,9 @@ workflow VCF_GATHER_BCFTOOLS {
     }
 
     ch_concat_input = ch_vcfs
+        .view()
         .map { meta, vcf, index, count ->
-            def missingKeys = arr_common_meta.findAll { key -> !(key in meta) }
+            def missingKeys = arr_common_meta.findAll { key -> !(key in meta.keySet()) }
             if (missingKeys) {
                 error("ERROR: Keys ${missingKeys} from arr_common_meta not found in meta. Available keys: ${meta.keySet()}")
             }

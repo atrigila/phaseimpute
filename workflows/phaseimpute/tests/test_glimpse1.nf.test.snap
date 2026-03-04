@@ -2,7 +2,7 @@
     "Check test_glimpse1 - with chunks - no map": {
         "content": [
             {
-                "workflow size": 36,
+                "workflow size": 37,
                 "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
@@ -45,6 +45,9 @@
                     },
                     "LISTTOFILE": {
                         "gawk": "5.3.0"
+                    },
+                    "TABIX_TABIX": {
+                        "tabix": 1.21
                     },
                     "VCFCHREXTRACT": {
                         "bcftools": 1.22
@@ -191,7 +194,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T11:39:24.385630575",
+        "timestamp": "2026-03-04T16:02:54.388202403",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -200,7 +203,7 @@
     "Check test_glimpse1 - with chunks": {
         "content": [
             {
-                "workflow size": 36,
+                "workflow size": 37,
                 "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
@@ -243,6 +246,9 @@
                     },
                     "LISTTOFILE": {
                         "gawk": "5.3.0"
+                    },
+                    "TABIX_TABIX": {
+                        "tabix": 1.21
                     },
                     "VCFCHREXTRACT": {
                         "bcftools": 1.22
@@ -334,16 +340,16 @@
                     "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
                     "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
                     "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
-                    "bcftools-stats-subtypes.txt:md5,bda6ac9e13fd82da1c4725287937332d",
+                    "bcftools-stats-subtypes.txt:md5,f0f76e3b4c37a5653a1e5aebe4d0b4de",
                     "bcftools_stats_indel-lengths.txt:md5,ee1c3af6586e9f8de2f20f759a7741eb",
-                    "bcftools_stats_variant_depths.txt:md5,4c05005171167a0ca6824cbff8f7ddb4",
-                    "bcftools_stats_vqc_Count_Indels.txt:md5,cc9d6666f1233a5543e602f93e93ef01",
-                    "bcftools_stats_vqc_Count_SNP.txt:md5,f0ad99e6a9386b8cc85e54a9d67422b3",
-                    "bcftools_stats_vqc_Count_Transitions.txt:md5,155087f472a78d07c4b2ef5a8c67089b",
-                    "bcftools_stats_vqc_Count_Transversions.txt:md5,58b840d85196adbff10a38f210e8cd00",
-                    "multiqc_bcftools_stats.txt:md5,333922abbf5f7e66290d034db15b370a",
+                    "bcftools_stats_variant_depths.txt:md5,78b605106489ee95edef575bbddba411",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,15ea86dc610d6fc4197bdcee507648eb",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,7373afbad5f82c60c9b7c91d62ae956c",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,dc0b340f1237cb99750bf225c76b1897",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,2315ea5fce5b6eb33977fc4c9dc77f1a",
+                    "multiqc_bcftools_stats.txt:md5,e48baf75fcad818a33da826f21f37167",
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
-                    "multiqc_general_stats.txt:md5,835d8d185aa5146f9c88e1cc27706094"
+                    "multiqc_general_stats.txt:md5,086c681d977bf8ee66497558c92ab9f5"
                 ],
                 "BAM files": [
                     
@@ -351,19 +357,19 @@
                 "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "382c43720e1187f9e2324e0ac87ea3be"
+                        "56ed9b9ad9219d0fb2599c1cddbd180a"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "223a9b6ea48ff9c11215bf9c00c8dbcb"
+                        "2ee59dc8f37b164bc7b30cf4b525b170"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "34dbf34cde4412b1327a72fb8eb14e6f"
+                        "38fd882f1fb738d06fa57df26a4ebb14"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "bd4fde5baf064d7a88c513d6ba3cb62a"
+                        "56db681f52d3e10320287099420629d7"
                     ]
                 ],
                 "CSV files": [
@@ -389,7 +395,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T11:38:30.742465009",
+        "timestamp": "2026-03-04T16:01:25.051755166",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -398,7 +404,7 @@
     "Check test_glimpse1 - without chunks": {
         "content": [
             {
-                "workflow size": 32,
+                "workflow size": 33,
                 "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
@@ -441,6 +447,9 @@
                     },
                     "LISTTOFILE": {
                         "gawk": "5.3.0"
+                    },
+                    "TABIX_TABIX": {
+                        "tabix": 1.21
                     },
                     "VCFCHREXTRACT": {
                         "bcftools": 1.22
@@ -532,16 +541,16 @@
                     "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
                     "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
                     "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
-                    "bcftools-stats-subtypes.txt:md5,bda6ac9e13fd82da1c4725287937332d",
+                    "bcftools-stats-subtypes.txt:md5,5e85408ed5355920e2cfde99b78d3b33",
                     "bcftools_stats_indel-lengths.txt:md5,ee1c3af6586e9f8de2f20f759a7741eb",
-                    "bcftools_stats_variant_depths.txt:md5,4c05005171167a0ca6824cbff8f7ddb4",
-                    "bcftools_stats_vqc_Count_Indels.txt:md5,cc9d6666f1233a5543e602f93e93ef01",
-                    "bcftools_stats_vqc_Count_SNP.txt:md5,f0ad99e6a9386b8cc85e54a9d67422b3",
-                    "bcftools_stats_vqc_Count_Transitions.txt:md5,155087f472a78d07c4b2ef5a8c67089b",
-                    "bcftools_stats_vqc_Count_Transversions.txt:md5,58b840d85196adbff10a38f210e8cd00",
-                    "multiqc_bcftools_stats.txt:md5,333922abbf5f7e66290d034db15b370a",
+                    "bcftools_stats_variant_depths.txt:md5,cd903d4aae822da305d1e101e20af099",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,cd670e09579cbcf527078c78ee2ac471",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,6b1ce4c9038a966369c4011369e6669f",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,e55eb0875ea62dddb33aee42f819ab11",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,eeadedf7ed08f1bae0b1a1a16ee7a22b",
+                    "multiqc_bcftools_stats.txt:md5,7e06426af5724e4f4deeebe8adc43a51",
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
-                    "multiqc_general_stats.txt:md5,835d8d185aa5146f9c88e1cc27706094"
+                    "multiqc_general_stats.txt:md5,797096d050ed0fa751fa7d187b90461a"
                 ],
                 "BAM files": [
                     
@@ -549,19 +558,19 @@
                 "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "b158fadbefda5620a47f0c8350b8d01e"
+                        "8bde64427de4dc4240ef6e986b7f64f5"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "5d5b32855a2fc1e3c24c628987f4db68"
+                        "a60460e2d08c6ae3c0b5bffcd3e865f9"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "b170995fb1666cc55e2517b3b4ff39b3"
+                        "c21f25e7fc56ecb650cf3ba2323d8be7"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "e60d1d5b7d19b031cbe475408feeefe2"
+                        "c7ead4f5a865aa4c5f2b6d94a7516985"
                     ]
                 ],
                 "CSV files": [
@@ -587,7 +596,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T11:40:19.559110905",
+        "timestamp": "2026-03-04T16:04:21.344832168",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
