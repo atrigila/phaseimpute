@@ -45,6 +45,7 @@ workflow BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS {
             [groupMeta, [meta, vcf, tbi]]
         }
         .groupTuple()
+        .view()
         .map{ meta_group, filestups ->
             // Assign meta_sample_merge_key to meta_sample_merge_value
             [
@@ -52,7 +53,7 @@ workflow BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS {
                 (meta_sample_merge_key): meta_sample_merge_value,
                 metas: filestups
                     .collect{ meta, _vcf, _index ->
-                        meta.findAll { k, _v -> ! meta_sample_merge_key.contains(k) }
+                        meta.findAll { k, _v -> k == meta_sample_merge_key }
                     }
                     .sort()
             ],
@@ -70,7 +71,7 @@ workflow BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS {
     BCFTOOLS_MERGE(
         ch_all_vcf.multiple.map{
             meta, vcf_list, index_list, _size -> [ meta, vcf_list, index_list, [] ]
-        },
+        }.view(),
         ch_fasta
     )
 

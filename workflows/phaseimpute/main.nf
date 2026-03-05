@@ -617,7 +617,7 @@ workflow PHASEIMPUTE {
             ch_fasta,
             "id",
             "all_samples",
-            [ "panel_id", "id" ],
+            [ "panel_id", "id", "batch" ],
             false,
             true
         )

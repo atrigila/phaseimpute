@@ -68,6 +68,15 @@
                     "imputation/glimpse1/concat",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16570070-16590513.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16590521-16609998.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16570065-16592216.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16592229-16609999.glimpse1.bcf.csi",
                     "imputation/glimpse1/samples",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz.tbi",
@@ -75,6 +84,33 @@
                     "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz.tbi",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz.tbi",
                     "imputation/stats",
                     "imputation/stats/NA12878.glimpse1.bcftools_stats.txt",
                     "imputation/stats/NA19401.glimpse1.bcftools_stats.txt",
@@ -136,6 +172,12 @@
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "NA12878_chr21.bcftools_stats.txt:md5,b3c191449997ee25d185dd72ef19a388",
+                    "NA12878_chr22.bcftools_stats.txt:md5,2acad3c5394652caca75e30c3dbb5c8a",
+                    "NA19401_chr21.bcftools_stats.txt:md5,7c61050c739598419b0fd0f14bed5d52",
+                    "NA19401_chr22.bcftools_stats.txt:md5,9d3e897e1c797884020044909919b9cd",
+                    "NA20359_chr21.bcftools_stats.txt:md5,0e6e8f12e2f983a56812286e638cd0af",
+                    "NA20359_chr22.bcftools_stats.txt:md5,63edc6b74ab77cb3d89a59997f892603",
                     "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
                     "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
                     "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
@@ -159,6 +201,14 @@
                         "382c43720e1187f9e2324e0ac87ea3be"
                     ],
                     [
+                        "all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                        "5456feca7d0712fc47f0a3251b3edaae"
+                    ],
+                    [
+                        "all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                        "ee5dcc24589467890db44fdbae04c161"
+                    ],
+                    [
                         "NA12878.glimpse1.vcf.gz",
                         "223a9b6ea48ff9c11215bf9c00c8dbcb"
                     ],
@@ -169,6 +219,46 @@
                     [
                         "NA20359.glimpse1.vcf.gz",
                         "bd4fde5baf064d7a88c513d6ba3cb62a"
+                    ],
+                    [
+                        "NA12878_chr21.vcf.gz",
+                        "4198ecfcd59029b10716f2c033f96343"
+                    ],
+                    [
+                        "NA12878_chr22.vcf.gz",
+                        "2de6a606cb5ae4284b979fc00934302f"
+                    ],
+                    [
+                        "NA19401_chr21.vcf.gz",
+                        "307139605cffb09295b27619d1e3cf41"
+                    ],
+                    [
+                        "NA19401_chr22.vcf.gz",
+                        "7d45992def27887e96cd859480189509"
+                    ],
+                    [
+                        "NA20359_chr21.vcf.gz",
+                        "1cca23409d5074b28e41fcda7f978021"
+                    ],
+                    [
+                        "NA20359_chr22.vcf.gz",
+                        "a4888d2aa2af452d115f70a58ebfb8f4"
+                    ],
+                    [
+                        "all_samples.annotate.vcf.gz",
+                        "b9a7c83f719a9c3a3d8a39cf5f302a9d"
+                    ],
+                    [
+                        "all_samples.concat.vcf.gz",
+                        "e6f43808fd6787f348d7614bbda9b333"
+                    ],
+                    [
+                        "all_samples_chr21.merge.vcf.gz",
+                        "8aa42728d938b7f47130497b4dc86955"
+                    ],
+                    [
+                        "all_samples_chr22.merge.vcf.gz",
+                        "170d05c06240dceb6f079c70b1e234e3"
                     ]
                 ],
                 "CSV files": [
@@ -194,7 +284,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-04T16:02:54.388202403",
+        "timestamp": "2026-03-05T14:29:59.089267721",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -269,6 +359,15 @@
                     "imputation/glimpse1/concat",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16570070-16590513.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16590521-16609998.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16570065-16592216.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16592229-16609999.glimpse1.bcf.csi",
                     "imputation/glimpse1/samples",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz.tbi",
@@ -276,6 +375,33 @@
                     "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz.tbi",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz.tbi",
                     "imputation/stats",
                     "imputation/stats/NA12878.glimpse1.bcftools_stats.txt",
                     "imputation/stats/NA19401.glimpse1.bcftools_stats.txt",
@@ -337,19 +463,25 @@
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "NA12878_chr21.bcftools_stats.txt:md5,b3c191449997ee25d185dd72ef19a388",
+                    "NA12878_chr22.bcftools_stats.txt:md5,2acad3c5394652caca75e30c3dbb5c8a",
+                    "NA19401_chr21.bcftools_stats.txt:md5,7c61050c739598419b0fd0f14bed5d52",
+                    "NA19401_chr22.bcftools_stats.txt:md5,9d3e897e1c797884020044909919b9cd",
+                    "NA20359_chr21.bcftools_stats.txt:md5,0e6e8f12e2f983a56812286e638cd0af",
+                    "NA20359_chr22.bcftools_stats.txt:md5,63edc6b74ab77cb3d89a59997f892603",
                     "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
                     "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
                     "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
-                    "bcftools-stats-subtypes.txt:md5,f0f76e3b4c37a5653a1e5aebe4d0b4de",
+                    "bcftools-stats-subtypes.txt:md5,bda6ac9e13fd82da1c4725287937332d",
                     "bcftools_stats_indel-lengths.txt:md5,ee1c3af6586e9f8de2f20f759a7741eb",
-                    "bcftools_stats_variant_depths.txt:md5,78b605106489ee95edef575bbddba411",
-                    "bcftools_stats_vqc_Count_Indels.txt:md5,15ea86dc610d6fc4197bdcee507648eb",
-                    "bcftools_stats_vqc_Count_SNP.txt:md5,7373afbad5f82c60c9b7c91d62ae956c",
-                    "bcftools_stats_vqc_Count_Transitions.txt:md5,dc0b340f1237cb99750bf225c76b1897",
-                    "bcftools_stats_vqc_Count_Transversions.txt:md5,2315ea5fce5b6eb33977fc4c9dc77f1a",
-                    "multiqc_bcftools_stats.txt:md5,e48baf75fcad818a33da826f21f37167",
+                    "bcftools_stats_variant_depths.txt:md5,4c05005171167a0ca6824cbff8f7ddb4",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,cc9d6666f1233a5543e602f93e93ef01",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,f0ad99e6a9386b8cc85e54a9d67422b3",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,155087f472a78d07c4b2ef5a8c67089b",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,58b840d85196adbff10a38f210e8cd00",
+                    "multiqc_bcftools_stats.txt:md5,333922abbf5f7e66290d034db15b370a",
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
-                    "multiqc_general_stats.txt:md5,086c681d977bf8ee66497558c92ab9f5"
+                    "multiqc_general_stats.txt:md5,835d8d185aa5146f9c88e1cc27706094"
                 ],
                 "BAM files": [
                     
@@ -357,19 +489,67 @@
                 "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "56ed9b9ad9219d0fb2599c1cddbd180a"
+                        "382c43720e1187f9e2324e0ac87ea3be"
+                    ],
+                    [
+                        "all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                        "5456feca7d0712fc47f0a3251b3edaae"
+                    ],
+                    [
+                        "all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                        "ee5dcc24589467890db44fdbae04c161"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "2ee59dc8f37b164bc7b30cf4b525b170"
+                        "223a9b6ea48ff9c11215bf9c00c8dbcb"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "38fd882f1fb738d06fa57df26a4ebb14"
+                        "34dbf34cde4412b1327a72fb8eb14e6f"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "56db681f52d3e10320287099420629d7"
+                        "bd4fde5baf064d7a88c513d6ba3cb62a"
+                    ],
+                    [
+                        "NA12878_chr21.vcf.gz",
+                        "4198ecfcd59029b10716f2c033f96343"
+                    ],
+                    [
+                        "NA12878_chr22.vcf.gz",
+                        "2de6a606cb5ae4284b979fc00934302f"
+                    ],
+                    [
+                        "NA19401_chr21.vcf.gz",
+                        "307139605cffb09295b27619d1e3cf41"
+                    ],
+                    [
+                        "NA19401_chr22.vcf.gz",
+                        "7d45992def27887e96cd859480189509"
+                    ],
+                    [
+                        "NA20359_chr21.vcf.gz",
+                        "1cca23409d5074b28e41fcda7f978021"
+                    ],
+                    [
+                        "NA20359_chr22.vcf.gz",
+                        "a4888d2aa2af452d115f70a58ebfb8f4"
+                    ],
+                    [
+                        "all_samples.annotate.vcf.gz",
+                        "b9a7c83f719a9c3a3d8a39cf5f302a9d"
+                    ],
+                    [
+                        "all_samples.concat.vcf.gz",
+                        "e6f43808fd6787f348d7614bbda9b333"
+                    ],
+                    [
+                        "all_samples_chr21.merge.vcf.gz",
+                        "8aa42728d938b7f47130497b4dc86955"
+                    ],
+                    [
+                        "all_samples_chr22.merge.vcf.gz",
+                        "170d05c06240dceb6f079c70b1e234e3"
                     ]
                 ],
                 "CSV files": [
@@ -395,7 +575,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-04T16:01:25.051755166",
+        "timestamp": "2026-03-04T21:46:56.991107375",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -470,6 +650,13 @@
                     "imputation/glimpse1/concat",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16570000-16610000.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16570000-16610000.glimpse1.bcf.csi",
                     "imputation/glimpse1/samples",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA12878.glimpse1.vcf.gz.tbi",
@@ -477,6 +664,33 @@
                     "imputation/glimpse1/samples/NA19401.glimpse1.vcf.gz.tbi",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/NA20359.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA12878_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA19401_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/NA20359_chr22.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr21.merge.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples_chr22.merge.vcf.gz.tbi",
                     "imputation/stats",
                     "imputation/stats/NA12878.glimpse1.bcftools_stats.txt",
                     "imputation/stats/NA19401.glimpse1.bcftools_stats.txt",
@@ -538,19 +752,25 @@
                     "all_samples.batch0.id.txt:md5,19595d0c2ee3d3d4e0db213e4469dac6",
                     "all_samples.batch0.idonly.txt:md5,b16baeecc412602ee233e14bcbe592b7",
                     "all_samples.batch0.noid.txt:md5,2b87699e9ed5101bc2addb7596cf16c7",
+                    "NA12878_chr21.bcftools_stats.txt:md5,b3c191449997ee25d185dd72ef19a388",
+                    "NA12878_chr22.bcftools_stats.txt:md5,2acad3c5394652caca75e30c3dbb5c8a",
+                    "NA19401_chr21.bcftools_stats.txt:md5,7c61050c739598419b0fd0f14bed5d52",
+                    "NA19401_chr22.bcftools_stats.txt:md5,9d3e897e1c797884020044909919b9cd",
+                    "NA20359_chr21.bcftools_stats.txt:md5,0e6e8f12e2f983a56812286e638cd0af",
+                    "NA20359_chr22.bcftools_stats.txt:md5,63edc6b74ab77cb3d89a59997f892603",
                     "NA12878.glimpse1.bcftools_stats.txt:md5,d712e30d7f2450ca22c905421f006494",
                     "NA19401.glimpse1.bcftools_stats.txt:md5,86efb7502150bfcdd60a77c35e78de64",
                     "NA20359.glimpse1.bcftools_stats.txt:md5,62b33ff85651520eab02ac21dd4995ec",
-                    "bcftools-stats-subtypes.txt:md5,5e85408ed5355920e2cfde99b78d3b33",
+                    "bcftools-stats-subtypes.txt:md5,bda6ac9e13fd82da1c4725287937332d",
                     "bcftools_stats_indel-lengths.txt:md5,ee1c3af6586e9f8de2f20f759a7741eb",
-                    "bcftools_stats_variant_depths.txt:md5,cd903d4aae822da305d1e101e20af099",
-                    "bcftools_stats_vqc_Count_Indels.txt:md5,cd670e09579cbcf527078c78ee2ac471",
-                    "bcftools_stats_vqc_Count_SNP.txt:md5,6b1ce4c9038a966369c4011369e6669f",
-                    "bcftools_stats_vqc_Count_Transitions.txt:md5,e55eb0875ea62dddb33aee42f819ab11",
-                    "bcftools_stats_vqc_Count_Transversions.txt:md5,eeadedf7ed08f1bae0b1a1a16ee7a22b",
-                    "multiqc_bcftools_stats.txt:md5,7e06426af5724e4f4deeebe8adc43a51",
+                    "bcftools_stats_variant_depths.txt:md5,4c05005171167a0ca6824cbff8f7ddb4",
+                    "bcftools_stats_vqc_Count_Indels.txt:md5,cc9d6666f1233a5543e602f93e93ef01",
+                    "bcftools_stats_vqc_Count_SNP.txt:md5,f0ad99e6a9386b8cc85e54a9d67422b3",
+                    "bcftools_stats_vqc_Count_Transitions.txt:md5,155087f472a78d07c4b2ef5a8c67089b",
+                    "bcftools_stats_vqc_Count_Transversions.txt:md5,58b840d85196adbff10a38f210e8cd00",
+                    "multiqc_bcftools_stats.txt:md5,333922abbf5f7e66290d034db15b370a",
                     "multiqc_citations.txt:md5,5cbab4ecbe14049d965fd97bd61d252b",
-                    "multiqc_general_stats.txt:md5,797096d050ed0fa751fa7d187b90461a"
+                    "multiqc_general_stats.txt:md5,835d8d185aa5146f9c88e1cc27706094"
                 ],
                 "BAM files": [
                     
@@ -558,19 +778,67 @@
                 "VCF files": [
                     [
                         "all_samples.batch0.glimpse1.vcf.gz",
-                        "8bde64427de4dc4240ef6e986b7f64f5"
+                        "b158fadbefda5620a47f0c8350b8d01e"
+                    ],
+                    [
+                        "all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                        "c177398366bbe151add96bc659fdaaf7"
+                    ],
+                    [
+                        "all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                        "713b689c40f9e69b1ae530a339946201"
                     ],
                     [
                         "NA12878.glimpse1.vcf.gz",
-                        "a60460e2d08c6ae3c0b5bffcd3e865f9"
+                        "5d5b32855a2fc1e3c24c628987f4db68"
                     ],
                     [
                         "NA19401.glimpse1.vcf.gz",
-                        "c21f25e7fc56ecb650cf3ba2323d8be7"
+                        "b170995fb1666cc55e2517b3b4ff39b3"
                     ],
                     [
                         "NA20359.glimpse1.vcf.gz",
-                        "c7ead4f5a865aa4c5f2b6d94a7516985"
+                        "e60d1d5b7d19b031cbe475408feeefe2"
+                    ],
+                    [
+                        "NA12878_chr21.vcf.gz",
+                        "4198ecfcd59029b10716f2c033f96343"
+                    ],
+                    [
+                        "NA12878_chr22.vcf.gz",
+                        "2de6a606cb5ae4284b979fc00934302f"
+                    ],
+                    [
+                        "NA19401_chr21.vcf.gz",
+                        "307139605cffb09295b27619d1e3cf41"
+                    ],
+                    [
+                        "NA19401_chr22.vcf.gz",
+                        "7d45992def27887e96cd859480189509"
+                    ],
+                    [
+                        "NA20359_chr21.vcf.gz",
+                        "1cca23409d5074b28e41fcda7f978021"
+                    ],
+                    [
+                        "NA20359_chr22.vcf.gz",
+                        "a4888d2aa2af452d115f70a58ebfb8f4"
+                    ],
+                    [
+                        "all_samples.annotate.vcf.gz",
+                        "b9a7c83f719a9c3a3d8a39cf5f302a9d"
+                    ],
+                    [
+                        "all_samples.concat.vcf.gz",
+                        "e6f43808fd6787f348d7614bbda9b333"
+                    ],
+                    [
+                        "all_samples_chr21.merge.vcf.gz",
+                        "8aa42728d938b7f47130497b4dc86955"
+                    ],
+                    [
+                        "all_samples_chr22.merge.vcf.gz",
+                        "170d05c06240dceb6f079c70b1e234e3"
                     ]
                 ],
                 "CSV files": [
@@ -596,7 +864,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-04T16:04:21.344832168",
+        "timestamp": "2026-03-05T14:30:56.959872791",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
