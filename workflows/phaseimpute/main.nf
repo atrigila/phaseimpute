@@ -158,9 +158,14 @@ workflow PHASEIMPUTE {
             // Downsample input to desired depth
             BAM_SUBSAMPLEDEPTH_SAMTOOLS(ch_input_sim, ch_depth, ch_fasta)
             ch_input_impute = BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled
+                .map{ meta, bam, index ->
+                    def keysToKeep = meta.keySet() - ['subsample_fraction']
+                    def newMeta = meta.subMap(keysToKeep)
+                    [ newMeta, bam, index ]
+                }
 
             // Compute coverage of input files
-            SAMTOOLS_COVERAGE_DWN(BAM_SUBSAMPLEDEPTH_SAMTOOLS.out.bam_subsampled, ch_fasta)
+            SAMTOOLS_COVERAGE_DWN(ch_input_impute, ch_fasta)
 
             FILTER_CHR_DWN(
                 SAMTOOLS_COVERAGE_DWN.out.coverage,
@@ -605,7 +610,7 @@ workflow PHASEIMPUTE {
             }
 
         ch_truth.other
-            .map{ error "Input files must be either BAM/CRAM or VCF/BCF" }
+            .subscribe { error "Input files must be either BAM/CRAM or VCF/BCF" }
 
         GL_TRUTH(
             ch_truth.bam.map { meta, file, index, _ext -> [meta, file, index] },
@@ -617,7 +622,7 @@ workflow PHASEIMPUTE {
             ch_fasta,
             "id",
             "all_samples",
-            [ "panel_id", "id", "batch" ],
+            [ "panel_id", "id" ],
             false,
             true
         )

@@ -2,7 +2,7 @@
     "Check test_dog": {
         "content": [
             {
-                "workflow size": 86,
+                "workflow size": 87,
                 "versions": {
                     "BAMCHREXTRACT": {
                         "samtools": "1.22.1"
@@ -86,6 +86,9 @@
                     "TABIX_BGZIP": {
                         "tabix": 1.21
                     },
+                    "TABIX_TABIX": {
+                        "tabix": 1.21
+                    },
                     "VCFCHREXTRACT": {
                         "bcftools": 1.22
                     },
@@ -105,9 +108,29 @@
                     "imputation/glimpse1/concat",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz",
                     "imputation/glimpse1/concat/all_samples.batch0.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16570015-16587335.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr21_16587355-16609954.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22.ligate.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16570495-16589945.glimpse1.bcf.csi",
+                    "imputation/glimpse1/impute/all_samples.batch0.chr22_16589998-16609997.glimpse1.bcf.csi",
                     "imputation/glimpse1/samples",
                     "imputation/glimpse1/samples/dog_1735.glimpse1.vcf.gz",
                     "imputation/glimpse1/samples/dog_1735.glimpse1.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.annotate.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz",
+                    "imputation/glimpse1/variant_calling/all_samples.concat.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr21.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr21.vcf.gz",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr21.vcf.gz.tbi",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr22.bcftools_stats.txt",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr22.vcf.gz",
+                    "imputation/glimpse1/variant_calling/dog_1735_chr22.vcf.gz.tbi",
                     "imputation/glimpse2",
                     "imputation/glimpse2/concat",
                     "imputation/glimpse2/concat/all_samples.batch0.glimpse2.vcf.gz",
@@ -116,6 +139,19 @@
                     "imputation/glimpse2/samples/dog_1735.glimpse2.vcf.gz",
                     "imputation/glimpse2/samples/dog_1735.glimpse2.vcf.gz.tbi",
                     "imputation/quilt",
+                    "imputation/quilt/RData",
+                    "imputation/quilt/all_samples.batch0.chr21_16570015-16592351.quilt.vcf.gz",
+                    "imputation/quilt/all_samples.batch0.chr21_16570015-16592351.quilt.vcf.gz.tbi",
+                    "imputation/quilt/all_samples.batch0.chr21_16582340-16609954.quilt.vcf.gz",
+                    "imputation/quilt/all_samples.batch0.chr21_16582340-16609954.quilt.vcf.gz.tbi",
+                    "imputation/quilt/all_samples.batch0.chr22_16570495-16595102.quilt.vcf.gz",
+                    "imputation/quilt/all_samples.batch0.chr22_16570495-16595102.quilt.vcf.gz.tbi",
+                    "imputation/quilt/all_samples.batch0.chr22_16584983-16609997.quilt.vcf.gz",
+                    "imputation/quilt/all_samples.batch0.chr22_16584983-16609997.quilt.vcf.gz.tbi",
+                    "imputation/quilt/all_samples_chr21.ligate.vcf.gz",
+                    "imputation/quilt/all_samples_chr21.ligate.vcf.gz.tbi",
+                    "imputation/quilt/all_samples_chr22.ligate.vcf.gz",
+                    "imputation/quilt/all_samples_chr22.ligate.vcf.gz.tbi",
                     "imputation/quilt/concat",
                     "imputation/quilt/concat/all_samples.batch0.quilt.vcf.gz",
                     "imputation/quilt/concat/all_samples.batch0.quilt.vcf.gz.tbi",
@@ -198,14 +234,24 @@
                     "prep_panel/haplegend/658Dog_chr22.legend.gz",
                     "prep_panel/haplegend/658Dog_chr22.samples",
                     "prep_panel/panel",
+                    "prep_panel/panel/658Dog_chr21_16570015-16587335_chunks.bcf",
+                    "prep_panel/panel/658Dog_chr21_16570015-16587335_chunks.bcf.csi",
+                    "prep_panel/panel/658Dog_chr21_16587355-16609954_chunks.bcf",
+                    "prep_panel/panel/658Dog_chr21_16587355-16609954_chunks.bcf.csi",
                     "prep_panel/panel/658Dog_chr21_phased.vcf.gz",
                     "prep_panel/panel/658Dog_chr21_phased.vcf.gz.csi",
+                    "prep_panel/panel/658Dog_chr22_16570495-16589945_chunks.bcf",
+                    "prep_panel/panel/658Dog_chr22_16570495-16589945_chunks.bcf.csi",
+                    "prep_panel/panel/658Dog_chr22_16589998-16609997_chunks.bcf",
+                    "prep_panel/panel/658Dog_chr22_16589998-16609997_chunks.bcf.csi",
                     "prep_panel/panel/658Dog_chr22_phased.vcf.gz",
                     "prep_panel/panel/658Dog_chr22_phased.vcf.gz.csi",
                     "prep_panel/posfile",
                     "prep_panel/posfile/658Dog.chr21.posfile.txt.gz",
                     "prep_panel/posfile/658Dog.chr22.posfile.txt.gz",
                     "prep_panel/sites",
+                    "prep_panel/sites/658Dog.chr21.posfile.txt",
+                    "prep_panel/sites/658Dog.chr22.posfile.txt",
                     "prep_panel/sites/658Dog_chr21_glimpse1_sites.vcf.gz",
                     "prep_panel/sites/658Dog_chr21_glimpse1_sites.vcf.gz.tbi",
                     "prep_panel/sites/658Dog_chr22_glimpse1_sites.vcf.gz",
@@ -215,6 +261,20 @@
                     "all_samples.batch0.id.txt:md5,2181a5165013a23885b1b8c986765963",
                     "all_samples.batch0.idonly.txt:md5,b8903a12c45a3a7d10a69ee27f502c87",
                     "all_samples.batch0.noid.txt:md5,3efb890bd71c27e79d736153c6870953",
+                    "dog_1735_chr21.bcftools_stats.txt:md5,23aeb26a018cd10f2a6ea305d17d8e5e",
+                    "dog_1735_chr22.bcftools_stats.txt:md5,180907c857f787ea824c9999567487a9",
+                    "all_samples.batch0.chr21_16570015-16592351.quilt.vcf.gz:md5,2ad1c1b6b5862dc9a049b4c562f4c371",
+                    "all_samples.batch0.chr21_16570015-16592351.quilt.vcf.gz.tbi:md5,4b808ab78cbd02096e5280d742010640",
+                    "all_samples.batch0.chr21_16582340-16609954.quilt.vcf.gz:md5,2c9720d00e0f192a4cfc68e542091652",
+                    "all_samples.batch0.chr21_16582340-16609954.quilt.vcf.gz.tbi:md5,1c14099fdbeeafd7dfd91b1f9ce143fb",
+                    "all_samples.batch0.chr22_16570495-16595102.quilt.vcf.gz:md5,3c98085bb2787dcaf6e31828d49334b8",
+                    "all_samples.batch0.chr22_16570495-16595102.quilt.vcf.gz.tbi:md5,079770006314942f42eb10b3dc7f3fca",
+                    "all_samples.batch0.chr22_16584983-16609997.quilt.vcf.gz:md5,9ea958341cd96dfd0f08fb77f2ec5cfc",
+                    "all_samples.batch0.chr22_16584983-16609997.quilt.vcf.gz.tbi:md5,cac72e1e2365e9a2368b5bd62aa71065",
+                    "all_samples_chr21.ligate.vcf.gz:md5,ea9b9d4f620967e07ebf9075c85c2fb2",
+                    "all_samples_chr21.ligate.vcf.gz.tbi:md5,089955c42f658ac31eed8a871856cb97",
+                    "all_samples_chr22.ligate.vcf.gz:md5,3b38a7d00426a34e52551c05c54f5ae7",
+                    "all_samples_chr22.ligate.vcf.gz.tbi:md5,0b48771248b33910eb0f9affffb5c194",
                     "dog_1735.glimpse1.bcftools_stats.txt:md5,d8e81c6461489ab484959a2db84f249c",
                     "dog_1735.glimpse2.bcftools_stats.txt:md5,3dcefcccb3a8e51608356c02cb9190b0",
                     "dog_1735.quilt.bcftools_stats.txt:md5,4aa056976d4b87fbc7f458d4ce5c39b3",
@@ -239,7 +299,9 @@
                     "658Dog_chr22.legend.gz:md5,1a68b3ed200e391d869cf0eb036f5d13",
                     "658Dog_chr22.samples:md5,92a2aa1d024ca2001cfec04671082eff",
                     "658Dog.chr21.posfile.txt.gz:md5,3c619e8c80d87e36096a77d048fb9077",
-                    "658Dog.chr22.posfile.txt.gz:md5,845632cc4a33f76ab05225cb23930d85"
+                    "658Dog.chr22.posfile.txt.gz:md5,845632cc4a33f76ab05225cb23930d85",
+                    "658Dog.chr21.posfile.txt:md5,3c619e8c80d87e36096a77d048fb9077",
+                    "658Dog.chr22.posfile.txt:md5,845632cc4a33f76ab05225cb23930d85"
                 ],
                 "BAM files": [
                     
@@ -250,8 +312,32 @@
                         "7740e8162ec6e258f2fed47b4105f4b8"
                     ],
                     [
+                        "all_samples.batch0.chr21.ligate.glimpse1.vcf.gz",
+                        "9bafd64a823bb04417744f87cf0ffa11"
+                    ],
+                    [
+                        "all_samples.batch0.chr22.ligate.glimpse1.vcf.gz",
+                        "fb829b73a78ea6e6b10c25a058275503"
+                    ],
+                    [
                         "dog_1735.glimpse1.vcf.gz",
                         "7740e8162ec6e258f2fed47b4105f4b8"
+                    ],
+                    [
+                        "all_samples.annotate.vcf.gz",
+                        "4f968e06b3056bfd87670c9527e04b85"
+                    ],
+                    [
+                        "all_samples.concat.vcf.gz",
+                        "4db7f5d951ff790470b8ae238dda7a10"
+                    ],
+                    [
+                        "dog_1735_chr21.vcf.gz",
+                        "5d99610578ad526c26118b9301964434"
+                    ],
+                    [
+                        "dog_1735_chr22.vcf.gz",
+                        "40f9d0ac67ccb0e03540de765fffc51d"
                     ],
                     [
                         "all_samples.batch0.glimpse2.vcf.gz",
@@ -260,6 +346,30 @@
                     [
                         "dog_1735.glimpse2.vcf.gz",
                         "f9ca0078b6cc8441d6bac343f8f10eef"
+                    ],
+                    [
+                        "all_samples.batch0.chr21_16570015-16592351.quilt.vcf.gz",
+                        "1fd87aa6aa9d72df92e3ff67f9dd3a62"
+                    ],
+                    [
+                        "all_samples.batch0.chr21_16582340-16609954.quilt.vcf.gz",
+                        "24d965a224d23d523ab7df14d0ecc1ec"
+                    ],
+                    [
+                        "all_samples.batch0.chr22_16570495-16595102.quilt.vcf.gz",
+                        "4aa542692c2960495968c961f8e785c8"
+                    ],
+                    [
+                        "all_samples.batch0.chr22_16584983-16609997.quilt.vcf.gz",
+                        "55384bb6709e771abef187d23e4749ba"
+                    ],
+                    [
+                        "all_samples_chr21.ligate.vcf.gz",
+                        "c0f5fe09967c320cd7b578128930f45a"
+                    ],
+                    [
+                        "all_samples_chr22.ligate.vcf.gz",
+                        "bcc78a9f0e7dbc01f7136d652cafab2b"
                     ],
                     [
                         "all_samples.batch0.quilt.vcf.gz",
@@ -343,7 +453,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T12:07:04.400807015",
+        "timestamp": "2026-03-05T15:41:46.80103618",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
