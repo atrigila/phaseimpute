@@ -153,10 +153,7 @@
                     "NA19401_Call.depth.mean.tsv:md5,fa817417af538770e493c619fbd4c92d",
                     "NA19401_Call.depth.tsv:md5,9a0e70c0fe445f6e5739d9ce92da9fca",
                     "NA20359_Call.depth.mean.tsv:md5,772189a184011391113106e866ebafc7",
-                    "NA20359_Call.depth.tsv:md5,5a5e2f970d47dd05a6f62e470e3cc773",
-                    "NA12878_region_merged.bam.bai:md5,9a356daf410ae259a850286f09a8a062",
-                    "NA19401_region_merged.bam.bai:md5,48ef8d1c4acefc1a4bb94958bfb85712",
-                    "NA20359_region_merged.bam.bai:md5,0ab21efbe6ddd2340475b90408cf2848"
+                    "NA20359_Call.depth.tsv:md5,5a5e2f970d47dd05a6f62e470e3cc773"
                 ],
                 "BAM files": [
                     [
@@ -212,7 +209,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-03-05T15:57:39.659147655",
+        "timestamp": "2026-03-09T11:43:44.129165187",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
