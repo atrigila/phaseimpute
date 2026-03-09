@@ -636,9 +636,6 @@
                     "NA19401_Call.depth.tsv:md5,367baec0401a4574bd08d3036767e872",
                     "NA20359_Call.depth.mean.tsv:md5,caec5b47dd4f370753b500eb3cf101c4",
                     "NA20359_Call.depth.tsv:md5,1cc9ee6a593493a0368976cff8d16d49",
-                    "NA12878_region_merged.bam.bai:md5,1b13148f9e2949253ea2a939fc395607",
-                    "NA19401_region_merged.bam.bai:md5,0feb3442c220370099ffcc71bd8beb15",
-                    "NA20359_region_merged.bam.bai:md5,b356677c45f6815c5623300e24d7a078",
                     "AllSamples.txt:md5,7532ffd859efbbf854efa6110b3c4e4f",
                     "NA12878.truth.bcftools_stats.txt:md5,ceee2009cd4a74d74baf170d32f66952",
                     "NA12878_P1000GP_Tglimpse1_SNP.txt:md5,2528024cd7013dcbb14aa2af665a1064",
@@ -993,7 +990,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-05T23:07:11.334348887",
+        "timestamp": "2026-03-09T09:32:47.810725658",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

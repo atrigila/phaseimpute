@@ -61,7 +61,6 @@ workflow BAM_VARIANT_CALLING_MPILEUP_BCFTOOLS {
                 filestups.collect{_meta, vcf, _index -> vcf}.size()
             ]
         }
-        .view()
         .branch{ _meta, _vcf, _index, size ->
             single: size == 1
             multiple: size > 1

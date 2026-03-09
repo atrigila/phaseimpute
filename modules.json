@@ -8,12 +8,12 @@
                     "bcftools/annotate": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["bam_variant_calling_mpileup_bcftools", "modules"]
+                        "installed_by": ["bam_variant_calling_mpileup_bcftools"]
                     },
                     "bcftools/concat": {
                         "branch": "master",
                         "git_sha": "6383d8fe58f9498eecd5aa303e71a4a932d1e9f6",
-                        "installed_by": ["modules", "vcf_gather_bcftools"]
+                        "installed_by": ["vcf_gather_bcftools"]
                     },
                     "bcftools/convert": {
                         "branch": "master",
@@ -37,12 +37,12 @@
                     "bcftools/merge": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["bam_variant_calling_mpileup_bcftools", "modules"]
+                        "installed_by": ["bam_variant_calling_mpileup_bcftools"]
                     },
                     "bcftools/mpileup": {
                         "branch": "master",
                         "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
-                        "installed_by": ["bam_variant_calling_mpileup_bcftools", "modules"]
+                        "installed_by": ["bam_variant_calling_mpileup_bcftools"]
                     },
                     "bcftools/norm": {
                         "branch": "master",
@@ -243,7 +243,7 @@
                     },
                     "bam_variant_calling_mpileup_bcftools": {
                         "branch": "master",
-                        "git_sha": "3d9c2f4beaa4f62b3f006928fd9095a496d1e5a8",
+                        "git_sha": "fedf60f97f2dc2251f7d2d1cf83c93b001f5b2f7",
                         "installed_by": ["subworkflows"]
                     },
                     "bam_vcf_impute_glimpse2": {
@@ -268,7 +268,7 @@
                     },
                     "vcf_gather_bcftools": {
                         "branch": "master",
-                        "git_sha": "95518d261ec0561b3dffb332944bebc5ef85efcf",
+                        "git_sha": "fedf60f97f2dc2251f7d2d1cf83c93b001f5b2f7",
                         "installed_by": ["bam_variant_calling_mpileup_bcftools", "subworkflows"]
                     },
                     "vcf_impute_beagle5": {
