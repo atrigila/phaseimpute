@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#249](https://github.com/nf-core/phaseimpute/pull/249) - Add new `publish_all` hidden parameter to help during debugging. Add csv content checking in nf-test.
 - [#248](https://github.com/nf-core/phaseimpute/pull/248) - Add chromosomes concatenation to `BAM_GL_BCFTOOLS`
+- [#259](https://github.com/nf-core/phaseimpute/pull/259) - Add `publish_all` arguments to all workflow level nf-test.
 
 ### `Changed`
 
