@@ -152,6 +152,9 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml",
                     "prep_panel",
+                    "prep_panel/concat",
+                    "prep_panel/concat/1000GP.panel.vcf.gz",
+                    "prep_panel/concat/1000GP.panel.vcf.gz.tbi",
                     "prep_panel/stats",
                     "prep_panel/stats/1000GP.panel.bcftools_stats.txt",
                     "validation",
@@ -205,6 +208,10 @@
                 ],
                 "VCF files": [
                     [
+                        "1000GP.panel.vcf.gz",
+                        "29427a4627341255077971f1876ba1d5"
+                    ],
+                    [
                         "NA12878.truth.vcf.gz",
                         "1c6e1633095b15b785a9a447b189b3dd"
                     ],
@@ -222,7 +229,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-03-03T12:28:34.99598863",
+        "timestamp": "2026-03-05T22:23:51.453017774",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

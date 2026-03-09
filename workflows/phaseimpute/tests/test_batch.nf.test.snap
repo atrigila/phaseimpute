@@ -127,6 +127,32 @@
                     "imputation/quilt/samples/NA19401.quilt.vcf.gz.tbi",
                     "imputation/quilt/samples/NA20359.quilt.vcf.gz",
                     "imputation/quilt/samples/NA20359.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling",
+                    "imputation/quilt/variant_calling/RData",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21.quilt.ligate.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21.quilt.ligate.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21_16570070-16595525.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21_16570070-16595525.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21_16585483-16609998.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr21_16585483-16609998.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22.quilt.ligate.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22.quilt.ligate.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22_16570065-16597215.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22_16570065-16597215.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22_16587172-16609999.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch0.chr22_16587172-16609999.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21.quilt.ligate.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21.quilt.ligate.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21_16570070-16595525.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21_16570070-16595525.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21_16585483-16609998.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr21_16585483-16609998.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22.quilt.ligate.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22.quilt.ligate.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22_16570065-16597215.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22_16570065-16597215.quilt.vcf.gz.tbi",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22_16587172-16609999.quilt.vcf.gz",
+                    "imputation/quilt/variant_calling/all_samples.batch1.chr22_16587172-16609999.quilt.vcf.gz.tbi",
                     "imputation/stats",
                     "imputation/stats/NA12878.glimpse2.bcftools_stats.txt",
                     "imputation/stats/NA12878.quilt.bcftools_stats.txt",
@@ -235,6 +261,9 @@
                     "pipeline_info",
                     "pipeline_info/nf_core_phaseimpute_software_mqc_versions.yml",
                     "prep_panel",
+                    "prep_panel/concat",
+                    "prep_panel/concat/1000GP.panel.vcf.gz",
+                    "prep_panel/concat/1000GP.panel.vcf.gz.tbi",
                     "prep_panel/stats",
                     "prep_panel/stats/1000GP.panel.bcftools_stats.txt",
                     "validation",
@@ -346,6 +375,58 @@
                         "85e47e69e76401fce1c3ee86e2b5be75"
                     ],
                     [
+                        "all_samples.batch0.chr21.quilt.ligate.vcf.gz",
+                        "d9fe1038ca90f503591e8f330beb81e9"
+                    ],
+                    [
+                        "all_samples.batch0.chr21_16570070-16595525.quilt.vcf.gz",
+                        "31bd2f248b548ff6ef99d3ecf10928e8"
+                    ],
+                    [
+                        "all_samples.batch0.chr21_16585483-16609998.quilt.vcf.gz",
+                        "695de73fbcf3e6b059e2fc39aba06393"
+                    ],
+                    [
+                        "all_samples.batch0.chr22.quilt.ligate.vcf.gz",
+                        "367947753c4e49d985665e7257cbe5bb"
+                    ],
+                    [
+                        "all_samples.batch0.chr22_16570065-16597215.quilt.vcf.gz",
+                        "b4370ce430cda6d0bcc38421fb89b70a"
+                    ],
+                    [
+                        "all_samples.batch0.chr22_16587172-16609999.quilt.vcf.gz",
+                        "96c5936d1213d30e535d17a2498cabcf"
+                    ],
+                    [
+                        "all_samples.batch1.chr21.quilt.ligate.vcf.gz",
+                        "a4cbb5e8d4c14cec7f730032b89ce251"
+                    ],
+                    [
+                        "all_samples.batch1.chr21_16570070-16595525.quilt.vcf.gz",
+                        "41e9d74a8647de6871b3fc53421f6da2"
+                    ],
+                    [
+                        "all_samples.batch1.chr21_16585483-16609998.quilt.vcf.gz",
+                        "692997fd8bf5b0cf9fafc9da5f4a4201"
+                    ],
+                    [
+                        "all_samples.batch1.chr22.quilt.ligate.vcf.gz",
+                        "d208dc5ce326346c0b96b7a148b19b29"
+                    ],
+                    [
+                        "all_samples.batch1.chr22_16570065-16597215.quilt.vcf.gz",
+                        "aa8860ee6a339ba3e2bc1ae0f0e73fc9"
+                    ],
+                    [
+                        "all_samples.batch1.chr22_16587172-16609999.quilt.vcf.gz",
+                        "61550cfa3586c8dc64d37e8c921b897b"
+                    ],
+                    [
+                        "1000GP.panel.vcf.gz",
+                        "29427a4627341255077971f1876ba1d5"
+                    ],
+                    [
                         "NA12878.truth.vcf.gz",
                         "1c6e1633095b15b785a9a447b189b3dd"
                     ],
@@ -388,7 +469,7 @@
                 }
             }
         ],
-        "timestamp": "2026-03-03T12:02:33.942758922",
+        "timestamp": "2026-03-09T11:21:02.736232248",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

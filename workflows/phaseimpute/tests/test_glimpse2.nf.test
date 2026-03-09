@@ -15,6 +15,7 @@ nextflow_pipeline {
                 publish_dir_mode = "copy"
                 pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
+                publish_all = true
             }
         }
 
@@ -37,6 +38,7 @@ nextflow_pipeline {
                 pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
                 map = null
+                publish_all = true
             }
         }
 
@@ -59,6 +61,7 @@ nextflow_pipeline {
                 pipelines_testdata_base_path = 'https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/phaseimpute/'
                 outdir = "$outputDir"
                 chunks = null
+                publish_all = true
             }
         }
 
