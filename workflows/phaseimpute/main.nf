@@ -81,7 +81,6 @@ include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_TRUTH           } from '../../modules
 include { GAWK as GAWK_TRUTH                               } from '../../modules/nf-core/gawk'
 include { VCF_SPLIT_BCFTOOLS as SPLIT_TRUTH                } from '../../subworkflows/local/vcf_split_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_TRUTH           } from '../../modules/nf-core/bcftools/stats'
-include { VCF_CONCATENATE_BCFTOOLS as CONCAT_TRUTH         } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { VCF_CONCORDANCE_GLIMPSE2                         } from '../../subworkflows/local/vcf_concordance_glimpse2'
 
 
@@ -173,10 +172,6 @@ workflow PHASEIMPUTE {
                 false
             )
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
-        }
-
-        if (params.genotype) {
-            error "Genotype simulation not yet implemented"
         }
 
         // Create CSV from simulate step
