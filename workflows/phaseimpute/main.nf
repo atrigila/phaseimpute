@@ -110,11 +110,13 @@ workflow PHASEIMPUTE {
     main:
 
     ch_multiqc_files = channel.empty()
+    def steps = params.steps.split(',') as List
+    def tools = params.tools ? params.tools.split(',') as List : []
 
     //
     // Simulate data if asked
     //
-    if (params.steps.split(',').contains("simulate") || params.steps.split(',').contains("all")) {
+    if (steps.contains("simulate") || steps.contains("all")) {
         // Test if the input are all bam files
         getFilesSameExt(ch_input_sim)
             .map{ ext -> if (ext != "bam" & ext != "cram") {
@@ -192,7 +194,7 @@ workflow PHASEIMPUTE {
     //
     // Prepare panel
     //
-    if (params.steps.split(',').contains("panelprep") || params.steps.split(',').contains("all")) {
+    if (steps.contains("panelprep") || steps.contains("all")) {
         // Normalize indels in panel
         VCF_NORMALIZE_BCFTOOLS(ch_panel, ch_fasta)
         ch_panel_phased = VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi
@@ -268,7 +270,7 @@ workflow PHASEIMPUTE {
     //
     // Impute target files
     //
-    if (params.steps.split(',').contains("impute") || params.steps.split(',').contains("all")) {
+    if (steps.contains("impute") || steps.contains("all")) {
         // Split input files into BAMs and VCFs
         ch_input_type = ch_input_impute
             .branch { _meta, file, _index ->
@@ -311,11 +313,11 @@ workflow PHASEIMPUTE {
             .join(LISTTOFILE.out.txt)
 
         // Use panel from parameters if provided
-        if (params.panel && !params.steps.split(',').find { step -> step in ["all", "panelprep"] }) {
+        if (params.panel && !steps.find { step -> step in ["all", "panelprep"] }) {
             ch_panel_phased = ch_panel
         }
 
-        if (params.tools.split(',').contains("glimpse1")) {
+        if (tools.contains("glimpse1")) {
             log.info("Impute with GLIMPSE1")
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
@@ -370,7 +372,7 @@ workflow PHASEIMPUTE {
 
         }
 
-        if (params.tools.split(',').contains("glimpse2")) {
+        if (tools.contains("glimpse2")) {
             log.info("Impute with GLIMPSE2")
 
             ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
@@ -400,7 +402,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE2.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("stitch")) {
+        if (tools.contains("stitch")) {
             log.info("Impute with STITCH")
 
             ch_chunks_stitch = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
@@ -441,7 +443,7 @@ workflow PHASEIMPUTE {
 
         }
 
-        if (params.tools.split(',').contains("quilt")) {
+        if (tools.contains("quilt")) {
             log.info("Impute with QUILT")
 
             // Use provided chunks if --chunks or whole chromosome
@@ -491,7 +493,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("beagle5")) {
+        if (tools.contains("beagle5")) {
             log.info("Impute with BEAGLE5")
             ch_chunks_beagle5 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
                 .map{ meta, _regionin, regionout -> [meta, regionout]}
@@ -513,7 +515,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("minimac4")) {
+        if (tools.contains("minimac4")) {
             log.info("Impute with MINIMAC4")
 
             ch_chunks_minimac4 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
@@ -578,7 +580,7 @@ workflow PHASEIMPUTE {
         )
     }
 
-    if (params.steps.split(',').contains("validate") || params.steps.split(',').contains("all")) {
+    if (steps.contains("validate") || steps.contains("all")) {
         // Concatenate all sites into a single VCF (for GLIMPSE concordance)
         CONCAT_PANEL(ch_posfile.map{
             meta, site, site_index, _hap, _legend, _posfile -> [
