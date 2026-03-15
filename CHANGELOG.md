@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#258](https://github.com/nf-core/phaseimpute/pull/258) - Update all nf-core modules and subworkflows.
 - [#259](https://github.com/nf-core/phaseimpute/pull/259) - Move from local to nf-core sbwf for variant calling from BAM input files.
 - [#262](https://github.com/nf-core/phaseimpute/pull/262) - Change from `master` to `main` branch.
+- [#268](https://github.com/nf-core/phaseimpute/pull/268) - Refactor duplicated QUILT/STITCH posfile preprocessing into a single step.
 
 ### `Fixed`
 
