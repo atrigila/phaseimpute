@@ -497,6 +497,11 @@ def validateInputParameters() {
         error "A step must be provided"
     }
 
+    // Check that genotype simulation is only used with simulate/all steps
+    if (params.genotype && !params.steps.split(',').find { step -> step in ["simulate", "all"] }) {
+        error("`--genotype` is only supported with `--steps simulate` or `--steps all`. Genotype simulation is not yet implemented.")
+    }
+
     // Check that at least one tool is provided
     if (params.steps.split(',').contains("impute")) {
         if (!params.tools) {
