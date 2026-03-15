@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
-- [#281](https://github.com/nf-core/phaseimpute/pull/281) - Remove unused `CONCAT_TRUTH` and move  unsupported `--genotype` to parameter validation utils.
+- [#281](https://github.com/nf-core/phaseimpute/pull/281) - Remove unused `CONCAT_TRUTH` and move unsupported `--genotype` to parameter validation utils.
 
 ### `Dependencies`
 
