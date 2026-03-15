@@ -34,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
+- [#266](https://github.com/nf-core/phaseimpute/pull/266) - Fix incorrect boolean conditions (`&` to `&&`) and replace error-channel handling with `.subscribe { error ... }` rather than `assert`.
+
 ### `Dependencies`
 
 | Dependency | Old version | New version    |
