@@ -81,7 +81,6 @@ include { BCFTOOLS_QUERY as BCFTOOLS_QUERY_TRUTH           } from '../../modules
 include { GAWK as GAWK_TRUTH                               } from '../../modules/nf-core/gawk'
 include { VCF_SPLIT_BCFTOOLS as SPLIT_TRUTH                } from '../../subworkflows/local/vcf_split_bcftools'
 include { BCFTOOLS_STATS as BCFTOOLS_STATS_TRUTH           } from '../../modules/nf-core/bcftools/stats'
-include { VCF_CONCATENATE_BCFTOOLS as CONCAT_TRUTH         } from '../../subworkflows/local/vcf_concatenate_bcftools'
 include { VCF_CONCORDANCE_GLIMPSE2                         } from '../../subworkflows/local/vcf_concordance_glimpse2'
 
 
@@ -110,14 +109,16 @@ workflow PHASEIMPUTE {
     main:
 
     ch_multiqc_files = channel.empty()
+    def steps = params.steps.split(',') as List
+    def tools = params.tools ? params.tools.split(',') as List : []
 
     //
     // Simulate data if asked
     //
-    if (params.steps.split(',').contains("simulate") || params.steps.split(',').contains("all")) {
+    if (steps.contains("simulate") || steps.contains("all")) {
         // Test if the input are all bam files
         getFilesSameExt(ch_input_sim)
-            .map{ ext -> if (ext != "bam" & ext != "cram") {
+            .map{ ext -> if (ext != "bam" && ext != "cram") {
                 error "All input files must be in the same format, either BAM or CRAM, to perform simulation: ${ext}"
             } }
 
@@ -175,10 +176,6 @@ workflow PHASEIMPUTE {
             ch_multiqc_files = ch_multiqc_files.mix(FILTER_CHR_DWN.out.output.map{ _meta, file -> file })
         }
 
-        if (params.genotype) {
-            error "Genotype simulation not yet implemented"
-        }
-
         // Create CSV from simulate step
         exportCsv(
             ch_input_impute.map{ meta, file, index ->
@@ -192,7 +189,7 @@ workflow PHASEIMPUTE {
     //
     // Prepare panel
     //
-    if (params.steps.split(',').contains("panelprep") || params.steps.split(',').contains("all")) {
+    if (steps.contains("panelprep") || steps.contains("all")) {
         // Normalize indels in panel
         VCF_NORMALIZE_BCFTOOLS(ch_panel, ch_fasta)
         ch_panel_phased = VCF_NORMALIZE_BCFTOOLS.out.vcf_tbi
@@ -268,7 +265,7 @@ workflow PHASEIMPUTE {
     //
     // Impute target files
     //
-    if (params.steps.split(',').contains("impute") || params.steps.split(',').contains("all")) {
+    if (steps.contains("impute") || steps.contains("all")) {
 
         if (params.tools.split(',').any{ it in ["stitch", "quilt"] }) {
             // Transform posfile to tabulated format shared by QUILT and STITCH
@@ -292,16 +289,17 @@ workflow PHASEIMPUTE {
 
         // Check if input files are only BAM/CRAM or VCF/BCF
         ch_input_type.other
-            .map{ error "Input files must be either BAM/CRAM or VCF/BCF" }
+            .subscribe { error "Input files must be either BAM/CRAM or VCF/BCF" }
 
         // Group BAMs by batch size
-        def nb_batch = -1
         ch_input_bams = ch_input_type.bam
             .toSortedList { it1, it2 -> it1[0]["id"] <=> it2[0]["id"] }
-            .map { list -> list.collate(params.batch_size)
-                .collect{ it -> nb_batch += 1; [
-                    [id: "all_samples", batch: nb_batch], it]
-                }
+            .map { list ->
+                list.collate(params.batch_size)
+                    .withIndex()
+                    .collect { batch, idx -> [
+                        [id: "all_samples", batch: idx], batch
+                    ] }
             }
             .map { list -> [
                 list.collect{ it -> it[0] },
@@ -324,11 +322,11 @@ workflow PHASEIMPUTE {
             .join(LISTTOFILE.out.txt)
 
         // Use panel from parameters if provided
-        if (params.panel && !params.steps.split(',').find { step -> step in ["all", "panelprep"] }) {
+        if (params.panel && !steps.find { step -> step in ["all", "panelprep"] }) {
             ch_panel_phased = ch_panel
         }
 
-        if (params.tools.split(',').contains("glimpse1")) {
+        if (tools.contains("glimpse1")) {
             log.info("Impute with GLIMPSE1")
 
             // Use chunks from parameters if provided or use previous chunks from panelprep
@@ -383,7 +381,7 @@ workflow PHASEIMPUTE {
 
         }
 
-        if (params.tools.split(',').contains("glimpse2")) {
+        if (tools.contains("glimpse2")) {
             log.info("Impute with GLIMPSE2")
 
             ch_chunks_glimpse2 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
@@ -413,7 +411,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_GLIMPSE2.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("stitch")) {
+        if (tools.contains("stitch")) {
             log.info("Impute with STITCH")
 
             ch_chunks_stitch = chunkPrepareChannel(ch_chunks, ch_region, "quilt")
@@ -444,7 +442,7 @@ workflow PHASEIMPUTE {
 
         }
 
-        if (params.tools.split(',').contains("quilt")) {
+        if (tools.contains("quilt")) {
             log.info("Impute with QUILT")
 
             // Use provided chunks if --chunks or whole chromosome
@@ -483,7 +481,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_QUILT.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("beagle5")) {
+        if (tools.contains("beagle5")) {
             log.info("Impute with BEAGLE5")
             ch_chunks_beagle5 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
                 .map{ meta, _regionin, regionout -> [meta, regionout]}
@@ -505,7 +503,7 @@ workflow PHASEIMPUTE {
             ch_input_validate = ch_input_validate.mix(CONCAT_BEAGLE5.out.vcf_index)
         }
 
-        if (params.tools.split(',').contains("minimac4")) {
+        if (tools.contains("minimac4")) {
             log.info("Impute with MINIMAC4")
 
             ch_chunks_minimac4 = chunkPrepareChannel(ch_chunks, ch_region, "glimpse1")
@@ -570,7 +568,7 @@ workflow PHASEIMPUTE {
         )
     }
 
-    if (params.steps.split(',').contains("validate") || params.steps.split(',').contains("all")) {
+    if (steps.contains("validate") || steps.contains("all")) {
         // Concatenate all sites into a single VCF (for GLIMPSE concordance)
         CONCAT_PANEL(ch_posfile.map{
             meta, site, site_index, _hap, _legend, _posfile -> [
