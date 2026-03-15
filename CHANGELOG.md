@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
+- [#269](https://github.com/nf-core/phaseimpute/pull/269) - Fix `igenomes` issue when using custom genomes.
+
 ### `Dependencies`
 
 | Dependency | Old version | New version    |
